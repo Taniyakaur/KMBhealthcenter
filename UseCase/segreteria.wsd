@@ -1,0 +1,20 @@
+@startuml
+left to right direction
+actor Segreteria as Secretary
+
+rectangle CasaSalute {
+    usecase "Autenticazione" as UC_Auth_Secretary
+    usecase "Gestione dati pazienti" as UC_ManagePatientData
+    usecase "Gestione prenotazioni visite" as UC_ManageBookings
+    usecase "Gestione dati medici e infermieri" as UC_ManageStaffData
+    usecase "Visualizzazione visite programmate" as UC_ShowScheduledVisits
+}
+
+Secretary --> UC_Auth_Secretary
+Secretary --> UC_ManagePatientData
+Secretary --> UC_ManageBookings
+Secretary --> UC_ManageStaffData
+Secretary --> UC_ShowScheduledVisits
+@enduml
+
+
