@@ -1,0 +1,27 @@
+CREATE TABLE paziente (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL,
+    cognome TEXT NOT NULL,
+    data_di_nascita DATE,
+    indirizzo TEXT,
+    telefono TEXT,
+    email TEXT
+);
+CREATE TABLE infermiere (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL,
+    cognome TEXT NOT NULL,
+    data_di_nascita DATE,
+    indirizzo TEXT,
+    telefono TEXT,
+    email TEXT,
+    reparto TEXT
+);
+CREATE TABLE medico (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL,
+    cognome TEXT NOT NULL,
+    specializzazione TEXT,
+    telefono TEXT,
+    email TEXT
+);

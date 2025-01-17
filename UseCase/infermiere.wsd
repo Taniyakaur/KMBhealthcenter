@@ -1,12 +1,13 @@
 @startuml
-title use case infermiere
+
 left to right direction
-actor Infermieri as Nurse
+actor Infermiere as Nurse
 
 rectangle CasaSalute {
-	usecase "Autenticazione" as UC_Authentication
+	
 	usecase "Visualizzazione delle prestazioni da eseguire" as UC_viewprestazioni
 	usecase "Inserire esito delle prestazioni" as UC_compilaprestazioni
+    usecase "Autenticazione" as UC_Authentication
 }
 
 Nurse --> UC_Authentication

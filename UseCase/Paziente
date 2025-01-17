@@ -1,5 +1,6 @@
 @startuml
 left to right direction
+title Use case Patient
 actor Paziente as Patient
 
 rectangle CasaSalute {
