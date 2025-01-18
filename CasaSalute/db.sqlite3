@@ -1,27 +1,117 @@
-CREATE TABLE paziente (
+-- Creazione delle tabelle per il sistema della Casa della Salute
+
+-- Tabella per gli utenti (medici, infermieri, pazienti)
+CREATE TABLE utenti (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    nome TEXT NOT NULL,
-    cognome TEXT NOT NULL,
-    data_di_nascita DATE,
-    indirizzo TEXT,
-    telefono TEXT,
-    email TEXT
+    username TEXT NOT NULL UNIQUE,
+    password TEXT NOT NULL,
+    ruolo TEXT NOT NULL CHECK (ruolo IN ('medico', 'infermiere', 'paziente', 'segreteria'))
 );
-CREATE TABLE infermiere (
+
+-- Tabella per i medici
+CREATE TABLE medici (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    nome TEXT NOT NULL,
+    utente_id INTEGER NOT NULL,
     cognome TEXT NOT NULL,
-    data_di_nascita DATE,
-    indirizzo TEXT,
-    telefono TEXT,
-    email TEXT,
-    reparto TEXT
-);
-CREATE TABLE medico (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
     nome TEXT NOT NULL,
-    cognome TEXT NOT NULL,
+    codice_fiscale TEXT NOT NULL UNIQUE,
     specializzazione TEXT,
-    telefono TEXT,
-    email TEXT
+    FOREIGN KEY (utente_id) REFERENCES utenti(id)
+);
+
+
+CREATE TABLE medici_sostituti (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    medico_id INTEGER NOT NULL,
+    sostituto_id INTEGER NOT NULL,
+    FOREIGN KEY (medico_id) REFERENCES medici(id),
+    FOREIGN KEY (sostituto_id) REFERENCES medici(id)
+);
+
+
+-- Tabella per le assenze dei medici
+CREATE TABLE assenze_pianificate (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    medico_id INTEGER NOT NULL,
+    data_inizio DATE NOT NULL,
+    data_fine DATE NOT NULL,
+    FOREIGN KEY (medico_id) REFERENCES medici(id)
+);
+
+-- Tabella per i pazienti
+CREATE TABLE pazienti (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    codice_sanitario TEXT NOT NULL UNIQUE,
+    nome TEXT NOT NULL,
+    cognome TEXT NOT NULL,
+    data_nascita DATE NOT NULL,
+    luogo_nascita TEXT NOT NULL,
+    email TEXT,
+    referente_adulto_id INTEGER,
+    medico_convenzionato INTEGER,
+    FOREIGN KEY (medico_convenzionato) REFERENCES medico(id),
+    FOREIGN KEY (referente_adulto_id) REFERENCES pazienti(id)
+);
+
+-- Tabella per gli infermieri
+CREATE TABLE infermieri (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    utente_id INTEGER NOT NULL,
+    cognome TEXT NOT NULL,
+    nome TEXT NOT NULL,
+    codice_fiscale TEXT NOT NULL UNIQUE,
+    FOREIGN KEY (utente_id) REFERENCES utenti(id)
+);
+
+-- Tabella per i turni degli infermieri
+CREATE TABLE turni_infermieri (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    infermiere_id INTEGER NOT NULL,
+    data DATE NOT NULL,
+    sala TEXT NOT NULL CHECK (sala IN ('prelievi', 'medicazioni')),
+    FOREIGN KEY (infermiere_id) REFERENCES infermieri(id)
+);
+
+-- Tabella per le visite
+CREATE TABLE visite (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    paziente_id INTEGER NOT NULL,
+    ambulatorio TEXT NOT NULL CHECK (ambulatorio IN ('ambulatorio 1', 'ambulatorio 2', 'ambulatorio 3', 'pediatrico')),
+    medico_id INTEGER NOT NULL,
+    esito TEXT,
+    data_visita DATE NOT NULL,
+    urgenza TEXT NOT NULL CHECK (urgenza IN ('normale', 'urgente')),
+    regime TEXT NOT NULL CHECK (regime IN ('privato', 'SSN')),
+    tipo_visita TEXT NOT NULL CHECK (tipo_visita IN ('adulti', 'pediatrica')),
+    FOREIGN KEY (paziente_id) REFERENCES pazienti(id),
+    FOREIGN KEY (medico_id) REFERENCES medici(id)
+);
+
+-- Tabella per le prenotazioni
+CREATE TABLE prenotazioni (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    paziente_id INTEGER NOT NULL,
+    medico_id INTEGER,
+    infermiere_id INTEGER,
+    tipo_prestazione TEXT NOT NULL CHECK (tipo_prestazione IN ('visita', 'prelievo', 'medicazione')),
+    data_prenotazione DATE NOT NULL,
+    ora_prenotazione TIME NOT NULL,
+    urgenza TEXT NOT NULL CHECK (urgenza IN ('normale', 'urgente')),
+    regime TEXT NOT NULL CHECK (regime IN ('privato', 'SSN')),
+    FOREIGN KEY (paziente_id) REFERENCES pazienti(id),
+    FOREIGN KEY (medico_id) REFERENCES medici(id),
+    FOREIGN KEY (infermiere_id) REFERENCES infermieri(id)
+);
+
+-- Tabella per le prestazioni infermieristiche
+CREATE TABLE prestazioni_infermieristiche (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    paziente_id INTEGER NOT NULL,
+    infermiere_id INTEGER NOT NULL,
+    tipo_prestazione TEXT NOT NULL CHECK (tipo_prestazione IN ( 'prelievo', 'medicazione')),
+    esito TEXT,
+    data_prestazione DATE NOT NULL,
+    note TEXT,
+    FOREIGN KEY (paziente_id) REFERENCES pazienti(id),
+    FOREIGN KEY (infermiere_id) REFERENCES infermieri(id)
 );
