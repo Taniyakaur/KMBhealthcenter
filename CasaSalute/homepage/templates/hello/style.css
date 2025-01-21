@@ -1,0 +1,50 @@
+/* Header styles */
+.top-header {
+    background-color: #00bcd4; /* Azzurro pulito */
+    color: white;
+    padding: 10px 0;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+  }
+  
+  .top-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .header-left,
+  .header-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .contact-item {
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .contact-item i {
+    margin-right: 5px;
+  }
+  
+  .header-link {
+    color: white;
+    text-decoration: none;
+    margin-left: 15px;
+    font-weight: bold;
+  }
+  
+  .header-link:hover {
+    text-decoration: underline;
+  }
+  .container { 
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+  
