@@ -20,5 +20,6 @@ from django.urls import include, path
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('homepage.urls')),  # Add this line to include the homepage at the root URL
-    path('homepage/', include('homepage.urls'))    # include the urls from the homepage app
+    path('homepage/', include('homepage.urls')),
+    path('users/', include('users.urls')),    # include the urls from the homepage app
 ] 
