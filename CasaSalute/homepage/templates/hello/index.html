@@ -19,8 +19,6 @@
       <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
       <!-- style css -->
       <link href="{% static 'homepage/styles.css' %}" rel="stylesheet">
-
-      <!--link rel="stylesheet" type="text/css" href="css/style.css"-->
       <!-- Responsive-->
       <link rel="stylesheet" href="css/responsive.css">
       <!-- fevicon -->
@@ -38,18 +36,14 @@
       <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
    </head>
    <body>
+
       <!-- header top section start -->
       <header class="top-header">
          <div class="container">
            <div class="header-left">
-             <span class="contact-item"><i class="fas fa-phone"></i> Call: +01 1234567890</span>
-             <span class="contact-item"><i class="fas fa-envelope"></i> demo@gmail.com</span>
-             <span class="contact-item"><i class="fas fa-map-marker-alt"></i> Location</span>
-           </div>
-           <div class="header-right">
-             <a href="#" class="header-link">Login</a>
-             <a href="#" class="header-link">Sign Up</a>
-             <a href="#" class="header-link"><i class="fas fa-search"></i></a>
+             <span class="contact-item"><i class="fas fa-phone"></i> Call: 039 12345678</span>
+             <span class="contact-item"><i class="fas fa-envelope"></i> KMBhealthcenter@gmail.com</span>
+             <span class="contact-item"><i class="fas fa-map-marker-alt"></i>Borgo Trento, Verona</span>
            </div>
          </div>
        </header>
@@ -100,8 +94,7 @@
                </div>
                <form class="form-inline my-2 my-lg-0">
                   <div class="search_btn">
-                     <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i><span class="signup_text">Login</span></a></li>
-                     <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i><span class="signup_text">Sign Up</span></a></li>
+                     <li><a href="{% url 'login' %}"><i class="fa fa-user" aria-hidden="true"></i><span class="signup_text">Login</span></a></li> 
                      <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
                   </div>
                </form>
@@ -151,7 +144,79 @@
          <!-- banner section end -->
       </div>
       <!-- header section end -->
-
+      <!-- appointment section start -->
+      <div class="appointment_section">
+         <div class="container">
+            <div class="appointment_box">
+               <div class="row">
+                  <div class="col-md-12">
+                     <h1 class="appointment_taital">Book <span style="color: #0cb7d6;">Appointment</span></h1>
+                  </div>
+               </div>
+               <div class="appointment_section_2">
+                  <div class="row">
+                     <div class="col-md-4">
+                        <p class="doctorname_text">Patient Name</p>
+                        <input type="text" class="email_text" placeholder="" name="">
+                     </div>
+                     <div class="col-md-4">
+                        <form>
+                           <div class="form-group">
+                              <p class="doctorname_text">Doctor's Name</p>
+                              <select class="form-control" id="">
+                                 <option>Normal distribution </option>
+                                 <option>200</option>
+                                 <option>300</option>
+                                 <option>400</option>
+                                 <option>500</option>
+                              </select>
+                           </div>
+                        </form>
+                     </div>
+                     <div class="col-md-4">
+                        <form>
+                           <div class="form-group">
+                              <p class="doctorname_text">Department's Name</p>
+                              <select class="form-control" id="">
+                                 <option>Normal distribution </option>
+                                 <option>2</option>
+                                 <option>3</option>
+                                 <option>4</option>
+                                 <option>5</option>
+                              </select>
+                           </div>
+                        </form>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-md-4">
+                        <p class="doctorname_text">Phone Number</p>
+                        <input type="text" class="email_text" placeholder="" name="">
+                     </div>
+                     <div class="col-md-4">
+                        <form>
+                           <div class="form-group">
+                              <p class="doctorname_text">Department</p>
+                              <select class="form-control" id="">
+                                 <option>Normal distribution</option>
+                                 <option>2</option>
+                                 <option>3</option>
+                                 <option>4</option>
+                                 <option>5</option>
+                              </select>
+                           </div>
+                        </form>
+                     </div>
+                     <div class="col-md-4">
+                        <p class="doctorname_text">Choose Date</p>
+                        <input id="datepicker" placeholder="Select Date" width="270" />
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- appointment section end -->
       <!-- about section start -->
       <div class="about_section layout_padding">
          <div class="container">
@@ -206,6 +271,8 @@
          </div>
          </div>
       </div>
+      <!-- Add your login button here -->
+      <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
       <!-- trea{% load static %}
 
 <!DOCTYPE html>
@@ -232,12 +299,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet">
     <style>
-        .header_top_section .call_text a { color: fuchsia; }
-        .appointment_taital span { color: fuchsia; }
+        .header_top_section .call_text a { color: rgb(9, 133, 71); }
+        .appointment_taital span { color:rgb(9, 133, 71); }
         .doctores_box { background-color: #f5f5f5; padding: 15px; border-radius: 10px; }
-        .read_bt a, .readmore_bt a { background-color: fuchsia; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; }
+        .read_bt a, .readmore_bt a { background-color: rgb(9, 133, 71); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; }
         .footer_section { background-color: #2c3e50; color: white; padding: 30px 0; }
-        .footer_section a { color: fuchsia; text-decoration: none; }
+        .footer_section a { color: rgb(9, 133, 71); text-decoration: none; }
     </style>
 </head>
 <body>
@@ -294,8 +361,8 @@
                                 <label>Doctor's Name</label>
                                 <select class="form-control">
                                     <option>Select Doctor</option>
-                                    <option>Dr. Smith</option>
-                                    <option>Dr. Jane</option>
+                                    <option>Dr. Zuchegna</option>
+                                    <option>Dr. Mohammad</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-4">
@@ -332,14 +399,14 @@
                 <div class="col-md-4">
                     <div class="doctores_box">
                         <img src="images/img-1.png" alt="Doctor 1" class="img-fluid">
-                        <h4>Dr. Humor</h4>
+                        <h4>Dr. Zuchegna</h4>
                         <p>MBBS, Cardiologist</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="doctores_box">
                         <img src="images/img-2.png" alt="Doctor 2" class="img-fluid">
-                        <h4>Dr. Jenni</h4>
+                        <h4>Dr. Mohammad</h4>
                         <p>MBBS, Neurologist</p>
                     </div>
                 </div>
@@ -357,7 +424,7 @@
     <!-- Footer Section -->
     <div class="footer_section">
         <div class="container">
-            <p>2024 All Rights Reserved. Design by <a href="https://html.design">Free Html Templates</a></p>
+            <p>2025 All Rights Reserved. Design by KMB></a></p>
         </div>
     </div>
 
