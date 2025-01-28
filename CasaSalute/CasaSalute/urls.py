@@ -19,7 +19,9 @@ from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('homepage.urls')),  # Add this line to include the homepage at the root URL
-    path('homepage/', include('homepage.urls')),
-    path('users/', include('users.urls')),    # include the urls from the homepage app
-] 
+    path('', include('homepage.urls')),  # Root URL routed to homepage app
+    path('homepage/', include('homepage.urls')),  # Additional URL pattern for homepage
+    path('users/', include('users.urls')),  # Include the URLs from the users app
+    path('visite/', include('visite.urls')),  # Include the URLs from the visite app
+    path('prestazione/', include('prestazione.urls')),  # Include the URLs from the prestazione app
+]

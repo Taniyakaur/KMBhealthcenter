@@ -1,0 +1,39 @@
+mkdir -p /Users/taniyakaur/Documents/GitHub/Project/CasaSalute/static/css
+touch /Users/taniyakaur/Documents/GitHub/Project/CasaSalute/static/css/bootstrap.min.css
+touch /Users/taniyakaur/Documents/GitHub/Project/CasaSalute/static/css/styles.css<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}KMB Health Center{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>KMB Health Center</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'homepage' %}">Home</a></li>
+                <li><a href="{% url 'visite_index' %}">Visite</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        <h1>Dettagli Visita</h1>
+        <p>Paziente: {{ visita.paziente }}</p>
+        <p>Medico: {{ visita.medico }}</p>
+        <p>Ambulatorio: {{ visita.ambulatorio }}</p>
+        <p>Esito: {{ visita.esito }}</p>
+        <p>Data: {{ visita.data }}</p>
+        <p>Ora: {{ visita.ora }}</p>
+        <p>Urgenza: {{ visita.urgenza }}</p>
+        <p>Tipo di Visita: {{ visita.get_tipo_visita_display }}</p>
+        {% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2023 KMB Health Center</p>
+    </footer>
+</body>
+</html>

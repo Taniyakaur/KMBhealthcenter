@@ -1,0 +1,12 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Prestazioni</h1>
+  <ul>
+    {% for prestazione in prestazioni %}
+      <li>
+        <a href="{% url 'prestazione_detail' prestazione.id %}">{{ prestazione }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

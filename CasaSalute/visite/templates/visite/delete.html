@@ -1,0 +1,10 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Elimina Visita</h1>
+  <p>Sei sicuro di voler eliminare questa visita?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Elimina</button>
+  </form>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Dettagli Prestazione</h1>
+  <p>Paziente: {{ prestazione.paziente }}</p>
+  <p>Infermiere: {{ prestazione.infermiere }}</p>
+  <p>Tipo di Prestazione: {{ prestazione.get_tipo_prestazione_display }}</p>
+  <p>Data Prenotazione: {{ prestazione.data_prenotazione }}</p>
+  <p>Ora Prenotazione: {{ prestazione.ora_prenotazione }}</p>
+  <p>Data Prestazione: {{ prestazione.data_prestazione }}</p>
+  <p>Esito: {{ prestazione.esito }}</p>
+  <p>Note: {{ prestazione.note }}</p>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Dettagli Visita</h1>
+  <p>Paziente: {{ visita.paziente }}</p>
+  <p>Medico: {{ visita.medico }}</p>
+  <p>Ambulatorio: {{ visita.ambulatorio }}</p>
+  <p>Esito: {{ visita.esito }}</p>
+  <p>Data: {{ visita.data }}</p>
+  <p>Ora: {{ visita.ora }}</p>
+  <p>Urgenza: {{ visita.urgenza }}</p>
+  <p>Tipo di Visita: {{ visita.get_tipo_visita_display }}</p>
+{% endblock %}

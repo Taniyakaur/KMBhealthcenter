@@ -1,0 +1,12 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Visite</h1>
+  <ul>
+    {% for visita in visite %}
+      <li>
+        <a href="{% url 'visite_detail' visita.id %}">{{ visita }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
