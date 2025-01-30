@@ -7,7 +7,7 @@ def index(request):
     visite = Visita.objects.all()
     return render(request, "visite/index.html", {"visite": visite})
 
-def create(request):
+def create_visita(request):
     if request.method == "POST":
         form = VisitaForm(request.POST)
         if form.is_valid():
@@ -23,8 +23,7 @@ def update(request, id):
     if request.method == "POST":
         form = VisitaForm(request.POST, instance=visita)
         if form.is_valid():
-            visita = form.save()
-            send_notification_email(visita)
+            form.save()
             return redirect("visite_index")
     else:
         form = VisitaForm(instance=visita)
@@ -42,7 +41,7 @@ def detail(request, id):
     return render(request, "visite/detail.html", {"visita": visita})
 
 def send_notification_email(visita):
-    subject = "Esito della visita"
-    message = f"Caro {visita.paziente.nome},\n\nPuoi accedere al sistema e verificare l'esito della tua visita effettuata il {visita.data}.\n\nCordiali saluti,\nKMB Health Center"
+    subject = "Conferma Prenotazione Visita"
+    message = f"Caro {visita.paziente.nome},\n\nLa tua prenotazione per una visita con {visita.medico.nome} è stata confermata per il {visita.data} alle {visita.ora}.\n\nCordiali saluti,\nKMB Health Center"
     recipient_list = [visita.paziente.email]
     send_mail(subject, message, 'no-reply@kmbhealthcenter.com', recipient_list)

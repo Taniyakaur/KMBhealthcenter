@@ -6,7 +6,7 @@ def index(request):
     prestazioni = Prestazione.objects.all()
     return render(request, "prestazione/index.html", {"prestazioni": prestazioni})
 
-def create(request):
+def create_prestazione(request):
     if request.method == "POST":
         form = PrestazioneForm(request.POST)
         if form.is_valid():

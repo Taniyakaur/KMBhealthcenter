@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),  # Ensure this is the only 'admin' path
     path('', include('homepage.urls')),  # Root URL routed to homepage app
     path('homepage/', include('homepage.urls')),  # Additional URL pattern for homepage
     path('users/', include('users.urls')),  # Include the URLs from the users app

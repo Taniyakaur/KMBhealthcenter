@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 class Prestazione(models.Model):
     TIPO_PRESTAZIONE_CHOICES = [
@@ -9,9 +10,9 @@ class Prestazione(models.Model):
     paziente = models.ForeignKey('users.Paziente', on_delete=models.CASCADE)
     infermiere = models.ForeignKey('users.Infermiere', on_delete=models.CASCADE)
     tipo_prestazione = models.CharField(max_length=20, choices=TIPO_PRESTAZIONE_CHOICES)
-    data_prenotazione = models.DateField()
+    data_prenotazione = models.DateField(default=timezone.now)
     ora_prenotazione = models.TimeField()
-    data_prestazione = models.DateField(null=True, blank=True)
+    data_prestazione = models.DateField(null=True, blank=True, default=timezone.now)
     esito = models.TextField(null=True, blank=True)
     note = models.TextField(null=True, blank=True)
 
