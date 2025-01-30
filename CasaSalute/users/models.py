@@ -8,7 +8,7 @@ class Paziente(models.Model):
     password = models.CharField(max_length=128)  # Use CharField for storing hashed passwords
     nome = models.CharField(max_length=255)
     cognome = models.CharField(max_length=255)
-    data_di_nascita = models.DateField(null=True, blank=True)
+    data_di_nascita = models.DateField(null=True, blank=True, default=timezone.now)
     indirizzo = models.TextField(null=True, blank=True)
     telefono = models.CharField(max_length=20, null=True, blank=True)
     email = models.EmailField(null=True, blank=True)
@@ -22,7 +22,7 @@ class Infermiere(models.Model):
     password = models.CharField(max_length=128)  # Use CharField for storing hashed passwords
     nome = models.CharField(max_length=255)
     cognome = models.CharField(max_length=255)
-    data_di_nascita = models.DateField(null=True, blank=True)
+    data_di_nascita = models.DateField(null=True, blank=True,default="1990/01/01")
     indirizzo = models.TextField(null=True, blank=True)
     telefono = models.CharField(max_length=20, null=True, blank=True)
     email = models.EmailField(null=True, blank=True)
@@ -55,6 +55,7 @@ class Segreteria(models.Model):
     password = models.CharField(max_length=128)  # Use CharField for storing hashed passwords
     nome = models.CharField(max_length=255)
     cognome = models.CharField(max_length=255)
+    data_di_nascita = models.DateField(null=True, blank=True, default="1990/01/01")
     telefono = models.CharField(max_length=20, null=True, blank=True)
     email = models.EmailField(null=True, blank=True)
 

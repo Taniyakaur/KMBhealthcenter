@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'prestazione',
-    'visite',
+    'visita',
     'users',
     'homepage',
     'django.contrib.admin',

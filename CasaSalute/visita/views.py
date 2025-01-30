@@ -5,7 +5,7 @@ from .forms import VisitaForm
 
 def index(request):
     visite = Visita.objects.all()
-    return render(request, "visite/index.html", {"visite": visite})
+    return render(request, "visita/index.html", {"visite": visite})
 
 def create_visita(request):
     if request.method == "POST":
@@ -13,10 +13,10 @@ def create_visita(request):
         if form.is_valid():
             visita = form.save()
             send_notification_email(visita)
-            return redirect("visite_index")
+            return redirect("visita_index")
     else:
         form = VisitaForm()
-    return render(request, "visite/create.html", {"form": form})
+    return render(request, "visita/create.html", {"form": form})
 
 def update(request, id):
     visita = get_object_or_404(Visita, id=id)
@@ -24,21 +24,21 @@ def update(request, id):
         form = VisitaForm(request.POST, instance=visita)
         if form.is_valid():
             form.save()
-            return redirect("visite_index")
+            return redirect("visita_index")
     else:
         form = VisitaForm(instance=visita)
-    return render(request, "visite/update.html", {"form": form})
+    return render(request, "visita/update.html", {"form": form})
 
 def delete(request, id):
     visita = get_object_or_404(Visita, id=id)
     if request.method == "POST":
         visita.delete()
-        return redirect("visite_index")
-    return render(request, "visite/delete.html", {"visita": visita})
+        return redirect("visita_index")
+    return render(request, "visita/delete.html", {"visita": visita})
 
 def detail(request, id):
     visita = get_object_or_404(Visita, id=id)
-    return render(request, "visite/detail.html", {"visita": visita})
+    return render(request, "visita/detail.html", {"visita": visita})
 
 def send_notification_email(visita):
     subject = "Conferma Prenotazione Visita"

@@ -22,6 +22,6 @@ urlpatterns = [
     path('', include('homepage.urls')),  # Root URL routed to homepage app
     path('homepage/', include('homepage.urls')),  # Additional URL pattern for homepage
     path('users/', include('users.urls')),  # Include the URLs from the users app
-    path('visite/', include('visite.urls')),  # Include the URLs from the visite app
+    path('visita/', include('visita.urls')),  # Updated app name
     path('prestazione/', include('prestazione.urls')),  # Include the URLs from the prestazione app
 ]
