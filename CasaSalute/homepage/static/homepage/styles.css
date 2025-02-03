@@ -372,7 +372,7 @@ button {
 }
 
 .custom_menu li a:hover {
-    color: #e90d0d;
+    color: #f3eded;
 }
 
 .search_btn {}
@@ -385,16 +385,16 @@ button {
 .search_btn li {
     float: left;
     font-size: 18px;
-    color: #600909;
+    color: #f3eded;
     padding: 0px 10px 0px 10px;
 }
 
 .search_btn li a {
-    color: #6c0909;
+    color: #f3eded;
 }
 
 .search_btn li a:hover {
-    color: #c40d0d;
+    color: #f3eded;
 }
 
 .signup_text {
@@ -446,7 +446,7 @@ button {
     float: left;
     font-size: 16px;
     background-color: #196304;
-    color: #c46b6b;
+    color: #eaeaea;
     text-align: center;
     padding: 10px;
     border-radius: 5px;
@@ -581,7 +581,7 @@ span.input-group-addon {
     text-align: center;
     font-size: 18px;
     color: #ffffff;
-    background-color: #e52e71;
+    background-color: #0c0609;
     padding: 10px;
     border-radius: 8px;
     margin-top: 50px;
@@ -1279,7 +1279,7 @@ input.mail_bt::placeholder {
 }
 
 .copyright_text a:hover {
-    color: #ed1c24;
+    color: #e3d8d9;
 }
 
 
