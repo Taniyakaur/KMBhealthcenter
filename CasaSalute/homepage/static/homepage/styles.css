@@ -313,7 +313,7 @@ button {
 }
 
 .navbar-light .navbar-nav .nav-link {
-    color: #ffffff;
+    color: #054c08;
     font-size: 18px;
     text-transform: uppercase;
     padding: 5px 5px 0px 5px;
@@ -324,14 +324,14 @@ button {
 
 .navbar-light .navbar-nav .nav-link:focus,
 .navbar-light .navbar-nav .nav-link:hover {
-    color: #ffffff;
+    color: #03492a;
 }
 
 .navbar-light .navbar-nav .active>.nav-link,
 .navbar-light .navbar-nav .nav-link.active,
 .navbar-light .navbar-nav .nav-link.show,
 .navbar-light .navbar-nav .show>.nav-link {
-    color: #ffffff;
+    color: #440404;
 }
 
 .navbar-brand {
@@ -364,7 +364,7 @@ button {
 .custom_menu li a {
     float: left;
     font-size: 18px;
-    color: #ffffff;
+    color: #060202;
     padding: 7px 24px 7px 24px;
     text-transform: uppercase;
     margin: 0px 7px;
@@ -372,7 +372,7 @@ button {
 }
 
 .custom_menu li a:hover {
-    color: #0cb7d6;
+    color: #e90d0d;
 }
 
 .search_btn {}
@@ -385,16 +385,16 @@ button {
 .search_btn li {
     float: left;
     font-size: 18px;
-    color: #dedcdc;
+    color: #600909;
     padding: 0px 10px 0px 10px;
 }
 
 .search_btn li a {
-    color: #dedcdc;
+    color: #6c0909;
 }
 
 .search_btn li a:hover {
-    color: #0cb7d6;
+    color: #c40d0d;
 }
 
 .signup_text {
@@ -418,7 +418,7 @@ button {
     width: 100%;
     float: left;
     font-size: 40px;
-    color: #ffffff;
+    color: #003718;
     font-weight: bold;
     padding-top: 90px;
     text-align: center;
@@ -429,7 +429,7 @@ button {
     width: 70%;
     margin: 0 auto;
     font-size: 16px;
-    color: #ffffff;
+    color: #040101;
     padding-top: 30px;
     text-align: center;
 }
@@ -445,8 +445,8 @@ button {
     width: 100%;
     float: left;
     font-size: 16px;
-    background-color: #0cb7d6;
-    color: #ffffff;
+    background-color: #196304;
+    color: #c46b6b;
     text-align: center;
     padding: 10px;
     border-radius: 5px;
@@ -455,7 +455,7 @@ button {
 
 .read_bt a:hover {
     color: #252525;
-    background-color: #ffffff;
+    background-color: #550c0c;
 }
 
 
@@ -621,16 +621,16 @@ p.doctorname_text {
 .about_taital {
     width: 100%;
     float: left;
-    font-size: 40px;
+    font-size: 70px;
     color: #2c2d2d;
     font-weight: bold;
-    padding-top: 20px;
+    padding-top: 9px;
 }
 
 .about_text {
     width: 100%;
     float: left;
-    font-size: 16px;
+    font-size: 70px;
     color: #6d6d6d;
     padding-top: 30px;
     margin: 0px;
@@ -638,14 +638,14 @@ p.doctorname_text {
 
 .about_bt {
     width: 180px;
-    float: left;
+    float: center;
     padding-top: 50px;
 }
 
 .about_bt a {
     width: 100%;
     float: left;
-    font-size: 16px;
+    font-size: 30px;
     background-color: #252525;
     color: #ffffff;
     text-align: center;
@@ -674,10 +674,12 @@ p.doctorname_text {
 .treatment_taital {
     width: 100%;
     float: left;
-    font-size: 40px;
+    font-size: 35px;
     color: #252525;
     text-align: center;
+    padding-top: 50px;
     font-weight: bold;
+    
 }
 
 .treatment_section_2 {
@@ -697,7 +699,7 @@ p.doctorname_text {
 .care_text {
     width: 100%;
     float: left;
-    font-size: 24px;
+    font-size: 35px;
     color: #252525;
     font-weight: bold;
 }
@@ -705,7 +707,7 @@ p.doctorname_text {
 .treatment_text {
     width: 100%;
     float: left;
-    font-size: 14px;
+    font-size: 30px;
     color: #252525;
     margin: 10px 0px 0px 0px;
 }
@@ -717,7 +719,13 @@ p.doctorname_text {
     color: #252525;
     margin: 10px 0px 0px 0px;
 }
-
+.treatment_text_2 {
+    width: 100%;
+    float: left;
+    font-size: 40px !important;
+    color: #252525;
+    margin: 20px 0px 0px 0px;
+}
 .readmore_bt {
     width: 170px;
     float: left;
@@ -751,15 +759,6 @@ p.doctorname_text {
 
 /* doctores section start */
 
-.doctores_section {
-    width: 100%;
-    float: left;
-    background-color: #1a3237;
-    height: auto;
-    background-size: 100%;
-    border-radius: 160px;
-    padding: 60px 0px 90px;
-}
 
 .doctores_taital {
     width: 100%;
@@ -778,8 +777,6 @@ p.doctorname_text {
 }
 
 .doctores_box {
-    width: 100%;
-    float: left;
     background-color: #ffffff;
     height: auto;
     padding: 0px 10px 20px 10px;

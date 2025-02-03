@@ -37,7 +37,7 @@
     </head>
     <body>
         <!-- header section start -->
-        <div class="header_section" style="padding-top: 0px">
+        <div class="header_section" style="padding-top: 0px";>
             <div class="container">
                 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #098547;">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent" style="background-color: #098547;">
@@ -72,10 +72,10 @@
                         <li><a href="contact.html">Contact Us</a></li>
                     </ul>
                 </div>
-                <form class="form-inline my-2 my-lg-0">
+                <form class="form-inline my-2 my-lg-0" style="background-color: #098547;">
                     <div class="search_btn">
                         <li><a href="{% url 'login' %}"><i class="fa fa-user" aria-hidden="true"></i><span class="signup_text">Login</span></a></li> 
-                        <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-search" style="background-color: #098547;" aria-hidden="true"></i></a></li>
                     </div>
                 </form>
             </div>
@@ -106,20 +106,17 @@
         <div class="container">
            <div class="row">
               <div class="col-md-6">
-                 <h1 class="about_taital" style="color: white;">About KMBhealthcenter</h1>
-                 <p class="about_text" style="color: white;">La KMB HealthCenter è una struttura all’avanguardia dedicata alla salute e al benessere dei suoi pazienti. Offriamo cure mediche specializzate con un team di professionisti altamente qualificati, garantendo assistenza personalizzata e servizi innovativi.</p>
+                 <h1 class="about_taital" align="center" style="color: white;">KMB healthcenter</h1>
+                   <p class="testoba" style="color: white;"> Cari pazienti,</p>
 
-                   <p style="color: white;">🔹 Reparti specializzati per diverse esigenze sanitarie</p>
-                   <p style="color: white;">🔹 Tecnologie all’avanguardia per diagnosi e trattamenti efficaci</p>
-                   <p style="color: white;">🔹 Approccio umano e professionale per il massimo comfort del paziente</p>
+                   <p style="color: white;">Affidatevi alla nostra pluriennale esperienza in medicina generale e pediatria.
+                                                  Il nostro centro medico si trova in posizione centrale a Verona.</p>
+                   <p style="color: white;">Via Diagonale 15 (accanto a Museumsufer) troverete medicina generale, pediatria, cardiologia e neurologia.</p>
                    
-                   <p style="color: white;">Ci impegniamo ogni giorno per offrire cure eccellenti in un ambiente sicuro e accogliente. La tua salute è la nostra priorità!</p>
+                   <p style="color: white;"> Percorsi brevi, appuntamenti rapidi. </p>
                    
-                   <p style="color: white;">📍 Scopri di più e contattaci per informazioni </p>
-                 <div class="about_bt"><a href="#" style="color: white;">Read More</a></div>
-              </div>
-              <div class="col-md-6">
-                 <div class="about_img"><img src="images/about-img.png"></div>
+                   <p style="color: white;">In caso di malattia, chiamare: 039 12345678</p>
+                
               </div>
            </div>
         </div>
@@ -130,23 +127,16 @@
       <div class="treatment_section layout_padding" align="center">
         <div class="container">
            <div class="row">
-              <div class="col-md-12">
-                 <h1 class="treatment_taital">Hospital Treatment</h1>
-              </div>
+           
+                 <h1 class="treatment_taital"> Orari di apertura</h1>
+              
            </div>
            <div class="treatment_section_2">
               <div class="row">
                  <div class="col-lg-4 col-sm-6">
-                    <h2 class="care_text">Pediatrician Clinic</h2>
-                    <p class="treatment_text">Il nostro reparto di Pediatria è affidato al Dott. Marco, specializzato nella cura e nel benessere dei bambini.</p>
-                 </div>
-                 <div class="col-lg-4 col-sm-6">
-                    <h2 class="care_text">Cardiology</h2>
-                    <p class="treatment_text">La Dott.ssa Zuchegna è il nostro punto di riferimento per la Cardiologia, offrendo diagnosi e trattamenti avanzati.</p>
-                 </div>
-                 <div class="col-lg-4 col-sm-6">
-                    <h2 class="care_text">Neurology</h2>
-                    <p class="treatment_text">Il reparto di Neurologia è guidato dal Dott. Mohammad, esperto nel trattamento delle patologie neurologiche.</p>
+                    <h2 class="care_text">Lunedì, martedì e giovedì: 8:00 – 13:00 | 15:00 – 18:00</h2>
+                    <h2 class="care_text">Mercoledì e venerdì: 8:00 – 13:00</h2>
+                    <p class="treatment_text">solo su appuntamento</p>
                  </div>
               </div>
            </div>
@@ -206,46 +196,47 @@
                     </ul>
                 </div>
             </nav>
-        </div>
+        </div>  
     </div>
 
     <!-- Doctors Section -->
     <div class="doctores_section">
-        <div class="container">
-            <h1 class="doctores_taital">Our Doctors</h1>
-            <div class="row">
-                <div class="col-md-4">
+        
+            <h1 class="doctores_taital">I NOSTRI MEDICI ESPERTI</h1>
+            
                     <div class="doctores_box" align="center">
-                        <img src="{% static 'homepage/immagine/foto_medico_donna.jpg' %}" alt="Doctor Zuchegna" class="img-fluid" width="200">
+                        <img src="{% static 'homepage/immagine/foto_medico_donna.jpg' %}" alt="Dott.ssa. Zuchegna" class="img-fluid" width="200">
                         <h4>Dr. Zuchegna</h4>
-                        <p>MBBS, Cardiologist</p>
+                        <p>MBBS, Cardiologia</p>
                     </div>
-                </div>
-                <div class="col-md-4">
+                
                     <div class="doctores_box" align="center">
-                        <img src="{% static 'homepage/immagine/foto_medico1.jpg' %}" alt="Doctor Mohammad" class="img-fluid" width="200">
+                        <img src="{% static 'homepage/immagine/foto_medico1.jpg' %}" alt="Dott. Mohammad" class="img-fluid" width="200">
                         <h4>Dr. Mohammad</h4>
-                        <p>MBBS, Neurologist</p>
+                        <p>MBBS, Neurologia</p>
                     </div>
-                </div>
-                <div class="col-md-4">
+               
                     <div class="doctores_box" align="center">
-                        <img src="{% static 'homepage/immagine/foto_medico2.jpg' %}" alt="Doctor Marco" class="img-fluid" width="200">
+                        <img src="{% static 'homepage/immagine/foto_medico2.jpg' %}" alt="Dott. Marco" class="img-fluid" width="200">
                         <h4>Dr. Marco</h4>
-                        <p>MBBS, Pediatrician</p>
+                        <p>MBBS, Pediatra</p>
                     </div>
-                </div>
+           
             </div>
-        </div>
+        
     </div>
+   
+
+        <h2 class="treatment_taital">Servizi medici per tutte le età</h2>
+        <p class="treatment_text_2" align="center">La salute è molto più dell’assenza di malattia.</div>
 
     <!-- Footer Section -->
     <footer class="footer_section">
-        <div class="container">
+        <div class="container" align="center">
             <p><i class="fa fa-phone"></i> call: 039 12345678</p>
             <p><i class="fa fa-envelope"></i> email: KMBhealthcenter@gmail.com</p>
-            <p><i class="fa fa-map-marker"></i> Borgo Trento, Verona</p>
-            <p>KMB Health Center è dedicato al benessere e alla cura della tua salute con servizi professionali e all’avanguardia.</p>
+            <p><i class="fa fa-map-marker"></i> Via Diagonale 15 (accanto a Museumsufer), Verona</p>
+            <p>KMB Health Group – Committed to Your Wellbeing, Every Step of the Way.</p>
             <p>© 2025 All Rights Reserved. Design by KMB.</p>
         </div>
     </footer>
