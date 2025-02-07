@@ -16,12 +16,6 @@
                             <a class="nav-link" href="about.html">About</a>
                         </li>
                         <li class="nav-item" style="background-color: #098547;">
-                            <a class="nav-link" href="treatment.html">Treatment</a>
-                        </li>
-                        <li class="nav-item" style="background-color: #098547;">
-                            <a class="nav-link" href="doctors.html">Doctors</a>
-                        </li>
-                        <li class="nav-item" style="background-color: #098547;">
                             <a class="nav-link" href="contact.html">Contact Us</a>
                         </li>
                     </ul>
@@ -34,11 +28,9 @@
         <div class="custom_bg">
             <div class="custom_menu" style="background-color: #098547;">
                 <ul>
-                    <li class="active"><a href="{% url 'home' %}"></i>Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="treatment.html">Treatment</a></li>
-                    <li><a href="doctors.html">Doctors</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
+                    <li class="active"><a href="{% url 'home' %}">Home</a></li>
+                    <li class="active"><a href="{% url 'about' %}">About</a></li>
+                    <li class="active"><a href="{% url 'contact' %}">Contact Us</a></li>
                 </ul>
             </div>
             <div class="custom_menu" style="background-color: #098547; width: 22%">
