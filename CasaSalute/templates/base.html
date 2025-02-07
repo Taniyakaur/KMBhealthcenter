@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,7 +52,7 @@
 </head>
 
 <body>
-    {% include 'hello/header.html' %}
+    {% include 'header.html' %}
 
     <div id="content">
         {% block content %}
@@ -58,6 +60,6 @@
         {% endblock %}
     </div>
 
-    {% include 'hello/footer.html' %}
+    {% include 'footer.html' %}
 </body>
 </html>
