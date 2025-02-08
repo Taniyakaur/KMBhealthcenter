@@ -30,7 +30,7 @@
         <!-- about section end -->
 
         <!-- orari di apertura -->
-        <div class="treatment_section layout_padding" align="center">
+        <div class="treatment_section layout_padding" align="center"; style="background-color: white";>
             <div class="container">
                 <div class="row">
                     <h1 class="treatment_taital"> Orari di apertura</h1>
@@ -49,27 +49,36 @@
     
 
         <!-- Doctors Section -->
-        <div class="doctores_section">
+        <div style="background-color: #111111; padding: 20px; text-align: center;">
+    
+            <!-- Riga sopra -->
+            <div style="background-color: #111111; height: 5px; width: 100%; margin-bottom: 10px;"></div>
             
-            <h1 class="doctores_taital" style="color:black">I NOSTRI MEDICI ESPERTI</h1>
-                
-            <div class="doctores_box" align="center">
+            <h1 style="color: #ffffff;">I NOSTRI MEDICI ESPERTI</h1>
+            
+            <div align="center">
                 <img src="{% static 'homepage/immagine/foto_medico_donna.jpg' %}" alt="Dott.ssa. Zuchegna" class="img-fluid" width="200">
-                <h4>Dr. Zuchegna</h4>
-                <p>MBBS, Cardiologia</p>
+                <h4 style="color: white;">Dr. Zuchegna</h4>
+                <p style="color: white;">MBBS, Cardiologia</p>
             </div>
-            <div class="doctores_box" align="center">
+        
+            <div align="center">
                 <img src="{% static 'homepage/immagine/foto_medico1.jpg' %}" alt="Dott. Mohammad" class="img-fluid" width="200">
-                <h4>Dr. Mohammad</h4>
-                <p>MBBS, Neurologia</p>
+                <h4 style="color: white;">Dr. Mohammad</h4>
+                <p style="color: white;">MBBS, Neurologia</p>
             </div>
-            <div class="doctores_box" align="center">
+        
+            <div align="center">
                 <img src="{% static 'homepage/immagine/foto_medico2.jpg' %}" alt="Dott. Marco" class="img-fluid" width="200">
-                <h4>Dr. Marco</h4>
-                <p>MBBS, Pediatria</p>
+                <h4 style="color: white;">Dr. Marco</h4>
+                <p style="color: white;">MBBS, Pediatria</p>
             </div>
-            
+        
+            <!-- Riga sotto -->
+            <div style="background-color: #111111; height: 5px; width: 100%; margin-top: 10px;"></div>
+        
         </div>
+        
 
     </body>
 {% endblock %}
