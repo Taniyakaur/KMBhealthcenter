@@ -52,51 +52,15 @@
             <h2 class="about_taital" style="color: white;">I NOSTRI MEDICI ESPERTI</h2>
         </div>
 
-        <!-- CSS aggiornato -->
-        <style>
-            .doctores_box {
-                background-color: #ffffff;
-                height: auto;
-                padding: 20px;
-                border-radius: 15px; /* Bordo arrotondato coerente */
-                margin-top: 50px;
-                text-align: center;
-                overflow: hidden;
-                box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            }
-
-            .container {
-                background-color: #111111;
-                padding: 20px;
-                text-align: center;
-            }
-            .separator {
-                background-color: white;
-                height: 5px;
-                width: 100%;
-                margin: 10px 0;
-            }
-            .separator1 {
-                background-color: #111111;
-                height: 5px;
-                width: 100%;
-                margin: 10px 0;
-            }
-
-            h4, p {
-                color: #111111;
-            }
-        </style>
-<div style="background-color: #111111; height: 10px; width: 100%; margin-bottom: 10px;"></div>
+    
         <!-- Sezione Medici -->
         <div class="container">
             <div class="row">
-                <div style="background-color: #111111; height: 5px; width: 100%; margin-bottom: 10px;"></div>
                 <div class="separator1"></div>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="doctores_box">
-                        <img src="{% static 'homepage/immagine/foto_medico_donna.jpg' %}" alt="Dott.ssa. Zuchegna" class="img-fluid" width="200">
+                        <img src="{% static 'homepage/immagine/foto_medico1.jpg' %}" alt="Dott. Federico Magrograssi" class="img-fluid" width="200">
                         <h4>Dr. Zuchegna</h4>
                         <p>MBBS, Cardiologia</p>
                         </div>
@@ -105,7 +69,7 @@
 
                 <div class="col-md-4">
                     <div class="doctores_box">
-                        <img src="{% static 'homepage/immagine/foto_medico1.jpg' %}" alt="Dott. Mohammad" class="img-fluid" width="200">
+                        <img src="{% static 'homepage/immagine/foto_medico2.jpg' %}" alt="Dott.Bianchi" class="img-fluid" width="200">
                         <h4>Dr. Mohammad</h4>
                         <p>MBBS, Neurologia</p>
                     </div>
@@ -113,7 +77,7 @@
 
                 <div class="col-md-4">
                     <div class="doctores_box">
-                        <img src="{% static 'homepage/immagine/foto_medico2.jpg' %}" alt="Dott. Marco" class="img-fluid" width="200">
+                        <img src="{% static 'homepage/immagine/foto_medico_donna.jpg' %}" alt="Dott.ssa. Barichello" class="img-fluid" width="200">
                         <h4>Dr. Marco</h4>
                         <p>MBBS, Pediatria</p>
                     </div>
@@ -121,6 +85,78 @@
             </div> 
             <div class="separator1"></div>
         </div>
+        
+        <!-- Contatti e Modulo di Richiesta Informazioni -->
+        <div class="row">
+            <h2 align="center" style="color: white;">Contattaci</h2>
+            <p align="center" style="color: white;">Per informazioni o appuntamenti, chiamaci al <strong>039 12345678</strong> o compila il modulo qui sotto.</p>
 
+            <form style="color: black; background-color: white; padding: 20px; border-radius: 10px; width: 50%; margin: auto;">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" required style="width: 100%; padding: 8px; margin-bottom: 10px;"><br>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required style="width: 100%; padding: 8px; margin-bottom: 10px;"><br>
+
+                <label for="message">Messaggio:</label>
+                <textarea id="message" name="message" rows="4" required style="width: 100%; padding: 8px;"></textarea><br>
+
+                <button type="submit" style="background-color: #111111; color: white; padding: 10px 15px; border: none; cursor: pointer; margin-top: 10px;">Invia</button>
+            </form>
+            <h1 style="background-color: #111111;"> </h1>
+        </div>
+
+        <!-- Box Testimonianze -->
+        <div class="row">
+            <h2 align="center" style="color: white;">Cosa dicono i nostri pazienti</h2>
+            <div class="col-md-4" style="background-color: #098547; padding: 20px; margin: 10px; border-radius: 10px;">
+                <p style="color: white;"><em>"Servizio eccellente! Ho trovato un medico in pochissimo tempo."</em></p>
+                <p style="color: white; text-align: right;">- Anna R.</p>
+            </div>
+            <div class="col-md-4" style="background-color: #098547; padding: 20px; margin: 10px; border-radius: 10px;">
+                <p style="color: white;"><em>"Personale cordiale e molto professionale. Consigliatissimo!"</em></p>
+                <p style="color: white; text-align: right;">- Luca B.</p>
+            </div>
+            <div class="col-md-4" style="background-color: #098547; padding: 20px; margin: 10px; border-radius: 10px;">
+                <p style="color: white;"><em>"Finalmente un centro medico che mette il paziente al primo posto."</em></p>
+                <p style="color: white; text-align: right;">- Martina S.</p>
+            </div>
+        </div>
     </body>
+<!-- CSS aggiornato -->
+<style>
+    .doctores_box {
+        background-color: #ffffff;
+        height: auto;
+        padding: 20px;
+        border-radius: 15px; /* Bordo arrotondato coerente */
+        margin-top: 50px;
+        text-align: center;
+        overflow: hidden;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .container {
+        background-color: #111111;
+        padding: 20px;
+        text-align: center;
+    }
+    .separator {
+        background-color: white;
+        height: 5px;
+        width: 100%;
+        margin: 10px 0;
+    }
+    .separator1 {
+        background-color: #111111;
+        height: 5px;
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    h4, p {
+        color: #111111;
+    }
+</style>
+
 {% endblock %}
