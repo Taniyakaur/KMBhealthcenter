@@ -38,7 +38,7 @@
   border-radius: 10px; /* Aumentato per renderlo più visibile */
   margin-top: 50px;
   overflow: hidden; /* Evita problemi con i bordi arrotondati */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Aggiunge un leggero effetto per separare i box */
+  box-shadow: 0px 4px 6px rgba(131, 156, 132, 0.1); /* Aggiunge un leggero effetto per separare i box */
 }
 
 .header-link {
