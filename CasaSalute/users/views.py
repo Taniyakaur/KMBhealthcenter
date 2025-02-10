@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from .models import Medico, Infermiere, Paziente, Segreteria
 
 # Create your views here.
 def index(request):
@@ -23,12 +24,14 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            if user.is_medico:
+            if isinstance(user, Medico):
                 return HttpResponseRedirect(reverse("medico"))  # reindirizza alla pagina corrispondente del tipo di utente
-            elif user.is_infermiere:
+            elif isinstance(user, Infermiere):
                 return HttpResponseRedirect(reverse("infermiere"))
-            elif user.is_paziente:
+            elif isinstance(user, Paziente):
                 return HttpResponseRedirect(reverse("paziente"))
+            elif isinstance(user, Segreteria):
+                return HttpResponseRedirect(reverse("segreteria"))
             else:
                 return HttpResponseRedirect(reverse("index"))  # generico
         else:
@@ -44,17 +47,22 @@ def logout_view(request):
     }) # Redirect to login page after logout
 
 def medico_view(request):
-    if not request.user.is_authenticated or not request.user.is_medico:
+    if not request.user.is_authenticated or not isinstance(request.user, Medico):
         return HttpResponseRedirect(reverse("login"))
     return render(request, "user/medico.html")
     # se non è autenticato o non è del tipo corretto rimanda al login
 
 def infermiere_view(request):
-    if not request.user.is_authenticated or not request.user.is_infermiere:
+    if not request.user.is_authenticated or not isinstance(request.user, Infermiere):
         return HttpResponseRedirect(reverse("login"))
     return render(request, "user/infermiere.html")
 
 def paziente_view(request):
-    if not request.user.is_authenticated or not request.user.is_paziente:
+    if not request.user.is_authenticated or not isinstance(request.user, Paziente):
         return HttpResponseRedirect(reverse("login"))
     return render(request, "user/paziente.html")
+
+def segreteria_view(request):
+    if not request.user.is_authenticated or not isinstance(request.user, Segreteria):
+        return HttpResponseRedirect(reverse("login"))
+    return render(request, "user/segreteria.html")
