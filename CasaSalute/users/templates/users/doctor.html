@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Doctor's Page{% endblock %}
+
+{% block content %}
+    <h2>Welcome, Doctor {{ request.user.username }}</h2>
+    <p>spazio per vedere le cose del dottore</p>
+{% endblock %}

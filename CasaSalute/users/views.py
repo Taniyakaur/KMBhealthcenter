@@ -7,7 +7,14 @@ from django.urls import reverse
 def index(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("login"))
-    return render(request, "users/users.html")  # Add a response for authenticated users
+    if request.user.is_doctor:
+        return render(request, "user/doctor.html")
+    elif request.user.is_nurse:
+        return render(request, "user/nurse.html")
+    elif request.user.is_patient:
+        return render(request, "user/patient.html")
+    else:
+        return render(request, "user/user.html")  #generico
 
 def login_view(request):
     if request.method == "POST":
