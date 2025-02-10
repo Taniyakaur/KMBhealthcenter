@@ -7,12 +7,12 @@ from django.urls import reverse
 def index(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("login"))
-    if request.user.is_doctor:
-        return render(request, "user/doctor.html")
-    elif request.user.is_nurse:
-        return render(request, "user/nurse.html")
-    elif request.user.is_patient:
-        return render(request, "user/patient.html")
+    if request.user.is_medico:
+        return render(request, "user/medico.html")
+    elif request.user.is_infermiere:
+        return render(request, "user/infermiere.html")
+    elif request.user.is_paziente:
+        return render(request, "user/paziente.html")
     else:
         return render(request, "user/user.html")  #generico
 
@@ -23,7 +23,14 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect(reverse("index"))
+            if user.is_medico:
+                return HttpResponseRedirect(reverse("medico"))  # reindirizza alla pagina corrispondente del tipo di utente
+            elif user.is_infermiere:
+                return HttpResponseRedirect(reverse("infermiere"))
+            elif user.is_paziente:
+                return HttpResponseRedirect(reverse("paziente"))
+            else:
+                return HttpResponseRedirect(reverse("index"))  # generico
         else:
             return render(request, "users/login.html", {
                 "message": "Autenticazione fallita."
@@ -35,3 +42,19 @@ def logout_view(request):
     return render(request, "users/login.html",{
         "message": "Logout effettuato."
     }) # Redirect to login page after logout
+
+def medico_view(request):
+    if not request.user.is_authenticated or not request.user.is_medico:
+        return HttpResponseRedirect(reverse("login"))
+    return render(request, "user/medico.html")
+    # se non è autenticato o non è del tipo corretto rimanda al login
+
+def infermiere_view(request):
+    if not request.user.is_authenticated or not request.user.is_infermiere:
+        return HttpResponseRedirect(reverse("login"))
+    return render(request, "user/infermiere.html")
+
+def paziente_view(request):
+    if not request.user.is_authenticated or not request.user.is_paziente:
+        return HttpResponseRedirect(reverse("login"))
+    return render(request, "user/paziente.html")

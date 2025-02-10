@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Pagina paziente{% endblock %}
+
+{% block content %}
+    <h2>Benvenut*, {{ request.user.username }}</h2>
+    <p>Speriamo che tu non debba mai contattare un medico, ma se proprio devi affidati a noi! :D</p>
+{% endblock %}
