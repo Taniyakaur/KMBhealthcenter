@@ -60,13 +60,28 @@ class Prenotazione(models.Model):
 
 # MODELLO VISITA
 class Visita(models.Model):
-    paziente = models.ForeignKey(Paziente, on_delete=models.CASCADE)
-    medico = models.ForeignKey(Medico, on_delete=models.CASCADE)
-    data = models.DateField()
-    urgenza = models.BooleanField(default=False)
-    tipo = models.CharField(max_length=20, choices=Prenotazione.TIPO_VISITA)
+    medico = models.ForeignKey(
+        "users.Medico", 
+        on_delete=models.CASCADE, 
+        related_name="visite_users"
+    )
+    paziente = models.ForeignKey(
+        "users.Paziente", 
+        on_delete=models.CASCADE, 
+        related_name="visite_users"
+    )
+    data = models.DateTimeField()
     esito = models.TextField()
-    personale_infermieristico = models.ForeignKey(Infermiere, on_delete=models.SET_NULL, null=True, blank=True)
+
+# MODELLO SEGRETERIA
+class Segreteria(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)  # Collegamento all'account Django
+    cognome = models.CharField(max_length=50)
+    nome = models.CharField(max_length=50)
+    codice_fiscale = models.CharField(max_length=16, unique=True)
+    ruolo = models.CharField(max_length=100, default='Segreteria')  # Ruolo fisso per la segreteria
+    telefono = models.CharField(max_length=20, blank=True, null=True)
+    email = models.EmailField(blank=True, null=True)
 
     def __str__(self):
-        return f"Visita di {self.paziente} con {self.medico} il {self.data}"
+        return f"Segretario/a {self.nome} {self.cognome}"

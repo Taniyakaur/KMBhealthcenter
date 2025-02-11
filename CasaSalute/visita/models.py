@@ -1,5 +1,5 @@
 from django.db import models
-from django.utils import timezone
+from django.contrib.auth.models import User
 
 class Visita(models.Model):
     TIPO_VISITA_CHOICES = [
@@ -11,8 +11,16 @@ class Visita(models.Model):
         ('urgente', 'Urgente'),
     ]
 
-    paziente = models.ForeignKey('users.Paziente', on_delete=models.CASCADE)
-    medico = models.ForeignKey('users.Medico', on_delete=models.CASCADE)
+    paziente = models.ForeignKey(
+        'users.Paziente', 
+        on_delete=models.CASCADE, 
+        related_name='visite_visita'
+    )
+    medico = models.ForeignKey(
+        'users.Medico', 
+        on_delete=models.CASCADE, 
+        related_name='visite_visita'
+    )
     tipo_visita = models.CharField(max_length=20, choices=TIPO_VISITA_CHOICES)
     data = models.DateField(default=timezone.now)
     ora = models.TimeField()

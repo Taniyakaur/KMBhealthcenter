@@ -13,3 +13,5 @@ urlpatterns = [
     path('paziente/', pagina_paziente, name='pagina_paziente'),
     path('paziente/prenota/', prenota_visita, name='prenota_visita'),
 ]
+
+
