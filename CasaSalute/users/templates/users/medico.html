@@ -1,9 +1,53 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Pagina medico{% endblock %}
+{% block title %}Pagina Medico{% endblock %}
 
 {% block content %}
     <h2>Benvenut*, Dr./Dr.ssa {{ request.user.username }}</h2>
-    <p>spazio per vedere le cose del dottore</p>
+    <p>Spazio per vedere le informazioni del medico</p>
+
+    <!-- Form per modificare i dati del medico -->
+    <h3>Modifica i tuoi dati</h3>
+    <form action="{% url 'modifica_medico' %}" method="POST">
+        {% csrf_token %}
+        <label for="cognome">Cognome:</label>
+        <input type="text" name="cognome" value="{{ medico.cognome }}" required>
+
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" value="{{ medico.nome }}" required>
+
+        <label for="codice_fiscale">Codice Fiscale:</label>
+        <input type="text" name="codice_fiscale" value="{{ medico.codice_fiscale }}" required>
+
+        <label for="specialita">Specialità:</label>
+        <input type="text" name="specialita" value="{{ medico.specialita }}">
+
+        <input type="submit" value="Aggiorna">
+    </form>
+
+    <!-- Elenco pazienti del medico -->
+    <h3>I tuoi pazienti</h3>
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Codice Sanitario</th>
+            <th>Azioni</th>
+        </tr>
+        {% for paziente in pazienti %}
+        <tr>
+            <td>{{ paziente.nome }}</td>
+            <td>{{ paziente.cognome }}</td>
+            <td>{{ paziente.codice_sanitario }}</td>
+            <td>
+                <a href="{% url 'dettaglio_paziente' paziente.id %}">Vedi dettagli</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">Nessun paziente assegnato.</td>
+        </tr>
+        {% endfor %}
+    </table>
 {% endblock %}

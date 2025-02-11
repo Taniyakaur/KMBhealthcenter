@@ -1,63 +1,72 @@
 from django.db import models
-from django.utils import timezone
+from django.contrib.auth.models import User
 
-
-class Paziente(models.Model):
-    codice_sanitario = models.CharField(max_length=20, unique=True)  # Unique health code
-    username = models.CharField(max_length=150, unique=True, primary_key=True)
-    password = models.CharField(max_length=128)  # Use CharField for storing hashed passwords
-    nome = models.CharField(max_length=255)
-    cognome = models.CharField(max_length=255)
-    data_di_nascita = models.DateField(null=True, blank=True, default=timezone.now)
-    indirizzo = models.TextField(null=True, blank=True)
-    telefono = models.CharField(max_length=20, null=True, blank=True)
-    email = models.EmailField(null=True, blank=True)
-
-    def __str__(self):
-        return f"{self.nome} {self.cognome}"
-
-
-class Infermiere(models.Model):
-    username = models.CharField(max_length=150, unique=True, primary_key=True)
-    password = models.CharField(max_length=128)  # Use CharField for storing hashed passwords
-    nome = models.CharField(max_length=255)
-    cognome = models.CharField(max_length=255)
-    data_di_nascita = models.DateField(null=True, blank=True,default="1990/01/01")
-    indirizzo = models.TextField(null=True, blank=True)
-    telefono = models.CharField(max_length=20, null=True, blank=True)
-    email = models.EmailField(null=True, blank=True)
-    reparto = models.CharField(max_length=255, null=True, blank=True)
-    giorni_sala_prelievi = models.CharField(max_length=255, null=True, blank=True)  # Days in blood collection room
-    giorni_sala_medicazioni = models.CharField(max_length=255, null=True, blank=True)  # Days in dressing room
-
-    def __str__(self):
-        return f"{self.nome} {self.cognome}"
-
-
+# MODELLO MEDICO
 class Medico(models.Model):
-    username = models.CharField(max_length=150, unique=True, primary_key=True)
-    password = models.CharField(max_length=128)  # Use CharField for storing hashed passwords
-    nome = models.CharField(max_length=255)
-    cognome = models.CharField(max_length=255)
-    data_di_nascita = models.DateField(null=True, blank=True, default=timezone.now)
-    specializzazione = models.CharField(max_length=255, null=True, blank=True)
-    telefono = models.CharField(max_length=20, null=True, blank=True)
-    email = models.EmailField(null=True, blank=True)
-    pazienti_convenzionati = models.ManyToManyField('Paziente', related_name='medici_convenzionati', blank=True)  # Patients associated with the doctor
-    medici_sostituibili = models.ManyToManyField('self', symmetrical=False, related_name='medici_sostituti', blank=True)  # Doctors that can be replaced
+    user = models.OneToOneField(User, on_delete=models.CASCADE)  # Collegamento all'account Django
+    cognome = models.CharField(max_length=50)
+    nome = models.CharField(max_length=50)
+    codice_fiscale = models.CharField(max_length=16, unique=True)
+    specialita = models.CharField(max_length=100, blank=True, null=True)
+    assenze_pianificate = models.TextField(blank=True, null=True)  # Potrebbe essere un JSON con date
+    medici_sostituibili = models.ManyToManyField("self", blank=True)
 
     def __str__(self):
-        return f"{self.nome} {self.cognome}"
+        return f"Dr./Dr.ssa {self.nome} {self.cognome}"
 
-
-class Segreteria(models.Model):
-    username = models.CharField(max_length=150, unique=True, primary_key=True)
-    password = models.CharField(max_length=128)  # Use CharField for storing hashed passwords
-    nome = models.CharField(max_length=255)
-    cognome = models.CharField(max_length=255)
-    data_di_nascita = models.DateField(null=True, blank=True, default="1990/01/01")
-    telefono = models.CharField(max_length=20, null=True, blank=True)
-    email = models.EmailField(null=True, blank=True)
+# MODELLO INFERMIERE
+class Infermiere(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    cognome = models.CharField(max_length=50)
+    nome = models.CharField(max_length=50)
+    codice_fiscale = models.CharField(max_length=16, unique=True)
+    giorni_servizio = models.TextField(blank=True, null=True)  # Es. "Lunedì, Mercoledì, Venerdì"
 
     def __str__(self):
-        return f"{self.nome} {self.cognome}"
+        return f"Infermiere {self.nome} {self.cognome}"
+
+# MODELLO PAZIENTE
+class Paziente(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    codice_sanitario = models.CharField(max_length=20, unique=True)
+    nome = models.CharField(max_length=50)
+    cognome = models.CharField(max_length=50)
+    data_nascita = models.DateField()
+    luogo_nascita = models.CharField(max_length=100)
+    email = models.EmailField(blank=True, null=True)
+    medico_curante = models.ForeignKey(Medico, on_delete=models.SET_NULL, null=True, related_name="pazienti")
+    referente_adulto = models.ForeignKey("self", on_delete=models.SET_NULL, blank=True, null=True)  # Per i minori di 14 anni
+
+    def __str__(self):
+        return f"{self.nome} {self.cognome} - {self.codice_sanitario}"
+
+# MODELLO PRENOTAZIONE VISITA
+class Prenotazione(models.Model):
+    TIPO_VISITA = [
+        ('medico_curante', 'Visita con medico curante'),
+        ('sostituto', 'Visita con medico sostituto'),
+        ('urgenza', 'Visita d’urgenza')
+    ]
+
+    paziente = models.ForeignKey(Paziente, on_delete=models.CASCADE)
+    medico = models.ForeignKey(Medico, on_delete=models.CASCADE)
+    data = models.DateField()
+    orario = models.TimeField()
+    tipo = models.CharField(max_length=20, choices=TIPO_VISITA)
+    stato = models.CharField(max_length=20, default='Prenotato')
+
+    def __str__(self):
+        return f"Prenotazione di {self.paziente} con {self.medico} il {self.data} alle {self.orario}"
+
+# MODELLO VISITA
+class Visita(models.Model):
+    paziente = models.ForeignKey(Paziente, on_delete=models.CASCADE)
+    medico = models.ForeignKey(Medico, on_delete=models.CASCADE)
+    data = models.DateField()
+    urgenza = models.BooleanField(default=False)
+    tipo = models.CharField(max_length=20, choices=Prenotazione.TIPO_VISITA)
+    esito = models.TextField()
+    personale_infermieristico = models.ForeignKey(Infermiere, on_delete=models.SET_NULL, null=True, blank=True)
+
+    def __str__(self):
+        return f"Visita di {self.paziente} con {self.medico} il {self.data}"

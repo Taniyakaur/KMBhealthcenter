@@ -1,9 +1,51 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Pagina infermiere{% endblock %}
+{% block title %}Pagina Infermiere{% endblock %}
 
 {% block content %}
     <h2>Benvenut*, {{ request.user.username }}</h2>
-    <p>cose degli infermieri</p>
+    <p>Spazio per la gestione delle attività infermieristiche</p>
+
+    <!-- Form per aggiornare dati infermiere -->
+    <h3>Modifica i tuoi dati</h3>
+    <form action="{% url 'modifica_infermiere' %}" method="POST">
+        {% csrf_token %}
+        <label for="cognome">Cognome:</label>
+        <input type="text" name="cognome" value="{{ infermiere.cognome }}" required>
+
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" value="{{ infermiere.nome }}" required>
+
+        <label for="codice_fiscale">Codice Fiscale:</label>
+        <input type="text" name="codice_fiscale" value="{{ infermiere.codice_fiscale }}" required>
+
+        <label for="giorni_servizio">Giorni di Servizio:</label>
+        <input type="text" name="giorni_servizio" value="{{ infermiere.giorni_servizio }}">
+
+        <input type="submit" value="Aggiorna">
+    </form>
+
+    <!-- Lista delle prestazioni effettuate -->
+    <h3>Prestazioni Effettuate</h3>
+    <table>
+        <tr>
+            <th>Data</th>
+            <th>Paziente</th>
+            <th>Tipo</th>
+            <th>Esito</th>
+        </tr>
+        {% for prestazione in prestazioni %}
+        <tr>
+            <td>{{ prestazione.data }}</td>
+            <td>{{ prestazione.paziente.nome }} {{ prestazione.paziente.cognome }}</td>
+            <td>{{ prestazione.tipo }}</td>
+            <td>{{ prestazione.esito }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">Nessuna prestazione registrata.</td>
+        </tr>
+        {% endfor %}
+    </table>
 {% endblock %}

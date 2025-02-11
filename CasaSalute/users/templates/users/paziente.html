@@ -1,9 +1,69 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Pagina paziente{% endblock %}
+{% block title %}Pagina Paziente{% endblock %}
 
 {% block content %}
-    <h2>Benvenut*, {{ request.user.username }}</h2>
-    <p>Speriamo che tu non debba mai contattare un medico, ma se proprio devi affidati a noi! :D</p>
+    <h2>Benvenut*, {{ paziente.nome }} {{ paziente.cognome }}</h2>
+    <p>Spazio personale per gestire le tue visite e prenotazioni</p>
+
+    <!-- Informazioni personali -->
+    <h3>Le tue informazioni</h3>
+    <ul>
+        <li><strong>Codice Sanitario:</strong> {{ paziente.codice_sanitario }}</li>
+        <li><strong>Data di nascita:</strong> {{ paziente.data_nascita }}</li>
+        <li><strong>Luogo di nascita:</strong> {{ paziente.luogo_nascita }}</li>
+        <li><strong>Email:</strong> {{ paziente.email }}</li>
+    </ul>
+
+    <!-- Storico visite -->
+    <h3>Storico Visite</h3>
+    <table>
+        <tr>
+            <th>Data</th>
+            <th>Medico</th>
+            <th>Tipo</th>
+            <th>Esito</th>
+        </tr>
+        {% for visita in visite %}
+        <tr>
+            <td>{{ visita.data }}</td>
+            <td>{{ visita.medico.nome }} {{ visita.medico.cognome }}</td>
+            <td>{{ visita.tipo }}</td>
+            <td>{{ visita.esito }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">Nessuna visita registrata.</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- Prenotazioni future -->
+    <h3>Le tue prenotazioni</h3>
+    <table>
+        <tr>
+            <th>Data</th>
+            <th>Ora</th>
+            <th>Tipo</th>
+            <th>Medico</th>
+            <th>Stato</th>
+        </tr>
+        {% for prenotazione in prenotazioni %}
+        <tr>
+            <td>{{ prenotazione.data }}</td>
+            <td>{{ prenotazione.orario }}</td>
+            <td>{{ prenotazione.tipo }}</td>
+            <td>{{ prenotazione.medico.nome }} {{ prenotazione.medico.cognome }}</td>
+            <td>{{ prenotazione.stato }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">Nessuna prenotazione attiva.</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- Pulsante per prenotare una nuova visita -->
+    <a href="{% url 'prenota_visita' %}" class="button">Prenota una Visita</a>
 {% endblock %}
