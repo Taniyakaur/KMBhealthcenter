@@ -24,4 +24,5 @@ urlpatterns = [
     path('users/', include('users.urls')),  # Include the URLs from the users app
     path('visita/', include('visita.urls')),  # Updated app name
     path('prestazione/', include('prestazione.urls')),  # Include the URLs from the prestazione app
+    path ('users/', include('users.urls')),
 ]
