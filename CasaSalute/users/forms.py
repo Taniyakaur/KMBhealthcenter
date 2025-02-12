@@ -1,5 +1,11 @@
 from django import forms
 from .models import Medico, Infermiere, Prenotazione
+from django.contrib.auth.forms import AuthenticationForm
+
+# FORM PER LOGIN
+class LoginForm(AuthenticationForm):
+    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
 
 # FORM PER MODIFICA DATI MEDICO
 class ModificaMedicoForm(forms.ModelForm):

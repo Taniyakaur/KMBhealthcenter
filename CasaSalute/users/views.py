@@ -3,20 +3,33 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from .models import Medico, Infermiere, Paziente, Prenotazione, Visita
-from .forms import ModificaMedicoForm, ModificaInfermiereForm, PrenotazioneForm
+from .forms import ModificaMedicoForm, ModificaInfermiereForm, PrenotazioneForm, LoginForm
 
 # LOGIN
 def login_view(request):
     if request.method == "POST":
-        form = AuthenticationForm(data=request.POST)
+        form = LoginForm(request.POST)
         if form.is_valid():
-            user = form.get_user()
-            login(request, user)
-            return redirect('pagina_paziente')  # Cambia con la tua homepage o dashboard
+            username = form.cleaned_data["username"]
+            password = form.cleaned_data["password"]
+            user = authenticate(request, username=username, password=password)
+            
+            if user is not None:
+                login(request, user)
+
+                # Controllo del tipo di utente e reindirizzamento
+                if hasattr(user, 'medico'):
+                    return redirect("pagina_medico")
+                elif hasattr(user, 'infermiere'):
+                    return redirect("pagina_infermiere")
+                elif hasattr(user, 'paziente'):
+                    return redirect("pagina_paziente")
+                
+                return redirect("homepage")  # Caso generico
     else:
-        form = AuthenticationForm()
-    
-    return render(request, "users/login.html", {"form": form})
+        form = LoginForm()
+
+    return render(request, "login.html", {"form": form})
 
 # LOGOUT
 @login_required
@@ -79,7 +92,7 @@ def prenota_visita(request):
         form = PrenotazioneForm(request.POST)
         if form.is_valid():
             prenotazione = form.save(commit=False)
-            prenotazione.paziente = request.user.paziente
+            prenotazione.paziente = get_object_or_404(Paziente, user=request.user)
             prenotazione.save()
             return redirect('pagina_paziente')
     else:
