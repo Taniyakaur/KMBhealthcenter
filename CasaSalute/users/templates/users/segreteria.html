@@ -1,9 +1,80 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Pagina segreteria{% endblock %}
+{% block title %}Pagina Segreteria{% endblock %}
 
 {% block content %}
     <h2>Benvenut*, {{ request.user.username }}</h2>
-    <p>questo è un utente mega potente</p>
+    <p>Gestione dei dati degli utenti della Casa della Salute</p>
+
+    <!-- Form per aggiungere un nuovo medico o infermiere -->
+    <h3>Aggiungi Nuovo Personale</h3>
+    <form action="{% url 'aggiungi_personale' %}" method="POST">
+        {% csrf_token %}
+        <label for="ruolo">Ruolo:</label>
+        <select name="ruolo" required>
+            <option value="medico">Medico</option>
+            <option value="infermiere">Infermiere</option>
+        </select>
+
+        <label for="cognome">Cognome:</label>
+        <input type="text" name="cognome" required>
+
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" required>
+
+        <label for="codice_fiscale">Codice Fiscale:</label>
+        <input type="text" name="codice_fiscale" required>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" required>
+
+        <input type="submit" value="Aggiungi">
+    </form>
+
+    <!-- Lista del personale registrato -->
+    <h3>Elenco Personale</h3>
+    <table>
+        <tr>
+            <th>Ruolo</th>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Email</th>
+        </tr>
+        {% for persona in personale %}
+        <tr>
+            <td>{{ persona.ruolo }}</td>
+            <td>{{ persona.nome }}</td>
+            <td>{{ persona.cognome }}</td>
+            <td>{{ persona.email }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">Nessun personale registrato.</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- Form per aggiungere nuovi pazienti -->
+    <h3>Aggiungi Nuovo Paziente</h3>
+    <form action="{% url 'aggiungi_paziente' %}" method="POST">
+        {% csrf_token %}
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" required>
+
+        <label for="cognome">Cognome:</label>
+        <input type="text" name="cognome" required>
+
+        <label for="codice_sanitario">Codice Sanitario:</label>
+        <input type="text" name="codice_sanitario" required>
+
+        <label for="data_nascita">Data di Nascita:</label>
+        <input type="date" name="data_nascita" required>
+
+        <label for="email">Email (se maggiorenne):</label>
+        <input type="email" name="email">
+
+        <input type="submit" value="Aggiungi Paziente">
+    </form>
 {% endblock %}
+
