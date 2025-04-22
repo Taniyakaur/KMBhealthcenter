@@ -82,4 +82,53 @@ Il personale di segreteria può eseguire le seguenti operazioni:
     \item \textbf{Visualizzazione visite programmate}: La segreteria può visualizzare l'elenco delle visite programmate nella struttura.
 \end{itemize}
 
+\section*{Capitolo 3: Sviluppo - progetto dell’architettura ed implementazione del sistema}
+
+\subsection*{3.1 Note sul processo di sviluppo}
+
+Il processo di sviluppo ha seguito un approccio agile e incrementale. Le fasi di progettazione, implementazione e validazione sono state eseguite in modo sequenziale quando possibile, per garantire una base solida da cui partire e avanzare verso il completamento dei diversi compiti richiesti. Tuttavia, lo sviluppo non è avvenuto sempre in modo lineare; sono state necessarie attività di revisione, modifica e miglioramento delle parti già sviluppate.
+
+Dopo ogni modifica significativa, è stata condotta una fase di testing per individuare e correggere eventuali anomalie prima di procedere ulteriormente. Contemporaneamente alle attività di progettazione, implementazione e validazione, sono state raccolte le informazioni per la stesura della documentazione, la quale è stata completata solo nelle fasi finali del progetto, assicurando la corrispondenza tra documentazione e codice.
+
+Prima di iniziare, è stata condotta un’analisi dei requisiti che ha portato alla realizzazione dei relativi diagrammi di attività e casi d’uso. Inoltre, è stata effettuata una progettazione architetturale, seppur preliminare, per avere una situazione iniziale il più solida possibile. Per quanto riguarda l’implementazione, non è stato creato un piano di sviluppo dettagliato, ma si è seguito l’ordine prioritario di sviluppo, aggiungendo ciò che era ritenuto necessario al momento.
+
+\subsubsection*{3.1.1 Versioning del progetto}
+
+Durante lo sviluppo del progetto si è utilizzato \texttt{git} per tenere traccia delle modifiche apportate. Per poter lavorare in gruppo, il progetto è stato caricato su GitHub al seguente link: \url{https://github.com/Taniyakaur/Project}.
+
+Durante lo sviluppo del software, è stato creato un nuovo branch partendo dal \texttt{main}. Una volta completate le modifiche, viene aperta una \textit{pull request} verso il branch \texttt{main}. Questo permette agli altri membri del progetto di revisionare il codice, discutere dell’implementazione ed eseguire i test d’integrazione.
+
+Dopo l’approvazione della pull request, si passa all’integrazione nel branch principale tramite \textit{merge}. In caso di conflitti, questi vengono risolti prima di completare la fusione.
+
+\section*{Capitolo 4: Scelte progettuali}
+
+\subsection*{4.1 Assunzioni e scelte progettuali}
+
+\subsubsection*{4.1.1 Gestione dei pazienti e restrizioni per i pazienti minorenni}
+
+Si assume che solo i pazienti adulti possano essere registrati dal personale di segreteria, mentre i pazienti minorenni siano inseriti da pazienti maggiorenni. Gli adulti che non sono maggiorenni non possono avere pazienti pediatrici a loro carico.
+
+% (Nota: aggiungeremo altri dettagli in questo capitolo in seguito)
+
+\section*{Capitolo 5: Test e validazione}
+
+\section{Test automatici in Django}
+Nel nostro progetto, sviluppato con Django e Python, abbiamo predisposto la struttura per l’inserimento dei test automatici sfruttando il modulo \texttt{unittest}, integrato nativamente nel framework. I test saranno inseriti nella directory \texttt{tests.py} delle varie app, e permetteranno di verificare la correttezza dei modelli, delle \textit{view} e delle funzionalità principali, come il login e la registrazione.
+
+Attualmente, la fase di testing automatico è ancora in fase di sviluppo. In futuro, verranno aggiunti test per:
+\begin{itemize}
+    \item Validare i modelli (es. creazione e salvataggio di un paziente)
+    \item Verificare il comportamento delle view tramite richieste simulate con il \texttt{Client} di Django
+    \item Testare le regole di accesso ai contenuti secondo i ruoli utente
+\end{itemize}
+
+\subsection*{5.2 Test manuali degli sviluppatori}
+
+In questa fase si è voluto testare varie interazioni con il software, verificando possibili criticità, come il login da parte del personale di segreteria e da parte dei singoli pazienti, medici e infermieri. È stato verificato che un utente non registrato non possa eseguire l’accesso al sistema.
+
+Successivamente, si è verificato che il personale di segreteria registri correttamente gli utenti compilando tutti i campi richiesti.
+
+È stato scelto di svolgere la fase di test e validazione a progetto quasi ultimato, in modo da avere un riscontro visivo da parte degli sviluppatori e da parte di volontari.
+
+
 \end{document}
