@@ -1,134 +1,127 @@
-\documentclass{article}
-\usepackage[utf8]{inputenc}
+\documentclass\[a4paper,12pt]{article}
+\usepackage\[utf8]{inputenc}
 \usepackage{graphicx}
+\usepackage{caption}
+\usepackage{geometry}
 \usepackage{hyperref}
+\geometry{margin=2.5cm}
 
-\title{Documentazione del Progetto di Ingegneria del Software}
-\author{Barichello Rebecca (VR471455) \\ Kaur Taniya (VR481429) \\ Magrograssi Federico (VR472578)}
+\title{Documentazione del Sistema Casa della Salute}
+\author{Progetto di Ingegneria del Software \ - \ Corso di Laurea in Informatica \ - \ Università degli Studi di Verona}
+\author{Barichello Rebecca (VR471455) \ Kaur Taniya (VR481429) \ Magrograssi Federico (VR472578)}
 \date{}
 
 \begin{document}
 
 \maketitle
 
-\section*{Capitolo 1: Note introduttive}
+\tableofcontents
 
+\newpage
+
+\section{Introduzione}
 Il sistema software in questione è stato creato per la gestione dei servizi erogati da una Casa della Salute, come visite mediche, prelievi e medicazioni. Si suppone che il software venga distribuito ai pazienti e al personale della Casa interessati, e che sia usufruibile tramite appositi terminali presenti nella struttura.
 
 Gli utenti, per poter usufruire dei servizi, dovranno essere in possesso delle loro credenziali. Queste verranno generate dal personale di segreteria e comunicate agli utenti stessi.
 
-\subsection*{Obiettivi del sistema}
+\subsection\*{Obiettivi del sistema}
 Il sistema è progettato per gestire le attività di una Casa della Salute, dove operano più medici di base, supportati da infermieri per medicazioni e prelievi, e un ufficio di segreteria comune. La struttura ospita:
 \begin{itemize}
-    \item 3 ambulatori per visite ad adulti,
-    \item 1 ambulatorio pediatrico,
+\item 3 ambulatori per visite ad adulti,
+\item 1 ambulatorio pediatrico,
 \end{itemize}
 
-\subsection*{Funzionalità principali}
+\subsection\*{Funzionalità principali}
 Il sistema permette di:
 \begin{itemize}
-    \item Registrare e gestire i dati di medici, infermieri e pazienti.
-    \item Gestire le prenotazioni per visite.
-    \item Mantenere una storia delle visite e delle prestazioni effettuate.
-    \item Fornire resoconti annuali delle prestazioni erogate ai pazienti.
+\item Registrare e gestire i dati di medici, infermieri e pazienti.
+\item Gestire le prenotazioni per visite.
+\item Mantenere una storia delle visite e delle prestazioni effettuate.
+\item Fornire resoconti annuali delle prestazioni erogate ai pazienti.
 \end{itemize}
 
-\subsection*{Autenticazione e accesso}
+\subsection\*{Autenticazione e accesso}
 Il sistema permette l'autenticazione ai pazienti tramite le credenziali fornite dalla segreteria. Il personale medico e infermieristico, invece, può accedere tramite le proprie credenziali personali, sempre nella sezione login.
 
-\section*{Capitolo 2: Scenari d'uso}
+\section{Casi d'uso}
 
-In questo capitolo vengono descritti gli scenari d'uso del sistema software per ciascun attore coinvolto: infermiere, medico, paziente e segreteria. Si assume che ogni utente si sia autenticato correttamente prima di eseguire qualsiasi operazione.
+In questa sezione verranno inseriti i diagrammi dei casi d'uso per ciascuna categoria di utente. Per ogni figura utente (medico, segreteria, paziente), si illustrano le principali interazioni con il sistema.
 
-\subsection*{2.1 Scenari d'uso da parte del personale infermieristico}
+\subsection{Personale medico}
+Il personale medico può autenticarsi nel sistema, visualizzare le visite programmate, accedere ai dati dei propri pazienti, inserire l'esito delle visite e inviare notifiche al paziente.\newline
+\[Diagramma dei casi d'uso da inserire qui]
 
-Il personale infermieristico può eseguire le seguenti operazioni:
-\begin{itemize}
-    \item \textbf{Autenticazione}: L'infermiere accede al sistema utilizzando le proprie credenziali.
-    \item \textbf{Visualizzazione delle prestazioni da eseguire}: L'infermiere può visualizzare l'elenco delle prestazioni (prelievi e medicazioni) che deve eseguire.
-    \item \textbf{Inserimento esito delle prestazioni}: Al termine di una prestazione, l'infermiere inserisce l'esito e le eventuali note nel sistema.
-\end{itemize}
+\subsection{Segreteria}
+La segreteria gestisce la registrazione di nuovi pazienti e operatori sanitari, la modifica o eliminazione dei dati anagrafici, e la gestione delle prenotazioni delle visite.\newline
+\[Diagramma dei casi d'uso da inserire qui]
 
-\subsection*{2.2 Scenari d'uso da parte del personale medico}
+\subsection{Paziente}
+Il paziente può autenticarsi, prenotare visite, visualizzare gli esiti delle stesse, prenotare prelievi e medicazioni, e consultare lo storico delle prestazioni ricevute.\newline
+\[Diagramma dei casi d'uso da inserire qui]
 
-Il personale medico può eseguire le seguenti operazioni:
-\begin{itemize}
-    \item \textbf{Autenticazione}: Il medico accede al sistema utilizzando le proprie credenziali.
-    \item \textbf{Inserimento esito della visita}: Dopo aver effettuato una visita, il medico inserisce l'esito e i dettagli della visita nel sistema.
-    \item \textbf{Notifica esito visita}: Il sistema invia una notifica via e-mail al paziente per informarlo che l'esito della visita è disponibile.
-    \item \textbf{Visualizzazione visite in programma}: Il medico può visualizzare l'elenco delle visite programmate per i propri pazienti.
-    \item \textbf{Visualizzazione dati pazienti}: Il medico può accedere ai dati dei pazienti che ha in carico.
-\end{itemize}
+\newpage
 
-\subsection*{2.3 Scenari d'uso da parte del paziente}
+\section{Diagrammi delle attività}
+Come per i diagrammi visti in precedenza, si assume che le operazioni possano essere annullate in qualsiasi momento, per esempio eseguendo il logout dal sistema.
+Per questioni di leggibilità, si omette la possibilità di visualizzazione e modifica del profilo da parte degli utenti.
 
-Il paziente (o il suo referente adulto) può eseguire le seguenti operazioni:
-\begin{itemize}
-    \item \textbf{Autenticazione}: Il paziente accede al sistema utilizzando le proprie credenziali.
-    \item \textbf{Prenotazione visita}: Il paziente può prenotare una visita con il proprio medico curante o con un sostituto, se il medico curante non è disponibile.
-    \item \textbf{Prenotazione prelievi/medicazioni}: Il paziente può prenotare prelievi o medicazioni presso la struttura.
-    \item \textbf{Visualizzazione esito visita}: Il paziente può visualizzare l'esito di una visita effettuata.
-    \item \textbf{Storico visite}: Il paziente può accedere alla storia delle visite e delle prestazioni ricevute.
-\end{itemize}
+\subsection{Personale medico}
+\begin{figure}\[h!]
+\centering
+\includegraphics\[width=0.8\textwidth]{Diagramma attivita' medico.png}
+\caption{Diagramma di attività per il personale medico}
+\end{figure}
 
-\subsection*{2.4 Scenari d'uso da parte del personale di segreteria.}
+\subsection{Segreteria}
+Il diagramma delle attività della segreteria descrive il processo completo che va dall’autenticazione dell’utente alla gestione delle anagrafiche di pazienti e personale sanitario, alla pianificazione e modifica delle prenotazioni.\newline
+\[Diagramma da inserire qui]
 
-Il personale di segreteria può eseguire le seguenti operazioni:
-\begin{itemize}
-    \item \textbf{Autenticazione}: La segreteria accede al sistema utilizzando le proprie credenziali.
-    \item \textbf{Gestione dati pazienti}: La segreteria può inserire, modificare o eliminare i dati dei pazienti.
-    \item \textbf{Gestione prenotazioni visite}: La segreteria può gestire le prenotazioni delle visite, inclusa la modifica o la cancellazione.
-    \item \textbf{Gestione dati medici e infermieri}: La segreteria può inserire, modificare o eliminare i dati del personale medico e infermieristico.
-    \item \textbf{Visualizzazione visite programmate}: La segreteria può visualizzare l'elenco delle visite programmate nella struttura.
-\end{itemize}
+\subsection{Paziente}
+Il diagramma delle attività del paziente descrive il flusso che inizia con l’autenticazione, prosegue con la prenotazione di una visita o di una prestazione, la consultazione degli esiti e la visualizzazione dello storico.\newline
+\[Diagramma da inserire qui]
 
-\section*{Capitolo 3: Sviluppo - progetto dell’architettura ed implementazione del sistema}
+\newpage
 
-\subsection*{3.1 Note sul processo di sviluppo}
+\section{Sviluppo - progetto dell’architettura ed implementazione del sistema}
 
+\subsection\*{Note sul processo di sviluppo}
 Il processo di sviluppo ha seguito un approccio agile e incrementale. Le fasi di progettazione, implementazione e validazione sono state eseguite in modo sequenziale quando possibile, per garantire una base solida da cui partire e avanzare verso il completamento dei diversi compiti richiesti. Tuttavia, lo sviluppo non è avvenuto sempre in modo lineare; sono state necessarie attività di revisione, modifica e miglioramento delle parti già sviluppate.
 
 Dopo ogni modifica significativa, è stata condotta una fase di testing per individuare e correggere eventuali anomalie prima di procedere ulteriormente. Contemporaneamente alle attività di progettazione, implementazione e validazione, sono state raccolte le informazioni per la stesura della documentazione, la quale è stata completata solo nelle fasi finali del progetto, assicurando la corrispondenza tra documentazione e codice.
 
 Prima di iniziare, è stata condotta un’analisi dei requisiti che ha portato alla realizzazione dei relativi diagrammi di attività e casi d’uso. Inoltre, è stata effettuata una progettazione architetturale, seppur preliminare, per avere una situazione iniziale il più solida possibile. Per quanto riguarda l’implementazione, non è stato creato un piano di sviluppo dettagliato, ma si è seguito l’ordine prioritario di sviluppo, aggiungendo ciò che era ritenuto necessario al momento.
 
-\subsubsection*{3.1.1 Versioning del progetto}
-
-Durante lo sviluppo del progetto si è utilizzato \texttt{git} per tenere traccia delle modifiche apportate. Per poter lavorare in gruppo, il progetto è stato caricato su GitHub al seguente link: \url{https://github.com/Taniyakaur/Project}.
+\subsubsection\*{Versioning del progetto}
+Durante lo sviluppo del progetto si è utilizzato \texttt{git} per tenere traccia delle modifiche apportate. Per poter lavorare in gruppo, il progetto è stato caricato su GitHub al seguente link: \url{[https://github.com/Taniyakaur/Project}](https://github.com/Taniyakaur/Project}).
 
 Durante lo sviluppo del software, è stato creato un nuovo branch partendo dal \texttt{main}. Una volta completate le modifiche, viene aperta una \textit{pull request} verso il branch \texttt{main}. Questo permette agli altri membri del progetto di revisionare il codice, discutere dell’implementazione ed eseguire i test d’integrazione.
 
 Dopo l’approvazione della pull request, si passa all’integrazione nel branch principale tramite \textit{merge}. In caso di conflitti, questi vengono risolti prima di completare la fusione.
 
-\section*{Capitolo 4: Scelte progettuali}
+\section{Scelte progettuali}
 
-\subsection*{4.1 Assunzioni e scelte progettuali}
+\subsection\*{Assunzioni e scelte progettuali}
 
-\subsubsection*{4.1.1 Gestione dei pazienti e restrizioni per i pazienti minorenni}
-
+\subsubsection\*{Gestione dei pazienti e restrizioni per i pazienti minorenni}
 Si assume che solo i pazienti adulti possano essere registrati dal personale di segreteria, mentre i pazienti minorenni siano inseriti da pazienti maggiorenni. Gli adulti che non sono maggiorenni non possono avere pazienti pediatrici a loro carico.
 
-% (Nota: aggiungeremo altri dettagli in questo capitolo in seguito)
+\section{Test e validazione}
 
-\section*{Capitolo 5: Test e validazione}
-
-\section{Test automatici in Django}
+\subsection\*{Test automatici in Django}
 Nel nostro progetto, sviluppato con Django e Python, abbiamo predisposto la struttura per l’inserimento dei test automatici sfruttando il modulo \texttt{unittest}, integrato nativamente nel framework. I test saranno inseriti nella directory \texttt{tests.py} delle varie app, e permetteranno di verificare la correttezza dei modelli, delle \textit{view} e delle funzionalità principali, come il login e la registrazione.
 
 Attualmente, la fase di testing automatico è ancora in fase di sviluppo. In futuro, verranno aggiunti test per:
 \begin{itemize}
-    \item Validare i modelli (es. creazione e salvataggio di un paziente)
-    \item Verificare il comportamento delle view tramite richieste simulate con il \texttt{Client} di Django
-    \item Testare le regole di accesso ai contenuti secondo i ruoli utente
+\item Validare i modelli (es. creazione e salvataggio di un paziente)
+\item Verificare il comportamento delle view tramite richieste simulate con il \texttt{Client} di Django
+\item Testare le regole di accesso ai contenuti secondo i ruoli utente
 \end{itemize}
 
-\subsection*{5.2 Test manuali degli sviluppatori}
-
+\subsection\*{Test manuali degli sviluppatori}
 In questa fase si è voluto testare varie interazioni con il software, verificando possibili criticità, come il login da parte del personale di segreteria e da parte dei singoli pazienti, medici e infermieri. È stato verificato che un utente non registrato non possa eseguire l’accesso al sistema.
 
 Successivamente, si è verificato che il personale di segreteria registri correttamente gli utenti compilando tutti i campi richiesti.
 
 È stato scelto di svolgere la fase di test e validazione a progetto quasi ultimato, in modo da avere un riscontro visivo da parte degli sviluppatori e da parte di volontari.
-
 
 \end{document}
