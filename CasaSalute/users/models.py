@@ -1,12 +1,20 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# MODELLO MEDICO
-class Medico(models.Model):
+
+# MODELLO BASE GENERICO
+class PersonaBase(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)  # Collegamento all'account Django
     cognome = models.CharField(max_length=50)
     nome = models.CharField(max_length=50)
     codice_fiscale = models.CharField(max_length=16, unique=True)
+
+    class Meta:
+        abstract = True  # This makes it an abstract base class
+
+
+# MODELLO MEDICO
+class Medico(PersonaBase):
     specialita = models.CharField(max_length=100, blank=True, null=True)
     assenze_pianificate = models.TextField(blank=True, null=True)  # Potrebbe essere un JSON con date
     medici_sostituibili = models.ManyToManyField("self", blank=True)
@@ -14,23 +22,18 @@ class Medico(models.Model):
     def __str__(self):
         return f"Dr./Dr.ssa {self.nome} {self.cognome}"
 
+
 # MODELLO INFERMIERE
-class Infermiere(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    cognome = models.CharField(max_length=50)
-    nome = models.CharField(max_length=50)
-    codice_fiscale = models.CharField(max_length=16, unique=True)
+class Infermiere(PersonaBase):
     giorni_servizio = models.TextField(blank=True, null=True)  # Es. "Lunedì, Mercoledì, Venerdì"
 
     def __str__(self):
         return f"Infermiere {self.nome} {self.cognome}"
 
+
 # MODELLO PAZIENTE
-class Paziente(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+class Paziente(PersonaBase):
     codice_sanitario = models.CharField(max_length=20, unique=True)
-    nome = models.CharField(max_length=50)
-    cognome = models.CharField(max_length=50)
     data_nascita = models.DateField()
     luogo_nascita = models.CharField(max_length=100)
     email = models.EmailField(blank=True, null=True)
@@ -39,6 +42,17 @@ class Paziente(models.Model):
 
     def __str__(self):
         return f"{self.nome} {self.cognome} - {self.codice_sanitario}"
+
+
+# MODELLO SEGRETERIA
+class Segreteria(PersonaBase):
+    ruolo = models.CharField(max_length=100, default='Segreteria')  # Ruolo fisso per la segreteria
+    telefono = models.CharField(max_length=20, blank=True, null=True)
+    email = models.EmailField(blank=True, null=True)
+
+    def __str__(self):
+        return f"Segretario/a {self.nome} {self.cognome}"
+
 
 # MODELLO PRENOTAZIONE VISITA
 class Prenotazione(models.Model):
@@ -58,30 +72,18 @@ class Prenotazione(models.Model):
     def __str__(self):
         return f"Prenotazione di {self.paziente} con {self.medico} il {self.data} alle {self.orario}"
 
+
 # MODELLO VISITA
 class Visita(models.Model):
     medico = models.ForeignKey(
-        "users.Medico", 
-        on_delete=models.CASCADE, 
+        "users.Medico",
+        on_delete=models.CASCADE,
         related_name="visite_users"
     )
     paziente = models.ForeignKey(
-        "users.Paziente", 
-        on_delete=models.CASCADE, 
+        "users.Paziente",
+        on_delete=models.CASCADE,
         related_name="visite_users"
     )
     data = models.DateTimeField()
     esito = models.TextField()
-
-# MODELLO SEGRETERIA
-class Segreteria(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)  # Collegamento all'account Django
-    cognome = models.CharField(max_length=50)
-    nome = models.CharField(max_length=50)
-    codice_fiscale = models.CharField(max_length=16, unique=True)
-    ruolo = models.CharField(max_length=100, default='Segreteria')  # Ruolo fisso per la segreteria
-    telefono = models.CharField(max_length=20, blank=True, null=True)
-    email = models.EmailField(blank=True, null=True)
-
-    def __str__(self):
-        return f"Segretario/a {self.nome} {self.cognome}"
