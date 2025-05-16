@@ -4,8 +4,19 @@ from django.contrib.auth.forms import AuthenticationForm
 
 # FORM PER LOGIN
 class LoginForm(AuthenticationForm):
+    USER_TYPE_CHOICES = [
+        ('medico', 'Medico'),
+        ('infermiere', 'Infermiere'),
+        ('paziente', 'Paziente'),
+        ('segreteria', 'Segreteria')
+    ]
     username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    user_type = forms.ChoiceField(
+        choices=USER_TYPE_CHOICES,
+        initial='paziente',          #tipo di utente di default
+        widget=forms.Select(attrs={'class': 'form-control'})
+    )
 
 # FORM PER MODIFICA DATI MEDICO
 class ModificaMedicoForm(forms.ModelForm):

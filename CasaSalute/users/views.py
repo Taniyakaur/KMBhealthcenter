@@ -12,20 +12,23 @@ def login_view(request):
         if form.is_valid():
             username = form.cleaned_data["username"]
             password = form.cleaned_data["password"]
+            user_type = form.cleaned_data.get("user_type", "paziente")
             user = authenticate(request, username=username, password=password)
             
             if user is not None:
                 login(request, user)
 
                 # Controllo del tipo di utente e reindirizzamento
-                if hasattr(user, 'medico'):
+                if user_type == 'medico':
                     return redirect("pagina_medico")
-                elif hasattr(user, 'infermiere'):
+                elif user_type == 'infermiere':
                     return redirect("pagina_infermiere")
-                elif hasattr(user, 'paziente'):
+                elif user_type == 'paziente':
                     return redirect("pagina_paziente")
-                
-                return redirect("homepage")  # Caso generico
+                elif user_type == 'segreteria':
+                    return redirect("pagina_segreteria")  # Make sure this view exists
+                else:
+                    return redirect("homepage")  # Fallback generic redirect
     else:
         form = LoginForm()
 
