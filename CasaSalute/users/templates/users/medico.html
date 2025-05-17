@@ -5,49 +5,108 @@
 
 {% block content %}
     <h2>Benvenut*, Dr./Dr.ssa {{ request.user.username }}</h2>
-    <p>Spazio per vedere le informazioni del medico</p>
 
-    <!-- Form per modificare i dati del medico -->
-    <h3>Modifica i tuoi dati</h3>
-    <form action="{% url 'modifica_medico' %}" method="POST">
-        {% csrf_token %}
-        <label for="cognome">Cognome:</label>
-        <input type="text" name="cognome" value="{{ medico.cognome }}" required>
+    <section>
+        <h3>Dati Personali</h3>
+        <form action="{% url 'modifica_medico' %}" method="POST">
+            {% csrf_token %}
+            <label for="cognome">Cognome:</label>
+            <input type="text" name="cognome" value="{{ medico.cognome }}" required>
 
-        <label for="nome">Nome:</label>
-        <input type="text" name="nome" value="{{ medico.nome }}" required>
+            <label for="nome">Nome:</label>
+            <input type="text" name="nome" value="{{ medico.nome }}" required>
 
-        <label for="codice_fiscale">Codice Fiscale:</label>
-        <input type="text" name="codice_fiscale" value="{{ medico.codice_fiscale }}" required>
+            <label for="codice_fiscale">Codice Fiscale:</label>
+            <input type="text" name="codice_fiscale" value="{{ medico.codice_fiscale }}" required>
 
-        <label for="specialita">Specialità:</label>
-        <input type="text" name="specialita" value="{{ medico.specialita }}">
+            <label for="specialita">Specialità (opzionale):</label>
+            <input type="text" name="specialita" value="{{ medico.specialita }}">
 
-        <input type="submit" value="Aggiorna">
-    </form>
+            <input type="submit" value="Aggiorna dati">
+        </form>
+    </section>
 
-    <!-- Elenco pazienti del medico -->
-    <h3>I tuoi pazienti</h3>
-    <table>
-        <tr>
-            <th>Nome</th>
-            <th>Cognome</th>
-            <th>Codice Sanitario</th>
-            <th>Azioni</th>
-        </tr>
-        {% for paziente in pazienti %}
-        <tr>
-            <td>{{ paziente.nome }}</td>
-            <td>{{ paziente.cognome }}</td>
-            <td>{{ paziente.codice_sanitario }}</td>
-            <td>
-                <a href="{% url 'dettaglio_paziente' paziente.id %}">Vedi dettagli</a>
-            </td>
-        </tr>
-        {% empty %}
-        <tr>
-            <td colspan="4">Nessun paziente assegnato.</td>
-        </tr>
-        {% endfor %}
-    </table>
+    <section>
+        <h3>Assenze Pianificate</h3>
+        {% if assenze %}
+            <ul>
+                {% for assenza in assenze %}
+                    <li>{{ assenza.data_inizio }} - {{ assenza.data_fine }} ({{ assenza.note }})</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Nessuna assenza pianificata.</p>
+        {% endif %}
+    </section>
+
+    <section>
+        <h3>Medici che puoi sostituire</h3>
+        {% if medici_sostituibili %}
+            <ul>
+                {% for sostituto in medici_sostituibili %}
+                    <li>Dr./Dr.ssa {{ sostituto.nome }} {{ sostituto.cognome }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Nessun medico da sostituire attualmente assegnato.</p>
+        {% endif %}
+    </section>
+
+    <section>
+        <h3>I tuoi pazienti convenzionati</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Cognome</th>
+                    <th>Codice Sanitario</th>
+                    <th>Azioni</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for paziente in pazienti %}
+                    <tr>
+                        <td>{{ paziente.nome }}</td>
+                        <td>{{ paziente.cognome }}</td>
+                        <td>{{ paziente.codice_sanitario }}</td>
+                        <td>
+                            <a href="{% url 'dettaglio_paziente' paziente.id %}">Vedi dettagli</a>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="4">Nessun paziente assegnato.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h3>Visite Prenotate</h3>
+        {% if visite %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Ora</th>
+                        <th>Paziente</th>
+                        <th>Motivo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for visita in visite %}
+                        <tr>
+                            <td>{{ visita.data }}</td>
+                            <td>{{ visita.ora }}</td>
+                            <td>{{ visita.paziente.nome }} {{ visita.paziente.cognome }}</td>
+                            <td>{{ visita.motivo }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Nessuna visita prenotata.</p>
+        {% endif %}
+    </section>
 {% endblock %}
