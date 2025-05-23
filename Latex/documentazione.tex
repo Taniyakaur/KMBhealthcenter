@@ -6,7 +6,7 @@
 \usepackage{caption}
 \usepackage{geometry}
 \usepackage{hyperref}
-\geometry{margin=2.5cm}
+\geometry{a4paper, margin=2.5cm}
 \usepackage{fancyhdr}
 \usepackage{titlesec}
 
@@ -16,8 +16,17 @@
 \rhead{\thepage}
 \renewcommand{\headrulewidth}{0pt}
 
+\begin{document}
+
 % Titolo
-\title{\textbf{\Huge Documentazione del Sistema \\[0.5em] Casa della Salute}}
+\title{
+  \parbox{\textwidth}{
+    \centering
+    \Huge\textbf{Documentazione del Sistema} \\[0.5em]
+    \Huge\textbf{Casa della Salute}
+  }
+}
+
 \author{
     \Large Progetto di Ingegneria del Software\\[0.3em]
     Corso di Laurea in Bioinformatica\\[0.3em]
@@ -28,8 +37,6 @@
     Magrograssi Federico (VR472578)
 }
 \date{}
-
-\begin{document}
 
 % Titolo su prima pagina
 \maketitle
@@ -42,15 +49,19 @@
 
 % ------------------------- INTRODUZIONE -------------------------
 \section{Introduzione}
-Il sistema software in questione è stato creato per la gestione dei servizi erogati da una Casa della Salute, come visite mediche, prelievi e medicazioni. 
+Il sistema software in questione è stato creato per la gestione dei servizi erogati da una Casa della Salute, come visite mediche, prelievi e medicazioni.
+
 Si suppone che il software venga distribuito ai pazienti e al personale della Casa interessati, e che sia usufruibile tramite appositi terminali presenti nella struttura.
 
 Gli utenti, per poter usufruire dei servizi, dovranno essere in possesso delle loro credenziali. Queste verranno generate dal personale di segreteria e comunicate agli utenti stessi.
 
 \subsection*{Obiettivi del sistema}
-Il sistema è progettato per gestire le attività di una Casa della Salute, dove operano più medici di base, supportati da infermieri per medicazioni e prelievi, e un ufficio di segreteria comune. La struttura ospita:
+Il sistema è progettato per gestire le attività di una Casa della Salute, 
+dove operano più medici di base, supportati da infermieri per medicazioni e prelievi,
+ e un ufficio di segreteria comune. La struttura ospita:
+
 \begin{itemize}
-    \item 3 ambulatori per visite ad adulti,
+    \item 3 ambulatori per visite e prelievi ad adulti,
     \item 1 ambulatorio pediatrico,
 \end{itemize}
 
@@ -64,32 +75,44 @@ Il sistema permette di:
 \end{itemize}
 
 \subsection*{Autenticazione e accesso}
-Il sistema permette l'autenticazione ai pazienti tramite le credenziali fornite dalla segreteria. Il personale medico e infermieristico, invece, può accedere tramite le proprie credenziali personali, sempre nella sezione login.
+Il sistema permette l'autenticazione ai pazienti tramite le credenziali fornite 
+dalla segreteria. Il personale medico e infermieristico, invece, può accedere 
+tramite le proprie credenziali personali, sempre nella sezione login.
 
 \newpage
 
 % ------------------------- CASI D'USO -------------------------
 \section{Casi d'uso}
-In questa sezione verranno inseriti i diagrammi dei casi d'uso per ciascuna categoria di utente. Per ogni figura utente (medico, segreteria, paziente), si illustrano le principali interazioni con il sistema.
+In questa sezione verranno inseriti i diagrammi dei casi d'uso per ciascuna
+ categoria di utente. Per ogni figura utente (medico, segreteria, paziente), 
+ si illustrano le principali interazioni con il sistema.
 
 \subsection{Personale medico}
-Il personale medico può autenticarsi nel sistema, visualizzare le visite programmate, accedere ai dati dei propri pazienti, inserire l'esito delle visite e inviare notifiche al paziente.\\
+Il personale medico può autenticarsi nel sistema, visualizzare le visite 
+programmate, accedere ai dati dei propri pazienti, inserire l'esito delle visite
+ e inviare notifiche al paziente.
 [Diagramma dei casi d'uso da inserire qui]
 
 \subsection{Segreteria}
-La segreteria gestisce la registrazione di nuovi pazienti e operatori sanitari, la modifica o eliminazione dei dati anagrafici, e la gestione delle prenotazioni delle visite.\\
+La segreteria gestisce la registrazione di nuovi pazienti e operatori sanitari,
+ la modifica o eliminazione dei dati anagrafici, e la gestione delle prenotazioni 
+ delle visite.\\
 [Diagramma dei casi d'uso da inserire qui]
 
 \subsection{Paziente}
-Il paziente può autenticarsi, prenotare visite, visualizzare gli esiti delle stesse, prenotare prelievi e medicazioni, e consultare lo storico delle prestazioni ricevute.\\
+Il paziente può autenticarsi, prenotare visite, visualizzare gli esiti delle stesse,
+ prenotare prelievi e medicazioni, e consultare lo storico delle prestazioni ricevute.
 [Diagramma dei casi d'uso da inserire qui]
 
 \newpage
 
 % ------------------------- DIAGRAMMI DELLE ATTIVITÀ -------------------------
 \section{Diagrammi delle attività}
-Come per i diagrammi visti in precedenza, si assume che le operazioni possano essere annullate in qualsiasi momento, per esempio eseguendo il logout dal sistema.
-Per questioni di leggibilità, si omette la possibilità di visualizzazione e modifica del profilo da parte degli utenti.
+Come per i diagrammi visti in precedenza, si assume che le operazioni possano 
+essere annullate in qualsiasi momento, per esempio eseguendo il logout dal sistema.
+
+Per questioni di leggibilità, si omette la possibilità di visualizzazione e 
+modifica del profilo da parte degli utenti.
 
 \subsection{Personale medico}
 \begin{figure}[h!]
@@ -99,11 +122,14 @@ Per questioni di leggibilità, si omette la possibilità di visualizzazione e mo
 \end{figure}
 
 \subsection{Segreteria}
-Il diagramma delle attività della segreteria descrive il processo completo che va dall’autenticazione dell’utente alla gestione delle anagrafiche di pazienti e personale sanitario, alla pianificazione e modifica delle prenotazioni.\\
+Il diagramma delle attività della segreteria descrive il processo completo 
+che va dall’autenticazione dell’utente alla gestione delle anagrafiche di pazienti
+ e personale sanitario, alla pianificazione e modifica delle prenotazioni.
 [Diagramma da inserire qui]
 
 \subsection{Paziente}
-Il diagramma delle attività del paziente descrive il flusso che inizia con l’autenticazione, prosegue con la prenotazione di una visita o di una prestazione, la consultazione degli esiti e la visualizzazione dello storico.\\
+Il diagramma delle attività del paziente descrive il flusso che inizia con
+ l’autenticazione, prosegue con la prenotazione di una visita o di una prestazione, la consultazione degli esiti e la visualizzazione dello storico.\\
 [Diagramma da inserire qui]
 
 \newpage
@@ -113,16 +139,21 @@ Il diagramma delle attività del paziente descrive il flusso che inizia con l’
 
 \subsection*{Note sul processo di sviluppo}
 Il processo di sviluppo ha seguito un approccio agile e incrementale. 
-Si assume che solo i pazienti adulti possano essere registrati dal personale di segreteria, mentre i pazienti pediatrici sono inseriti da pazienti maggiorenni.
-Gli adulti che non sono maggiorenni non possono avere pazienti pediatrici a loro carico.
-Quando un paziente pediatrico compie 14 anni, e diventa un ex paziente pediatrico.
+Si assume che solo i pazienti adulti possano essere registrati dal personale di segreteria, 
+mentre i pazienti pediatrici sono inseriti da pazienti maggiorenni.
+
+Gli adulti che non sono maggiorenni non possono avere pazienti
+ pediatrici a loro carico.
+Quando un paziente pediatrico compie 14 anni, e diventa un ex paziente
+ pediatrico.
 
 Il pediatra può visualizzare gli appuntamenti degli ex pazienti pediatrici e aggiornare l’esito delle visite.
 
 \subsection*{Note sul paziente maggiorenne}
-Un paziente maggiorenne deve obbligatoriamente essere associato a un medico
-per poter essere registrato a sistema. Questa scelta è legata alla natura prototipale del progetto. Il paziente maggiorenne potrà poi inserire un paziente
-pediatrico a suo carico
+Un paziente maggiorenne deve obbligatoriamente essere associato a un 
+medicoper poter essere registrato a sistema. 
+Questa scelta è legata alla natura prototipale del progetto. 
+Il paziente maggiorenne potrà poi inserire un paziente pediatrico a suo carico
 \section{Modelli architetturali e progettazione ad alto livello}
 
 Il nostro progetto è stato sviluppato utilizzando il framework Django, che si basa su un'architettura denominata \textbf{Model-View-Template (MVT)}. Questo modello è una variante del più noto pattern MVC, adattata alle caratteristiche del framework stesso. Grazie a questa struttura, è possibile separare in modo netto la logica di gestione dei dati, l'elaborazione delle richieste e la visualizzazione lato utente.
