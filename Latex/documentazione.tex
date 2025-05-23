@@ -1,16 +1,14 @@
 \documentclass[a4paper,12pt]{article}
 
-% Pacchetti
-\usepackage[utf8]{inputenc}
-\usepackage{graphicx}
-\usepackage{caption}
-\usepackage{geometry}
-\usepackage{hyperref}
-\geometry{a4paper, margin=2.5cm}
-\usepackage{fancyhdr}
-\usepackage{titlesec}
+% Pacchetti essenziali
+\usepackage[utf8]{inputenc}   % Supporto UTF-8
+\usepackage[margin=2.5cm]{geometry}  % Margini pagina
+\usepackage{parskip}          % Spazio tra paragrafi
+\usepackage{hyperref}         % Link cliccabili
+\usepackage{graphicx}         % Per inserire immagini
 
-% Numerazione pagine dopo la prima
+% Intestazioni e piè di pagina
+\usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
 \rhead{\thepage}
@@ -20,13 +18,9 @@
 
 % Titolo
 \title{
-  \parbox{\textwidth}{
-    \centering
-    \Huge\textbf{Documentazione del Sistema} \\[0.5em]
-    \Huge\textbf{Casa della Salute}
-  }
+    \textbf{\Huge Documentazione del Sistema}\\[0.5em]
+    \textbf{\Huge Casa della Salute}
 }
-
 \author{
     \Large Progetto di Ingegneria del Software\\[0.3em]
     Corso di Laurea in Bioinformatica\\[0.3em]
@@ -38,7 +32,6 @@
 }
 \date{}
 
-% Titolo su prima pagina
 \maketitle
 \thispagestyle{empty}
 \newpage
@@ -46,6 +39,7 @@
 % Indice
 \tableofcontents
 \newpage
+
 
 % ------------------------- INTRODUZIONE -------------------------
 \section{Introduzione}
