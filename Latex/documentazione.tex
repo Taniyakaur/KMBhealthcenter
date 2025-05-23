@@ -20,7 +20,7 @@
 \title{\textbf{\Huge Documentazione del Sistema \\[0.5em] Casa della Salute}}
 \author{
     \Large Progetto di Ingegneria del Software\\[0.3em]
-    Corso di Laurea in Informatica\\[0.3em]
+    Corso di Laurea in Bioinformatica\\[0.3em]
     Università degli Studi di Verona\\[1.5em]
     \normalsize
     Barichello Rebecca (VR471455)\\
@@ -42,7 +42,8 @@
 
 % ------------------------- INTRODUZIONE -------------------------
 \section{Introduzione}
-Il sistema software in questione è stato creato per la gestione dei servizi erogati da una Casa della Salute, come visite mediche, prelievi e medicazioni. Si suppone che il software venga distribuito ai pazienti e al personale della Casa interessati, e che sia usufruibile tramite appositi terminali presenti nella struttura.
+Il sistema software in questione è stato creato per la gestione dei servizi erogati da una Casa della Salute, come visite mediche, prelievi e medicazioni. 
+Si suppone che il software venga distribuito ai pazienti e al personale della Casa interessati, e che sia usufruibile tramite appositi terminali presenti nella struttura.
 
 Gli utenti, per poter usufruire dei servizi, dovranno essere in possesso delle loro credenziali. Queste verranno generate dal personale di segreteria e comunicate agli utenti stessi.
 
@@ -57,7 +58,7 @@ Il sistema è progettato per gestire le attività di una Casa della Salute, dove
 Il sistema permette di:
 \begin{itemize}
     \item Registrare e gestire i dati di medici, infermieri e pazienti.
-    \item Gestire le prenotazioni per visite.
+    \item Gestire le prenotazioni per visite, inviando mail di conferma.
     \item Mantenere una storia delle visite e delle prestazioni effettuate.
     \item Fornire resoconti annuali delle prestazioni erogate ai pazienti.
 \end{itemize}
@@ -111,39 +112,183 @@ Il diagramma delle attività del paziente descrive il flusso che inizia con l’
 \section{Sviluppo: progetto dell’architettura ed implementazione del sistema}
 
 \subsection*{Note sul processo di sviluppo}
-Il processo di sviluppo ha seguito un approccio agile e incrementale...
+Il processo di sviluppo ha seguito un approccio agile e incrementale. 
+Si assume che solo i pazienti adulti possano essere registrati dal personale di segreteria, mentre i pazienti pediatrici sono inseriti da pazienti maggiorenni.
+Gli adulti che non sono maggiorenni non possono avere pazienti pediatrici a loro carico.
+Quando un paziente pediatrico compie 14 anni, e diventa un ex paziente pediatrico.
 
-% [Testo lasciato invariato per brevità. Se vuoi posso migliorare anche lo stile narrativo.]
+Il pediatra può visualizzare gli appuntamenti degli ex pazienti pediatrici e aggiornare l’esito delle visite.
+
+\subsection*{Note sul paziente maggiorenne}
+Un paziente maggiorenne deve obbligatoriamente essere associato a un medico
+per poter essere registrato a sistema. Questa scelta è legata alla natura prototipale del progetto. Il paziente maggiorenne potrà poi inserire un paziente
+pediatrico a suo carico
+\section{Modelli architetturali e progettazione ad alto livello}
+
+Il nostro progetto è stato sviluppato utilizzando il framework Django, che si basa su un'architettura denominata \textbf{Model-View-Template (MVT)}. Questo modello è una variante del più noto pattern MVC, adattata alle caratteristiche del framework stesso. Grazie a questa struttura, è possibile separare in modo netto la logica di gestione dei dati, l'elaborazione delle richieste e la visualizzazione lato utente.
+
+\subsection*{4.2.1 Il pattern Model-View-Template (MVT)}
+Nel pattern MVT, ogni componente ha un ruolo specifico:
+
+\begin{itemize}
+    \item \textbf{Model}: definisce la struttura dei dati e la logica di accesso al database. In Django, i model sono scritti in Python all’interno dei file \texttt{models.py}, e corrispondono direttamente alle tabelle nel database.
+    
+    \item \textbf{View}: contiene la logica dell’applicazione. Si occupa di gestire le richieste HTTP, interagire con i model, elaborare i dati e restituire una risposta, generalmente tramite un template HTML. Le view sono definite nel file \texttt{views.py}.
+    
+    \item \textbf{Template}: rappresenta la parte visibile all’utente. I template sono file HTML dinamici che permettono di visualizzare i dati elaborati dalle view, usando il linguaggio di templating integrato in Django.
+\end{itemize}
+
+In sintesi, i dati vengono gestiti dai model, elaborati dalle view e presentati all’utente tramite i template. Questo approccio ci ha permesso di organizzare il codice in modo modulare e facilmente manutenibile.
+
+Nel nostro progetto, abbiamo creato diversi modelli per rappresentare utenti, medici, pazienti, prenotazioni e prestazioni. Ogni funzionalità è stata sviluppata come view associata a uno specifico URL, e i dati sono stati presentati attraverso template responsivi.
+
+\subsection*{4.3 Design pattern utilizzati}
+
+Durante lo sviluppo abbiamo fatto uso di alcuni design pattern che Django supporta nativamente o che si adattano bene alla sua struttura:
+
+\begin{itemize}
+    \item \textbf{Singleton}: questo pattern viene utilizzato in contesti in cui serve garantire un’unica istanza condivisa, ad esempio nella gestione centralizzata delle impostazioni di configurazione.
+    
+    \item \textbf{Observer}: Django include un sistema di segnali, come \texttt{post\_save} e \texttt{pre\_delete}, che ci ha permesso di eseguire azioni automatiche al verificarsi di determinati eventi (come l’invio di notifiche dopo la prenotazione o la modifica di un esito).
+    
+    \item \textbf{Adapter}: in alcuni casi abbiamo integrato librerie esterne adattandole alle esigenze del progetto, in particolare per la validazione dei form e per la gestione dell’interfaccia utente.
+\end{itemize}
+
+\subsection*{4.4 Librerie di terze parti utilizzate}
+
+Oltre ai moduli standard di Django e Python, abbiamo utilizzato alcune librerie esterne per migliorare l’efficienza nello sviluppo e la qualità del software:
+
+\begin{itemize}
+    \item \textbf{Django}: il framework principale, utilizzato per costruire l’intera architettura web.
+    \item \textbf{python-dotenv}: per la gestione sicura delle variabili d’ambiente.
+    \item \textbf{crispy-forms}: per migliorare la resa grafica e la personalizzazione dei form HTML.
+    \item \textbf{pytest-django}: per scrivere e gestire i test automatici in modo semplice ed efficace.
+    \item \textbf{coverage.py}: per valutare la copertura del codice da parte dei test e individuare le parti non ancora verificate.
+\end{itemize}
 
 \subsubsection*{Versioning del progetto}
-Durante lo sviluppo del progetto si è utilizzato \texttt{git}...
+Durante lo sviluppo del progetto si è utilizzato \texttt{git} come sistema di versionamento.
+Il repository è stato ospitato su GitHub, permettendo una gestione centralizzata del codice sorgente e facilitando la collaborazione tra i membri del team. Ogni modifica al codice è stata registrata tramite commit, e sono stati creati branch per le funzionalità in fase di sviluppo. Questo approccio ha garantito una storia chiara delle modifiche e ha facilitato il processo di revisione del codice.
 
 \url{https://github.com/Taniyakaur/Project}
 
 \newpage
+% ------------------------- INSTALLAZIONE -------------------------
+\section{Installazione e configurazione del sistema}
+\section{Installazione e configurazione del sistema}
 
-% ------------------------- SCELTE PROGETTUALI -------------------------
-\section{Scelte progettuali}
+Questa sezione descrive i passaggi necessari per installare e configurare il progetto localmente su una macchina con sistema operativo Windows, macOS o Linux.
 
-\subsection*{Assunzioni e scelte progettuali}
-\subsubsection*{Gestione dei pazienti e restrizioni per i pazienti minorenni}
-Si assume che solo i pazienti adulti possano essere registrati...
+\subsection*{Requisiti}
+Per poter eseguire correttamente il progetto sono richiesti i seguenti strumenti:
+\begin{itemize}
+    \item Python 3.10 o superiore
+    \item pip (Python package installer)
+    \item Git
+    \item Un ambiente virtuale (consigliato: \texttt{venv})
+\end{itemize}
 
-\newpage
+\subsection*{Clonazione del repository}
+Aprire un terminale e clonare il progetto da GitHub:
+
+\begin{lstlisting}
+git clone https://github.com/Taniyakaur/Project.git
+cd Project
+\end{lstlisting}
+
+\subsection*{Creazione dell'ambiente virtuale}
+Per creare e attivare un ambiente virtuale:
+
+\begin{itemize}
+    \item Su Windows:
+    \begin{lstlisting}
+python -m venv venv
+venv\Scripts\activate
+    \end{lstlisting}
+
+    \item Su macOS/Linux:
+    \begin{lstlisting}
+python3 -m venv venv
+source venv/bin/activate
+    \end{lstlisting}
+\end{itemize}
+
+\subsection*{Installazione delle dipendenze}
+Con l’ambiente attivo, installare i pacchetti necessari:
+
+\begin{lstlisting}
+pip install -r requirements.txt
+\end{lstlisting}
+
+\subsection*{Configurazione delle variabili d'ambiente}
+Creare un file \texttt{.env} nella root del progetto con le seguenti variabili (personalizzare i valori):
+
+\begin{lstlisting}
+DEBUG=True
+SECRET_KEY=chiave_segretissima
+ALLOWED_HOSTS=localhost,127.0.0.1
+\end{lstlisting}
+
+\subsection*{Migrazione del database}
+Applicare le migrazioni iniziali:
+
+\begin{lstlisting}
+python manage.py makemigrations
+python manage.py migrate
+\end{lstlisting}
+
+\subsection*{Creazione di un superutente (opzionale)}
+Per accedere al pannello di amministrazione:
+
+\begin{lstlisting}
+python manage.py createsuperuser
+\end{lstlisting}
+
+\subsection*{Avvio del server di sviluppo}
+Eseguire il server:
+
+\begin{lstlisting}
+python manage.py runserver
+\end{lstlisting}
+
+Il sistema sarà accessibile all'indirizzo \texttt{http://127.0.0.1:8000}
+\subsection*{Accesso al sistema}
+Per accedere al sistema, utilizzare le credenziali fornite dalla segreteria per i pazienti, o quelle create per il personale medico e infermieristico.
 
 % ------------------------- TEST -------------------------
 \section{Test e validazione}
 
-\subsection*{Test automatici in Django}
-Nel nostro progetto, sviluppato con Django e Python...
+\subsection*{5.1 Unit test}
+Abbiamo eseguito test di tipo unitario su diverse componenti del sistema, in particolare sui modelli e sulle view. Per questo abbiamo utilizzato il framework di test integrato in Django, basato su \texttt{unittest}, e in alcuni casi \texttt{pytest-django} per una maggiore flessibilità.
 
+Gli unit test sono stati scritti all'interno dei file \texttt{tests.py} presenti in ciascuna app Django.
+
+Esempi di test effettuati:
 \begin{itemize}
-    \item Validare i modelli
-    \item Verificare il comportamento delle view
-    \item Testare le regole di accesso ai contenuti
+    \item Validazione dei form (es. campi obbligatori, formati email, password, ecc.).
+    \item Verifica della corretta creazione e salvataggio dei modelli nel database.
+    \item Controllo che determinate view richiedano l’autenticazione.
+    \item Verifica della logica di assegnazione del medico e delle prenotazioni.
 \end{itemize}
 
-\subsection*{Test manuali degli sviluppatori}
-In questa fase si è voluto testare varie interazioni...
+\subsection*{5.2 Test manuali degli sviluppatori}
+Abbiamo svolto test manuali sistematici simulando le azioni tipiche degli utenti:
+\begin{itemize}
+    \item Login e logout di utenti di diversi ruoli (medico, segreteria, paziente).
+    \item Registrazione nuovi utenti e modifica dei dati anagrafici.
+    \item Prenotazione e cancellazione di prestazioni.
+    \item Inserimento di esiti e verifica della notifica al paziente.
+    \item Gestione di situazioni particolari (es. doppia prenotazione nello stesso orario).
+\end{itemize}
+
+\subsection*{5.3 Copertura del codice e strumenti}
+Per misurare la copertura dei test automatizzati abbiamo utilizzato \texttt{coverage.py}, uno strumento che mostra quali righe di codice sono state eseguite durante i test. Questo ci ha permesso di identificare porzioni di codice non ancora testate.
+
+\subsection*{5.4 Proposte per test futuri}
+In futuro, sarebbe utile integrare:
+\begin{itemize}
+    \item Test end-to-end con \texttt{Selenium} o \texttt{Playwright}, per simulare l’interazione dell’utente con l’interfaccia web.
+    \item Test di carico e prestazioni con \texttt{Locust} o \texttt{JMeter}, per verificare il comportamento del sistema sotto stress.
+\end{itemize}
 
 \end{document}

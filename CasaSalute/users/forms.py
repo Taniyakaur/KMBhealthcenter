@@ -1,5 +1,5 @@
 from django import forms
-from .models import Medico, Infermiere, Prenotazione
+from .models import Medico, Infermiere, Prenotazione, Visita
 from django.contrib.auth.forms import AuthenticationForm
 
 # FORM PER LOGIN
@@ -38,4 +38,14 @@ class PrenotazioneForm(forms.ModelForm):
         widgets = {
             'data': forms.DateInput(attrs={'type': 'date'}),
             'orario': forms.TimeInput(attrs={'type': 'time'})
+        }
+
+# FORM PER INSERIMENTO ESITO VISITA
+
+class EsitoVisitaForm(forms.ModelForm):
+    class Meta:
+        model = Visita
+        fields = ['esito']
+        widgets = {
+            'esito': forms.Textarea(attrs={'class': 'form-control', 'rows': 4, 'placeholder': 'Inserisci esito visita...'})
         }

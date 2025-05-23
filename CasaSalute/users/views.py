@@ -5,7 +5,7 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.conf import settings
 from .models import Medico, Infermiere, Paziente, Prenotazione, Visita
-from .forms import ModificaMedicoForm, ModificaInfermiereForm, PrenotazioneForm, LoginForm, EsitoVisitaForm
+from .forms import ModificaMedicoForm, ModificaInfermiereForm, PrenotazioneForm, LoginForm, EsitoVisitaForm 
 
 # Funzione per invio email centralizzata
 def invia_email_conferma_prestazione(utente_email, contesto):
