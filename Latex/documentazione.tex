@@ -45,9 +45,11 @@
 \section{Introduzione}
 Il sistema software in questione è stato creato per la gestione dei servizi erogati da una Casa della Salute, come visite mediche, prelievi e medicazioni.
 
-Si suppone che il software venga distribuito ai pazienti e al personale della Casa interessati, e che sia usufruibile tramite appositi terminali presenti nella struttura.
+Si suppone che il software venga distribuito ai pazienti e al personale della Casa interessati, 
+e che sia usufruibile tramite appositi terminali presenti nella struttura.
 
-Gli utenti, per poter usufruire dei servizi, dovranno essere in possesso delle loro credenziali. Queste verranno generate dal personale di segreteria e comunicate agli utenti stessi.
+Gli utenti, per poter usufruire dei servizi, dovranno essere in possesso delle loro credenziali. 
+Queste verranno generate dal personale di segreteria e comunicate agli utenti stessi.
 
 \subsection*{Obiettivi del sistema}
 Il sistema è progettato per gestire le attività di una Casa della Salute, 
@@ -150,7 +152,9 @@ Questa scelta è legata alla natura prototipale del progetto.
 Il paziente maggiorenne potrà poi inserire un paziente pediatrico a suo carico
 \section{Modelli architetturali e progettazione ad alto livello}
 
-Il nostro progetto è stato sviluppato utilizzando il framework Django, che si basa su un'architettura denominata \textbf{Model-View-Template (MVT)}. Questo modello è una variante del più noto pattern MVC, adattata alle caratteristiche del framework stesso. Grazie a questa struttura, è possibile separare in modo netto la logica di gestione dei dati, l'elaborazione delle richieste e la visualizzazione lato utente.
+Il nostro progetto è stato sviluppato utilizzando il framework Django, che si basa su un'architettura denominata \textbf{Model-View-Template (MVT)}. 
+Questo modello è una variante del più noto pattern MVC, adattata alle caratteristiche del framework stesso. Grazie a questa struttura, 
+è possibile separare in modo netto la logica di gestione dei dati, l'elaborazione delle richieste e la visualizzazione lato utente.
 
 \subsection*{4.2.1 Il pattern Model-View-Template (MVT)}
 Nel pattern MVT, ogni componente ha un ruolo specifico:
@@ -163,9 +167,11 @@ Nel pattern MVT, ogni componente ha un ruolo specifico:
     \item \textbf{Template}: rappresenta la parte visibile all’utente. I template sono file HTML dinamici che permettono di visualizzare i dati elaborati dalle view, usando il linguaggio di templating integrato in Django.
 \end{itemize}
 
-In sintesi, i dati vengono gestiti dai model, elaborati dalle view e presentati all’utente tramite i template. Questo approccio ci ha permesso di organizzare il codice in modo modulare e facilmente manutenibile.
+In sintesi, i dati vengono gestiti dai model, elaborati dalle view e presentati all’utente tramite i template. 
+Questo approccio ci ha permesso di organizzare il codice in modo modulare e facilmente manutenibile.
 
-Nel nostro progetto, abbiamo creato diversi modelli per rappresentare utenti, medici, pazienti, prenotazioni e prestazioni. Ogni funzionalità è stata sviluppata come view associata a uno specifico URL, e i dati sono stati presentati attraverso template responsivi.
+Nel nostro progetto, abbiamo creato diversi modelli per rappresentare utenti, medici, pazienti, prenotazioni e prestazioni. 
+Ogni funzionalità è stata sviluppata come view associata a uno specifico URL, e i dati sono stati presentati attraverso template responsivi.
 
 \subsection*{4.3 Design pattern utilizzati}
 
@@ -193,7 +199,9 @@ Oltre ai moduli standard di Django e Python, abbiamo utilizzato alcune librerie 
 
 \subsubsection*{Versioning del progetto}
 Durante lo sviluppo del progetto si è utilizzato \texttt{git} come sistema di versionamento.
-Il repository è stato ospitato su GitHub, permettendo una gestione centralizzata del codice sorgente e facilitando la collaborazione tra i membri del team. Ogni modifica al codice è stata registrata tramite commit, e sono stati creati branch per le funzionalità in fase di sviluppo. Questo approccio ha garantito una storia chiara delle modifiche e ha facilitato il processo di revisione del codice.
+Il repository è stato ospitato su GitHub, permettendo una gestione centralizzata del codice sorgente e facilitando la collaborazione tra i membri del team. 
+Ogni modifica al codice è stata registrata tramite commit, e sono stati creati branch per le funzionalità in fase di sviluppo. 
+Questo approccio ha garantito una storia chiara delle modifiche e ha facilitato il processo di revisione del codice.
 
 \url{https://github.com/Taniyakaur/Project}
 
@@ -284,7 +292,8 @@ Per accedere al sistema, utilizzare le credenziali fornite dalla segreteria per 
 \section{Test e validazione}
 
 \subsection*{5.1 Unit test}
-Abbiamo eseguito test di tipo unitario su diverse componenti del sistema, in particolare sui modelli e sulle view. Per questo abbiamo utilizzato il framework di test integrato in Django, basato su \texttt{unittest}, e in alcuni casi \texttt{pytest-django} per una maggiore flessibilità.
+Abbiamo eseguito test di tipo unitario su diverse componenti del sistema, in particolare sui modelli e sulle view. 
+Per questo abbiamo utilizzato il framework di test integrato in Django, basato su \texttt{unittest}, e in alcuni casi \texttt{pytest-django} per una maggiore flessibilità.
 
 Gli unit test sono stati scritti all'interno dei file \texttt{tests.py} presenti in ciascuna app Django.
 
@@ -307,7 +316,8 @@ Abbiamo svolto test manuali sistematici simulando le azioni tipiche degli utenti
 \end{itemize}
 
 \subsection*{5.3 Copertura del codice e strumenti}
-Per misurare la copertura dei test automatizzati abbiamo utilizzato \texttt{coverage.py}, uno strumento che mostra quali righe di codice sono state eseguite durante i test. Questo ci ha permesso di identificare porzioni di codice non ancora testate.
+Per misurare la copertura dei test automatizzati abbiamo utilizzato \texttt{coverage.py}, uno strumento che mostra quali righe di codice sono state eseguite durante i test. 
+Questo ci ha permesso di identificare porzioni di codice non ancora testate.
 
 \subsection*{5.4 Proposte per test futuri}
 In futuro, sarebbe utile integrare:
