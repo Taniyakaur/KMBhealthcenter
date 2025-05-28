@@ -79,56 +79,114 @@ tramite le proprie credenziali personali, sempre nella sezione login.
 
 % ------------------------- CASI D'USO -------------------------
 \section{Casi d'uso}
-In questa sezione verranno inseriti i diagrammi dei casi d'uso per ciascuna
- categoria di utente. Per ogni figura utente (medico, segreteria, paziente), 
- si illustrano le principali interazioni con il sistema.
-
-\subsection{Personale medico}
-Il personale medico può autenticarsi nel sistema, visualizzare le visite 
-programmate, accedere ai dati dei propri pazienti, inserire l'esito delle visite
- e inviare notifiche al paziente.
-[Diagramma dei casi d'uso da inserire qui]
-
-\subsection{Segreteria}
-La segreteria gestisce la registrazione di nuovi pazienti e operatori sanitari,
- la modifica o eliminazione dei dati anagrafici, e la gestione delle prenotazioni 
- delle visite.\\
-[Diagramma dei casi d'uso da inserire qui]
+In questa sezione vengono presentati i diagrammi dei casi d'uso per ciascuna categoria di utente che 
+interagisce con il sistema della Casa della Salute. Per ogni figura (paziente, medico, infermiere e segreteria) sono illustrate, 
+tramite due diagrammi, le principali funzionalità accessibili e le interazioni previste con il sistema informatico.
 
 \subsection{Paziente}
-Il paziente può autenticarsi, prenotare visite, visualizzare gli esiti delle stesse,
- prenotare prelievi e medicazioni, e consultare lo storico delle prestazioni ricevute.
-[Diagramma dei casi d'uso da inserire qui]
+Il paziente può accedere alla propria area personale tramite autenticazione. 
+Una volta autenticato, ha la possibilità di visualizzare la propria dashboard, consultare i dati personali, 
+le visite programmate e gli esiti delle visite già effettuate. Inoltre, può aggiornare i propri dati anagrafici.
+
+Il primo diagramma rappresenta in maniera sintetica i casi d’uso del paziente all’interno del sistema,
+ evidenziando le funzioni principali. Il secondo schema mostra più nel dettaglio le interazioni sequenziali tra il paziente e il sistema.
+
+\includegraphics[width=0.7\textwidth]{diagrammi_uml/use_case_paziente.png}
+
+\includegraphics[width=0.7\textwidth]{diagrammi_uml/paziente.png}
+
+\subsection{Personale medico}
+Il personale medico, dopo aver effettuato l'autenticazione, può consultare la propria area personale per visualizzare l’elenco 
+delle visite in programma e accedere ai dati clinici dei pazienti.
+Ha inoltre la possibilità di inserire l’esito delle visite effettuate, operazione che comporta anche l’invio automatico di
+ una notifica al paziente interessato. Il medico può infine modificare i propri dati personali.
+
+Nel primo diagramma sono riassunti i principali casi d’uso del medico. 
+Il secondo schema mostra nel dettaglio l’interazione tra il medico e il sistema per ciascuna funzionalità.
+
+\includegraphics[width=0.7\textwidth]{diagrammi_uml/use_case_medico.png}
+
+\includegraphics[width=0.7\textwidth]{diagrammi_uml/mediico.png}
+
+\subsection{Infermiere}
+L’infermiere può accedere alla propria area riservata tramite autenticazione. Una volta entrato nel sistema, 
+ha la possibilità di visualizzare la dashboard personale, i propri dati anagrafici e l’elenco delle prestazioni effettuate. 
+Inoltre, può modificare i propri dati.
+
+Il primo diagramma mostra una panoramica dei casi d’uso principali relativi alla figura dell’infermiere,
+mentre il secondo fornisce una rappresentazione dettagliata delle interazioni con il sistema.
+
+\includegraphics[width=0.7\textwidth]{diagrammi_uml/use_case_infermiere.png}
+
+\includegraphics[width=0.7\textwidth]{diagrammi_uml/infermiere.png}
+
+\subsection{Segreteria}
+La segreteria ha accesso a numerose funzionalità gestionali. Dopo l'autenticazione, può visualizzare la dashboard che fornisce
+ una panoramica delle attività da svolgere. Può consultare l'elenco del personale e dei pazienti registrati, 
+ visualizzare le visite da completare, e aggiungere nuovi operatori sanitari e pazienti. 
+ È responsabile dell’inserimento degli esiti delle visite, dell’invio delle relative notifiche ai pazienti, 
+ nonché della generazione dei resoconti annuali delle attività.
+
+Il primo diagramma riepiloga le principali funzioni disponibili per la segreteria, 
+mentre il secondo approfondisce le specifiche interazioni tra l’utente e il sistema.
+
+\includegraphics[width=0.7\textwidth]{diagrammi_uml/use_case_segreteria.png}
+
+\includegraphics[width=0.7\textwidth]{diagrammi_uml/segreteria.png}
+
+\subsection{Tutti gli utenti della Casa della Salute}
+Il diagramma complessivo dei casi d’uso permette di visualizzare l’intero insieme di funzionalità del sistema, mettendo in relazione le quattro
+categorie di utenti con i rispettivi casi d’uso. 
+Questa visione d’insieme è utile per comprendere la copertura funzionale dell’applicazione.
+
+\includegraphics[width=0.7\textwidth]{diagrammi_uml/use_case_utenti.png}
 
 \newpage
+
 
 % ------------------------- DIAGRAMMI DELLE ATTIVITÀ -------------------------
 \section{Diagrammi delle attività}
 Come per i diagrammi visti in precedenza, si assume che le operazioni possano 
-essere annullate in qualsiasi momento, per esempio eseguendo il logout dal sistema.
+essere annullate in qualsiasi momento, ad esempio tramite il logout dal sistema.
 
 Per questioni di leggibilità, si omette la possibilità di visualizzazione e 
 modifica del profilo da parte degli utenti.
 
+\subsection{Paziente}
+Il diagramma delle attività del paziente descrive il flusso principale delle operazioni che l'utente può compiere una volta autenticato nel sistema. 
+Il paziente può accedere alla propria area personale e scegliere tra diverse azioni: prenotare una visita o una prestazione (come prelievi o medicazioni), 
+consultare l’esito delle visite effettuate, o visualizzare lo storico delle prestazioni ricevute. Ogni azione porta a un completamento specifico, 
+oppure può essere interrotta o annullata in qualsiasi momento.
+
+\includegraphics[width=0.7\textwidth]{diagrammi_uml/diagramma_attivita_paziente.png}
+
 \subsection{Personale medico}
-\begin{figure}[h!]
-\centering
-\includegraphics[width=0.8\textwidth]{Diagramma attivita' medico.png}
-\caption{Diagramma di attività per il personale medico}
-\end{figure}
+Il diagramma delle attività del medico mostra il flusso operativo seguito da questa figura professionale. 
+Dopo l'autenticazione, il medico può visualizzare l’elenco delle visite programmate e i dati clinici dei propri pazienti. 
+Può quindi inserire l’esito di una visita appena effettuata, azione che porta automaticamente anche all’invio di una notifica al paziente. 
+L’intero processo è rappresentato in modo sequenziale e chiarisce come si sviluppa la gestione delle visite da parte del personale medico.
+
+\includegraphics[width=0.7\textwidth]{diagrammi_uml/diagramma_attivita_medico.png}
+
+\subsection{Infermiere}
+Il diagramma delle attività relativo all’infermiere mostra le principali operazioni disponibili dopo l’autenticazione. 
+L’utente può accedere alla dashboard per consultare i propri dati anagrafici e l’elenco delle prestazioni precedentemente eseguite. 
+Il flusso si concentra sulla consultazione e sulla possibilità di modificare le informazioni personali, 
+mantenendo il diagramma semplice e focalizzato sulle attività specifiche di questa figura professionale.
+
+\includegraphics[width=0.7\textwidth]{diagrammi_uml/diagramma_attivita_infermiere.png}
 
 \subsection{Segreteria}
-Il diagramma delle attività della segreteria descrive il processo completo 
-che va dall’autenticazione dell’utente alla gestione delle anagrafiche di pazienti
- e personale sanitario, alla pianificazione e modifica delle prenotazioni.
-[Diagramma da inserire qui]
+Il diagramma delle attività della segreteria descrive l'intero processo operativo, a partire dall’autenticazione dell’utente. 
+Una volta effettuato l’accesso, la segreteria può visualizzare la dashboard con una panoramica generale. 
+Da qui è possibile consultare gli elenchi di pazienti e personale sanitario, aggiungere nuovi utenti al sistema, inserire gli esiti delle visite e generare report annuali.
+Inoltre, la segreteria può gestire la programmazione e la modifica delle visite. 
+Il diagramma evidenzia chiaramente l’ampiezza delle funzioni amministrative assegnate a questa figura.
 
-\subsection{Paziente}
-Il diagramma delle attività del paziente descrive il flusso che inizia con
- l’autenticazione, prosegue con la prenotazione di una visita o di una prestazione, la consultazione degli esiti e la visualizzazione dello storico.\\
-[Diagramma da inserire qui]
+\includegraphics[width=0.7\textwidth]{diagrammi_uml/diagramma_attivita_segreteria.png}
 
 \newpage
+
 
 % ------------------------- SVILUPPO -------------------------
 \section{Sviluppo: progetto dell’architettura ed implementazione del sistema}
@@ -206,8 +264,8 @@ Questo approccio ha garantito una storia chiara delle modifiche e ha facilitato 
 \url{https://github.com/Taniyakaur/Project}
 
 \newpage
+
 % ------------------------- INSTALLAZIONE -------------------------
-\section{Installazione e configurazione del sistema}
 \section{Installazione e configurazione del sistema}
 
 Questa sezione descrive i passaggi necessari per installare e configurare il progetto localmente su una macchina con sistema operativo Windows, macOS o Linux.
