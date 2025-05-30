@@ -21,7 +21,7 @@
         <input type="text" name="codice_fiscale" value="{{ infermiere.codice_fiscale }}" required>
 
         <label for="giorni_servizio">Giorni di Servizio:</label>
-        <input type="text" name="giorni_servizio" value="{{ infermiere.giorni_servizio }}">
+        <input type="text" name="giorni_servizio" value="{{ infermiere.giorni_servizio }}" placeholder="Es. Lunedì, Mercoledì, Venerdì">
 
         <input type="submit" value="Aggiorna">
     </form>
@@ -29,23 +29,31 @@
     <!-- Lista delle prestazioni effettuate -->
     <h3>Prestazioni Effettuate</h3>
     <table>
-        <tr>
-            <th>Data</th>
-            <th>Paziente</th>
-            <th>Tipo</th>
-            <th>Esito</th>
-        </tr>
-        {% for prestazione in prestazioni %}
-        <tr>
-            <td>{{ prestazione.data }}</td>
-            <td>{{ prestazione.paziente.nome }} {{ prestazione.paziente.cognome }}</td>
-            <td>{{ prestazione.tipo }}</td>
-            <td>{{ prestazione.esito }}</td>
-        </tr>
-        {% empty %}
-        <tr>
-            <td colspan="4">Nessuna prestazione registrata.</td>
-        </tr>
-        {% endfor %}
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Paziente</th>
+                <th>Tipo</th>
+                <th>Esito</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for prestazione in prestazioni %}
+            <tr>
+                <td>{{ prestazione.data }}</td>
+                <td>{{ prestazione.paziente.nome }} {{ prestazione.paziente.cognome }}</td>
+                <td>{{ prestazione.tipo }}</td>
+                <td>{{ prestazione.esito }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">Nessuna prestazione registrata.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
 {% endblock %}
+
+
+
+

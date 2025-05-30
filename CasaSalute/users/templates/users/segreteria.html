@@ -76,5 +76,50 @@
 
         <input type="submit" value="Aggiungi Paziente">
     </form>
+
+    <!-- Inserimento Esiti Visite -->
+    <h3>Inserisci Esito Visita</h3>
+    <form action="{% url 'inserisci_esito_visita' %}" method="POST">
+        {% csrf_token %}
+        <label for="paziente">Paziente:</label>
+        <select name="paziente" required>
+            {% for paz in pazienti %}
+            <option value="{{ paz.id }}">{{ paz.nome }} {{ paz.cognome }} - {{ paz.codice_sanitario }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="visita">Visita da aggiornare:</label>
+        <select name="visita" required>
+            {% for visita in visite_da_completare %}
+            <option value="{{ visita.id }}">{{ visita.data }} - {{ visita.tipo }} - {{ visita.medico.nome }} {{ visita.medico.cognome }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="esito">Esito:</label>
+        <textarea name="esito" required></textarea>
+
+        <input type="submit" value="Salva Esito e Invia Notifica">
+    </form>
+
+    <!-- Accesso al Resoconto Annuale -->
+    <h3>Resoconto Annuale per Paziente</h3>
+    <form action="{% url 'resoconto_paziente' %}" method="GET">
+        <label for="paziente">Seleziona paziente:</label>
+        <select name="paziente_id" required>
+            {% for paz in pazienti %}
+            <option value="{{ paz.id }}">{{ paz.nome }} {{ paz.cognome }} - {{ paz.codice_sanitario }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="anno">Anno:</label>
+        <input type="number" name="anno" min="2000" max="2100" value="{{ anno|default:2025 }}">
+
+        <input type="submit" value="Visualizza Resoconto">
+    </form>
+
 {% endblock %}
+
+
+
+
 
