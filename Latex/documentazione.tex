@@ -384,4 +384,61 @@ In futuro, sarebbe utile integrare:
     \item Test di carico e prestazioni con \texttt{Locust} o \texttt{JMeter}, per verificare il comportamento del sistema sotto stress.
 \end{itemize}
 
+% ------------------------- BASE DI DATI -------------------------
+\section{Struttura della base di dati}
+
+La base di dati progettata per la gestione della casa di cura si basa su un modello entità-relazione (E-R) ben strutturato, 
+che include le entità principali coinvolte nel processo di erogazione delle prestazioni sanitarie, nonché le relazioni tra esse. Il modello è organizzato secondo una gerarchia centrata sull’entità \textbf{Utente}, dalla quale derivano entità specializzate come \textbf{Medico}, \textbf{Paziente}, \textbf{Infermieri} e \textbf{Segreteria}.
+
+\subsection*{Entità}
+
+\begin{itemize}
+    \item \textbf{Utente}: rappresenta un’entità generica dalla quale derivano tutti i soggetti che interagiscono con il sistema.
+    
+    \item \textbf{Medico}: entità specializzata che include attributi come \texttt{IDMedico}, \texttt{Nome}, \texttt{Cognome}, \texttt{Specializzazione}, e \texttt{Reparto}.
+    
+    \item \textbf{Paziente}: possiede attributi specifici come \texttt{IDPaziente}, \texttt{Codice Fiscale}, \texttt{Nome}, \texttt{Cognome}, \texttt{Email}, e \texttt{Telefono}.
+    
+    \item \textbf{Infermieri}: include \texttt{IDInfermieri}, \texttt{Nome}, \texttt{Cognome}, \texttt{Reparto}, \texttt{Email}, \texttt{Telefono} e \texttt{Qualifica}.
+    
+    \item \textbf{Segreteria}: definita solo da \texttt{IDSegreteria}.
+    
+    \item \textbf{Prenotazione}: associata alla registrazione delle richieste dei pazienti. Contiene \texttt{IDPrenotazione}, \texttt{CodiceSanitario}, \texttt{Data}, \texttt{Ora}, \texttt{Esame}, \texttt{Tipo}.
+    
+    \item \textbf{Visita}: include informazioni su \texttt{IDVisita}, \texttt{Data}, \texttt{Ora}, \texttt{Esito} e \texttt{Tipo}.
+    
+    \item \textbf{Prestazione}: registra l’attività sanitaria eseguita, con attributi \texttt{IDPrestazione}, \texttt{Descrizione}, \texttt{Esito}, \texttt{Data}, \texttt{Ora}, \texttt{Tipo}, \texttt{Note}.
+    
+    \item \textbf{Ambulatorio}: rappresenta la struttura fisica in cui avviene una prestazione o una visita. Include \texttt{IDAmbulatorio} e \texttt{Tipo}.
+\end{itemize}
+
+\subsection*{Relazioni}
+
+Le relazioni del modello E-R sono le seguenti:
+
+\begin{itemize}
+    \item \textbf{Specializzato}: associa un \textit{Utente} con un \textit{Medico}.
+    
+    \item \textbf{Convocato}: collega il \textit{Medico} alla \textit{Prenotazione} del paziente.
+    
+    \item \textbf{Visita Programmata}: collega una \textit{Prenotazione} a una \textit{Visita} programmata.
+    
+    \item \textbf{Tenuta Da}: collega una \textit{Visita} al \textit{Medico} che l’ha tenuta.
+    
+    \item \textbf{Trattato}: associa un \textit{Paziente} a una \textit{Prestazione}.
+    
+    \item \textbf{Richiesta}: collega una \textit{Prestazione} a una \textit{Prenotazione}.
+    
+    \item \textbf{Gestita Da}: lega una \textit{Prestazione} a un \textit{Infermieri}.
+    
+    \item \textbf{Eseguita In}: collega una \textit{Prestazione} a un \textit{Ambulatorio}.
+    
+    \item \textbf{Effettuata In}: collega una \textit{Visita} a un \textit{Ambulatorio}.
+\end{itemize}
+
+\subsection*{Gerarchia}
+
+La gerarchia principale del modello riguarda l’entità \texttt{Utente}, da cui derivano \texttt{Medico}, \texttt{Paziente}, \texttt{Infermieri} e \texttt{Segreteria}.
+ Questa astrazione consente di modellare in modo efficiente attributi e comportamenti comuni a tutte le tipologie di utenti, evitando ridondanze.
+
 \end{document}
