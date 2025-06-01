@@ -10,7 +10,7 @@ class UtenteBase(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)  # Collegamento all'account Django
     cognome = models.CharField(max_length=50)
     nome = models.CharField(max_length=50)
-    codice_fiscale = models.CharField(max_length=16, unique=True)
+    codice_fiscale = models.CharField(max_length=16, blank=True, null=True)
 
     class Meta:
         abstract = True  # Questo rende la classe astratta
@@ -20,12 +20,13 @@ class UtenteBase(models.Model):
 class Medico(UtenteBase):
     specialita = models.CharField(max_length=100, blank=True, null=True)
     assenze_pianificate = models.JSONField(blank=True, null=True)
-    medici_sostituibili = models.ManyToManyField("self", blank=True, related_name="sostituiti_da")
-    def disponibilita(self, data):
-     if self.assenze_pianificate:
-        return str(data) not in self.assenze_pianificate
-        return True
+    medici_sostituibili = models.ManyToManyField("self", blank=True)
+    pazienti_in_cura = models.ForeignKey("Medico", on_delete=models.SET_NULL, null=True, related_name="medico_pazienti_in_cura")
 
+    def disponibilita(self, data):
+        if data in self.assenze_pianificate:
+            return False
+        return True
 
     def __str__(self):
         return f"Dr./Dr.ssa {self.nome} {self.cognome}"
@@ -45,11 +46,10 @@ class Infermiere(UtenteBase):
 
 # MODELLO PAZIENTE
 class Paziente(UtenteBase):
-    codice_sanitario = models.CharField(max_length=20, unique=True)
     data_nascita = models.DateField()
     luogo_nascita = models.CharField(max_length=100)
     email = models.EmailField(blank=True, null=True)
-    medico_curante = models.ForeignKey("Medico", on_delete=models.SET_NULL, null=True, related_name="pazienti")
+    medico_curante = models.ForeignKey("Medico", on_delete=models.SET_NULL, null=True, related_name="medico_pazienti_curante")
     referente_adulto = models.ForeignKey("self", on_delete=models.SET_NULL, blank=True, null=True)  # Per i minori di 14 anni
 
     def is_minor(self):
@@ -58,7 +58,7 @@ class Paziente(UtenteBase):
         return (today.year - self.data_nascita.year - ((today.month, today.day) < (self.data_nascita.month, self.data_nascita.day))) < 14
 
     def __str__(self):
-        return f"{self.nome} {self.cognome} - {self.codice_sanitario}"
+        return f"{self.nome} {self.cognome} - {self.codice_fiscale}"
 
 
 # MODELLO SEGRETERIA
@@ -128,8 +128,8 @@ class TipoPrestazione(models.TextChoices):
 
 class Prestazione(models.Model):
     tipo = models.CharField(max_length=20, choices=TipoPrestazione.choices)
-    paziente = models.ForeignKey("Paziente", on_delete=models.CASCADE)
-    infermiere = models.ForeignKey("Infermiere", on_delete=models.SET_NULL, null=True)
+    paziente = models.ForeignKey("Paziente", on_delete=models.CASCADE, related_name="prestazioni")
+    infermiere = models.ForeignKey("Infermiere", on_delete=models.SET_NULL, null=True, related_name="prestazioni_infermiere")
     data = models.DateTimeField()
     esito = models.TextField(blank=True, null=True)
     note = models.TextField(blank=True, null=True)
