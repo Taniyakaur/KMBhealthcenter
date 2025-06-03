@@ -1,0 +1,88 @@
+@startuml
+' Specifica che si tratta di un diagramma E-R
+!define table(x) class x << (T,#FFAAAA) >>
+!define entity(x) class x << (E,#AAFFAA) >>
+!define relationship(x) class x << (R,#AAAFFF) >>
+
+skinparam classAttributeIconSize 0
+
+' Entità
+entity(Utente) {
+  Username
+  Nome
+  Cognome
+  CF
+
+}
+
+entity(Medico) {
+  +IDMedico
+  Specializzazione
+  Reparto
+}
+entity(Paziente) {
+  +IDPaziente
+  CodiceFiscale
+  Email
+  Telefono
+}
+entity(Infermiere) {
+  +IDInfermieri
+  Reparto
+  Email
+  Telefono
+  Qualifica
+}
+entity(Segreteria) {
+  +IDSegreteria
+}
+
+entity(Prenotazione) {
+  +IDPrenotazione
+  CodiceSanitario
+  Data
+  Ora
+  Esame
+  Tipo
+}
+entity(Visita) {
+  +IDVisita
+  Data
+  Ora
+  Esito
+  Tipo
+}
+entity(Prestazione) {
+  +IDPrestazione
+  Descrizione
+  Esito
+  Data
+  Ora
+  Tipo
+  Note
+}
+entity(Ambulatorio) {
+  +IDAmbulatorio
+  Tipo
+}
+
+' Gerarchie
+Utente --|> Medico
+Utente --|> Paziente
+Utente --|> Infermiere
+Utente --|> Segreteria
+
+' Relazioni
+Medico "N,N" -- "N,N" Medico : Sostituzione
+Paziente "1,N" -- "0,N" Medico : Convenzione
+Paziente "0,N" -- "1,1" Visita : Visitato
+Paziente "0,N" -- "1,1" Prenotazione: Richiesta
+Paziente "0,N" -- "1,1" Prestazione : Trattato
+Prenotazione "1,1" -- "1,1" Visita : Visita Prenotata
+Prenotazione "1,1" -- "1,1" Prestazione : Prestazione Prenotata
+Visita "1,1" -- "0,N" Medico : Tenuta Da
+Visita "1,1" -- "1,1" Ambulatorio : Effettuata In
+Prestazione "1,1" -- "0,N" Infermiere : Gestita Da
+Prestazione "1,1" -- "1,1" Ambulatorio : Eseguita In
+
+@enduml
