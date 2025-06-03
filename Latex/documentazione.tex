@@ -410,6 +410,8 @@ che include le entità principali coinvolte nel processo di erogazione delle pre
     \item \textbf{Prestazione}: registra l’attività sanitaria eseguita, con attributi \texttt{IDPrestazione}, \texttt{Descrizione}, \texttt{Esito}, \texttt{Data}, \texttt{Ora}, \texttt{Tipo}, \texttt{Note}.
     
     \item \textbf{Ambulatorio}: rappresenta la struttura fisica in cui avviene una prestazione o una visita. Include \texttt{IDAmbulatorio} e \texttt{Tipo}.
+    Lo schema ER è:
+    \includegraphics[width=0.7\textwidth]{diagrammi_uml/diagramma_attivita_segreteria.png}
 \end{itemize}
 
 \subsection*{Relazioni}
@@ -435,6 +437,8 @@ Le relazioni del modello E-R sono le seguenti:
     
     \item \textbf{Effettuata In}: collega una \textit{Visita} a un \textit{Ambulatorio}.
 \end{itemize}
+Lo schema implementato della Basi di Dati, completo è il seguente:
+\includegraphics[width=0.7\textwidth]{diagrammi_uml/schemaER.png}
 
 \subsection*{Gerarchia}
 
