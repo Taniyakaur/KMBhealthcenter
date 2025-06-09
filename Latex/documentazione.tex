@@ -437,6 +437,41 @@ Le relazioni del modello E-R sono le seguenti:
     
     \item \textbf{Effettuata In}: collega una \textit{Visita} a un \textit{Ambulatorio}.
 \end{itemize}
+
+\section*{Modello Relazionale}
+
+\begin{itemize}
+    \item \textbf{Utente} (\underline{CF}, username, nome, cognome, password)
+    \item \textbf{Paziente} (\underline{CF}, username, nome, cognome, email, telefono, password, dataDiNascita, luogoDiNascita, 
+    responsabile*, emailResponsabile*, medicoConvenzionato)
+    \item \textbf{Medico} (\underline{CF}, username, nome, cognome, specializzazione, reparto, password, assenzePianificate)
+    \item \textbf{Infermiere} (\underline{CF}, username, nome, cognome, password, giorniDiServizio)
+    \item \textbf{Segreteria} (\underline{CF}, username, nome, cognome, password)
+    \item \textbf{Prenotazione} (\underline{IDPrenotazione}, data, ora, richiedente, regimeVisita*, tipo)
+    \item \textbf{Visita} (\underline{IDVisita}, IDPrenotazione, data, ora, tipo, regimeVisita, urgenza, esito, medico, paziente, ambulatorio)
+    \item \textbf{Prestazione} (\underline{IDPrestazione}, IDPrenotazione, data, ora, tipoPrestazione, fase, infermiere, paziente, ambulatorio, note)
+    \item \textbf{Ambulatorio} (\underline{IDAmbulatorio}, tipo)
+    \item \textbf{Sostituzione} (\underline{medicoSostituto, medicoSostituito})
+\end{itemize}
+
+\section*{Vincoli di Integrità Referenziale}
+
+\begin{itemize}[leftmargin=2.5em]
+    \item \texttt{Prenotazione.richiedente} $\rightarrow$ \texttt{Paziente.username}
+    \item \texttt{Visita.medico} $\rightarrow$ \texttt{Medico.username}
+    \item \texttt{Visita.paziente} $\rightarrow$ \texttt{Paziente.username}
+    \item \texttt{Visita.ambulatorio} $\rightarrow$ \texttt{Ambulatorio.IDAmbulatorio}
+    \item \texttt{Visita.IDPrenotazione} $\rightarrow$ \texttt{Prenotazione.IDPrenotazione}
+    \item \texttt{Prestazione.infermiere} $\rightarrow$ \texttt{Infermiere.username}
+    \item \texttt{Prestazione.paziente} $\rightarrow$ \texttt{Paziente.username}
+    \item \texttt{Prestazione.ambulatorio} $\rightarrow$ \texttt{Ambulatorio.IDAmbulatorio}
+    \item \texttt{Prestazione.IDPrenotazione} $\rightarrow$ \texttt{Prenotazione.IDPrenotazione}
+    \item \texttt{Sostituzione.medicoSostituito} $\rightarrow$ \texttt{Medico.username}
+    \item \texttt{Sostituzione.medicoSostituto} $\rightarrow$ \texttt{Medico.username}
+    \item \texttt{Paziente.responsabile} $\rightarrow$ \texttt{Paziente.username}
+    \item \texttt{Paziente.emailResponsabile} $\rightarrow$ \texttt{Paziente.email}
+\end{itemize}
+
 Lo schema implementato della Basi di Dati, completo è il seguente:
 \includegraphics[width=0.7\textwidth]{diagrammi_uml/schemaER.png}
 
