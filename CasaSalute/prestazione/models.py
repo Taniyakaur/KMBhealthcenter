@@ -1,20 +1,17 @@
 from django.db import models
-from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
+
+class TipoPrestazione(models.TextChoices):
+    PRELIEVO = 'prelievo', _('Prelievo')
+    MEDICAZIONE = 'medicazione', _('Medicazione')
 
 class Prestazione(models.Model):
-    TIPO_PRESTAZIONE_CHOICES = [
-        ('prelievo', 'Prelievo'),
-        ('medicazione', 'Medicazione'),
-    ]
-
-    paziente = models.ForeignKey('users.Paziente', on_delete=models.CASCADE)
-    infermiere = models.ForeignKey('users.Infermiere', on_delete=models.CASCADE)
-    tipo_prestazione = models.CharField(max_length=20, choices=TIPO_PRESTAZIONE_CHOICES)
-    data_prenotazione = models.DateField(default=timezone.now)
-    ora_prenotazione = models.TimeField()
-    data_prestazione = models.DateField(null=True, blank=True, default=timezone.now)
-    esito = models.TextField(null=True, blank=True)
-    note = models.TextField(null=True, blank=True)
+    tipo = models.CharField(max_length=20, choices=TipoPrestazione.choices)
+    paziente = models.ForeignKey('users.Paziente', on_delete=models.CASCADE, related_name="prestazioni")  # relazione con il modello in app users
+    infermiere = models.ForeignKey('users.Infermiere', on_delete=models.SET_NULL, null=True, related_name="prestazioni_infermiere") # relazione con il modello in app users
+    data = models.DateTimeField()
+    esito = models.TextField(blank=True, null=True)
+    note = models.TextField(blank=True, null=True)
 
     def __str__(self):
-        return f"{self.tipo_prestazione} di {self.paziente} con {self.infermiere} il {self.data_prenotazione} alle {self.ora_prenotazione}"
+        return f"{self.get_tipo_display()} per {self.paziente} il {self.data.strftime('%Y-%m-%d %H:%M')}"
