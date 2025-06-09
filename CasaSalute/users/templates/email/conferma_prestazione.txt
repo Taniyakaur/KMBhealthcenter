@@ -1,0 +1,22 @@
+Gentile {{ nome }},
+
+Ti confermiamo la seguente {{ tipo }}:
+
+- Data: {{ data }}
+{% if note %}
+- Note: {{ note }}
+{% endif %}
+{% if esito %}
+- Esito: {{ esito }}
+{% endif %}
+
+{% if minori %}
+Hai ricevuto questa email in quanto tutore di uno o più minori:
+{% for minore in minori %}
+- {{ minore.nome }} {{ minore.cognome }}
+{% endfor %}
+{% endif %}
+
+Grazie per aver scelto la nostra struttura.
+
+Casa della Salute
