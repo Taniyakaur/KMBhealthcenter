@@ -7,10 +7,10 @@ from datetime import time
 
 # MODELLO BASE GENERICO
 class UtenteBase(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)  # collegamento all'account Django
+    username = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)  # collegamento all'account Django
     cognome = models.CharField(max_length=50)
     nome = models.CharField(max_length=50)
-    codice_fiscale = models.CharField(max_length=16, blank=True, null=True)
+    codice_fiscale = models.CharField(max_length=16)
 
     class Meta:
         abstract = True  # questo rende la classe astratta
@@ -21,7 +21,6 @@ class Medico(UtenteBase):
     specialita = models.CharField(max_length=100, blank=True, null=True)
     assenze_pianificate = models.JSONField(blank=True, null=True)
     medici_sostituibili = models.ManyToManyField("self", blank=True)
-    pazienti_in_cura = models.ForeignKey("Medico", on_delete=models.SET_NULL, null=True, related_name="medico_pazienti_in_cura")
 
     def disponibilita(self, data):
         if self.assenze_pianificate and data in self.assenze_pianificate:
@@ -35,10 +34,6 @@ class Medico(UtenteBase):
 # MODELLO INFERMIERE
 class Infermiere(UtenteBase):
    giorni_servizio = models.JSONField(blank=True, null=True) # Es. "Lunedì, Mercoledì, Venerdì"
-
-   def disponibilita(self):
-        # Logica per verificare la disponibilità
-        pass
 
    def __str__(self):
         return f"Infermiere {self.nome} {self.cognome}"
@@ -67,16 +62,3 @@ class Segreteria(UtenteBase):
 
     def __str__(self):
         return f"Segretario/a {self.nome} {self.cognome}"
-
-
-# MODELLO AMBULATORIO
-class Ambulatorio(models.Model):
-    TIPO = [
-        ('adulti', 'Per adulti'),
-        ('pediatrico', 'Pediatrico')
-    ]
-    nome = models.CharField(max_length=50)
-    tipo = models.CharField(max_length=20, choices=TIPO)
-
-    def __str__(self):
-        return f"{self.nome} ({self.tipo})"
