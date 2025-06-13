@@ -385,91 +385,103 @@ In futuro, sarebbe utile integrare:
 \end{itemize}
 
 % ------------------------- BASE DI DATI -------------------------
-\section{Struttura della base di dati}
+\\section{Struttura della base di dati}
 
 La base di dati progettata per la gestione della casa di cura si basa su un modello entità-relazione (E-R) ben strutturato, 
-che include le entità principali coinvolte nel processo di erogazione delle prestazioni sanitarie, nonché le relazioni tra esse. Il modello è organizzato secondo una gerarchia centrata sull’entità \textbf{Utente}, dalla quale derivano entità specializzate come \textbf{Medico}, \textbf{Paziente}, \textbf{Infermieri} e \textbf{Segreteria}.
+che include le entità principali coinvolte nel processo di erogazione delle prestazioni sanitarie, nonché le relazioni tra esse. 
+Il modello è organizzato secondo una gerarchia centrata sull’entità \textbf{Utente}, dalla quale derivano entità specializzate come 
+\textbf{Medico}, \textbf{Paziente}, \textbf{Infermiere} e \textbf{Segreteria}.
 
 \subsection*{Entità}
 
 \begin{itemize}
-    \item \textbf{Utente}: rappresenta un’entità generica dalla quale derivano tutti i soggetti che interagiscono con il sistema.
+    \item \textbf{Utente}: rappresenta un’entità generica dalla quale derivano tutti i soggetti che interagiscono con il sistema. 
+    Contiene attributi comuni come \texttt{username}, \texttt{nome}, \texttt{cognome}, \texttt{codice fiscale}.
     
-    \item \textbf{Medico}: entità specializzata che include attributi come \texttt{IDMedico}, \texttt{Nome}, \texttt{Cognome}, \texttt{Specializzazione}, e \texttt{Reparto}.
+    \item \textbf{Medico}: entità specializzata che può essere soggetta a \textit{sostituzioni} o a \textit{assenze pianificate}, 
+    ed è associata a uno o più \textit{pazienti} tramite una \textit{convenzione}.
     
-    \item \textbf{Paziente}: possiede attributi specifici come \texttt{IDPaziente}, \texttt{Codice Fiscale}, \texttt{Nome}, \texttt{Cognome}, \texttt{Email}, e \texttt{Telefono}.
+    \item \textbf{Paziente}: possiede attributi come \texttt{data di nascita}, \texttt{luogo di nascita}, \texttt{email}, \texttt{referente adulto}
+     e \texttt{email del referente}. Può effettuare una o più \textit{prenotazioni}.
     
-    \item \textbf{Infermieri}: include \texttt{IDInfermieri}, \texttt{Nome}, \texttt{Cognome}, \texttt{Reparto}, \texttt{Email}, \texttt{Telefono} e \texttt{Qualifica}.
+    \item \textbf{Infermiere}: è associato alle \textit{prestazioni} che subisce il paziente, e ha come attributo \texttt{giorni di servizio}.
     
-    \item \textbf{Segreteria}: definita solo da \texttt{IDSegreteria}.
+    \item \textbf{Segreteria}: gestisce le \textit{prestazioni} e possiede l’attributo \texttt{ruolo}.
     
-    \item \textbf{Prenotazione}: associata alla registrazione delle richieste dei pazienti. Contiene \texttt{IDPrenotazione}, \texttt{CodiceSanitario}, \texttt{Data}, \texttt{Ora}, \texttt{Esame}, \texttt{Tipo}.
+    \item \textbf{Prenotazione}: contiene le informazioni relative a \texttt{id}, \texttt{data}, \texttt{ora}, \texttt{tipo}, 
+    e può essere collegata a una \textit{visita} o a una \textit{prestazione}.
     
-    \item \textbf{Visita}: include informazioni su \texttt{IDVisita}, \texttt{Data}, \texttt{Ora}, \texttt{Esito} e \texttt{Tipo}.
+    \item \textbf{Visita}: comprende gli attributi \texttt{id}, \texttt{esito}, ed è tenuta in un \textit{ambulatorio} da un \textit{medico}.
     
-    \item \textbf{Prestazione}: registra l’attività sanitaria eseguita, con attributi \texttt{IDPrestazione}, \texttt{Descrizione}, \texttt{Esito}, \texttt{Data}, \texttt{Ora}, \texttt{Tipo}, \texttt{Note}.
+    \item \textbf{Prestazione}: registra l’attività sanitaria eseguita, con attributi \texttt{id}, \texttt{data}, \texttt{esito}, 
+    \texttt{note}.
     
-    \item \textbf{Ambulatorio}: rappresenta la struttura fisica in cui avviene una prestazione o una visita. Include \texttt{IDAmbulatorio} e \texttt{Tipo}.
-    Lo schema ER è:
-    \includegraphics[width=0.7\textwidth]{diagrammi_uml/diagramma_attivita_segreteria.png}
+    \item \textbf{Ambulatorio}: rappresenta la struttura fisica in cui avviene una prestazione o una visita. 
+    Include \texttt{id} e \texttt{tipo}.
 \end{itemize}
 
-\subsection*{Relazioni}
+Lo schema E-R è il seguente:
 
-Le relazioni del modello E-R sono le seguenti:
-
-\begin{itemize}
-    \item \textbf{Specializzato}: associa un \textit{Utente} con un \textit{Medico}.
-    
-    \item \textbf{Convocato}: collega il \textit{Medico} alla \textit{Prenotazione} del paziente.
-    
-    \item \textbf{Visita Programmata}: collega una \textit{Prenotazione} a una \textit{Visita} programmata.
-    
-    \item \textbf{Tenuta Da}: collega una \textit{Visita} al \textit{Medico} che l’ha tenuta.
-    
-    \item \textbf{Trattato}: associa un \textit{Paziente} a una \textit{Prestazione}.
-    
-    \item \textbf{Richiesta}: collega una \textit{Prestazione} a una \textit{Prenotazione}.
-    
-    \item \textbf{Gestita Da}: lega una \textit{Prestazione} a un \textit{Infermieri}.
-    
-    \item \textbf{Eseguita In}: collega una \textit{Prestazione} a un \textit{Ambulatorio}.
-    
-    \item \textbf{Effettuata In}: collega una \textit{Visita} a un \textit{Ambulatorio}.
-\end{itemize}
+\begin{center}
+\includegraphics[width=0.9\textwidth]{diagrammi_uml/ER.png}
+\end{center}
 
 \section*{Modello Relazionale}
 
 \begin{itemize}
-    \item \textbf{Utente} (\underline{CF}, username, nome, cognome, password)
-    \item \textbf{Paziente} (\underline{CF}, username, nome, cognome, email, telefono, password, dataDiNascita, luogoDiNascita, 
-    responsabile*, emailResponsabile*, medicoConvenzionato)
-    \item \textbf{Medico} (\underline{CF}, username, nome, cognome, specializzazione, reparto, password, assenzePianificate)
-    \item \textbf{Infermiere} (\underline{CF}, username, nome, cognome, password, giorniDiServizio)
-    \item \textbf{Segreteria} (\underline{CF}, username, nome, cognome, password)
-    \item \textbf{Prenotazione} (\underline{IDPrenotazione}, data, ora, richiedente, regimeVisita*, tipo)
-    \item \textbf{Visita} (\underline{IDVisita}, IDPrenotazione, data, ora, tipo, regimeVisita, urgenza, esito, medico, paziente, ambulatorio)
-    \item \textbf{Prestazione} (\underline{IDPrestazione}, IDPrenotazione, data, ora, tipoPrestazione, esito, infermiere, paziente, ambulatorio, note)
-    \item \textbf{Ambulatorio} (\underline{IDAmbulatorio}, tipo)
-    \item \textbf{Sostituzione} (\underline{medicoSostituto, medicoSostituito})
+    \item \textbf{Utente} (\underline{username}, nome, cognome, codiceFiscale)
+    \item \textbf{Paziente} (\underline{username}, dataNascita, luogoNascita, email, referenteAdulto*, emailReferente*, medicoConvenzionato)
+    \item \textbf{Medico} (\underline{username}, specialità, assenzePianificate)
+    \item \textbf{Infermiere} (\underline{username}, giorniServizio)
+    \item \textbf{Segreteria} (\underline{username}, ruolo)
+    \item \textbf{Prenotazione} (\underline{id}, data, ora, tipo, richiedente)
+    \item \textbf{Visita} (\underline{id}, esito, idPrenotazione, medico, paziente, ambulatorio)
+    \item \textbf{Prestazione} (\underline{id}, data, esito, note, idPrenotazione, infermiere, paziente, ambulatorio)
+    \item \textbf{Ambulatorio} (\underline{id}, tipo)
+    \item \textbf{Sostituzione} (\underline{medicoSostituto}, medicoSostituito)
 \end{itemize}
+
+\newpage
+% ------------------------- INTEGRITÀ REFERENZIALE -------------------------
 
 \section*{Vincoli di Integrità Referenziale}
 
 \begin{itemize}[leftmargin=2.5em]
+    \item \texttt{Paziente.medicoConvenzionato} $\rightarrow$ \texttt{Medico.username}
+    \item \texttt{Paziente.referenteAdulto} $\rightarrow$ \texttt{Paziente.username}
+    \item \texttt{Paziente.emailReferente} $\rightarrow$ \texttt{Paziente.email}
     \item \texttt{Prenotazione.richiedente} $\rightarrow$ \texttt{Paziente.username}
+    \item \texttt{Visita.idPrenotazione} $\rightarrow$ \texttt{Prenotazione.id}
     \item \texttt{Visita.medico} $\rightarrow$ \texttt{Medico.username}
     \item \texttt{Visita.paziente} $\rightarrow$ \texttt{Paziente.username}
-    \item \texttt{Visita.ambulatorio} $\rightarrow$ \texttt{Ambulatorio.IDAmbulatorio}
-    \item \texttt{Visita.IDPrenotazione} $\rightarrow$ \texttt{Prenotazione.IDPrenotazione}
+    \item \texttt{Visita.ambulatorio} $\rightarrow$ \texttt{Ambulatorio.id}
+    \item \texttt{Prestazione.idPrenotazione} $\rightarrow$ \texttt{Prenotazione.id}
     \item \texttt{Prestazione.infermiere} $\rightarrow$ \texttt{Infermiere.username}
     \item \texttt{Prestazione.paziente} $\rightarrow$ \texttt{Paziente.username}
-    \item \texttt{Prestazione.ambulatorio} $\rightarrow$ \texttt{Ambulatorio.IDAmbulatorio}
-    \item \texttt{Prestazione.IDPrenotazione} $\rightarrow$ \texttt{Prenotazione.IDPrenotazione}
-    \item \texttt{Sostituzione.medicoSostituito} $\rightarrow$ \texttt{Medico.username}
+    \item \texttt{Prestazione.ambulatorio} $\rightarrow$ \texttt{Ambulatorio.id}
     \item \texttt{Sostituzione.medicoSostituto} $\rightarrow$ \texttt{Medico.username}
-    \item \texttt{Paziente.responsabile} $\rightarrow$ \texttt{Paziente.username}
-    \item \texttt{Paziente.emailResponsabile} $\rightarrow$ \texttt{Paziente.email}
+    \item \texttt{Sostituzione.medicoSostituito} $\rightarrow$ \texttt{Medico.username}
+\end{itemize}
+\section*{Cardinalità delle Relazioni}
+
+Le cardinalità indicano il numero minimo e massimo di occorrenze di una entità che possono partecipare ad una relazione. Sono fondamentali per definire i vincoli logici tra i dati nel modello E-R. Di seguito una sintesi delle cardinalità più rilevanti nel nostro schema:
+
+\begin{itemize}
+    \item \textbf{Paziente - Medico:} Ogni paziente è associato ad \textbf{uno e un solo} medico (1:1 obbligatoria dal lato paziente), mentre un medico può seguire \textbf{più pazienti} (1:N).
+    
+    \item \textbf{Paziente - ReferenteAdulto:} Un paziente minorenne può avere un referente adulto. La relazione è \textbf{opzionale} per entrambi, ma se presente, è \textbf{1:1} tra due pazienti.
+    
+    \item \textbf{Prenotazione - Paziente:} Ogni prenotazione è fatta da \textbf{un paziente}, ma un paziente può fare \textbf{più prenotazioni} (1:N).
+    
+    \item \textbf{Visita - Prenotazione:} Una visita è sempre associata ad una sola prenotazione. La relazione è \textbf{1:1 obbligatoria}.
+    
+    \item \textbf{Prestazione - Prenotazione:} Come per la visita, anche la prestazione è legata ad una sola prenotazione: \textbf{1:1 obbligatoria}.
+    
+    \item \textbf{Visita - Medico:} Ogni visita è svolta da un solo medico, ma un medico può effettuare più visite: \textbf{1:N}.
+    
+    \item \textbf{Prestazione - Infermiere:} Simile alla visita: ogni prestazione è svolta da un solo infermiere, che può eseguire più prestazioni: \textbf{1:N}.
+    
+    \item \textbf{Sostituzione:} Un medico può sostituirne più altri e può essere sostituito da più colleghi: relazione \textbf{molti-a-molti (N:M)}.
 \end{itemize}
 
 \section*{Tabella Riassuntiva delle Entità}
