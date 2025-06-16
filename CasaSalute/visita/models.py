@@ -31,6 +31,8 @@ class PrenotazioneVisita(models.Model):
 
     class Meta:
         ordering = ['data', 'ora']  # Ordinamento per data e orario
+        verbose_name = "Prenotazione visita"
+        verbose_name_plural = "Prenotazioni visite"
 
 # MODELLO VISITA
 class Visita(models.Model):
@@ -49,3 +51,7 @@ class Visita(models.Model):
 
     def __str__(self):
         return f"Visita di {self.paziente} con {self.medico}"
+
+    class Meta:
+        verbose_name = "visita"
+        verbose_name_plural = "visite"

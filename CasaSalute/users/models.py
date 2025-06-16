@@ -22,13 +22,17 @@ class Medico(UtenteBase):
     assenze_pianificate = models.JSONField(blank=True, null=True)
     medici_sostituibili = models.ManyToManyField("self", blank=True)
 
-    def disponibilita(self, data):
-        if self.assenze_pianificate and data in self.assenze_pianificate:
-            return False
-        return True
+# def disponibilita(self, data):
+#     if self.assenze_pianificate and data in self.assenze_pianificate:
+#         return False
+#     return True
+#
+# def __str__(self):
+#     return f"Dr./Dr.ssa {self.nome} {self.cognome}"
 
-    def __str__(self):
-        return f"Dr./Dr.ssa {self.nome} {self.cognome}"
+    class Meta:
+        verbose_name = "medico"
+        verbose_name_plural = "medici"
 
 
 # MODELLO INFERMIERE
@@ -37,6 +41,10 @@ class Infermiere(UtenteBase):
 
    def __str__(self):
         return f"Infermiere {self.nome} {self.cognome}"
+
+   class Meta:
+        verbose_name = "infermiere"
+        verbose_name_plural = "infermieri"
 
 
 # MODELLO PAZIENTE
@@ -55,6 +63,10 @@ class Paziente(UtenteBase):
     def __str__(self):
         return f"{self.nome} {self.cognome} - {self.codice_fiscale}"
 
+    class Meta:
+        verbose_name = "paziente"
+        verbose_name_plural = "pazienti"
+
 
 # MODELLO SEGRETERIA
 class Segreteria(UtenteBase):
@@ -62,3 +74,7 @@ class Segreteria(UtenteBase):
 
     def __str__(self):
         return f"Segretario/a {self.nome} {self.cognome}"
+
+    class Meta:
+        verbose_name = "segreteria"
+        verbose_name_plural = "segreterie"

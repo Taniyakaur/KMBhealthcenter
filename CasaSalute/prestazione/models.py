@@ -14,6 +14,10 @@ class PrenotazionePrestazione(models.Model):
     orario = models.TimeField()
     def __str__(self):
         return f"{self.get_tipo_display()} per {self.paziente} il {self.data} alle {self.orario}"
+    class Meta:
+        verbose_name = "prenotazione prestazione"
+        verbose_name_plural = "prenotazioni prestazioni"
+        ordering = ['data', 'orario']
 
 class Prestazione(models.Model):
     id = models.BigAutoField(primary_key=True)  
@@ -28,5 +32,10 @@ class Prestazione(models.Model):
 
     def __str__(self):
         return f"{self.get_tipo_display()} per {self.paziente} il {self.data.strftime('%Y-%m-%d %H:%M')}"
+
+    class Meta:
+        verbose_name = "prestazione"
+        verbose_name_plural = "prestazioni"
+        ordering = ['data']  # Ordinamento per data della prestazione
 
 
