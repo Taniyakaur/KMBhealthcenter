@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.1.2)  28 MAY 2025 10:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.1.2)  16 JUN 2025 15:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -193,7 +193,8 @@ Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count285
 \l__pdf_internal_box=\box52
-) (documentazione.aux)
+)
+No file documentazione.aux.
 \openout1 = `documentazione.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
@@ -214,7 +215,6 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
-
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -304,32 +304,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [3]
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:96: Missing number, treated as zero.
-<to be read again> 
-                   D
-l.96 [Diagramma dei casi d'uso da inserire qui]
-                                               
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
-
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:96: Illegal unit of measure (pt inserted).
-<to be read again> 
-                   D
-l.96 [Diagramma dei casi d'uso da inserire qui]
-                                               
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 93--97
-
- []
-
+<diagrammi_uml/use_case_paziente.png, id=25, 408.52625pt x 597.23125pt>
+File: diagrammi_uml/use_case_paziente.png Graphic file (type png)
+<use diagrammi_uml/use_case_paziente.png>
+Package pdftex.def Info: diagrammi_uml/use_case_paziente.png  used on input line 94.
+(pdftex.def)             Requested size: 318.66948pt x 465.89317pt.
 
 
 
@@ -340,51 +319,97 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [4]
-
-LaTeX Warning: File `Diagramma attivita' medico.png' not found on input line 116.
-
-
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:116: Package pdftex.def Error: File `Diagramma attivita' medico.png' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.116 ...extwidth]{Diagramma attivita' medico.png}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+<diagrammi_uml/paziente.png, id=32, 240.9pt x 366.36874pt>
+File: diagrammi_uml/paziente.png Graphic file (type png)
+<use diagrammi_uml/paziente.png>
+Package pdftex.def Info: diagrammi_uml/paziente.png  used on input line 96.
+(pdftex.def)             Requested size: 318.66948pt x 484.68716pt.
 
 
-Overfull \hbox (35.89662pt too wide) in paragraph at lines 121--125
-\OT1/cmr/m/n/12 Il di-a-gramma delle at-tivit^^Ra della seg-rete-ria de-scrive il pro-cesso com-pleto che va dall'autenticazione
- []
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:129: Missing number, treated as zero.
-<to be read again> 
-                   D
-l.129 [Diagramma da inserire qui]
-                                 
-A number should have been here; I inserted `0'.
-(If you can't figure out why I needed to see a number,
-look up `weird error' in the index to The TeXbook.)
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:129: Illegal unit of measure (pt inserted).
-<to be read again> 
-                   D
-l.129 [Diagramma da inserire qui]
-                                 
-Dimensions can be in units of em, ex, in, pt, pc,
-cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
-I'll assume that you meant to say pt, for printer's points.
-To recover gracefully from this error, it's best to
-delete the erroneous units; e.g., type `2' to delete
-two letters. (See Chapter 27 of The TeXbook.)
+[5 <./diagrammi_uml/use_case_paziente.png (PNG copy)>]
+<diagrammi_uml/use_case_medico.png, id=37, 356.33125pt x 415.5525pt>
+File: diagrammi_uml/use_case_medico.png Graphic file (type png)
+<use diagrammi_uml/use_case_medico.png>
+Package pdftex.def Info: diagrammi_uml/use_case_medico.png  used on input line 107.
+(pdftex.def)             Requested size: 318.66948pt x 371.64769pt.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 127--130
 
- []
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[6 <./diagrammi_uml/paziente.png (PNG copy)>]
+<diagrammi_uml/mediico.png, id=43, 235.88126pt x 397.485pt>
+File: diagrammi_uml/mediico.png Graphic file (type png)
+<use diagrammi_uml/mediico.png>
+Package pdftex.def Info: diagrammi_uml/mediico.png  used on input line 109.
+(pdftex.def)             Requested size: 318.66948pt x 537.00009pt.
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[7 <./diagrammi_uml/use_case_medico.png (PNG copy)>]
+<diagrammi_uml/use_case_infermiere.png, id=49, 384.43625pt x 414.54875pt>
+File: diagrammi_uml/use_case_infermiere.png Graphic file (type png)
+<use diagrammi_uml/use_case_infermiere.png>
+Package pdftex.def Info: diagrammi_uml/use_case_infermiere.png  used on input line 119.
+(pdftex.def)             Requested size: 318.66948pt x 343.65157pt.
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[8 <./diagrammi_uml/mediico.png (PNG copy)>]
+<diagrammi_uml/infermiere.png, id=55, 264.99pt x 336.25626pt>
+File: diagrammi_uml/infermiere.png Graphic file (type png)
+<use diagrammi_uml/infermiere.png>
+Package pdftex.def Info: diagrammi_uml/infermiere.png  used on input line 121.
+(pdftex.def)             Requested size: 318.66948pt x 404.40338pt.
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[9 <./diagrammi_uml/use_case_infermiere.png (PNG copy)>]
+<diagrammi_uml/use_case_segreteria.png, id=60, 381.425pt x 877.2775pt>
+File: diagrammi_uml/use_case_segreteria.png Graphic file (type png)
+<use diagrammi_uml/use_case_segreteria.png>
+Package pdftex.def Info: diagrammi_uml/use_case_segreteria.png  used on input line 133.
+(pdftex.def)             Requested size: 318.66948pt x 732.97255pt.
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[10 <./diagrammi_uml/infermiere.png (PNG copy)>]
+Overfull \vbox (30.18947pt too high) has occurred while \output is active []
 
 
 
@@ -395,7 +420,18 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[5]
+[11 <./diagrammi_uml/use_case_segreteria.png (PNG copy)>]
+<diagrammi_uml/segreteria.png, id=70, 261.97874pt x 488.82625pt>
+File: diagrammi_uml/segreteria.png Graphic file (type png)
+<use diagrammi_uml/segreteria.png>
+Package pdftex.def Info: diagrammi_uml/segreteria.png  used on input line 135.
+(pdftex.def)             Requested size: 318.66948pt x 594.62177pt.
+<diagrammi_uml/use_case_utenti.png, id=71, 387.4475pt x 1141.26375pt>
+File: diagrammi_uml/use_case_utenti.png Graphic file (type png)
+<use diagrammi_uml/use_case_utenti.png>
+Package pdftex.def Info: diagrammi_uml/use_case_utenti.png  used on input line 142.
+(pdftex.def)             Requested size: 318.66948pt x 938.68088pt.
+
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -404,7 +440,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[6]
+[12 <./diagrammi_uml/segreteria.png (PNG copy)>]
+Overfull \vbox (235.8978pt too high) has occurred while \output is active []
+
+
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -413,13 +452,94 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[7]
+[13 <./diagrammi_uml/use_case_utenti.png (PNG copy)>]
+<diagrammi_uml/diagramma_attivita_paziente.png, id=82, 341.275pt x 588.1975pt>
+File: diagrammi_uml/diagramma_attivita_paziente.png Graphic file (type png)
+<use diagrammi_uml/diagramma_attivita_paziente.png>
+Package pdftex.def Info: diagrammi_uml/diagramma_attivita_paziente.png  used on input line 161.
+(pdftex.def)             Requested size: 318.66948pt x 549.27078pt.
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[14]
+<diagrammi_uml/diagramma_attivita_medico.png, id=89, 519.9425pt x 834.11626pt>
+File: diagrammi_uml/diagramma_attivita_medico.png Graphic file (type png)
+<use diagrammi_uml/diagramma_attivita_medico.png>
+Package pdftex.def Info: diagrammi_uml/diagramma_attivita_medico.png  used on input line 169.
+(pdftex.def)             Requested size: 318.66948pt x 511.2157pt.
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[15 <./diagrammi_uml/diagramma_attivita_paziente.png (PNG copy)>]
+<diagrammi_uml/diagramma_attivita_infermiere.png, id=95, 382.42876pt x 548.0475pt>
+File: diagrammi_uml/diagramma_attivita_infermiere.png Graphic file (type png)
+<use diagrammi_uml/diagramma_attivita_infermiere.png>
+Package pdftex.def Info: diagrammi_uml/diagramma_attivita_infermiere.png  used on input line 177.
+(pdftex.def)             Requested size: 318.66948pt x 456.69397pt.
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[16 <./diagrammi_uml/diagramma_attivita_medico.png (PNG copy)>]
+<diagrammi_uml/diagramma_attivita_segreteria.png, id=101, 425.59pt x 1181.41376pt>
+File: diagrammi_uml/diagramma_attivita_segreteria.png Graphic file (type png)
+<use diagrammi_uml/diagramma_attivita_segreteria.png>
+Package pdftex.def Info: diagrammi_uml/diagramma_attivita_segreteria.png  used on input line 186.
+(pdftex.def)             Requested size: 318.66948pt x 884.65205pt.
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[17 <./diagrammi_uml/diagramma_attivita_infermiere.png (PNG copy)>]
+Overfull \vbox (181.86897pt too high) has occurred while \output is active []
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[18 <./diagrammi_uml/diagramma_attivita_segreteria.png (PNG copy)>]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[19]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 206.
+(Font)              <12> on input line 264.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 206.
+(Font)              <8> on input line 264.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 206.
+(Font)              <6> on input line 264.
 
 
 
@@ -429,48 +549,48 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[8]
+[20]
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:227: LaTeX Error: Environment lstlisting undefined.
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:285: LaTeX Error: Environment lstlisting undefined.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.227 \begin{lstlisting}
+l.285 \begin{lstlisting}
                         
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:230: LaTeX Error: \begin{document} ended by \end{lstlisting}.
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:288: LaTeX Error: \begin{document} ended by \end{lstlisting}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.230 \end{lstlisting}
+l.288 \end{lstlisting}
                       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:237: LaTeX Error: Environment lstlisting undefined.
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:295: LaTeX Error: Environment lstlisting undefined.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.237     \begin{lstlisting}
+l.295     \begin{lstlisting}
                             
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:239: Undefined control sequence.
-l.239 venv\Scripts
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:297: Undefined control sequence.
+l.297 venv\Scripts
                   \activate
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -478,8 +598,8 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:239: Undefined control sequence.
-l.239 venv\Scripts\activate
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:297: Undefined control sequence.
+l.297 venv\Scripts\activate
                            
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -488,108 +608,108 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:240: LaTeX Error: \begin{itemize} on input line 235 ended by \end{lstlisting}.
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:298: LaTeX Error: \begin{itemize} on input line 293 ended by \end{lstlisting}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.240     \end{lstlisting}
+l.298     \end{lstlisting}
                           
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:243: LaTeX Error: Environment lstlisting undefined.
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:301: LaTeX Error: Environment lstlisting undefined.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.243     \begin{lstlisting}
+l.301     \begin{lstlisting}
                             
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:246: LaTeX Error: \begin{itemize} on input line 235 ended by \end{lstlisting}.
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:304: LaTeX Error: \begin{itemize} on input line 293 ended by \end{lstlisting}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.246     \end{lstlisting}
+l.304     \end{lstlisting}
                           
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:252: LaTeX Error: Environment lstlisting undefined.
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:310: LaTeX Error: Environment lstlisting undefined.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.252 \begin{lstlisting}
+l.310 \begin{lstlisting}
                         
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:254: LaTeX Error: \begin{document} ended by \end{lstlisting}.
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:312: LaTeX Error: \begin{document} ended by \end{lstlisting}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.254 \end{lstlisting}
+l.312 \end{lstlisting}
                       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:259: LaTeX Error: Environment lstlisting undefined.
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:317: LaTeX Error: Environment lstlisting undefined.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.259 \begin{lstlisting}
+l.317 \begin{lstlisting}
                         
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:261: Missing $ inserted.
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:319: Missing $ inserted.
 <inserted text> 
                 $
-l.261 SECRET_
+l.319 SECRET_
              KEY=chiave_segretissima
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:263: LaTeX Error: \begin{document} ended by \end{lstlisting}.
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:321: LaTeX Error: \begin{document} ended by \end{lstlisting}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.263 \end{lstlisting}
+l.321 \end{lstlisting}
                       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:263: Missing $ inserted.
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:321: Missing $ inserted.
 <inserted text> 
                 $
-l.263 \end{lstlisting}
+l.321 \end{lstlisting}
                       
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -598,57 +718,93 @@ really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
 
-Overfull \hbox (35.44125pt too wide) in paragraph at lines 260--264
+Overfull \hbox (35.44125pt too wide) in paragraph at lines 318--322
 []\OT1/cmr/m/n/12 DEBUG=True SECRET$[]\OML/cmm/m/it/12 EY \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 chiave[]egretissimaALLOWED[]OSTS \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 localhost; \OT1/cmr/m/n/12 127\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 1$ 
  []
 
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:268: LaTeX Error: Environment lstlisting undefined.
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:326: LaTeX Error: Environment lstlisting undefined.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.268 \begin{lstlisting}
+l.326 \begin{lstlisting}
                         
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:271: LaTeX Error: \begin{document} ended by \end{lstlisting}.
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:329: LaTeX Error: \begin{document} ended by \end{lstlisting}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.271 \end{lstlisting}
+l.329 \end{lstlisting}
                       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:276: LaTeX Error: Environment lstlisting undefined.
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:334: LaTeX Error: Environment lstlisting undefined.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.276 \begin{lstlisting}
+l.334 \begin{lstlisting}
                         
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:278: LaTeX Error: \begin{document} ended by \end{lstlisting}.
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:336: LaTeX Error: \begin{document} ended by \end{lstlisting}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.278 \end{lstlisting}
+l.336 \end{lstlisting}
+                      
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:341: LaTeX Error: Environment lstlisting undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.341 \begin{lstlisting}
+                        
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[21]
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:343: LaTeX Error: \begin{document} ended by \end{lstlisting}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.343 \end{lstlisting}
                       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -663,32 +819,55 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[9]
+[22]
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:283: LaTeX Error: Environment lstlisting undefined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.283 \begin{lstlisting}
-                        
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:285: LaTeX Error: \begin{document} ended by \end{lstlisting}.
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:388: LaTeX Error: There's no line here to end.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.285 \end{lstlisting}
-                      
+l.388 \\s
+         ection{Struttura della base di dati}
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
+
+<diagrammi_uml/ER.png, id=154, 2914.89pt x 2252.415pt>
+File: diagrammi_uml/ER.png Graphic file (type png)
+<use diagrammi_uml/ER.png>
+Package pdftex.def Info: diagrammi_uml/ER.png  used on input line 426.
+(pdftex.def)             Requested size: 409.71692pt x 316.57324pt.
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[23]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[24 <./diagrammi_uml/ER.png>]
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:450: LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.450     \item \texttt
+                       {Paziente.medicoConvenzionato} $\rightarrow$ \texttt{...
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
 
 
@@ -699,7 +878,415 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[10]
+[25]
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:490: LaTeX Error: Environment longtable undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.490 \begin{longtable}
+                       {|p{3.5cm}|p{7.5cm}|p{4cm}|}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:491: Misplaced \noalign.
+\hline ->\noalign 
+                  {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
+l.491 \hline
+            
+I expect to see \noalign only after the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:492: Misplaced alignment tab character &.
+l.492 \textbf{Entità} &
+                         \textbf{Attributi principali} & \textbf{Chiave prim...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:492: Misplaced alignment tab character &.
+l.492 ...ntità} & \textbf{Attributi principali} &
+                                                   \textbf{Chiave primaria} \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:493: Misplaced \noalign.
+\hline ->\noalign 
+                  {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
+l.493 \hline
+            
+I expect to see \noalign only after the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 492--493
+
+ []
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:494: Misplaced alignment tab character &.
+l.494 Utente &
+               CF, username, nome, cognome, password & CF \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:494: Misplaced alignment tab character &.
+l.494 ...& CF, username, nome, cognome, password &
+                                                   CF \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:495: Misplaced \noalign.
+\hline ->\noalign 
+                  {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
+l.495 \hline
+            
+I expect to see \noalign only after the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 494--495
+
+ []
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:496: Misplaced alignment tab character &.
+l.496 Paziente &
+                 CF, username, nome, cognome, email, telefono, dataDiNascita...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:496: Misplaced alignment tab character &.
+l.496 ...emailResponsabile*, medicoConvenzionato &
+                                                   CF \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:497: Misplaced \noalign.
+\hline ->\noalign 
+                  {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
+l.497 \hline
+            
+I expect to see \noalign only after the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 496--497
+
+ []
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:498: Misplaced alignment tab character &.
+l.498 Medico &
+               CF, username, nome, cognome, specializzazione, reparto, assen...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:498: Misplaced alignment tab character &.
+l.498 ...lizzazione, reparto, assenzePianificate &
+                                                   CF \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:499: Misplaced \noalign.
+\hline ->\noalign 
+                  {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
+l.499 \hline
+            
+I expect to see \noalign only after the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 498--499
+
+ []
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:500: Misplaced alignment tab character &.
+l.500 Infermiere &
+                   CF, username, nome, cognome, giorniDiServizio & CF \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:500: Misplaced alignment tab character &.
+l.500 ...ername, nome, cognome, giorniDiServizio &
+                                                   CF \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:501: Misplaced \noalign.
+\hline ->\noalign 
+                  {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
+l.501 \hline
+            
+I expect to see \noalign only after the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 500--501
+
+ []
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:502: Misplaced alignment tab character &.
+l.502 Segreteria &
+                   CF, username, nome, cognome & CF \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:502: Misplaced alignment tab character &.
+l.502 Segreteria & CF, username, nome, cognome &
+                                                 CF \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:503: Misplaced \noalign.
+\hline ->\noalign 
+                  {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
+l.503 \hline
+            
+I expect to see \noalign only after the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 502--503
+
+ []
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:504: Misplaced alignment tab character &.
+l.504 Prenotazione &
+                     IDPrenotazione, data, ora, richiedente, regimeVisita*, ...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:504: Misplaced alignment tab character &.
+l.504 ..., ora, richiedente, regimeVisita*, tipo &
+                                                   IDPrenotazione \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:505: Misplaced \noalign.
+\hline ->\noalign 
+                  {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
+l.505 \hline
+            
+I expect to see \noalign only after the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 504--505
+
+ []
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:506: Misplaced alignment tab character &.
+l.506 Visita &
+               IDVisita, IDPrenotazione, data, ora, tipo, regimeVisita, urge...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:506: Misplaced alignment tab character &.
+l.506 ...a, esito, medico, paziente, ambulatorio &
+                                                   IDVisita \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:507: Misplaced \noalign.
+\hline ->\noalign 
+                  {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
+l.507 \hline
+            
+I expect to see \noalign only after the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 506--507
+
+ []
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:508: Misplaced alignment tab character &.
+l.508 Prestazione &
+                    IDPrestazione, IDPrenotazione, data, ora, tipoPrestazion...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:508: Misplaced alignment tab character &.
+l.508 ...infermiere, paziente, ambulatorio, note &
+                                                   IDPrestazione \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:509: Misplaced \noalign.
+\hline ->\noalign 
+                  {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
+l.509 \hline
+            
+I expect to see \noalign only after the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 508--509
+
+ []
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:510: Misplaced alignment tab character &.
+l.510 Ambulatorio &
+                    IDAmbulatorio, tipo & IDAmbulatorio \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:510: Misplaced alignment tab character &.
+l.510 Ambulatorio & IDAmbulatorio, tipo &
+                                          IDAmbulatorio \\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:511: Misplaced \noalign.
+\hline ->\noalign 
+                  {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
+l.511 \hline
+            
+I expect to see \noalign only after the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 510--511
+
+ []
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:512: Misplaced alignment tab character &.
+l.512 Sostituzione &
+                     medicoSostituto, medicoSostituito & medicoSostituto, me...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:512: Misplaced alignment tab character &.
+l.512 ...one & medicoSostituto, medicoSostituito &
+                                                   medicoSostituto, medicoSo...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:513: Misplaced \noalign.
+\hline ->\noalign 
+                  {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
+l.513 \hline
+            
+I expect to see \noalign only after the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 512--513
+
+ []
+
+
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:514: LaTeX Error: \begin{document} ended by \end{longtable}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.514 \end{longtable}
+                     
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+<diagrammi_uml/schemaER.png, id=175, 752.8125pt x 1008.76875pt>
+File: diagrammi_uml/schemaER.png Graphic file (type png)
+<use diagrammi_uml/schemaER.png>
+Package pdftex.def Info: diagrammi_uml/schemaER.png  used on input line 517.
+(pdftex.def)             Requested size: 318.66948pt x 427.02017pt.
+
+Overfull \hbox (201.52188pt too wide) in paragraph at lines 516--518
+[]\OT1/cmr/m/n/12 Lo schema im-ple-men-tato della Basi di Dati, com-pleto ^^Re il seguente: [] 
+ []
+
+
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -708,7 +1295,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[11] (documentazione.aux)
+[26]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[27 <./diagrammi_uml/schemaER.png (PNG copy)>] (documentazione.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 1
 L3 programming layer <2024-12-09>
@@ -721,20 +1317,20 @@ Package rerunfilecheck Warning: File `documentazione.out' has changed.
 
 Package rerunfilecheck Info: Checksums for `documentazione.out':
 (rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  5D783F5058125C47F401ADFB0E2D754B;2463.
+(rerunfilecheck)             After:  B98C439520291BA6EFE6321EB8B89E4B;2689.
  ) 
 Here is how much of TeX's memory you used:
- 9443 strings out of 473574
- 148133 string characters out of 5726154
- 549352 words of memory out of 5000000
- 32492 multiletter control sequences out of 15000+600000
- 564357 words of font info for 57 fonts, out of 8000000 for 9000
+ 9542 strings out of 473574
+ 151353 string characters out of 5726154
+ 551361 words of memory out of 5000000
+ 32569 multiletter control sequences out of 15000+600000
+ 564704 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 69i,11n,79p,600b,438s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\fmagr\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on documentazione.pdf (11 pages, 109717 bytes).
+ 69i,12n,79p,600b,505s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\fmagr\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on documentazione.pdf (27 pages, 1059283 bytes).
 PDF statistics:
- 138 PDF objects out of 1000 (max. 8388607)
- 50 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 242 PDF objects out of 1000 (max. 8388607)
+ 73 named destinations out of 1000 (max. 500000)
+ 76 words of extra memory for PDF output out of 10000 (max. 10000000)
 
