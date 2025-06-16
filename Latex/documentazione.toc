@@ -1,14 +1,16 @@
 \contentsline {section}{\numberline {1}Introduzione}{3}{section.1}%
 \contentsline {section}{\numberline {2}Casi d'uso}{4}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Personale medico}{4}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Segreteria}{4}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Paziente}{4}{subsection.2.3}%
-\contentsline {section}{\numberline {3}Diagrammi delle attività}{5}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Personale medico}{5}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Segreteria}{5}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Paziente}{5}{subsection.3.3}%
-\contentsline {section}{\numberline {4}Sviluppo: progetto dell’architettura ed implementazione del sistema}{7}{section.4}%
-\contentsline {section}{\numberline {5}Modelli architetturali e progettazione ad alto livello}{7}{section.5}%
-\contentsline {section}{\numberline {6}Installazione e configurazione del sistema}{9}{section.6}%
-\contentsline {section}{\numberline {7}Installazione e configurazione del sistema}{9}{section.7}%
-\contentsline {section}{\numberline {8}Test e validazione}{10}{section.8}%
+\contentsline {subsection}{\numberline {2.1}Paziente}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Personale medico}{6}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Infermiere}{8}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Segreteria}{10}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Tutti gli utenti della Casa della Salute}{12}{subsection.2.5}%
+\contentsline {section}{\numberline {3}Diagrammi delle attività}{14}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Paziente}{14}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Personale medico}{15}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Infermiere}{16}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Segreteria}{17}{subsection.3.4}%
+\contentsline {section}{\numberline {4}Sviluppo: progetto dell’architettura ed implementazione del sistema}{19}{section.4}%
+\contentsline {section}{\numberline {5}Modelli architetturali e progettazione ad alto livello}{19}{section.5}%
+\contentsline {section}{\numberline {6}Installazione e configurazione del sistema}{21}{section.6}%
+\contentsline {section}{\numberline {7}Test e validazione}{22}{section.7}%
