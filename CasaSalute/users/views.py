@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.conf import settings
-from .models import Medico, Infermiere, Paziente
+from .models import Medico, Infermiere, Paziente, Segreteria
 from .forms import ModificaMedicoForm, ModificaInfermiereForm, LoginForm
 from visita.models import Visita, PrenotazioneVisita as Prenotazione  # o Prenotazione se si chiama così
 from visita.forms import PrenotazioneForm, EsitoVisitaForm
@@ -22,21 +22,21 @@ def login_view(request):
         if form.is_valid():
             username = form.cleaned_data["username"]
             password = form.cleaned_data["password"]
-            user_type = form.cleaned_data.get("user_type", "paziente")
             user = authenticate(request, username=username, password=password)
 
             if user is not None:
                 login(request, user)
-                if user_type == 'medico':
-                    return redirect("pagina_medico")
-                elif user_type == 'infermiere':
-                    return redirect("pagina_infermiere")
-                elif user_type == 'paziente':
-                    return redirect("pagina_paziente")
-                elif user_type == 'segreteria':
-                    return redirect("pagina_segreteria")
+                # Check user type and redirect
+                if hasattr(user, 'medico'):
+                    return redirect('medico_dashboard')  # replace with your url name
+                elif hasattr(user, 'infermiere'):
+                    return redirect('infermiere_dashboard')
+                elif hasattr(user, 'paziente'):
+                    return redirect('paziente_dashboard')
+                elif hasattr(user, 'segreteria'):
+                    return redirect('segreteria_dashboard')
                 else:
-                    return redirect("homepage")
+                    return redirect('home')
     else:
         form = LoginForm()
 
@@ -51,14 +51,14 @@ def logout_view(request):
 # PAGINA MEDICO
 @login_required
 def pagina_medico(request):
-    medico = get_object_or_404(Medico, user=request.user)
+    medico = get_object_or_404(Medico, username=request.user)
     pazienti = Paziente.objects.filter(medico_curante=medico)
     return render(request, 'medico.html', {'medico': medico, 'pazienti': pazienti})
 
 # MODIFICA DATI MEDICO
 @login_required
 def modifica_medico(request):
-    medico = get_object_or_404(Medico, user=request.user)
+    medico = get_object_or_404(Medico, username=request.user)
     if request.method == "POST":
         form = ModificaMedicoForm(request.POST, instance=medico)
         if form.is_valid():
@@ -71,14 +71,14 @@ def modifica_medico(request):
 # PAGINA INFERMIERE
 @login_required
 def pagina_infermiere(request):
-    infermiere = get_object_or_404(Infermiere, user=request.user)
+    infermiere = get_object_or_404(Infermiere, username=request.user)
     prestazioni = Visita.objects.filter(personale_infermieristico=infermiere)
     return render(request, 'infermieri.html', {'infermiere': infermiere, 'prestazioni': prestazioni})
 
 # MODIFICA DATI INFERMIERE
 @login_required
 def modifica_infermiere(request):
-    infermiere = get_object_or_404(Infermiere, user=request.user)
+    infermiere = get_object_or_404(Infermiere, username=request.user)
     if request.method == "POST":
         form = ModificaInfermiereForm(request.POST, instance=infermiere)
         if form.is_valid():
@@ -91,7 +91,7 @@ def modifica_infermiere(request):
 # PAGINA PAZIENTE
 @login_required
 def pagina_paziente(request):
-    paziente = get_object_or_404(Paziente, user=request.user)
+    paziente = get_object_or_404(Paziente, username=request.user)
     visite = Visita.objects.filter(paziente=paziente)
     prenotazioni = Prenotazione.objects.filter(paziente=paziente)
     return render(request, 'paziente.html', {'paziente': paziente, 'visite': visite, 'prenotazioni': prenotazioni})
@@ -103,7 +103,7 @@ def prenota_visita(request):
         form = PrenotazioneForm(request.POST)
         if form.is_valid():
             prenotazione = form.save(commit=False)
-            prenotazione.paziente = get_object_or_404(Paziente, user=request.user)
+            prenotazione.paziente = get_object_or_404(Paziente, username=request.user)
             prenotazione.save()
             # Invio email conferma
             contesto = {
@@ -126,7 +126,7 @@ def salva_esito_visita(request, visita_id):
         form = EsitoVisitaForm(request.POST, instance=visita)
         if form.is_valid():
             visita = form.save()
-            minori = Paziente.objects.filter(tutore=visita.paziente.user)
+            minori = Paziente.objects.filter(referente_adulto=visita.paziente.user)
             contesto = {
                 'nome': visita.paziente.nome,
                 'tipo': 'esito visita',
