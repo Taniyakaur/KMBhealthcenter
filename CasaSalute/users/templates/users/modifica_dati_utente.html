@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Modifica Dati Personali{% endblock %}
+
+{% block content %}
+    <h2>Modifica Dati - {{ request.user.username }}</h2>
+    <p>Qui puoi aggiornare le tue informazioni personali.</p>
+
+    <form action="{% url 'modifica_dati' %}" method="POST">
+        {% csrf_token %}
+
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" value="{{ utente.nome }}" required>
+
+        <label for="cognome">Cognome:</label>
+        <input type="text" name="cognome" value="{{ utente.cognome }}" required>
+
+        {% if ruolo == 'paziente' %}
+            <label for="codice_sanitario">Codice Sanitario:</label>
+            <input type="text" name="codice_sanitario" value="{{ utente.codice_sanitario }}" required>
+
+            <label for="data_nascita">Data di Nascita:</label>
+            <input type="date" name="data_nascita" value="{{ utente.data_nascita|date:'Y-m-d' }}" required>
+        {% elif ruolo == 'medico' or ruolo == 'infermiere' %}
+            <label for="codice_fiscale">Codice Fiscale:</label>
+            <input type="text" name="codice_fiscale" value="{{ utente.codice_fiscale }}" required>
+        {% endif %}
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" value="{{ utente.email }}" required>
+
+        <input type="submit" value="Salva Modifiche">
+    </form>
+
+    <a href="{% url 'home_utente' %}" class="button">Annulla</a>
+{% endblock %}

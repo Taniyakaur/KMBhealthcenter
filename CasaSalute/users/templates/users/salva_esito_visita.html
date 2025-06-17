@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Esito Visita{% endblock %}
+
+{% block content %}
+    <h2>Inserisci Esito Visita</h2>
+    <p>Compila i dettagli dell’esito per la visita del paziente <strong>{{ visita.paziente.nome }} {{ visita.paziente.cognome }}</strong> effettuata il <strong>{{ visita.data }}</strong>.</p>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salva Esito</button>
+    </form>
+
+    <a href="{% url 'pagina_segreteria' %}" class="button">Torna alla pagina segreteria</a>
+{% endblock %}
