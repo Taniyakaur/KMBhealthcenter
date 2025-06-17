@@ -22,14 +22,6 @@ class Medico(UtenteBase):
     assenze_pianificate = models.JSONField(blank=True, null=True)
     medici_sostituibili = models.ManyToManyField("self", blank=True)
 
-# def disponibilita(self, data):
-#     if self.assenze_pianificate and data in self.assenze_pianificate:
-#         return False
-#     return True
-#
-# def __str__(self):
-#     return f"Dr./Dr.ssa {self.nome} {self.cognome}"
-
     class Meta:
         verbose_name = "medico"
         verbose_name_plural = "medici"
@@ -37,12 +29,12 @@ class Medico(UtenteBase):
 
 # MODELLO INFERMIERE
 class Infermiere(UtenteBase):
-   giorni_servizio = models.JSONField(blank=True, null=True) # Es. "Lunedì, Mercoledì, Venerdì"
+    giorni_servizio = models.JSONField(blank=True, null=True)
 
-   def __str__(self):
+    def __str__(self):
         return f"Infermiere {self.nome} {self.cognome}"
 
-   class Meta:
+    class Meta:
         verbose_name = "infermiere"
         verbose_name_plural = "infermieri"
 

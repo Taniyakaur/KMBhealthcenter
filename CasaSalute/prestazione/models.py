@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.utils import timezone
 
 
 class TipoPrestazione(models.TextChoices):
@@ -26,7 +27,7 @@ class Prestazione(models.Model):
     ambulatorio = models.ForeignKey('ambulatorio.Ambulatorio', on_delete=models.SET_NULL, null=True)  # relazione con il modello ambulatorio
     infermiere = models.ForeignKey('users.Infermiere', on_delete=models.SET_NULL, null=True, related_name="prestazioni_infermiere") # relazione con il modello in app users
     prenotazione = models.OneToOneField('PrenotazionePrestazione', on_delete=models.CASCADE, null=True, blank=True)
-    data = models.DateTimeField()
+    data = models.DateTimeField(default=timezone.now)  # Data e ora della prestazione, con valore predefinito alla creazione
     esito = models.TextField(blank=True, null=True)
     note = models.TextField(blank=True, null=True)
 

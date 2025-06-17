@@ -6,6 +6,8 @@ from django.template.loader import render_to_string
 from django.conf import settings
 from .models import Medico, Infermiere, Paziente
 from .forms import ModificaMedicoForm, ModificaInfermiereForm, LoginForm
+from visita.models import Visita, PrenotazioneVisita as Prenotazione  # o Prenotazione se si chiama così
+from visita.forms import PrenotazioneForm, EsitoVisitaForm
 
 # Funzione per invio email centralizzata
 def invia_email_conferma_prestazione(utente_email, contesto):
