@@ -108,7 +108,7 @@ def prenota_visita(request):
             # Invio email conferma
             contesto = {
                 'nome': prenotazione.paziente.nome,
-                'tipo': 'prenotazione visita',
+                'tipo': 'prenotazionevisita',
                 'data': prenotazione.data,
                 'note': prenotazione.note
             }
