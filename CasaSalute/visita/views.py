@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.core.mail import send_mail
 from .models import Visita
 from .forms import VisitaForm
+from django.contrib.auth.decorators import login_required
 
 def index(request):
     visite = Visita.objects.all()
@@ -45,3 +46,9 @@ def send_notification_email(visita):
     message = f"Caro {visita.paziente.nome},\n\nLa tua prenotazione per una visita con {visita.medico.nome} è stata confermata per il {visita.data} alle {visita.ora}.\n\nCordiali saluti,\nKMB Health Center"
     recipient_list = [visita.paziente.email]
     send_mail(subject, message, 'no-reply@kmbhealthcenter.com', recipient_list)
+
+@login_required
+def pagina_segreteria(request):
+    segreteria = get_object_or_404(Segreteria, username=request.user)
+    # aggiungi eventuali dati da passare al template
+    return render(request, 'segreteria.html', {'segreteria': segreteria})

@@ -96,6 +96,12 @@ def pagina_paziente(request):
     prenotazioni = Prenotazione.objects.filter(paziente=paziente)
     return render(request, 'paziente.html', {'paziente': paziente, 'visite': visite, 'prenotazioni': prenotazioni})
 
+# PAGINA SEGRETERIA
+@login_required
+def pagina_segreteria(request):
+    segreteria = get_object_or_404(Segreteria, username=request.user)
+    return render(request, 'segreteria.html', {'segreteria': segreteria})
+
 # PRENOTAZIONE VISITA
 @login_required
 def prenota_visita(request):
