@@ -37,6 +37,7 @@
 \newpage
 
 % Indice
+\newpage
 \tableofcontents
 \newpage
 
@@ -51,7 +52,7 @@ e che sia usufruibile tramite appositi terminali presenti nella struttura.
 Gli utenti, per poter usufruire dei servizi, dovranno essere in possesso delle loro credenziali. 
 Queste verranno generate dal personale di segreteria e comunicate agli utenti stessi.
 
-\subsection*{Obiettivi del sistema}
+\subsection{Obiettivi del sistema}
 Il sistema è progettato per gestire le attività di una Casa della Salute, 
 dove operano più medici di base, supportati da infermieri per medicazioni e prelievi,
  e un ufficio di segreteria comune. La struttura ospita:
@@ -61,7 +62,7 @@ dove operano più medici di base, supportati da infermieri per medicazioni e pre
     \item 1 ambulatorio pediatrico,
 \end{itemize}
 
-\subsection*{Funzionalità principali}
+\subsection{Funzionalità principali}
 Il sistema permette di:
 \begin{itemize}
     \item Registrare e gestire i dati di medici, infermieri e pazienti.
@@ -70,7 +71,7 @@ Il sistema permette di:
     \item Fornire resoconti annuali delle prestazioni erogate ai pazienti.
 \end{itemize}
 
-\subsection*{Autenticazione e accesso}
+\subsection{Autenticazione e accesso}
 Il sistema permette l'autenticazione ai pazienti tramite le credenziali fornite 
 dalla segreteria. Il personale medico e infermieristico, invece, può accedere 
 tramite le proprie credenziali personali, sempre nella sezione login.
@@ -191,7 +192,7 @@ Il diagramma evidenzia chiaramente l’ampiezza delle funzioni amministrative as
 % ------------------------- SVILUPPO -------------------------
 \section{Sviluppo: progetto dell’architettura ed implementazione del sistema}
 
-\subsection*{Note sul processo di sviluppo}
+\subsection{Note sul processo di sviluppo}
 Il processo di sviluppo ha seguito un approccio agile e incrementale. 
 Si assume che solo i pazienti adulti possano essere registrati dal personale di segreteria, 
 mentre i pazienti pediatrici sono inseriti da pazienti maggiorenni.
@@ -203,7 +204,7 @@ Quando un paziente pediatrico compie 14 anni, e diventa un ex paziente
 
 Il pediatra può visualizzare gli appuntamenti degli ex pazienti pediatrici e aggiornare l’esito delle visite.
 
-\subsection*{Note sul paziente maggiorenne}
+\subsection{Note sul paziente maggiorenne}
 Un paziente maggiorenne deve obbligatoriamente essere associato a un 
 medicoper poter essere registrato a sistema. 
 Questa scelta è legata alla natura prototipale del progetto. 
@@ -214,7 +215,7 @@ Il nostro progetto è stato sviluppato utilizzando il framework Django, che si b
 Questo modello è una variante del più noto pattern MVC, adattata alle caratteristiche del framework stesso. Grazie a questa struttura, 
 è possibile separare in modo netto la logica di gestione dei dati, l'elaborazione delle richieste e la visualizzazione lato utente.
 
-\subsection*{4.2.1 Il pattern Model-View-Template (MVT)}
+\subsection{4.2.1 Il pattern Model-View-Template (MVT)}
 Nel pattern MVT, ogni componente ha un ruolo specifico:
 
 \begin{itemize}
@@ -231,7 +232,7 @@ Questo approccio ci ha permesso di organizzare il codice in modo modulare e faci
 Nel nostro progetto, abbiamo creato diversi modelli per rappresentare utenti, medici, pazienti, prenotazioni e prestazioni. 
 Ogni funzionalità è stata sviluppata come view associata a uno specifico URL, e i dati sono stati presentati attraverso template responsivi.
 
-\subsection*{4.3 Design pattern utilizzati}
+\subsection{4.3 Design pattern utilizzati}
 
 Durante lo sviluppo abbiamo fatto uso di alcuni design pattern che Django supporta nativamente o che si adattano bene alla sua struttura:
 
@@ -243,7 +244,7 @@ Durante lo sviluppo abbiamo fatto uso di alcuni design pattern che Django suppor
     \item \textbf{Adapter}: in alcuni casi abbiamo integrato librerie esterne adattandole alle esigenze del progetto, in particolare per la validazione dei form e per la gestione dell’interfaccia utente.
 \end{itemize}
 
-\subsection*{4.4 Librerie di terze parti utilizzate}
+\subsection{4.4 Librerie di terze parti utilizzate}
 
 Oltre ai moduli standard di Django e Python, abbiamo utilizzato alcune librerie esterne per migliorare l’efficienza nello sviluppo e la qualità del software:
 
@@ -255,7 +256,7 @@ Oltre ai moduli standard di Django e Python, abbiamo utilizzato alcune librerie 
     \item \textbf{coverage.py}: per valutare la copertura del codice da parte dei test e individuare le parti non ancora verificate.
 \end{itemize}
 
-\subsubsection*{Versioning del progetto}
+\subsubsection{Versioning del progetto}
 Durante lo sviluppo del progetto si è utilizzato \texttt{git} come sistema di versionamento.
 Il repository è stato ospitato su GitHub, permettendo una gestione centralizzata del codice sorgente e facilitando la collaborazione tra i membri del team. 
 Ogni modifica al codice è stata registrata tramite commit, e sono stati creati branch per le funzionalità in fase di sviluppo. 
@@ -270,7 +271,7 @@ Questo approccio ha garantito una storia chiara delle modifiche e ha facilitato 
 
 Questa sezione descrive i passaggi necessari per installare e configurare il progetto localmente su una macchina con sistema operativo Windows, macOS o Linux.
 
-\subsection*{Requisiti}
+\subsection{Requisiti}
 Per poter eseguire correttamente il progetto sono richiesti i seguenti strumenti:
 \begin{itemize}
     \item Python 3.10 o superiore
@@ -279,7 +280,7 @@ Per poter eseguire correttamente il progetto sono richiesti i seguenti strumenti
     \item Un ambiente virtuale (consigliato: \texttt{venv})
 \end{itemize}
 
-\subsection*{Clonazione del repository}
+\subsection{Clonazione del repository}
 Aprire un terminale e clonare il progetto da GitHub:
 
 \begin{lstlisting}
@@ -287,7 +288,7 @@ git clone https://github.com/Taniyakaur/Project
 cd Project
 \end{lstlisting}
 
-\subsection*{Creazione dell'ambiente virtuale}
+\subsection{Creazione dell'ambiente virtuale}
 Per creare e attivare un ambiente virtuale:
 
 \begin{itemize}
@@ -304,14 +305,14 @@ source venv/bin/activate
     \end{lstlisting}
 \end{itemize}
 
-\subsection*{Installazione delle dipendenze}
+\subsection{Installazione delle dipendenze}
 Con l’ambiente attivo, installare i pacchetti necessari:
 
 \begin{lstlisting}
 pip install -r requirements.txt
 \end{lstlisting}
 
-\subsection*{Configurazione delle variabili d'ambiente}
+\subsection{Configurazione delle variabili d'ambiente}
 Creare un file \texttt{.env} nella root del progetto con le seguenti variabili (personalizzare i valori):
 
 \begin{lstlisting}
@@ -320,7 +321,7 @@ SECRET_KEY=chiave_segretissima
 ALLOWED_HOSTS=localhost,127.0.0.1
 \end{lstlisting}
 
-\subsection*{Migrazione del database}
+\subsection{Migrazione del database}
 Applicare le migrazioni iniziali:
 
 \begin{lstlisting}
@@ -335,7 +336,7 @@ Per accedere al pannello di amministrazione:
 python manage.py createsuperuser
 \end{lstlisting}
 
-\subsection*{Avvio del server di sviluppo}
+\subsection{Avvio del server di sviluppo}
 Eseguire il server:
 
 \begin{lstlisting}
@@ -343,13 +344,13 @@ python manage.py runserver
 \end{lstlisting}
 
 Il sistema sarà accessibile all'indirizzo \texttt{http://127.0.0.1:8000}
-\subsection*{Accesso al sistema}
+\subsection{Accesso al sistema}
 Per accedere al sistema, utilizzare le credenziali fornite dalla segreteria per i pazienti, o quelle create per il personale medico e infermieristico.
 
 % ------------------------- TEST -------------------------
 \section{Test e validazione}
 
-\subsection*{5.1 Unit test}
+\subsection{5.1 Unit test}
 Abbiamo eseguito test di tipo unitario su diverse componenti del sistema, in particolare sui modelli e sulle view. 
 Per questo abbiamo utilizzato il framework di test integrato in Django, basato su \texttt{unittest}, e in alcuni casi \texttt{pytest-django} per una maggiore flessibilità.
 
@@ -363,7 +364,7 @@ Esempi di test effettuati:
     \item Verifica della logica di assegnazione del medico e delle prenotazioni.
 \end{itemize}
 
-\subsection*{5.2 Test manuali degli sviluppatori}
+\subsection{5.2 Test manuali degli sviluppatori}
 Abbiamo svolto test manuali sistematici simulando le azioni tipiche degli utenti:
 \begin{itemize}
     \item Login e logout di utenti di diversi ruoli (medico, segreteria, paziente).
@@ -373,11 +374,11 @@ Abbiamo svolto test manuali sistematici simulando le azioni tipiche degli utenti
     \item Gestione di situazioni particolari (es. doppia prenotazione nello stesso orario).
 \end{itemize}
 
-\subsection*{5.3 Copertura del codice e strumenti}
+\subsection{5.3 Copertura del codice e strumenti}
 Per misurare la copertura dei test automatizzati abbiamo utilizzato \texttt{coverage.py}, uno strumento che mostra quali righe di codice sono state eseguite durante i test. 
 Questo ci ha permesso di identificare porzioni di codice non ancora testate.
 
-\subsection*{5.4 Proposte per test futuri}
+\subsection{5.4 Proposte per test futuri}
 In futuro, sarebbe utile integrare:
 \begin{itemize}
     \item Test end-to-end con \texttt{Selenium} o \texttt{Playwright}, per simulare l’interazione dell’utente con l’interfaccia web.
@@ -392,7 +393,7 @@ che include le entità principali coinvolte nel processo di erogazione delle pre
 Il modello è organizzato secondo una gerarchia centrata sull’entità \textbf{Utente}, dalla quale derivano entità specializzate come 
 \textbf{Medico}, \textbf{Paziente}, \textbf{Infermiere} e \textbf{Segreteria}.
 
-\subsection*{Entità}
+\subsection{Entità}
 
 \begin{itemize}
     \item \textbf{Utente}: rappresenta un’entità generica dalla quale derivano tutti i soggetti che interagiscono con il sistema. 
@@ -426,7 +427,7 @@ Lo schema E-R è il seguente:
 \includegraphics[width=0.9\textwidth]{diagrammi_uml/ER.png}
 \end{center}
 
-\section*{Modello Relazionale}
+\section{Modello Relazionale}
 
 \begin{itemize}
     \item \textbf{Utente} (\underline{username}, nome, cognome, codiceFiscale)
@@ -444,7 +445,7 @@ Lo schema E-R è il seguente:
 \newpage
 % ------------------------- INTEGRITÀ REFERENZIALE -------------------------
 
-\section*{Vincoli di Integrità Referenziale}
+\section{Vincoli di Integrità Referenziale}
 
 \begin{itemize}[leftmargin=2.5em]
     \item \texttt{Paziente.medicoConvenzionato} $\rightarrow$ \texttt{Medico.username}
@@ -462,7 +463,7 @@ Lo schema E-R è il seguente:
     \item \texttt{Sostituzione.medicoSostituto} $\rightarrow$ \texttt{Medico.username}
     \item \texttt{Sostituzione.medicoSostituito} $\rightarrow$ \texttt{Medico.username}
 \end{itemize}
-\section*{Cardinalità delle Relazioni}
+\section{Cardinalità delle Relazioni}
 
 Le cardinalità indicano il numero minimo e massimo di occorrenze di una entità che possono partecipare ad una relazione. Sono fondamentali per definire i vincoli logici tra i dati nel modello E-R. Di seguito una sintesi delle cardinalità più rilevanti nel nostro schema:
 
@@ -484,7 +485,7 @@ Le cardinalità indicano il numero minimo e massimo di occorrenze di una entità
     \item \textbf{Sostituzione:} Un medico può sostituirne più altri e può essere sostituito da più colleghi: relazione \textbf{molti-a-molti (N:M)}.
 \end{itemize}
 
-\section*{Tabella Riassuntiva delle Entità}
+\section{Tabella Riassuntiva delle Entità}
 
 \renewcommand{\arraystretch}{1.3}
 \begin{longtable}{|p{3.5cm}|p{7.5cm}|p{4cm}|}
@@ -516,7 +517,7 @@ Sostituzione & medicoSostituto, medicoSostituito & medicoSostituto, medicoSostit
 Lo schema implementato della Basi di Dati, completo è il seguente:
 \includegraphics[width=0.7\textwidth]{diagrammi_uml/schemaER.png}
 
-\subsection*{Gerarchia}
+\subsection{Gerarchia}
 
 La gerarchia principale del modello riguarda l’entità \texttt{Utente}, da cui derivano \texttt{Medico}, \texttt{Paziente}, \texttt{Infermieri} e \texttt{Segreteria}.
  Questa astrazione consente di modellare in modo efficiente attributi e comportamenti comuni a tutte le tipologie di utenti, evitando ridondanze.
