@@ -94,6 +94,9 @@ INPUT C:\Program Files\MiKTeX\tex\latex\fancyhdr\fancyhdr.sty
 INPUT C:\Program Files\MiKTeX\tex\latex\fancyhdr\fancyhdr.sty
 INPUT C:\Program Files\MiKTeX\tex\latex\l3backend\l3backend-pdftex.def
 INPUT C:\Program Files\MiKTeX\tex\latex\l3backend\l3backend-pdftex.def
+INPUT .\documentazione.aux
+INPUT .\documentazione.aux
+INPUT documentazione.aux
 OUTPUT documentazione.aux
 OUTPUT documentazione.out
 OUTPUT documentazione.pdf
