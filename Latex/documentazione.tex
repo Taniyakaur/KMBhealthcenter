@@ -38,7 +38,8 @@
 \newpage
 
 % Indice
-
+\section{Indice}
+\setcounter{tocdepth}{2} % Imposta la profondità dell'indice
 \newpage
 \tableofcontents
 \newpage
@@ -70,7 +71,6 @@ Il sistema permette di:
     \item Registrare e gestire i dati di medici, infermieri e pazienti.
     \item Gestire le prenotazioni per visite, inviando mail di conferma.
     \item Mantenere una storia delle visite e delle prestazioni effettuate.
-    \item Fornire resoconti annuali delle prestazioni erogate ai pazienti.
 \end{itemize}
 
 \subsection{Autenticazione e accesso}
@@ -89,7 +89,7 @@ tramite due diagrammi, le principali funzionalità accessibili e le interazioni 
 \subsection{Paziente}
 Il paziente può accedere alla propria area personale tramite autenticazione. 
 Una volta autenticato, ha la possibilità di visualizzare la propria dashboard, consultare i dati personali, 
-le visite programmate e gli esiti delle visite già effettuate. Inoltre, può aggiornare i propri dati anagrafici.
+le visite programmate e gli esiti delle visite già effettuate. 
 
 Il primo diagramma rappresenta in maniera sintetica i casi d’uso del paziente all’interno del sistema,
  evidenziando le funzioni principali. Il secondo schema mostra più nel dettaglio le interazioni sequenziali tra il paziente e il sistema.
@@ -152,8 +152,6 @@ Questa visione d’insieme è utile per comprendere la copertura funzionale dell
 Come per i diagrammi visti in precedenza, si assume che le operazioni possano 
 essere annullate in qualsiasi momento, ad esempio tramite il logout dal sistema.
 
-Per questioni di leggibilità, si omette la possibilità di visualizzazione e 
-modifica del profilo da parte degli utenti.
 
 \subsection{Paziente}
 Il diagramma delle attività del paziente descrive il flusso principale delle operazioni che l'utente può compiere una volta autenticato nel sistema. 
@@ -197,9 +195,9 @@ Il diagramma evidenzia chiaramente l’ampiezza delle funzioni amministrative as
 \subsection{Note sul processo di sviluppo}
 Il processo di sviluppo ha seguito un approccio agile e incrementale. 
 Si assume che solo i pazienti adulti possano essere registrati dal personale di segreteria, 
-mentre i pazienti pediatrici sono inseriti da pazienti maggiorenni.
+mentre i pazienti pediatrici sono inseriti con i dati dei pazienti maggiorenni associati.
 
-Gli adulti che non sono maggiorenni non possono avere pazienti
+I pazienti che non sono maggiorenni non possono avere pazienti
  pediatrici a loro carico.
 Quando un paziente pediatrico compie 14 anni, e diventa un ex paziente
  pediatrico.
@@ -208,16 +206,17 @@ Il pediatra può visualizzare gli appuntamenti degli ex pazienti pediatrici e ag
 
 \subsection{Note sul paziente maggiorenne}
 Un paziente maggiorenne deve obbligatoriamente essere associato a un 
-medicoper poter essere registrato a sistema. 
+medico per poter essere registrato a sistema. 
 Questa scelta è legata alla natura prototipale del progetto. 
-Il paziente maggiorenne potrà poi inserire un paziente pediatrico a suo carico
+Il paziente maggiorenne potrà avere un paziente pediatrico a suo carico.
+
 \section{Modelli architetturali e progettazione ad alto livello}
 
 Il nostro progetto è stato sviluppato utilizzando il framework Django, che si basa su un'architettura denominata \textbf{Model-View-Template (MVT)}. 
 Questo modello è una variante del più noto pattern MVC, adattata alle caratteristiche del framework stesso. Grazie a questa struttura, 
 è possibile separare in modo netto la logica di gestione dei dati, l'elaborazione delle richieste e la visualizzazione lato utente.
 
-\subsection{4.2.1 Il pattern Model-View-Template (MVT)}
+\subsection{Il pattern Model-View-Template (MVT)}
 Nel pattern MVT, ogni componente ha un ruolo specifico:
 
 \begin{itemize}
@@ -234,7 +233,7 @@ Questo approccio ci ha permesso di organizzare il codice in modo modulare e faci
 Nel nostro progetto, abbiamo creato diversi modelli per rappresentare utenti, medici, pazienti, prenotazioni e prestazioni. 
 Ogni funzionalità è stata sviluppata come view associata a uno specifico URL, e i dati sono stati presentati attraverso template responsivi.
 
-\subsection{4.3 Design pattern utilizzati}
+\subsection{Design pattern utilizzati}
 
 Durante lo sviluppo abbiamo fatto uso di alcuni design pattern che Django supporta nativamente o che si adattano bene alla sua struttura:
 
@@ -246,7 +245,7 @@ Durante lo sviluppo abbiamo fatto uso di alcuni design pattern che Django suppor
     \item \textbf{Adapter}: in alcuni casi abbiamo integrato librerie esterne adattandole alle esigenze del progetto, in particolare per la validazione dei form e per la gestione dell’interfaccia utente.
 \end{itemize}
 
-\subsection{4.4 Librerie di terze parti utilizzate}
+\subsection{Librerie di terze parti utilizzate}
 
 Oltre ai moduli standard di Django e Python, abbiamo utilizzato alcune librerie esterne per migliorare l’efficienza nello sviluppo e la qualità del software:
 
@@ -255,7 +254,6 @@ Oltre ai moduli standard di Django e Python, abbiamo utilizzato alcune librerie 
     \item \textbf{python-dotenv}: per la gestione sicura delle variabili d’ambiente.
     \item \textbf{crispy-forms}: per migliorare la resa grafica e la personalizzazione dei form HTML.
     \item \textbf{pytest-django}: per scrivere e gestire i test automatici in modo semplice ed efficace.
-    \item \textbf{coverage.py}: per valutare la copertura del codice da parte dei test e individuare le parti non ancora verificate.
 \end{itemize}
 
 \subsubsection{Versioning del progetto}
@@ -269,59 +267,8 @@ Questo approccio ha garantito una storia chiara delle modifiche e ha facilitato 
 \newpage
 
 % ------------------------- INSTALLAZIONE -------------------------
-\section{Installazione e configurazione del sistema}
-
-Questa sezione descrive i passaggi necessari per installare e configurare il progetto localmente su una macchina con sistema operativo Windows, macOS o Linux.
-
-\subsection{Requisiti}
-Per poter eseguire correttamente il progetto sono richiesti i seguenti strumenti:
-\begin{itemize}
-    \item Python 3.10 o superiore
-    \item pip (Python package installer)
-    \item Git
-    \item Un ambiente virtuale (consigliato: \texttt{venv})
-\end{itemize}
-
-\subsection{Clonazione del repository}
-Aprire un terminale e clonare il progetto da GitHub:
-
-\begin{lstlisting}
-git clone https://github.com/Taniyakaur/Project
-cd Project
-\end{lstlisting}
-
-\subsection{Creazione dell'ambiente virtuale}
-Per creare e attivare un ambiente virtuale:
-
-\begin{itemize}
-    \item Su Windows:
-    \begin{lstlisting}
-python -m venv venv
-venv\Scripts\activate
-    \end{lstlisting}
-
-    \item Su macOS/Linux:
-    \begin{lstlisting}
-python3 -m venv venv
-source venv/bin/activate
-    \end{lstlisting}
-\end{itemize}
-
-\subsection{Installazione delle dipendenze}
-Con l’ambiente attivo, installare i pacchetti necessari:
-
-\begin{lstlisting}
-pip install -r requirements.txt
-\end{lstlisting}
-
-\subsection{Configurazione delle variabili d'ambiente}
-Creare un file \texttt{.env} nella root del progetto con le seguenti variabili (personalizzare i valori):
-
-\begin{lstlisting}
-DEBUG=True
-SECRET_KEY=chiave_segretissima
-ALLOWED_HOSTS=localhost,127.0.0.1
-\end{lstlisting}
+\section{Configurazione del sistema}
+\subsection{Requisiti di sistema}
 
 \subsection{Migrazione del database}
 Applicare le migrazioni iniziali:
@@ -331,7 +278,7 @@ python manage.py makemigrations
 python manage.py migrate
 \end{lstlisting}
 
-\subsection*{Creazione di un superutente (opzionale)}
+\subsection*{Creazione di un superutente (Segreteria)}
 Per accedere al pannello di amministrazione:
 
 \begin{lstlisting}
@@ -348,11 +295,11 @@ python manage.py runserver
 Il sistema sarà accessibile all'indirizzo \texttt{http://127.0.0.1:8000}
 \subsection{Accesso al sistema}
 Per accedere al sistema, utilizzare le credenziali fornite dalla segreteria per i pazienti, o quelle create per il personale medico e infermieristico.
-
+\newpage
 % ------------------------- TEST -------------------------
 \section{Test e validazione}
 
-\subsection{5.1 Unit test}
+\subsection{Unit test}
 Abbiamo eseguito test di tipo unitario su diverse componenti del sistema, in particolare sui modelli e sulle view. 
 Per questo abbiamo utilizzato il framework di test integrato in Django, basato su \texttt{unittest}, e in alcuni casi \texttt{pytest-django} per una maggiore flessibilità.
 
@@ -366,7 +313,7 @@ Esempi di test effettuati:
     \item Verifica della logica di assegnazione del medico e delle prenotazioni.
 \end{itemize}
 
-\subsection{5.2 Test manuali degli sviluppatori}
+\subsection{Test manuali degli sviluppatori}
 Abbiamo svolto test manuali sistematici simulando le azioni tipiche degli utenti:
 \begin{itemize}
     \item Login e logout di utenti di diversi ruoli (medico, segreteria, paziente).
@@ -376,19 +323,12 @@ Abbiamo svolto test manuali sistematici simulando le azioni tipiche degli utenti
     \item Gestione di situazioni particolari (es. doppia prenotazione nello stesso orario).
 \end{itemize}
 
-\subsection{5.3 Copertura del codice e strumenti}
+\subsection{Copertura del codice e strumenti}
 Per misurare la copertura dei test automatizzati abbiamo utilizzato \texttt{coverage.py}, uno strumento che mostra quali righe di codice sono state eseguite durante i test. 
 Questo ci ha permesso di identificare porzioni di codice non ancora testate.
-
-\subsection{5.4 Proposte per test futuri}
-In futuro, sarebbe utile integrare:
-\begin{itemize}
-    \item Test end-to-end con \texttt{Selenium} o \texttt{Playwright}, per simulare l’interazione dell’utente con l’interfaccia web.
-    \item Test di carico e prestazioni con \texttt{Locust} o \texttt{JMeter}, per verificare il comportamento del sistema sotto stress.
-\end{itemize}
-
+\newpage
 % ------------------------- BASE DI DATI -------------------------
-\\section{Struttura della base di dati}
+\section{Struttura della base di dati}
 
 La base di dati progettata per la gestione della casa di cura si basa su un modello entità-relazione (E-R) ben strutturato, 
 che include le entità principali coinvolte nel processo di erogazione delle prestazioni sanitarie, nonché le relazioni tra esse. 
@@ -490,7 +430,8 @@ Le cardinalità indicano il numero minimo e massimo di occorrenze di una entità
 \section{Tabella Riassuntiva delle Entità}
 
 \renewcommand{\arraystretch}{1.3}
-\begin{longtable}{|p{3.5cm}|p{7.5cm}|p{4cm}|}
+\begin{longtable}{|l|l|l|}
+\caption{Tabella riassuntiva delle entità del modello E-R} \label{tab:entita} \\ 
 \hline
 \textbf{Entità} & \textbf{Attributi principali} & \textbf{Chiave primaria} \\
 \hline
@@ -523,6 +464,8 @@ Lo schema implementato della Basi di Dati, completo è il seguente:\\
 \subsection{Gerarchia}
 
 La gerarchia principale del modello riguarda l’entità \texttt{Utente}, da cui derivano \texttt{Medico}, \texttt{Paziente}, \texttt{Infermieri} e \texttt{Segreteria}.
- Questa astrazione consente di modellare in modo efficiente attributi e comportamenti comuni a tutte le tipologie di utenti, evitando ridondanze.
+L'entita' padre è \texttt{Utente}, che contiene gli attributi comuni a tutti gli utenti del sistema, come \texttt{username}, \texttt{nome}, \texttt{cognome} e \texttt{codice fiscale}.
+Le entità figlie, come \texttt{Medico}, \texttt{Paziente}, \texttt{Infermiere} e \texttt{Segreteria}, ereditano questi attributi e ne aggiungono altri specifici per ciascun tipo di utente.
+Questa struttura consente di mantenere una chiara separazione tra le diverse tipologie di utenti, pur condividendo le informazioni comuni.
 
 \end{document}
