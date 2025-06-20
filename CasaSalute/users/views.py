@@ -8,6 +8,9 @@ from .models import Medico, Infermiere, Paziente, Segreteria
 from .forms import ModificaMedicoForm, ModificaInfermiereForm, LoginForm
 from visita.models import Visita, PrenotazioneVisita as Prenotazione  # o Prenotazione se si chiama così
 from visita.forms import PrenotazioneForm, EsitoVisitaForm
+from django.contrib.auth.models import User
+from datetime import date
+
 
 # Funzione per invio email centralizzata
 def invia_email_conferma_prestazione(utente_email, contesto):
@@ -46,7 +49,7 @@ def login_view(request):
 @login_required
 def logout_view(request):
     logout(request)
-    return redirect('login')
+    return redirect('login') 
 
 # PAGINA MEDICO
 @login_required
@@ -100,7 +103,27 @@ def pagina_paziente(request):
 @login_required
 def pagina_segreteria(request):
     segreteria = get_object_or_404(Segreteria, username=request.user)
-    return render(request, 'segreteria.html', {'segreteria': segreteria})
+
+    # Prepara elenco personale con attributo 'ruolo'
+    personale = []
+    for medico in Medico.objects.all():
+        medico.ruolo = "Medico"
+        personale.append(medico)
+    for infermiere in Infermiere.objects.all():
+        infermiere.ruolo = "Infermiere"
+        personale.append(infermiere)
+
+    # Altri dati necessari al template
+    pazienti = Paziente.objects.all()
+    visite_da_completare = Visita.objects.filter(esito__isnull=True)
+
+    return render(request, 'segreteria.html', {
+        'segreteria': segreteria,
+        'personale': personale,
+        'pazienti': pazienti,
+        'visite_da_completare': visite_da_completare,
+        'anno': 2025  # o datetime.now().year
+    })
 
 # PRENOTAZIONE VISITA
 @login_required
@@ -145,3 +168,132 @@ def salva_esito_visita(request, visita_id):
     else:
         form = EsitoVisitaForm(instance=visita)
     return render(request, 'salva_esito_visita.html', {'form': form, 'visita': visita})
+
+# AGGIUNGI PERSONALE
+@login_required
+def aggiungi_personale(request):
+    if request.method == "POST":
+        ruolo = request.POST.get("ruolo")
+        nome = request.POST.get("nome")
+        cognome = request.POST.get("cognome")
+        codice_fiscale = request.POST.get("codice_fiscale")
+        email = request.POST.get("email")
+
+        # Crea utente base
+        user = User.objects.create_user(
+            username=codice_fiscale,
+            email=email,
+            password=User.objects.make_random_password()
+        )
+
+        # Crea medico o infermiere associato
+        if ruolo == "medico":
+            Medico.objects.create(
+                user=user,
+                username=user,
+                nome=nome,
+                cognome=cognome,
+                codice_fiscale=codice_fiscale,
+                email=email
+            )
+        elif ruolo == "infermiere":
+            Infermiere.objects.create(
+                user=user,
+                username=user,
+                nome=nome,
+                cognome=cognome,
+                codice_fiscale=codice_fiscale,
+                email=email
+            )
+
+        return redirect('segreteria_dashboard')
+# AGGIUNGI PAZIENTE
+@login_required
+def aggiungi_paziente(request):
+    if request.method == "POST":
+        nome = request.POST.get("nome")
+        cognome = request.POST.get("cognome")
+        codice_sanitario = request.POST.get("codice_sanitario")
+        data_nascita = request.POST.get("data_nascita")
+        email = request.POST.get("email")  # Se vuota → paziente minorenne
+
+        data_nascita_obj = date.fromisoformat(data_nascita)
+        oggi = date.today()
+        eta = oggi.year - data_nascita_obj.year - ((oggi.month, oggi.day) < (data_nascita_obj.month, data_nascita_obj.day))
+
+        if eta >= 14:
+            # Paziente maggiorenne: creo anche un utente
+            user = User.objects.create_user(
+                username=codice_sanitario,
+                email=email,
+                password=User.objects.make_random_password()
+            )
+            Paziente.objects.create(
+                user=user,
+                username=user,
+                nome=nome,
+                cognome=cognome,
+                codice_sanitario=codice_sanitario,
+                data_nascita=data_nascita_obj,
+                email=email
+            )
+        else:
+            # Paziente minorenne: serve referente con quell'email
+            referente = Paziente.objects.filter(email=email).first()
+            if referente:
+                Paziente.objects.create(
+                    username=None,
+                    nome=nome,
+                    cognome=cognome,
+                    codice_sanitario=codice_sanitario,
+                    data_nascita=data_nascita_obj,
+                    email=email,
+                    referente_adulto=referente
+                )
+            else:
+                # Referente non trovato
+                return render(request, 'segreteria.html', {
+                    'errore': "Referente adulto non trovato per questo paziente minorenne.",
+                })
+
+        return redirect('segreteria_dashboard')    
+# RESOCONTO ANNUALE PAZIENTE    
+@login_required
+def resoconto_paziente(request):
+    paziente_id = request.GET.get("paziente_id")
+    anno = int(request.GET.get("anno", 2025))  # Default = 2025
+
+    paziente = get_object_or_404(Paziente, id=paziente_id)
+    visite = Visita.objects.filter(paziente=paziente, data__year=anno)
+
+    return render(request, 'resoconto_annuale.html', {
+        'paziente': paziente,
+        'visite': visite,
+        'anno': anno
+    })
+# INSERISCI ESITO VISITA
+@login_required
+def inserisci_esito_visita(request):
+    if request.method == "POST":
+        visita_id = request.POST.get("visita")
+        esito = request.POST.get("esito")
+
+        visita = get_object_or_404(Visita, id=visita_id)
+        visita.esito = esito
+        visita.save()
+
+        # Raccogli i pazienti pediatrici collegati al paziente
+        minori = Paziente.objects.filter(referente_adulto=visita.paziente.user)
+
+        # Invia email al paziente (o al suo referente)
+        contesto = {
+            'nome': visita.paziente.nome,
+            'tipo': 'esito visita',
+            'data': visita.data,
+            'esito': visita.esito,
+            'minori': minori
+        }
+        invia_email_conferma_prestazione(visita.paziente.user.email, contesto)
+
+        return redirect('segreteria_dashboard')
+  

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Modifica Dati Infermiere{% endblock %}
+
+{% block content %}
+    <h2>Modifica Dati - {{ request.user.username }}</h2>
+    <p>Qui puoi aggiornare i tuoi dati personali.</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salva Modifiche</button>
+    </form>
+
+    <a href="{% url 'pagina_infermiere' %}" class="button">Annulla e torna alla tua pagina</a>
+{% endblock %}
