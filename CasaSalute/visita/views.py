@@ -1,6 +1,8 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.core.mail import send_mail
 from .models import Visita
+from users.models import Segreteria
+
 from .forms import VisitaForm
 from django.contrib.auth.decorators import login_required
 
@@ -8,6 +10,7 @@ def index(request):
     visite = Visita.objects.all()
     return render(request, "visita/index.html", {"visite": visite})
 
+@login_required
 def create_visita(request):
     if request.method == "POST":
         form = VisitaForm(request.POST)
@@ -49,6 +52,6 @@ def send_notification_email(visita):
 
 @login_required
 def pagina_segreteria(request):
-    segreteria = get_object_or_404(Segreteria, username=request.user)
+    segreteria = get_object_or_404(Segreteria, user=request.user)
     # aggiungi eventuali dati da passare al template
     return render(request, 'segreteria.html', {'segreteria': segreteria})
