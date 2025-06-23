@@ -30,9 +30,9 @@ class ModificaInfermiereForm(forms.ModelForm):
         model = Infermiere
         fields = ['cognome', 'nome', 'codice_fiscale']
 
+
 # FORM PER ASSENZA PIANIFICATA
 class AssenzaPianificataForm(forms.ModelForm):
     class Meta:
         model = AssenzaPianificata
         fields = '__all__'
-
