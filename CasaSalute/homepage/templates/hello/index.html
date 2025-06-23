@@ -54,39 +54,29 @@
 
     
         <!-- Sezione Medici -->
-        <div class="container">
-            <div class="row">
-                <div class="separator1"></div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="doctores_box" style="background-color:#098547">
-                            <img src="{% static 'homepage/immagine/foto_medico_donna.jpg' %}" alt="Dott.ssa. Barichello" class="img-fluid" width="200">
-                            <h4>Dr. Zuchegna</h4>
-                            <p>MBBS, Cardiologia</p>
-                        </div>
-                     </div>
-                <div class="col-md-4">
-                    <div class="doctores_box" style="background-color:#098547">
-                        <img src="{% static 'homepage/immagine/foto_medico2.jpg' %}" alt="Dott.Bianchi" class="img-fluid" width="200">
-                        <h4>Dr. Mohammad</h4>
-                        <p>MBBS, Neurologia</p>
-                    </div>
+        <div class="container" style="background-color:#2c3e50">
+                <div class="doctores_box">
+                    <img src="{% static 'homepage/immagine/foto_medico_donna.jpg' %}" alt="Dott.ssa. Barichello" class="img-fluid" width="200">
+                    <h4>Dr. Zuchegna</h4>
+                    <p>MBBS, Cardiologia</p>
                 </div>
-                <div class="col-md-4">
-                    <div class="doctores_box" style="background-color:#098547">
-                        <img src="{% static 'homepage/immagine/foto_medico1.jpg' %}" alt="Dott. Federico Magrograssi" class="img-fluid" width="200">
-                        <h4>Dr. Marco</h4>
-                        <p>MBBS, Pediatria</p>
-                    </div>
+                <div class="doctores_box">
+                    <img src="{% static 'homepage/immagine/foto_medico2.jpg' %}" alt="Dott.Bianchi" class="img-fluid" width="200">
+                    <h4>Dr. Mohammad</h4>
+                    <p>MBBS, Neurologia</p>
                 </div>
-            </div> 
-            <div class="separator1"></div>
+                <div class="doctores_box">
+                    <img src="{% static 'homepage/immagine/foto_medico1.jpg' %}" alt="Dott. Federico Magrograssi" class="img-fluid" width="200">
+                    <h4>Dr. Marco</h4>
+                    <p>MBBS, Pediatria</p>
+                </div>
         </div>
         
         <!-- Contatti e Modulo di Richiesta Informazioni -->
-        <div class="row">
-            <h2 align="center" style="color: white;">Contattaci</h2>
-            <p align="center" style="color: white;">Per informazioni o appuntamenti, chiamaci al <strong>039 12345678</strong> o compila il modulo qui sotto.</p>
+        <div class="separator1"></div>
+        <div class="row" style="padding-top: 30px;">
+            <h1 align="center" style="color: #098547;">Contattaci</h1>
+            <h2 align="center" style="color: #098547;">Per informazioni o appuntamenti, chiamaci al <strong>039 12345678</strong> o compila il modulo qui sotto.</h2>
 
             <form style="color: #098547; background-color: white; padding: 20px; border-radius: 10px; width: 50%; margin: auto;">
                 <label for="name">Nome:</label>
@@ -100,8 +90,8 @@
 
                 <button type="submit" style="background-color: #111111; color: white; padding: 10px 15px; border: none; cursor: pointer; margin-top: 10px;">Invia</button>
             </form>
-            <h1 style="background-color: #098547;"> </h1>
         </div>
+        <div class="separator1"></div>
 
         <!-- Box Testimonianze -->
         <div class="row">
@@ -120,7 +110,6 @@
             </div>
         </div>
     </body>
-<!-- CSS aggiornato -->
 
 
 {% endblock %}

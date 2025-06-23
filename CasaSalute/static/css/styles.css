@@ -120,6 +120,7 @@ ol {
 }
 
 p {
+    color: #f9f9f9;
     margin: 20px;
     font-weight: 300;
     font-size: 15px;
@@ -268,18 +269,18 @@ button {
 /* --- footer ---*/
 
 .footer_section {
-    width: 100%;
-    float: left;
-    background-color: #1d1d1d;
-    height: auto;
-    padding: 70px 0px;
+    background-color: #2c3e50;
+    color: white;
+    padding: 50px 0;
+    text-align: center;
 }
+	
 
 .treatment_taital {
     width: 100%;
     float: left;
     font-size: 35px;
-    color: #252525;
+    color: #2c3e50;
     text-align: center;
     padding-top: 50px;
     font-weight: bold;
@@ -290,7 +291,7 @@ button {
     width: 100%;
     float: left;
     font-size: 40px !important;
-    color: #252525;
+    color: #2c3e50;
     margin: 20px 0px 0px 0px;
 }
 
@@ -319,16 +320,6 @@ button {
     padding-bottom: 90px;
 }
 
-.treatment_taital {
-    width: 100%;
-    float: left;
-    font-size: 35px;
-    color: #252525;
-    text-align: center;
-    padding-top: 50px;
-    font-weight: bold;    
-}
-
 .care_text {
     width: 100%;
     float: left;
@@ -354,39 +345,84 @@ button {
 }
 
 .doctores_box {
-     background-color: #1f4a34;
-        height: auto;
-        padding: 20px;
-        border-radius: 15px; /* Bordo arrotondato coerente */
-        margin-top: 50px;
-        text-align: center;
-        overflow: hidden;
-        box-shadow: 0px 4px 6px rgba(94, 174, 109, 0.1);
+    background-color: #098547;
+    height: auto;
+    padding: 20px;
+    border-radius: 15px; /* Bordo arrotondato coerente */
+    margin-top: 50px;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0px 4px 6px rgba(94, 174, 109, 0.1);
 }
 
 .container {
-        background-color:#098547;
-        padding: 20px;
-        text-align: center;
+    background-color:#098547;
+    padding: 20px;
+    text-align: center;
+}
+.separator {
+    background-color: #1f4a34;
+    height: 5px;
+    width: 100%;
+    margin: 10px 0;
     }
-    .separator {
-        background-color: #1f4a34;
-        height: 5px;
-        width: 100%;
-        margin: 10px 0;
-    }
-    .separator1 {
-        background-color: #098547;
-        height: 5px;
-        width: 100%;
-        margin: 10px 0;
-    }
+.separator1 {
+    background-color: #098547;
+    height: 5px;
+    width: 100%;
+    margin: 10px 0;
+}
 
-    h4, p {
-        color: #f9f9f9;
-    }
-	
-	
+.login_container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
 
+.login_container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #2c3e50;
+}
 
+/* Label */
+.form-label {
+    font-weight: 600;
+    color: #34495e;
+}
+
+/* Input e select */
+.form-control {
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin-bottom: 10px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background-color: #f8f9fa;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+    background-color: #ffffff;
+}
+
+/* Bottone di login */
+.btn-primary {
+    width: 10%;
+    padding: 10px;
+    font-weight: 600;
+    border-radius: 6px;
+    background-color: #098547;
+    border-color: #098547;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: #1fe381;
+    transform: scale(1.02);
+}
 

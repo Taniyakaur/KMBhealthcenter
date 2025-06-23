@@ -1,28 +1,28 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
-    <h2 class="mt-4">Login</h2>
-    <form method="post">
-        {% csrf_token %}
-        <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
-            <input type="text" id="username" name="username" class="form-control" required>
-        </div>
-        <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" id="password" name="password" class="form-control" required>
-        </div>
-        <div class="mb-3">
-            <label for="id_user_type" class="form-label">Tipo di utente</label>
-            <select id="id_user_type" name="user_type" class="form-control">
-                <option value="medico">Medico</option>
-                <option value="infermiere">Infermiere</option>
-                <option value="paziente" selected>Paziente</option>
-                <option value="segreteria">Segretario</option>
-            </select>
-        </div>
-        <button type="submit" class="btn btn-primary">Accedi</button>
-    </form>
+<div class="container" style="background-color: white;">
+        <h2>Login</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" id="username" name="username" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" id="password" name="password" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="id_user_type" class="form-label">Tipo di utente</label>
+                <select id="id_user_type" name="user_type" class="form-control">
+                    <option value="medico">Medico</option>
+                    <option value="infermiere">Infermiere</option>
+                    <option value="paziente" selected>Paziente</option>
+                    <option value="segreteria">Segretario</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Accedi</button>
+        </form>
 </div>
 {% endblock %}
