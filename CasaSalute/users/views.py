@@ -5,7 +5,7 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.conf import settings
 from .models import Medico, Infermiere, Paziente, Segreteria
-from .forms import ModificaMedicoForm, ModificaInfermiereForm, LoginForm
+from .forms import ModificaMedicoForm, ModificaInfermiereForm, LoginForm, AssenzaPianificataForm
 from visita.models import Visita, PrenotazioneVisita as Prenotazione  # o Prenotazione se si chiama così
 from visita.forms import PrenotazioneForm, EsitoVisitaForm
 from django.contrib.auth.models import User
@@ -23,9 +23,9 @@ def login_view(request):
     if request.method == "POST":
         form = LoginForm(request.POST)
         if form.is_valid():
-            username = form.cleaned_data["username"]
+            username = form.cleaned_data["user"]
             password = form.cleaned_data["password"]
-            user = authenticate(request, username=username, password=password)
+            user = authenticate(request, user=user, password=password)
 
             if user is not None:
                 login(request, user)
@@ -54,14 +54,14 @@ def logout_view(request):
 # PAGINA MEDICO
 @login_required
 def pagina_medico(request):
-    medico = get_object_or_404(Medico, username=request.user)
+    medico = get_object_or_404(Medico, user=request.user)
     pazienti = Paziente.objects.filter(medico_curante=medico)
     return render(request, 'medico.html', {'medico': medico, 'pazienti': pazienti})
 
 # MODIFICA DATI MEDICO
 @login_required
 def modifica_medico(request):
-    medico = get_object_or_404(Medico, username=request.user)
+    medico = get_object_or_404(Medico, user=request.user)
     if request.method == "POST":
         form = ModificaMedicoForm(request.POST, instance=medico)
         if form.is_valid():
@@ -74,14 +74,14 @@ def modifica_medico(request):
 # PAGINA INFERMIERE
 @login_required
 def pagina_infermiere(request):
-    infermiere = get_object_or_404(Infermiere, username=request.user)
-    prestazioni = Visita.objects.filter(personale_infermieristico=infermiere)
+    infermiere = get_object_or_404(Infermiere, user=request.user)
+    prestazioni = Visita.objects.filter(infermiere=infermiere)
     return render(request, 'infermieri.html', {'infermiere': infermiere, 'prestazioni': prestazioni})
 
 # MODIFICA DATI INFERMIERE
 @login_required
 def modifica_infermiere(request):
-    infermiere = get_object_or_404(Infermiere, username=request.user)
+    infermiere = get_object_or_404(Infermiere, user=request.user)
     if request.method == "POST":
         form = ModificaInfermiereForm(request.POST, instance=infermiere)
         if form.is_valid():
@@ -94,7 +94,7 @@ def modifica_infermiere(request):
 # PAGINA PAZIENTE
 @login_required
 def pagina_paziente(request):
-    paziente = get_object_or_404(Paziente, username=request.user)
+    paziente = get_object_or_404(Paziente, user=request.user)
     visite = Visita.objects.filter(paziente=paziente)
     prenotazioni = Prenotazione.objects.filter(paziente=paziente)
     return render(request, 'paziente.html', {'paziente': paziente, 'visite': visite, 'prenotazioni': prenotazioni})
@@ -102,7 +102,7 @@ def pagina_paziente(request):
 # PAGINA SEGRETERIA
 @login_required
 def pagina_segreteria(request):
-    segreteria = get_object_or_404(Segreteria, username=request.user)
+    segreteria = get_object_or_404(Segreteria, user=request.user)
 
     # Prepara elenco personale con attributo 'ruolo'
     personale = []
@@ -132,7 +132,7 @@ def prenota_visita(request):
         form = PrenotazioneForm(request.POST)
         if form.is_valid():
             prenotazione = form.save(commit=False)
-            prenotazione.paziente = get_object_or_404(Paziente, username=request.user)
+            prenotazione.paziente = get_object_or_404(Paziente, user=request.user)
             prenotazione.save()
             # Invio email conferma
             contesto = {
@@ -181,7 +181,7 @@ def aggiungi_personale(request):
 
         # Crea utente base
         user = User.objects.create_user(
-            username=codice_fiscale,
+            user=codice_fiscale,
             email=email,
             password=User.objects.make_random_password()
         )
@@ -190,7 +190,6 @@ def aggiungi_personale(request):
         if ruolo == "medico":
             Medico.objects.create(
                 user=user,
-                username=user,
                 nome=nome,
                 cognome=cognome,
                 codice_fiscale=codice_fiscale,
@@ -199,7 +198,6 @@ def aggiungi_personale(request):
         elif ruolo == "infermiere":
             Infermiere.objects.create(
                 user=user,
-                username=user,
                 nome=nome,
                 cognome=cognome,
                 codice_fiscale=codice_fiscale,
@@ -215,14 +213,17 @@ def aggiungi_paziente(request):
         cognome = request.POST.get("cognome")
         codice_sanitario = request.POST.get("codice_sanitario")
         data_nascita = request.POST.get("data_nascita")
-        email = request.POST.get("email")  # Se vuota → paziente minorenne
+        email = request.POST.get("email")
+
+        if not data_nascita:
+            # gestisci errore
+            return render(request, "aggiungi_paziente.html", {"errore": "Data di nascita obbligatoria"})
 
         data_nascita_obj = date.fromisoformat(data_nascita)
         oggi = date.today()
         eta = oggi.year - data_nascita_obj.year - ((oggi.month, oggi.day) < (data_nascita_obj.month, data_nascita_obj.day))
 
         if eta >= 14:
-            # Paziente maggiorenne: creo anche un utente
             user = User.objects.create_user(
                 username=codice_sanitario,
                 email=email,
@@ -230,33 +231,24 @@ def aggiungi_paziente(request):
             )
             Paziente.objects.create(
                 user=user,
-                username=user,
                 nome=nome,
                 cognome=cognome,
-                codice_sanitario=codice_sanitario,
+                codice_fiscale=codice_sanitario,
                 data_nascita=data_nascita_obj,
                 email=email
             )
         else:
-            # Paziente minorenne: serve referente con quell'email
-            referente = Paziente.objects.filter(email=email).first()
-            if referente:
-                Paziente.objects.create(
-                    username=None,
-                    nome=nome,
-                    cognome=cognome,
-                    codice_sanitario=codice_sanitario,
-                    data_nascita=data_nascita_obj,
-                    email=email,
-                    referente_adulto=referente
-                )
-            else:
-                # Referente non trovato
-                return render(request, 'segreteria.html', {
-                    'errore': "Referente adulto non trovato per questo paziente minorenne.",
-                })
+            # logica per minorenni
+            Paziente.objects.create(
+                nome=nome,
+                cognome=cognome,
+                codice_fiscale=codice_sanitario,
+                data_nascita=data_nascita_obj,
+                email=email
+            )
+        return redirect('lista_pazienti')
+    return render(request, "aggiungi_paziente.html")
 
-        return redirect('segreteria_dashboard')    
 # RESOCONTO ANNUALE PAZIENTE    
 @login_required
 def resoconto_paziente(request):
@@ -296,4 +288,17 @@ def inserisci_esito_visita(request):
         invia_email_conferma_prestazione(visita.paziente.user.email, contesto)
 
         return redirect('segreteria_dashboard')
-  
+
+# AGGIUNGI ASSENZA
+@login_required
+def aggiungi_assenza(request):
+    if request.method == "POST":
+        form = AssenzaPianificataForm(request.POST)
+        if form.is_valid():
+            assenza = form.save(commit=False)
+            assenza.medico = get_object_or_404(Medico, username=request.user)
+            assenza.save()
+            return redirect('pagina_medico')
+    else:
+        form = AssenzaPianificataForm()
+    return render(request, 'aggiungi_assenza.html', {'form': form})

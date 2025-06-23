@@ -1,5 +1,5 @@
 from django import forms
-from .models import Medico, Infermiere
+from .models import Medico, Infermiere, AssenzaPianificata
 from django.contrib.auth.forms import AuthenticationForm
 
 # FORM PER LOGIN
@@ -22,11 +22,17 @@ class LoginForm(AuthenticationForm):
 class ModificaMedicoForm(forms.ModelForm):
     class Meta:
         model = Medico
-        fields = ['cognome', 'nome', 'codice_fiscale', 'specialita', 'assenze_pianificate']
+        fields = ['cognome', 'nome', 'codice_fiscale', 'specializzazione', 'medici_sostituibili']
 
 # FORM PER MODIFICA DATI INFERMIERE
 class ModificaInfermiereForm(forms.ModelForm):
     class Meta:
         model = Infermiere
-        fields = ['cognome', 'nome', 'codice_fiscale', 'giorni_servizio']
+        fields = ['cognome', 'nome', 'codice_fiscale']
+
+# FORM PER ASSENZA PIANIFICATA
+class AssenzaPianificataForm(forms.ModelForm):
+    class Meta:
+        model = AssenzaPianificata
+        fields = '__all__'
 

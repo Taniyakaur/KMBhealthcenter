@@ -7,7 +7,7 @@ from datetime import time
 
 # MODELLO BASE GENERICO
 class UtenteBase(models.Model):
-    username = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)  # collegamento all'account Django
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)  # collegamento all'account Django
     cognome = models.CharField(max_length=50)
     nome = models.CharField(max_length=50)
     codice_fiscale = models.CharField(max_length=16)
@@ -16,27 +16,78 @@ class UtenteBase(models.Model):
         abstract = True  # questo rende la classe astratta
 
 
+# MODELLO USER PROFILE
+class UserProfile(models.Model):
+    USER_TYPE_CHOICES = [
+        ('medico', 'Medico'),
+        ('infermiere', 'Infermiere'),
+        ('paziente', 'Paziente'),
+        ('segreteria', 'Segreteria'),
+    ]
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    tipo_utente = models.CharField(max_length=20, choices=USER_TYPE_CHOICES)
+
+    def __str__(self):
+        return self.user.username
+
 # MODELLO MEDICO
 class Medico(UtenteBase):
-    specialita = models.CharField(max_length=100, blank=True, null=True)
-    assenze_pianificate = models.JSONField(blank=True, null=True)
+    specializzazione = models.CharField(max_length=100, blank=True, null=True)
     medici_sostituibili = models.ManyToManyField("self", blank=True)
+
+    def __str__(self):
+            return self.user.username
 
     class Meta:
         verbose_name = "medico"
         verbose_name_plural = "medici"
 
 
-# MODELLO INFERMIERE
-class Infermiere(UtenteBase):
-    giorni_servizio = models.JSONField(blank=True, null=True)
+# MODELLO ASSENZA PIANIFICATA
+class AssenzaPianificata(models.Model):
+    medico = models.ForeignKey('Medico', on_delete=models.CASCADE, related_name='assenze_pianificate')
+    data_inizio = models.DateField()
+    data_fine = models.DateField()
+    motivo = models.CharField(max_length=255, blank=True)
 
     def __str__(self):
-        return f"Infermiere {self.nome} {self.cognome}"
+        return f"{self.medico} assente dal {self.data_inizio} al {self.data_fine}"
+    class Meta:
+        verbose_name = "Assenza Pianificata"
+        verbose_name_plural = "Assenze Pianificate"
+
+
+# MODELLO INFERMIERE
+class Infermiere(UtenteBase):
+    pass  # Non ha campi aggiuntivi rispetto a UtenteBase, ma può essere esteso in futuro
+
+    def __str__(self):
+        return self.user.username
 
     class Meta:
-        verbose_name = "infermiere"
-        verbose_name_plural = "infermieri"
+        verbose_name = "Infermiere"
+        verbose_name_plural = "Infermieri"
+
+class GiornoServizio(models.Model):
+    infermiere = models.ForeignKey('Infermiere', on_delete=models.CASCADE, related_name='giorni_servizio')
+    giorno = models.CharField(max_length=10, choices=[
+        ('lun', 'Lunedì'),
+        ('mar', 'Martedì'),
+        ('mer', 'Mercoledì'),
+        ('gio', 'Giovedì'),
+        ('ven', 'Venerdì'),
+        ('sab', 'Sabato'),
+        ('dom', 'Domenica'),
+    ])
+    orario_inizio = models.TimeField()
+    orario_fine = models.TimeField()
+
+    def __str__(self):
+        return f"{self.infermiere} - {self.get_giorno_display()} {self.orario_inizio}-{self.orario_fine}"
+
+    class Meta:
+        verbose_name = "giorno di servizio"
+        verbose_name_plural = "giorni di servizio"
 
 
 # MODELLO PAZIENTE
@@ -65,8 +116,10 @@ class Segreteria(UtenteBase):
     ruolo = models.CharField(max_length=100, default='Segreteria')  # Ruolo fisso per la segreteria
 
     def __str__(self):
-        return f"Segretario/a {self.nome} {self.cognome}"
+     return self.user.username
+
 
     class Meta:
         verbose_name = "segreteria"
         verbose_name_plural = "segreterie"
+
