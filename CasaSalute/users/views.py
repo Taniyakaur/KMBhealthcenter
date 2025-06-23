@@ -76,7 +76,7 @@ def modifica_medico(request):
 def pagina_infermiere(request):
     infermiere = get_object_or_404(Infermiere, user=request.user)
     prestazioni = Visita.objects.filter(infermiere=infermiere)
-    return render(request, 'infermieri.html', {'infermiere': infermiere, 'prestazioni': prestazioni})
+    return render(request, 'infermiere.html', {'infermiere': infermiere, 'prestazioni': prestazioni})
 
 # MODIFICA DATI INFERMIERE
 @login_required
