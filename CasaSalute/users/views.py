@@ -20,30 +20,37 @@ def invia_email_conferma_prestazione(utente_email, contesto):
 
 # LOGIN
 def login_view(request):
+    form = LoginForm(request.POST or None)
     if request.method == "POST":
-        form = LoginForm(request.POST)
         if form.is_valid():
-            username = form.cleaned_data["user"]
+            username = form.cleaned_data["username"]
             password = form.cleaned_data["password"]
-            user = authenticate(request, user=user, password=password)
+            user_type = form.cleaned_data["user_type"]
+            user = authenticate(request, username=username, password=password)
 
             if user is not None:
-                login(request, user)
-                # Check user type and redirect
-                if hasattr(user, 'medico'):
-                    return redirect('medico_dashboard')  # replace with your url name
-                elif hasattr(user, 'infermiere'):
-                    return redirect('infermiere_dashboard')
-                elif hasattr(user, 'paziente'):
-                    return redirect('paziente_dashboard')
-                elif hasattr(user, 'segreteria'):
-                    return redirect('segreteria_dashboard')
-                else:
-                    return redirect('home')
-    else:
-        form = LoginForm()
+                # Verifica che l'utente appartenga al tipo selezionato
+                if (user_type == 'medico' and hasattr(user, 'medico')) or \
+                   (user_type == 'infermiere' and hasattr(user, 'infermiere')) or \
+                   (user_type == 'paziente' and hasattr(user, 'paziente')) or \
+                   (user_type == 'segreteria' and hasattr(user, 'segreteria')):
 
-    return render(request, "users/login.html", {"form": form})
+                    login(request, user)
+
+                    if user_type == 'medico':
+                        return redirect('pagina_medico')
+                    elif user_type == 'infermiere':
+                        return redirect('pagina_infermiere')
+                    elif user_type == 'paziente':
+                        return redirect('pagina_paziente')
+                    elif user_type == 'segreteria':
+                        return redirect('pagina_segreteria')
+                else:
+                    form.add_error(None, "Tipo utente errato per questo account.")
+            else:
+                form.add_error(None, "Credenziali non valide.")
+    
+    return render(request, "login.html", {"form": form})
 
 # LOGOUT
 @login_required
@@ -179,9 +186,8 @@ def aggiungi_personale(request):
         codice_fiscale = request.POST.get("codice_fiscale")
         email = request.POST.get("email")
 
-        # Crea utente base
         user = User.objects.create_user(
-            user=codice_fiscale,
+            username=codice_fiscale,
             email=email,
             password=User.objects.make_random_password()
         )
@@ -205,6 +211,9 @@ def aggiungi_personale(request):
             )
 
         return redirect('segreteria_dashboard')
+    
+    return render(request, 'aggiungi_personale.html')  # opzionale: aggiungi un template per GET
+
 # AGGIUNGI PAZIENTE
 @login_required
 def aggiungi_paziente(request):

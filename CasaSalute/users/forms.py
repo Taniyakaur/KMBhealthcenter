@@ -5,7 +5,7 @@ from django.contrib.auth.forms import AuthenticationForm
 # FORM PER LOGIN
 class LoginForm(AuthenticationForm):
     USER_TYPE_CHOICES = [
-        ('medico', 'Medico'),
+        ('medico', 'Medico'), 
         ('infermiere', 'Infermiere'),
         ('paziente', 'Paziente'),
         ('segreteria', 'Segreteria')
