@@ -53,7 +53,7 @@ def login_view(request):
                     form.add_error(None, "Tipo utente errato per questo account.")
             else:
                 form.add_error(None, "Credenziali non valide.")
-    return render(request, 'login.html', {'form': form})
+    return render(request, 'users/login.html', {'form': form})
 
 
 # LOGOUT
