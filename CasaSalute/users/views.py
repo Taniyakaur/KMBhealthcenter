@@ -19,6 +19,9 @@ def invia_email_conferma_prestazione(utente_email, contesto):
     send_mail(soggetto, messaggio, settings.DEFAULT_FROM_EMAIL, [utente_email])
 
 # LOGIN
+from django.contrib.auth.forms import AuthenticationForm
+from .forms import LoginForm  # se stai usando il tuo LoginForm personalizzato
+
 def login_view(request):
     form = LoginForm(request.POST or None)
     if request.method == "POST":
@@ -29,7 +32,7 @@ def login_view(request):
             user = authenticate(request, username=username, password=password)
 
             if user is not None:
-                # Verifica che l'utente appartenga al tipo selezionato
+                # Verifica se il tipo utente corrisponde
                 if (user_type == 'medico' and hasattr(user, 'medico')) or \
                    (user_type == 'infermiere' and hasattr(user, 'infermiere')) or \
                    (user_type == 'paziente' and hasattr(user, 'paziente')) or \
@@ -37,6 +40,7 @@ def login_view(request):
 
                     login(request, user)
 
+                    # Redirezione in base al tipo utente
                     if user_type == 'medico':
                         return redirect('pagina_medico')
                     elif user_type == 'infermiere':
@@ -44,13 +48,13 @@ def login_view(request):
                     elif user_type == 'paziente':
                         return redirect('pagina_paziente')
                     elif user_type == 'segreteria':
-                        return redirect('pagina_segreteria')
+                        return redirect('/admin/') # redirect diretto alla dashboard di segreteria
                 else:
                     form.add_error(None, "Tipo utente errato per questo account.")
             else:
                 form.add_error(None, "Credenziali non valide.")
-    
-    return render(request, "login.html", {"form": form})
+    return render(request, 'login.html', {'form': form})
+
 
 # LOGOUT
 @login_required
