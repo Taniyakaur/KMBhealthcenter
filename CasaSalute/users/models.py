@@ -31,8 +31,15 @@ class UserProfile(models.Model):
         return self.user.username
 
 # MODELLO MEDICO
+
+SPECIALIZZAZIONE_CHOICES = [
+    ('medicina_generale', 'Medicina Generale'),
+    ('pediatria', 'Pediatria'),
+    ('cardiologia', 'Cardiologia'),
+    ('neurologia', 'Neurologia'),
+]
 class Medico(UtenteBase):
-    specializzazione = models.CharField(max_length=100, blank=True, null=True)
+    specializzazione = models.CharField(max_length=30,   choices=SPECIALIZZAZIONE_CHOICES, blank=True, null=True)
     medici_sostituibili = models.ManyToManyField("self", blank=True)
 
     def __str__(self):
@@ -94,9 +101,9 @@ class GiornoServizio(models.Model):
 class Paziente(UtenteBase):
     data_nascita = models.DateField()
     luogo_nascita = models.CharField(max_length=100)
-    email = models.EmailField(blank=True, null=True)
+    email = models.EmailField(blank=True, null=True, help_text=" Email del referente adulto per i minori")
     medico_curante = models.ForeignKey("Medico", on_delete=models.SET_NULL, null=True, related_name="medico_pazienti_curante")
-    referente_adulto = models.ForeignKey("self", on_delete=models.SET_NULL, blank=True, null=True)  # Per i minori di 14 anni
+    referente_adulto = models.CharField(max_length=100, blank=True, null=True, help_text="Nome e cognome del referente adulto per i minori")  # Per i minori di 14 anni
 
     def is_minor(self):
         from datetime import date
