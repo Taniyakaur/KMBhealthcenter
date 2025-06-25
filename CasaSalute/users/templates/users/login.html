@@ -32,7 +32,7 @@
                 <option value="medico" {% if form.user_type.value == 'medico' %}selected{% endif %}>Medico</option>
                 <option value="infermiere" {% if form.user_type.value == 'infermiere' %}selected{% endif %}>Infermiere</option>
                 <option value="paziente" {% if form.user_type.value == 'paziente' or not form.user_type.value %}selected{% endif %}>Paziente</option>
-                <option value="segreteria" {% if form.user_type.value == 'segreteria' %}selected{% endif %}>Segretario</option>
+                <option value="segreteria" {% if form.user_type.value == 'segreteria' %}selected{% endif %}>Segretaria</option>
             </select>
         </div>
         <button type="submit" class="btn btn-primary">Accedi</button>

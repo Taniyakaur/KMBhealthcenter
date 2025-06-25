@@ -24,37 +24,53 @@ from .forms import LoginForm  # se stai usando il tuo LoginForm personalizzato
 
 def login_view(request):
     form = LoginForm(request.POST or None)
+
     if request.method == "POST":
+        print("🔵 POST ricevuto")
+
         if form.is_valid():
             username = form.cleaned_data["username"]
             password = form.cleaned_data["password"]
             user_type = form.cleaned_data["user_type"]
+
+            print("🔐 Tentativo login con username: {username}, tipo: {user_type}")
+
             user = authenticate(request, username=username, password=password)
 
             if user is not None:
-                # Verifica se il tipo utente corrisponde
-                if (user_type == 'medico' and hasattr(user, 'medico')) or \
-                   (user_type == 'infermiere' and hasattr(user, 'infermiere')) or \
-                   (user_type == 'paziente' and hasattr(user, 'paziente')) or \
-                   (user_type == 'segreteria' and hasattr(user, 'segreteria')):
+                print("✅ Autenticazione riuscita")
 
+                # Verifica se il tipo utente è coerente con l'oggetto associato
+                if (user_type == 'medico' and hasattr(user, 'medico')):
+                    print("👨‍⚕️ Medico riconosciuto")
                     login(request, user)
+                    return redirect('pagina_medico')
 
-                    # Redirezione in base al tipo utente
-                    if user_type == 'medico':
-                        return redirect('pagina_medico')
-                    elif user_type == 'infermiere':
-                        return redirect('pagina_infermiere')
-                    elif user_type == 'paziente':
-                        return redirect('pagina_paziente')
-                    elif user_type == 'segreteria':
-                        return redirect('/admin/') # redirect diretto alla dashboard di segreteria
+                elif (user_type == 'infermiere' and hasattr(user, 'infermiere')):
+                    print("🧑‍⚕️ Infermiere riconosciuto")
+                    login(request, user)
+                    return redirect('pagina_infermiere')
+
+                elif (user_type == 'paziente' and hasattr(user, 'paziente')):
+                    print("🧑 Paziente riconosciuto")
+                    login(request, user)
+                    return redirect('pagina_paziente')
+
+                elif (user_type == 'segreteria' and hasattr(user, 'segreteria')):
+                    print("🧾 Segreteria riconosciuta")
+                    login(request, user)
+                    return redirect('/admin/')
+
                 else:
+                    print("⚠️ Tipo utente errato per questo account")
                     form.add_error(None, "Tipo utente errato per questo account.")
             else:
+                print("❌ Autenticazione fallita")
                 form.add_error(None, "Credenziali non valide.")
-    return render(request, 'users/login.html', {'form': form})
+        else:
+            print("⚠️ Form non valido:", form.errors)
 
+    return render(request, 'users/login.html', {'form': form})
 
 # LOGOUT
 @login_required
