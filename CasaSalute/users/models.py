@@ -101,14 +101,20 @@ class GiornoServizio(models.Model):
 class Paziente(UtenteBase):
     data_nascita = models.DateField()
     luogo_nascita = models.CharField(max_length=100)
-    email = models.EmailField(blank=True, null=True, help_text=" Email del referente adulto per i minori")
+    email = models.EmailField(default="insericiEmail@example.com")  # obbligatorio
     medico_curante = models.ForeignKey("Medico", on_delete=models.SET_NULL, null=True, related_name="medico_pazienti_curante")
-    referente_adulto = models.CharField(max_length=100, blank=True, null=True, help_text="Nome e cognome del referente adulto per i minori")  # Per i minori di 14 anni
+    referente_adulto = models.CharField(max_length=100, blank=True, null=True, help_text="Nome e cognome del referente adulto per i minori")
 
     def is_minor(self):
         from datetime import date
         today = date.today()
-        return (today.year - self.data_nascita.year - ((today.month, today.day) < (self.data_nascita.month, self.data_nascita.day))) < 14
+        return (today.year - self.data_nascita.year - ((today.month, today.day) < (self.data_nascita.month, self.data_nascita.day))) < 18
+
+    def clean(self):
+        super().clean()
+        if self.is_minor() and not self.referente_adulto:
+            from django.core.exceptions import ValidationError
+            raise ValidationError({'referente_adulto': 'Il referente adulto è obbligatorio per i minori di 18 anni.'})
 
     def __str__(self):
         return f"{self.nome} {self.cognome} - {self.codice_fiscale}"
