@@ -7,23 +7,13 @@
     <h2>Benvenut*, Dr./Dr.ssa {{ request.user.username }}</h2>
 
     <section>
-        <h3>Dati Personali</h3>
-        <form action="{% url 'modifica_medico' %}" method="POST">
-            {% csrf_token %}
-            <label for="cognome">Cognome:</label>
-            <input type="text" name="cognome" value="{{ medico.cognome }}" required>
-
-            <label for="nome">Nome:</label>
-            <input type="text" name="nome" value="{{ medico.nome }}" required>
-
-            <label for="codice_fiscale">Codice Fiscale:</label>
-            <input type="text" name="codice_fiscale" value="{{ medico.codice_fiscale }}" required>
-
-            <label for="specialita">Specialità (opzionale):</label>
-            <input type="text" name="specialita" value="{{ medico.specialita }}">
-
-            <input type="submit" value="Aggiorna dati">
-        </form>
+        <section>
+    <h3>Dati Personali</h3>
+    <p><strong>Cognome:</strong> {{ medico.cognome }}</p>
+    <p><strong>Nome:</strong> {{ medico.nome }}</p>
+    <p><strong>Codice Fiscale:</strong> {{ medico.codice_fiscale }}</p>
+    <p><strong>Specialità:</strong> {{ medico.specialita|default:"Non specificata" }}</p>
+        </section>
     </section>
 
     <section>

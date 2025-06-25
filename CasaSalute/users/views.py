@@ -179,7 +179,7 @@ def prenota_visita(request):
                 'nome': prenotazione.paziente.nome,
                 'tipo': 'prenotazionevisita',
                 'data': prenotazione.data,
-                'note': prenotazione.note
+                'ora': prenotazione.ora,
             }
             invia_email_conferma_prestazione(prenotazione.paziente.user.email, contesto)
             return redirect('pagina_paziente')
