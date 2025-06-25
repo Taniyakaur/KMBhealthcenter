@@ -13,8 +13,6 @@ from datetime import date
 from .models import PrestazioneInfermieristica
 from .forms import PrestazioneInfermieristicaForm
 
-
-
 # Funzione per invio email centralizzata
 def invia_email_conferma_prestazione(utente_email, contesto):
     soggetto = "Conferma prestazione"
@@ -346,3 +344,9 @@ def aggiungi_assenza(request):
     else:
         form = AssenzaPianificataForm()
     return render(request, 'users/aggiungi_assenza.html', {'form': form})
+
+# DETTAGLIO PAZIENTE
+@login_required
+def dettaglio_paziente(request, paziente_id):
+    paziente = get_object_or_404(Paziente, id=paziente_id)
+    return render(request, 'users/dettaglio_paziente.html', {'paziente': paziente})

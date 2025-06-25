@@ -70,7 +70,11 @@
                         <td>{{ paziente.cognome }}</td>
                         <td>{{ paziente.codice_sanitario }}</td>
                         <td>
-                            <a href="{% url 'dettaglio_paziente' paziente.id %}">Vedi dettagli</a>
+                            {% if paziente.id %}
+                                <a href="{% url 'dettaglio_paziente' paziente.id %}">Vedi dettagli</a>
+                            {% else %}
+                                -
+                            {% endif %}
                         </td>
                     </tr>
                 {% empty %}
@@ -110,5 +114,3 @@
         {% endif %}
     </section>
 {% endblock %}
-
-
