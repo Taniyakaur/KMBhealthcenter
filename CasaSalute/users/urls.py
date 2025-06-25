@@ -4,8 +4,10 @@ from .views import (
     pagina_medico, modifica_medico, 
     pagina_infermiere, modifica_infermiere, 
     pagina_paziente, prenota_visita,
-    pagina_segreteria, inserisci_esito_visita, resoconto_paziente
+    pagina_segreteria, inserisci_esito_visita, resoconto_paziente,
+    prestazioni_infermiere  
 )
+
 
 urlpatterns = [
     path('login/', login_view, name='login'),
@@ -18,6 +20,7 @@ urlpatterns = [
     # Infermiere
     path('infermiere/', pagina_infermiere, name='pagina_infermiere'),
     path('infermiere/modifica/', modifica_infermiere, name='modifica_infermiere'),
+    path('infermiere/prestazioni/', prestazioni_infermiere, name='prestazioni_infermiere'),
 
     # Paziente
     path('paziente/', pagina_paziente, name='pagina_paziente'),

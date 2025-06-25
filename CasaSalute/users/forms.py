@@ -1,6 +1,7 @@
 from django import forms
 from .models import Medico, Infermiere, AssenzaPianificata
 from django.contrib.auth.forms import AuthenticationForm
+from .models import PrestazioneInfermieristica
 
 # FORM PER LOGIN
 class LoginForm(forms.Form):
@@ -34,3 +35,14 @@ class AssenzaPianificataForm(forms.ModelForm):
     class Meta:
         model = AssenzaPianificata
         fields = '__all__'
+
+# FORM PER PRESTAZIONE INFERMIERISTICA
+class PrestazioneInfermieristicaForm(forms.ModelForm):
+    class Meta:
+        model = PrestazioneInfermieristica
+        fields = ['paziente', 'tipo', 'data', 'esito', 'note']
+        widgets = {
+            'data': forms.DateInput(attrs={'type': 'date'}),
+            'esito': forms.Textarea(attrs={'rows': 3}),
+            'note': forms.Textarea(attrs={'rows': 2}),
+        }

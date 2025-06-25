@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Prestazioni Infermieristiche</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Registra Prestazione</button>
+    </form>
+
+    <hr>
+
+    <h3>Storico Prestazioni</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Paziente</th>
+                <th>Tipo</th>
+                <th>Data</th>
+                <th>Esito</th>
+                <th>Note</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in prestazioni %}
+                <tr>
+                    <td>{{ p.paziente }}</td>
+                    <td>{{ p.get_tipo_display }}</td>
+                    <td>{{ p.data }}</td>
+                    <td>{{ p.esito }}</td>
+                    <td>{{ p.note }}</td>
+                </tr>
+            {% empty %}
+                <tr><td colspan="5">Nessuna prestazione registrata.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

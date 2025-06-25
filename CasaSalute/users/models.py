@@ -136,3 +136,24 @@ class Segreteria(UtenteBase):
         verbose_name = "segreteria"
         verbose_name_plural = "segreterie"
 
+# MODELLO PRESTAZIONE INFERMIERISTICA
+class PrestazioneInfermieristica(models.Model):
+    TIPO_PRESTAZIONE = [
+        ('prelievo', 'Prelievo'),
+        ('medicazione', 'Medicazione'),
+    ]
+    paziente = models.ForeignKey("users.Paziente", on_delete=models.CASCADE)
+    infermiere = models.ForeignKey("users.Infermiere", on_delete=models.SET_NULL, null=True)
+    data = models.DateField()
+    ora = models.TimeField()
+    tipo = models.CharField(max_length=20, choices=TIPO_PRESTAZIONE)
+    esito = models.TextField(blank=True, null=True)
+    note = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.tipo} di {self.paziente} il {self.data} alle {self.ora}"
+
+    class Meta:
+        verbose_name = "Prestazione infermieristica"
+        verbose_name_plural = "Prestazioni infermieristiche"
+        ordering = ['-data', '-ora']

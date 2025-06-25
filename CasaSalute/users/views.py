@@ -6,10 +6,13 @@ from django.template.loader import render_to_string
 from django.conf import settings
 from .models import Medico, Infermiere, Paziente, Segreteria
 from .forms import ModificaMedicoForm, ModificaInfermiereForm, LoginForm, AssenzaPianificataForm
-from visita.models import Visita, PrenotazioneVisita as Prenotazione  # o Prenotazione se si chiama così
+from visita.models import Visita, PrenotazioneVisita as Prenotazione  
 from visita.forms import PrenotazioneForm, EsitoVisitaForm
 from django.contrib.auth.models import User
 from datetime import date
+from .models import PrestazioneInfermieristica
+from .forms import PrestazioneInfermieristicaForm
+
 
 
 # Funzione per invio email centralizzata
@@ -99,11 +102,16 @@ def modifica_medico(request):
     return render(request, 'users/modifica_medico.html', {'form': form})
 
 # PAGINA INFERMIERE
-@login_required
 def pagina_infermiere(request):
     infermiere = get_object_or_404(Infermiere, user=request.user)
-    prestazioni = Visita.objects.filter(infermiere=infermiere)
-    return render(request, 'users/infermiere.html', {'infermiere': infermiere, 'prestazioni': prestazioni})
+
+    # Placeholder temporaneo
+    prestazioni = []  # da sostituire con PrestazioneInfermieristica.objects.filter(infermiere=infermiere)
+
+    return render(request, 'users/infermiere.html', {
+        'infermiere': infermiere,
+        'prestazioni': prestazioni
+    })
 
 # MODIFICA DATI INFERMIERE
 @login_required
@@ -118,13 +126,41 @@ def modifica_infermiere(request):
         form = ModificaInfermiereForm(instance=infermiere)
     return render(request, 'users/modifica_infermiere.html', {'form': form})
 
+# PAGINA PRESTAZIONI INFERMIERE
+@login_required
+def prestazioni_infermiere(request):
+    infermiere = get_object_or_404(Infermiere, user=request.user)
+    prestazioni = PrestazioneInfermieristica.objects.filter(infermiere=infermiere)
+
+    if request.method == 'POST':
+        form = PrestazioneInfermieristicaForm(request.POST)
+        if form.is_valid():
+            nuova_prestazione = form.save(commit=False)
+            nuova_prestazione.infermiere = infermiere
+            nuova_prestazione.save()
+            return redirect('prestazioni_infermiere')
+    else:
+        form = PrestazioneInfermieristicaForm()
+
+    return render(request, 'users/prestazioni.html', {
+        'prestazioni': prestazioni,
+        'form': form
+    })
 # PAGINA PAZIENTE
 @login_required
 def pagina_paziente(request):
     paziente = get_object_or_404(Paziente, user=request.user)
-    visite = Visita.objects.filter(paziente=paziente)
+    
+    # Recupera le visite tramite la relazione con Prenotazione
+    visite = Visita.objects.filter(prenotazione__paziente=paziente)
     prenotazioni = Prenotazione.objects.filter(paziente=paziente)
-    return render(request, 'users/paziente.html', {'paziente': paziente, 'visite': visite, 'prenotazioni': prenotazioni})
+
+    return render(request, 'users/paziente.html', {
+        'paziente': paziente,
+        'visite': visite,
+        'prenotazioni': prenotazioni
+    })
+
 
 # PAGINA SEGRETERIA
 @login_required
