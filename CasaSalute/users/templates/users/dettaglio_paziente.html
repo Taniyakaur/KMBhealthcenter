@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Dettagli del paziente {{ paziente.nome }} {{ paziente.cognome }}</h2>
+
+<h3>Visite:</h3>
+<ul>
+    {% for visita in visite %}
+        <li>{{ visita.data }} - {{ visita.tipo }} - Esito: {{ visita.esito|default:"Non ancora disponibile" }}</li>
+    {% empty %}
+        <li>Nessuna visita registrata.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
