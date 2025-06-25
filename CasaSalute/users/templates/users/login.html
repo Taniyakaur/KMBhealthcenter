@@ -2,27 +2,40 @@
 
 {% block content %}
 <div class="container" style="background-color: white;">
-        <h2>Login</h2>
-        <form method="post">
-            {% csrf_token %}
-            <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <input type="text" id="username" name="username" class="form-control" required>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" id="password" name="password" class="form-control" required>
-            </div>
-            <div class="mb-3">
-                <label for="id_user_type" class="form-label">Tipo di utente</label>
-                <select id="id_user_type" name="user_type" class="form-control">
-                    <option value="medico">Medico</option>
-                    <option value="infermiere">Infermiere</option>
-                    <option value="paziente" selected>Paziente</option>
-                    <option value="segreteria">Segretario</option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary">Accedi</button>
-        </form>
+    <h2>Login</h2>
+
+    {% if form.errors %}
+        <div class="alert alert-danger">
+            <ul>
+                {% for field, errors in form.errors.items %}
+                    {% for error in errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" id="username" name="username" class="form-control" value="{{ form.username.value|default_if_none:'' }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" id="password" name="password" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="id_user_type" class="form-label">Tipo di utente</label>
+            <select id="id_user_type" name="user_type" class="form-control">
+                <option value="medico" {% if form.user_type.value == 'medico' %}selected{% endif %}>Medico</option>
+                <option value="infermiere" {% if form.user_type.value == 'infermiere' %}selected{% endif %}>Infermiere</option>
+                <option value="paziente" {% if form.user_type.value == 'paziente' or not form.user_type.value %}selected{% endif %}>Paziente</option>
+                <option value="segreteria" {% if form.user_type.value == 'segreteria' %}selected{% endif %}>Segretario</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Accedi</button>
+    </form>
 </div>
 {% endblock %}

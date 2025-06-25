@@ -67,7 +67,7 @@ def logout_view(request):
 def pagina_medico(request):
     medico = get_object_or_404(Medico, user=request.user)
     pazienti = Paziente.objects.filter(medico_curante=medico)
-    return render(request, 'medico.html', {'medico': medico, 'pazienti': pazienti})
+    return render(request, 'users/medico.html', {'medico': medico, 'pazienti': pazienti})
 
 # MODIFICA DATI MEDICO
 @login_required
@@ -80,14 +80,14 @@ def modifica_medico(request):
             return redirect('pagina_medico')
     else:
         form = ModificaMedicoForm(instance=medico)
-    return render(request, 'modifica_medico.html', {'form': form})
+    return render(request, 'users/modifica_medico.html', {'form': form})
 
 # PAGINA INFERMIERE
 @login_required
 def pagina_infermiere(request):
     infermiere = get_object_or_404(Infermiere, user=request.user)
     prestazioni = Visita.objects.filter(infermiere=infermiere)
-    return render(request, 'infermiere.html', {'infermiere': infermiere, 'prestazioni': prestazioni})
+    return render(request, 'users/infermiere.html', {'infermiere': infermiere, 'prestazioni': prestazioni})
 
 # MODIFICA DATI INFERMIERE
 @login_required
@@ -100,7 +100,7 @@ def modifica_infermiere(request):
             return redirect('pagina_infermiere')
     else:
         form = ModificaInfermiereForm(instance=infermiere)
-    return render(request, 'modifica_infermiere.html', {'form': form})
+    return render(request, 'users/modifica_infermiere.html', {'form': form})
 
 # PAGINA PAZIENTE
 @login_required
@@ -108,33 +108,12 @@ def pagina_paziente(request):
     paziente = get_object_or_404(Paziente, user=request.user)
     visite = Visita.objects.filter(paziente=paziente)
     prenotazioni = Prenotazione.objects.filter(paziente=paziente)
-    return render(request, 'paziente.html', {'paziente': paziente, 'visite': visite, 'prenotazioni': prenotazioni})
+    return render(request, 'users/paziente.html', {'paziente': paziente, 'visite': visite, 'prenotazioni': prenotazioni})
 
 # PAGINA SEGRETERIA
 @login_required
 def pagina_segreteria(request):
-    segreteria = get_object_or_404(Segreteria, user=request.user)
-
-    # Prepara elenco personale con attributo 'ruolo'
-    personale = []
-    for medico in Medico.objects.all():
-        medico.ruolo = "Medico"
-        personale.append(medico)
-    for infermiere in Infermiere.objects.all():
-        infermiere.ruolo = "Infermiere"
-        personale.append(infermiere)
-
-    # Altri dati necessari al template
-    pazienti = Paziente.objects.all()
-    visite_da_completare = Visita.objects.filter(esito__isnull=True)
-
-    return render(request, 'segreteria.html', {
-        'segreteria': segreteria,
-        'personale': personale,
-        'pazienti': pazienti,
-        'visite_da_completare': visite_da_completare,
-        'anno': 2025  # o datetime.now().year
-    })
+    return redirect('/admin/')
 
 # PRENOTAZIONE VISITA
 @login_required
@@ -156,7 +135,7 @@ def prenota_visita(request):
             return redirect('pagina_paziente')
     else:
         form = PrenotazioneForm()
-    return render(request, 'prenota_visita.html', {'form': form})
+    return render(request, 'users/prenota_visita.html', {'form': form})
 
 # SALVATAGGIO ESITO VISITA DA SEGRETERIA
 @login_required
@@ -178,7 +157,7 @@ def salva_esito_visita(request, visita_id):
             return redirect('pagina_segreteria')
     else:
         form = EsitoVisitaForm(instance=visita)
-    return render(request, 'salva_esito_visita.html', {'form': form, 'visita': visita})
+    return render(request, 'users/salva_esito_visita.html', {'form': form, 'visita': visita})
 
 # AGGIUNGI PERSONALE
 @login_required
@@ -216,7 +195,7 @@ def aggiungi_personale(request):
 
         return redirect('segreteria_dashboard')
     
-    return render(request, 'aggiungi_personale.html')  # opzionale: aggiungi un template per GET
+    return render(request, 'users/aggiungi_personale.html')  # opzionale: aggiungi un template per GET
 
 # AGGIUNGI PAZIENTE
 @login_required
@@ -230,7 +209,7 @@ def aggiungi_paziente(request):
 
         if not data_nascita:
             # gestisci errore
-            return render(request, "aggiungi_paziente.html", {"errore": "Data di nascita obbligatoria"})
+            return render(request, "users/aggiungi_paziente.html", {"errore": "Data di nascita obbligatoria"})
 
         data_nascita_obj = date.fromisoformat(data_nascita)
         oggi = date.today()
@@ -260,7 +239,7 @@ def aggiungi_paziente(request):
                 email=email
             )
         return redirect('lista_pazienti')
-    return render(request, "aggiungi_paziente.html")
+    return render(request, "users/aggiungi_paziente.html")
 
 # RESOCONTO ANNUALE PAZIENTE    
 @login_required
@@ -271,7 +250,7 @@ def resoconto_paziente(request):
     paziente = get_object_or_404(Paziente, id=paziente_id)
     visite = Visita.objects.filter(paziente=paziente, data__year=anno)
 
-    return render(request, 'resoconto_annuale.html', {
+    return render(request, 'users/resoconto_annuale.html', {
         'paziente': paziente,
         'visite': visite,
         'anno': anno
@@ -314,4 +293,4 @@ def aggiungi_assenza(request):
             return redirect('pagina_medico')
     else:
         form = AssenzaPianificataForm()
-    return render(request, 'aggiungi_assenza.html', {'form': form})
+    return render(request, 'users/aggiungi_assenza.html', {'form': form})
