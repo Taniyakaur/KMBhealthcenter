@@ -1,7 +1,6 @@
 from django import forms
 from .models import Medico, Infermiere, AssenzaPianificata
 from django.contrib.auth.forms import AuthenticationForm
-from .models import PrestazioneInfermieristica
 
 # FORM PER LOGIN
 class LoginForm(forms.Form):

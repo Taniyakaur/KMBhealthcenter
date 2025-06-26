@@ -10,8 +10,7 @@ from visita.models import Visita, PrenotazioneVisita as Prenotazione
 from visita.forms import PrenotazioneForm, EsitoVisitaForm
 from django.contrib.auth.models import User
 from datetime import date
-from .models import PrestazioneInfermieristica
-from .forms import PrestazioneInfermieristicaForm
+from django.http import HttpResponse
 
 # Funzione per invio email centralizzata
 def invia_email_conferma_prestazione(utente_email, contesto):
