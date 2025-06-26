@@ -4,12 +4,13 @@
 {% block title %}Pagina Paziente{% endblock %}
 
 {% block content %}
-    <h2>Benvenut*, {{ paziente.nome }} {{ paziente.cognome }}</h2>
-    <p>Spazio personale per gestire le tue visite, prestazioni e prenotazioni</p>
+<div class="white_container">
+    <h2 style="text-align:left">Benvenuto/a, {{ paziente.nome }} {{ paziente.cognome }}</h4>
+    <p class="lead">Spazio personale per gestire le tue visite, prestazioni e prenotazioni</p>
 
     <!-- Informazioni personali -->
-    <h3>Le tue informazioni</h3>
-    <ul>
+    <h3 class="treatment_taital">Le tue informazioni</h3>
+    <ul style="text-align:left">
         <li><strong>Codice Sanitario:</strong> {{ paziente.codice_sanitario }}</li>
         <li><strong>Data di nascita:</strong> {{ paziente.data_nascita }}</li>
         <li><strong>Luogo di nascita:</strong> {{ paziente.luogo_nascita }}</li>
@@ -20,7 +21,7 @@
     </ul>
 
     {% if pazienti_associati %}
-        <h3>Pazienti pediatrici sotto la tua responsabilità</h3>
+        <h3 class="treatment_taital">Pazienti pediatrici sotto la tua responsabilità</h3>
         <ul>
             {% for minore in pazienti_associati %}
                 <li>{{ minore.nome }} {{ minore.cognome }} - Codice Sanitario: {{ minore.codice_sanitario }}</li>
@@ -29,8 +30,8 @@
     {% endif %}
 
     <!-- Storico visite -->
-    <h3>Storico Visite Mediche</h3>
-    <table>
+    <h3 class="treatment_taital">Storico Visite Mediche</h3>
+    <table class="table table-striped table-bordered custom_table_style">
         <thead>
             <tr>
                 <th>Data</th>
@@ -56,8 +57,8 @@
     </table>
 
     <!-- Storico prestazioni infermieristiche -->
-    <h3>Storico Prestazioni Infermieristiche</h3>
-    <table>
+    <h3 class="treatment_taital">Storico Prestazioni Infermieristiche</h3>
+    <table class="table table-striped table-bordered custom_table_style">
         <thead>
             <tr>
                 <th>Data</th>
@@ -85,8 +86,8 @@
     </table>
 
     <!-- Prenotazioni future -->
-    <h3>Le tue prenotazioni</h3>
-    <table>
+    <h3 class="treatment_taital">Le tue prenotazioni</h3>
+    <table class="table table-striped table-bordered custom_table_style">
         <thead>
             <tr>
                 <th>Data</th>
@@ -122,8 +123,9 @@
     </table>
 
     <!-- Prenotazione -->
-    <h3>Prenota una nuova prestazione</h3>
-    <p>Puoi prenotare visite mediche o infermieristiche (prelievi, medicazioni). Riceverai un'e-mail di conferma dopo la prenotazione.</p>
-    <a href="{% url 'prenota_visita' %}" class="button">Prenota una Visita o Prestazione</a>
+    <h3 class="treatment_taital">Prenota una nuova visita o prestazione</h3>
+    <p class="lead">Puoi prenotare visite mediche o infermieristiche (prelievi, medicazioni). Riceverai un'e-mail di conferma dopo la prenotazione.</p>
+    <a href="{% url 'prenota_visita' %}" class="btn btn-primary" style="margin-top:20px">Prenota una Visita o Prestazione</a>
+</div>
 {% endblock %}
 

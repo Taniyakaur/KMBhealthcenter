@@ -145,12 +145,10 @@ img {
     font-size: 16px;
 }
 
-.lead {
+.lead {                    /*testo grigino*/
     font-size: 18px;
     line-height: 30px;
     color: #767676;
-    margin: 0;
-    padding: 0;
 }
 
 .form-control:focus {
@@ -340,6 +338,11 @@ button {
     padding: 20px;
     text-align: center;
 }
+.white_container {
+    background-color:white;
+    padding: 20px;
+    text-align: center;
+}
 .separator {
     background-color: #1f4a34;
     height: 5px;
@@ -404,5 +407,38 @@ button {
 .btn-primary:hover {
     background-color: #1fe381;
     transform: scale(1.02);
+}
+
+/* Custom table style */
+.custom_table_style {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #333333;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.custom_table_style th,
+.custom_table_style td {
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+    text-align: left;
+}
+
+.custom_table_style th {
+    background-color: #098547;
+    color: white;
+    font-weight: 600;
+}
+
+.custom_table_style tr:nth-child(even) {
+    background-color: #e6f2e6;
+}
+
+.custom_table_style tr:hover {
+    background-color: #d1e7d1;
+    cursor: pointer;
 }
 
