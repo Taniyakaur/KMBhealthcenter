@@ -8,12 +8,12 @@
     <h2 class="treatment_taital">Prenota una nuova visita o prestazione</h2>
     <p class="lead">Compila il modulo per prenotare una visita medica o una prestazione infermieristica. Riceverai una conferma via email.</p>
 
-    <form method="POST" class="form-control">
+    <form method="POST" class="form-control" style="background-color:#4eb381">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="btn btn-primary" style="margin-top: 20px;">Prenota</button>
     </form>
 
-    <a href="{% url 'pagina_paziente' %}" class="btn btn-custom" style="margin-top: 20px; display: inline-block;">Annulla e torna alla tua pagina</a>
+    <a href="{% url 'pagina_paziente' %}" class="btn btn-primary" style="margin-top: 20px; display: inline-block; width: 20%;">Annulla e torna alla tua pagina</a>
 </div>
 {% endblock %}

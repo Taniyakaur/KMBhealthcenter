@@ -55,12 +55,8 @@
             {% endfor %}
         </tbody>
     </table>
-    <!-- Prestazioni Infermieristiche -->
-    <h3 class="treatment_taital">Richiedi una prestazione infermieristica</h3>
-    <p class="lead">Puoi richiedere prelievi, medicazioni o altre prestazioni infermieristiche.</p>
-    <a href="{% url 'richiedi_prestazione' %}" class="btn btn-success" style="margin-top:20px"> Richiedi Prestazione Infermieristica </a>
 
-    <!-- Storico prestazioni infermieristiche -->
+    <!-- storico prestazioni infermieristiche -->
     <h3 class="treatment_taital">Storico Prestazioni Infermieristiche</h3>
     <table class="table table-striped table-bordered custom_table_style">
         <thead>
@@ -89,7 +85,7 @@
         </tbody>
     </table>
 
-    <!-- Prenotazioni future -->
+    <!-- prenotazioni future -->
     <h3 class="treatment_taital">Le tue prenotazioni</h3>
     <table class="table table-striped table-bordered custom_table_style">
         <thead>
@@ -126,10 +122,15 @@
         </tbody>
     </table>
 
-    <!-- Prenotazione -->
+    <!-- prenotazione visita -->
     <h3 class="treatment_taital">Prenota una nuova visita </h3>
-    <p class="lead">Puoi prenotare visite mediche . Riceverai un'e-mail di conferma dopo la prenotazione.</p>
+    <p class="lead">Puoi prenotare visite mediche. Riceverai un'e-mail di conferma dopo la prenotazione.</p>
     <a href="{% url 'prenota_visita' %}" class="btn btn-primary" style="margin-top:20px">Prenota una Visita</a>
+
+    <!-- prenotazione prestazioni infermieristiche -->
+    <h3 class="treatment_taital">Richiedi una prestazione infermieristica</h3>
+    <p class="lead">Puoi richiedere prelievi, medicazioni o altre prestazioni infermieristiche.</p>
+    <a href="{% url 'richiedi_prestazione' %}" class="btn btn-primary" style="margin-top:20px"> Richiedi Prestazione Infermieristica </a>
 </div>
 {% endblock %}
 
