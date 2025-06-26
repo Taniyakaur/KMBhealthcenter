@@ -36,13 +36,10 @@ class AssenzaPianificataForm(forms.ModelForm):
         model = AssenzaPianificata
         fields = '__all__'
 
-# FORM PER PRESTAZIONE INFERMIERISTICA
 class PrestazioneInfermieristicaForm(forms.ModelForm):
     class Meta:
         model = PrestazioneInfermieristica
-        fields = ['paziente', 'tipo', 'data', 'esito', 'note']
+        exclude = ['paziente', 'infermiere']  # oppure usa 'fields' e ometti quelli
         widgets = {
-            'data': forms.DateInput(attrs={'type': 'date'}),
-            'esito': forms.Textarea(attrs={'rows': 3}),
-            'note': forms.Textarea(attrs={'rows': 2}),
+            'note': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
         }

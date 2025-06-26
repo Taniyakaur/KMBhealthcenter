@@ -236,8 +236,6 @@ button {
     border-radius: 5px;
 }
 
-.search_btn {}
-
 .signup_text {
     padding-left: 10px;
 }
@@ -252,7 +250,6 @@ button {
     padding: 50px 0;
     text-align: center;
 }
-	
 
 .treatment_taital {
     width: 100%;
