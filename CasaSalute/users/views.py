@@ -181,11 +181,16 @@ def prenota_visita(request):
                 'data': prenotazione.data,
                 'ora': prenotazione.ora,
             }
-            invia_email_conferma_prestazione(prenotazione.paziente.user.email, contesto)
+            try:
+                pass
+                # invia_email_conferma_prestazione(prenotazione.paziente.user.email, contesto)
+            except Exception as e:
+                print(f"Email non inviata: {e}")
             return redirect('pagina_paziente')
     else:
         form = PrenotazioneForm()
     return render(request, 'users/prenota_visita.html', {'form': form})
+
 
 # SALVATAGGIO ESITO VISITA DA SEGRETERIA
 @login_required
