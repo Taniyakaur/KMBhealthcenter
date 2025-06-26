@@ -13,6 +13,7 @@ from datetime import date
 from django.http import HttpResponse
 from prestazione.models import PrenotazionePrestazione
 from .forms import PrestazioneInfermieristicaForm
+from prestazione.models import Prestazione
 
 
 # Funzione per invio email centralizzata
@@ -106,7 +107,7 @@ def pagina_infermiere(request):
     infermiere = get_object_or_404(Infermiere, user=request.user)
 
     # Recupera solo le prestazioni assegnate a questo infermiere
-    prestazioni = PrestazioneInfermieristica.objects.filter(infermiere=infermiere)
+    prestazioni = Prestazione.objects.filter(infermiere=infermiere)
 
     return render(request, 'users/infermiere.html', {
         'infermiere': infermiere,
