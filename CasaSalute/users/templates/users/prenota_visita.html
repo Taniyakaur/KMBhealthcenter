@@ -4,14 +4,16 @@
 {% block title %}Prenota una Visita o Prestazione{% endblock %}
 
 {% block content %}
-    <h2>Prenota una nuova visita o prestazione</h2>
-    <p>Compila il modulo per prenotare una visita medica o una prestazione infermieristica. Riceverai una conferma via email.</p>
+<div class="white_container">
+    <h2 class="treatment_taital">Prenota una nuova visita o prestazione</h2>
+    <p class="lead">Compila il modulo per prenotare una visita medica o una prestazione infermieristica. Riceverai una conferma via email.</p>
 
-    <form method="POST">
+    <form method="POST" class="form-control">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Prenota</button>
+        <button type="submit" class="btn btn-primary" style="margin-top: 20px;">Prenota</button>
     </form>
 
-    <a href="{% url 'pagina_paziente' %}" class="button">Annulla e torna alla tua pagina</a>
+    <a href="{% url 'pagina_paziente' %}" class="btn btn-custom" style="margin-top: 20px; display: inline-block;">Annulla e torna alla tua pagina</a>
+</div>
 {% endblock %}

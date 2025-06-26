@@ -25,6 +25,10 @@
         <div class="mb-3">
             <label for="password" class="form-label">Password</label>
             <input type="password" id="password" name="password" class="form-control" required>
+            <div class="form-check mt-2">
+                <input type="checkbox" class="form-check-input" id="showPasswordToggle" onclick="togglePasswordVisibility()">
+                <label class="form-check-label" for="showPasswordToggle">Mostra password</label>
+            </div>
         </div>
         <div class="mb-3">
             <label for="id_user_type" class="form-label">Tipo di utente</label>
@@ -38,4 +42,16 @@
         <button type="submit" class="btn btn-primary">Accedi</button>
     </form>
 </div>
+
+<script>
+function togglePasswordVisibility() {
+    var passwordInput = document.getElementById("password");
+    var toggle = document.getElementById("showPasswordToggle");
+    if (toggle.checked) {
+        passwordInput.type = "text";
+    } else {
+        passwordInput.type = "password";
+    }
+}
+</script>
 {% endblock %}
