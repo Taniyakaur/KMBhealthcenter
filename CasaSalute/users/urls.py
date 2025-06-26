@@ -6,7 +6,7 @@ from .views import (
     pagina_infermiere, modifica_infermiere, 
     pagina_paziente, prenota_visita,
     pagina_segreteria, inserisci_esito_visita, resoconto_paziente,
-    dettaglio_paziente, prestazioni_infermiere  
+    dettaglio_paziente, richiedi_prestazione
 )
 
 
@@ -22,11 +22,13 @@ urlpatterns = [
     # Infermiere
     path('infermiere/', pagina_infermiere, name='pagina_infermiere'),
     path('infermiere/modifica/', modifica_infermiere, name='modifica_infermiere'),
-    path('infermiere/prestazioni/', prestazioni_infermiere, name='prestazioni_infermiere'),
+    
 
     # Paziente
     path('paziente/', pagina_paziente, name='pagina_paziente'),
     path('paziente/prenota/', prenota_visita, name='prenota_visita'),
+    path('paziente/prestazioni/', richiedi_prestazione, name='richiedi_prestazione'),
+
 
     # Segreteria
     path('segreteria/', pagina_segreteria, name='segreteria_dashboard'),

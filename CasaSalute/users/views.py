@@ -99,12 +99,12 @@ def modifica_medico(request):
         form = ModificaMedicoForm(instance=medico)
     return render(request, 'users/modifica_medico.html', {'form': form})
 
-# PAGINA INFERMIERE
+@login_required
 def pagina_infermiere(request):
     infermiere = get_object_or_404(Infermiere, user=request.user)
 
-    # Placeholder temporaneo
-    prestazioni = []  # da sostituire con PrestazioneInfermieristica.objects.filter(infermiere=infermiere)
+    # Recupera solo le prestazioni assegnate a questo infermiere
+    prestazioni = PrestazioneInfermieristica.objects.filter(infermiere=infermiere)
 
     return render(request, 'users/infermiere.html', {
         'infermiere': infermiere,
@@ -124,26 +124,7 @@ def modifica_infermiere(request):
         form = ModificaInfermiereForm(instance=infermiere)
     return render(request, 'users/modifica_infermiere.html', {'form': form})
 
-# PAGINA PRESTAZIONI INFERMIERE
-@login_required
-def prestazioni_infermiere(request):
-    infermiere = get_object_or_404(Infermiere, user=request.user)
-    prestazioni = PrestazioneInfermieristica.objects.filter(infermiere=infermiere)
 
-    if request.method == 'POST':
-        form = PrestazioneInfermieristicaForm(request.POST)
-        if form.is_valid():
-            nuova_prestazione = form.save(commit=False)
-            nuova_prestazione.infermiere = infermiere
-            nuova_prestazione.save()
-            return redirect('prestazioni_infermiere')
-    else:
-        form = PrestazioneInfermieristicaForm()
-
-    return render(request, 'users/prestazioni.html', {
-        'prestazioni': prestazioni,
-        'form': form
-    })
 # PAGINA PAZIENTE
 @login_required
 def pagina_paziente(request):
@@ -310,6 +291,7 @@ def resoconto_paziente(request):
         'visite': visite,
         'anno': anno
     })
+
 # INSERISCI ESITO VISITA
 @login_required
 def inserisci_esito_visita(request):
@@ -355,3 +337,28 @@ def aggiungi_assenza(request):
 def dettaglio_paziente(request, paziente_id):
     paziente = get_object_or_404(Paziente, id=paziente_id)
     return render(request, 'users/dettaglio_paziente.html', {'paziente': paziente})
+
+# RICHIESTA PRESTAZIONE INFERMIERISTICA 
+@login_required
+def richiedi_prestazione(request):
+    paziente = get_object_or_404(Paziente, user=request.user)
+    infermiere_disponibile = Infermiere.objects.first()  # Oppure logica di turni/servizi
+
+    if not infermiere_disponibile:
+        return HttpResponse("Nessun infermiere disponibile al momento.", status=503)
+
+    if request.method == "POST":
+        form = PrestazioneInfermieristicaForm(request.POST)
+        if form.is_valid():
+            prestazione = form.save(commit=False)
+            prestazione.paziente = paziente
+            prestazione.infermiere = infermiere_disponibile
+            prestazione.save()
+            return redirect('pagina_paziente')
+    else:
+        form = PrestazioneInfermieristicaForm()
+
+    return render(request, "users/prestazioni.html", {
+        "form": form,
+        "paziente": paziente,
+    })
