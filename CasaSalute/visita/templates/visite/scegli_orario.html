@@ -1,0 +1,23 @@
+<h2>Seleziona uno slot orario disponibile</h2>
+
+<form method="get">
+    <label for="data">Data:</label>
+    <input type="date" id="data" name="data" value="{{ request.GET.data }}">
+    <button type="submit">Cerca</button>
+</form>
+
+{% if slots_disponibili %}
+    <ul>
+      {% for slot in slots_disponibili %}
+        <li>
+          <form method="post" action="">
+            {% csrf_token %}
+            <input type="hidden" name="slot" value="{{ slot }}">
+            <button type="submit">{{ slot }}</button>
+          </form>
+        </li>
+      {% endfor %}
+    </ul>
+{% else %}
+    <p>Nessuno slot disponibile per questa data.</p>
+{% endif %}
