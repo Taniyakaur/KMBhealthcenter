@@ -11,6 +11,9 @@ from visita.forms import PrenotazioneForm, EsitoVisitaForm
 from django.contrib.auth.models import User
 from datetime import date
 from django.http import HttpResponse
+from prestazione.models import PrenotazionePrestazione
+from .forms import PrestazioneInfermieristicaForm
+
 
 # Funzione per invio email centralizzata
 def invia_email_conferma_prestazione(utente_email, contesto):

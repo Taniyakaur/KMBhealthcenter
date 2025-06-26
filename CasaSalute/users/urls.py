@@ -22,7 +22,7 @@ urlpatterns = [
     # Infermiere
     path('infermiere/', pagina_infermiere, name='pagina_infermiere'),
     path('infermiere/modifica/', modifica_infermiere, name='modifica_infermiere'),
-    
+
 
     # Paziente
     path('paziente/', pagina_paziente, name='pagina_paziente'),

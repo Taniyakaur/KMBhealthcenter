@@ -1,6 +1,8 @@
 from django import forms
 from .models import Medico, Infermiere, AssenzaPianificata
 from django.contrib.auth.forms import AuthenticationForm
+from prestazione.models import PrenotazionePrestazione
+
 
 # FORM PER LOGIN
 class LoginForm(forms.Form):
@@ -37,7 +39,7 @@ class AssenzaPianificataForm(forms.ModelForm):
 
 class PrestazioneInfermieristicaForm(forms.ModelForm):
     class Meta:
-        model = PrestazioneInfermieristica
+        model = PrenotazionePrestazione
         exclude = ['paziente', 'infermiere']  # oppure usa 'fields' e ometti quelli
         widgets = {
             'note': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
