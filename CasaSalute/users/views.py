@@ -19,12 +19,27 @@ from django.http import Http404
 from prestazione.forms import PrestazioneInfermieristicaForm
 from prestazione.forms import EsitoPrestazioneForm
 
-
-# Funzione per invio email centralizzata
+# Funzione per inviare email di conferma prestazione
 def invia_email_conferma_prestazione(utente_email, contesto):
     soggetto = "Conferma prestazione"
     messaggio = render_to_string("email/conferma_prestazione.txt", contesto)
-    send_mail(soggetto, messaggio, settings.DEFAULT_FROM_EMAIL, [utente_email])
+    
+    print("📧 Invio email a:", utente_email)
+    print("📝 Soggetto:", soggetto)
+    print("📄 Messaggio:", messaggio)
+    print("📤 Mittente:", settings.DEFAULT_FROM_EMAIL)
+
+    try:
+        send_mail(
+            soggetto,
+            messaggio,
+            settings.DEFAULT_FROM_EMAIL,
+            [utente_email],
+            fail_silently=False
+        )
+        print("✅ Email inviata correttamente.")
+    except Exception as e:
+        print("❌ Errore nell'invio dell'email:", e)
 
 # LOGIN
 from django.contrib.auth.forms import AuthenticationForm
@@ -158,7 +173,7 @@ def prenota_visita(request):
             }
             try:
                 pass
-                # invia_email_conferma_prestazione(prenotazione.paziente.user.email, contesto)
+                invia_email_conferma_prestazione(prenotazione.paziente.user.email, contesto)
             except Exception as e:
                 print(f"Email non inviata: {e}")
             return redirect('pagina_paziente')
