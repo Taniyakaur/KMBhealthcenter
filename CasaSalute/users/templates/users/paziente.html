@@ -29,32 +29,40 @@
         </ul>
     {% endif %}
 
-    <!-- Storico visite -->
     <h3 class="treatment_taital">Storico Visite Mediche</h3>
-    <table class="table table-striped table-bordered custom_table_style">
-        <thead>
-            <tr>
-                <th>Data</th>
-                <th>Medico</th>
-                <th>Tipo</th>
-                <th>Esito</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for visita in visite %}
-            <tr>
-                <td>{{ visita.data }}</td>
-                <td>{{ visita.medico.nome }} {{ visita.medico.cognome }}</td>
-                <td>{{ visita.tipo }}</td>
-                <td>{{ visita.esito }}</td>
-            </tr>
-            {% empty %}
-            <tr>
-                <td colspan="4">Nessuna visita registrata.</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+<table class="table table-striped table-bordered custom_table_style">
+    <thead>
+        <tr>
+            <th>Data</th>
+            <th>Ora</th>
+            <th>Medico</th>
+            <th>Tipo</th>
+            <th>Esito</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for visita in visite %}
+        <tr>
+            <td>{{ visita.prenotazione.data }}</td>
+            <td>{{ visita.prenotazione.ora }}</td>
+            <td>{{ prenotazione.medico.user.username }}</td>
+            <td>{{ visita.prenotazione.tipo }}</td>
+            <td>
+                {% if visita.esito %}
+                    {{ visita.esito }}
+                {% else %}
+                    <em>In attesa di esito</em>
+                {% endif %}
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">Nessuna visita registrata.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
 
     <!-- storico prestazioni infermieristiche -->
     <h3 class="treatment_taital">Storico Prestazioni Infermieristiche</h3>
@@ -101,7 +109,7 @@
             {% for prenotazione in prenotazioni %}
             <tr>
                 <td>{{ prenotazione.data }}</td>
-                <td>{{ prenotazione.orario }}</td>
+                <td>{{ prenotazione.ora }}</td>
                 <td>{{ prenotazione.tipo }}</td>
                 <td>
                     {% if prenotazione.medico %}

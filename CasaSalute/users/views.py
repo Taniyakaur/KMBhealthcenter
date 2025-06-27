@@ -10,7 +10,7 @@ from visita.models import Visita, PrenotazioneVisita as Prenotazione
 from visita.forms import PrenotazioneForm, EsitoVisitaForm
 from django.contrib.auth.models import User
 from datetime import date
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseForbidden
 from prestazione.models import PrenotazionePrestazione
 from .forms import PrestazioneInfermieristicaForm
 from prestazione.models import Prestazione
@@ -91,7 +91,15 @@ def logout_view(request):
 def pagina_medico(request):
     medico = get_object_or_404(Medico, user=request.user)
     pazienti = Paziente.objects.filter(medico_curante=medico)
-    return render(request, 'users/medico.html', {'medico': medico, 'pazienti': pazienti})
+
+    # Aggiunto: tutte le visite che hanno una prenotazione per questo medico
+    visite = Visita.objects.filter(prenotazione__medico=medico)
+
+    return render(request, 'users/medico.html', {
+        'medico': medico,
+        'pazienti': pazienti,
+        'visite': visite
+    })
 
 
 # PAGINA INFERMIERE
@@ -111,9 +119,11 @@ def pagina_infermiere(request):
 @login_required
 def pagina_paziente(request):
     paziente = get_object_or_404(Paziente, user=request.user)
-    
-    # Recupera le visite tramite la relazione con Prenotazione
+
+    # Visite collegate alla prenotazione di quel paziente
     visite = Visita.objects.filter(prenotazione__paziente=paziente)
+
+    # Prenotazioni del paziente
     prenotazioni = Prenotazione.objects.filter(paziente=paziente)
 
     return render(request, 'users/paziente.html', {
@@ -155,27 +165,6 @@ def prenota_visita(request):
     return render(request, 'users/prenota_visita.html', {'form': form})
 
 
-# SALVATAGGIO ESITO VISITA DA SEGRETERIA
-@login_required
-def salva_esito_visita(request, visita_id):
-    visita = get_object_or_404(Visita, id=visita_id)
-    if request.method == "POST":
-        form = EsitoVisitaForm(request.POST, instance=visita)
-        if form.is_valid():
-            visita = form.save()
-            minori = Paziente.objects.filter(referente_adulto=visita.paziente.user)
-            contesto = {
-                'nome': visita.paziente.nome,
-                'tipo': 'esito visita',
-                'data': visita.data,
-                'esito': visita.esito,
-                'minori': minori
-            }
-            invia_email_conferma_prestazione(visita.paziente.user.email, contesto)
-            return redirect('pagina_segreteria')
-    else:
-        form = EsitoVisitaForm(instance=visita)
-    return render(request, 'users/salva_esito_visita.html', {'form': form, 'visita': visita})
 
 # AGGIUNGI PERSONALE
 @login_required
@@ -276,29 +265,34 @@ def resoconto_paziente(request):
 
 # INSERISCI ESITO VISITA
 @login_required
-def inserisci_esito_visita(request):
+def inserisci_esito_visita(request, visita_id):
+    visita = get_object_or_404(Visita, id=visita_id)
+
+    # Autorizzazione: solo il medico della visita o la segreteria può modificare
+    if request.user != visita.medico.user and not request.user.is_staff:
+        return HttpResponseForbidden("Non sei autorizzato a modificare questo esito.")
+
     if request.method == "POST":
-        visita_id = request.POST.get("visita")
-        esito = request.POST.get("esito")
+        form = EsitoVisitaForm(request.POST, instance=visita)
+        if form.is_valid():
+            visita = form.save()
+            if not request.user.is_staff:  # Se NON è segreteria, non serve inviare mail
+                return redirect('pagina_medico')
+            # Altrimenti, è segreteria: invia email
+            minori = Paziente.objects.filter(referente_adulto=visita.paziente.user)
+            contesto = {
+                'nome': visita.paziente.nome,
+                'tipo': 'esito visita',
+                'data': visita.data,
+                'esito': visita.esito,
+                'minori': minori
+            }
+            invia_email_conferma_prestazione(visita.paziente.user.email, contesto)
+            return redirect('pagina_segreteria')
+    else:
+        form = EsitoVisitaForm(instance=visita)
 
-        visita = get_object_or_404(Visita, id=visita_id)
-        visita.esito = esito
-        visita.save()
-
-        # Raccogli i pazienti pediatrici collegati al paziente
-        minori = Paziente.objects.filter(referente_adulto=visita.paziente.user)
-
-        # Invia email al paziente (o al suo referente)
-        contesto = {
-            'nome': visita.paziente.nome,
-            'tipo': 'esito visita',
-            'data': visita.data,
-            'esito': visita.esito,
-            'minori': minori
-        }
-        invia_email_conferma_prestazione(visita.paziente.user.email, contesto)
-
-        return redirect('segreteria_dashboard')
+    return render(request, 'users/salva_esito_visita.html', {'form': form, 'visita': visita})
 
 # AGGIUNGI ASSENZA
 @login_required

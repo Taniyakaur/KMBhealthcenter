@@ -89,32 +89,42 @@
 
     <!--tabella visite-->
     <h3 class="treatment_taital">Visite Programmate</h3>
-    <table class="table table-striped table-bordered custom_table_style">
-        <thead>
-            <tr>
-                <th>Data</th>
-                <th>Ora</th>
-                <th>Paziente</th>
-                <th>Motivo</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% if visite %}
-                {% for visita in visite %}
-                    <tr>
-                        <td>{{ visita.data }}</td>
-                        <td>{{ visita.ora }}</td>
-                        <td>{{ visita.paziente.nome }} {{ visita.paziente.cognome }}</td>
-                        <td>{{ visita.motivo }}</td>
-                    </tr>
-                {% endfor %}
-            {% else %}
+<table class="table table-striped table-bordered custom_table_style">
+    <thead>
+        <tr>
+            <th>Data</th>
+            <th>Ora</th>
+            <th>Paziente</th>
+            <th>Motivo</th>
+            <th>Esito</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if visite %}
+            {% for visita in visite %}
                 <tr>
-                    <td colspan="4" style="text-align:center;">Nessuna visita prenotata.</td>
+                    <td>{{ visita.prenotazione.data }}</td>
+                    <td>{{ visita.prenotazione.ora }}</td>
+                    <td>{{ visita.paziente.nome }} {{ visita.paziente.cognome }}</td>
+                    <td>{{ visita.prenotazione.tipo }}</td>
+                    <td>
+                        <a href="{% url 'inserisci_esito_visita' visita.id %}" class="btn btn-outline-primary btn-sm">
+                            {% if visita.esito %}
+                                Modifica Esito
+                            {% else %}
+                                Inserisci Esito
+                            {% endif %}
+                        </a>
+                    </td>
                 </tr>
-            {% endif %}
-        </tbody>
-    </table>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="5" style="text-align:center;">Nessuna visita prenotata.</td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
 
-</div>
+
 {% endblock %}
