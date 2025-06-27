@@ -73,6 +73,7 @@
                     <td>{{ paziente.codice_sanitario }}</td>
                     <td>
                         {% if paziente.id %}
+                            <!--<td>{{paziente.id}}</td>-->
                             <a href="{% url 'dettaglio_paziente' paziente.id %}">Vedi dettagli</a>
                         {% else %}
                             -
