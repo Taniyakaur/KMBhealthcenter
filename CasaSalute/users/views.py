@@ -101,13 +101,15 @@ def pagina_medico(request):
         'visite': visite
     })
 
-
-# PAGINA INFERMIERE
 @login_required
 def pagina_infermiere(request):
-    infermiere = get_object_or_404(Infermiere, user=request.user)
-
-    # Recupera solo le prestazioni assegnate a questo infermiere
+    try:
+        infermiere = Infermiere.objects.get(user=request.user)
+    except Infermiere.DoesNotExist:
+        return render(request, 'users/error.html', {
+            'message': 'Non sei registrato come infermiere.'
+        })
+    
     prestazioni = Prestazione.objects.filter(infermiere=infermiere)
 
     return render(request, 'users/infermiere.html', {
@@ -288,7 +290,7 @@ def inserisci_esito_visita(request, visita_id):
                 'minori': minori
             }
             invia_email_conferma_prestazione(visita.paziente.user.email, contesto)
-            return redirect('pagina_segreteria')
+            return redirect('pagina_medico')
     else:
         form = EsitoVisitaForm(instance=visita)
 

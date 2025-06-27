@@ -16,6 +16,7 @@ urlpatterns = [
     # Medico
     path('medico/', pagina_medico, name='pagina_medico'),
     path('medico/paziente/<int:paziente_id>/', dettaglio_paziente, name='dettaglio_paziente'),
+    path('medico/visita/<int:visita_id>/esito/', inserisci_esito_visita, name='inserisci_esito_visita'),
 
     # Infermiere
     path('infermiere/', pagina_infermiere, name='pagina_infermiere'),
@@ -29,6 +30,5 @@ urlpatterns = [
 
     # Segreteria
     path('segreteria/', pagina_segreteria, name='segreteria_dashboard'),
-    path('segreteria/inserisci-esito-visita/', inserisci_esito_visita, name='inserisci_esito_visita'),
     path('segreteria/resoconto-paziente/', resoconto_paziente, name='resoconto_paziente'),
 ]

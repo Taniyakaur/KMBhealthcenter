@@ -88,8 +88,8 @@
         </tbody>
     </table>
 
-    <!--tabella visite-->
-    <h3 class="treatment_taital">Visite Programmate</h3>
+   <!--tabella visite-->
+<h3 class="treatment_taital">Visite Programmate</h3>
 <table class="table table-striped table-bordered custom_table_style">
     <thead>
         <tr>
@@ -109,13 +109,11 @@
                     <td>{{ visita.paziente.nome }} {{ visita.paziente.cognome }}</td>
                     <td>{{ visita.prenotazione.tipo }}</td>
                     <td>
-                        <a href="{% url 'inserisci_esito_visita' visita.id %}" class="btn btn-outline-primary btn-sm">
-                            {% if visita.esito %}
-                                Modifica Esito
-                            {% else %}
-                                Inserisci Esito
-                            {% endif %}
-                        </a>
+                        {% if visita.esito %}
+                            {{ visita.esito }}
+                        {% else %}
+                            <span class="text-muted">Esito non ancora disponibile</span>
+                        {% endif %}
                     </td>
                 </tr>
             {% endfor %}
@@ -126,6 +124,7 @@
         {% endif %}
     </tbody>
 </table>
+
 
 
 {% endblock %}
