@@ -129,11 +129,18 @@ def pagina_infermiere(request):
 def pagina_paziente(request):
     paziente = get_object_or_404(Paziente, user=request.user)
 
-    # Visite collegate alla prenotazione di quel paziente
+    # visite collegate alla prenotazione di quel paziente
     visite = Visita.objects.filter(prenotazione__paziente=paziente)
 
-    # Prenotazioni del paziente
-    prenotazioni = Prenotazione.objects.filter(paziente=paziente)
+    # prenotazioni visite e prestazioni del paziente
+    prenotazioni_visite = Prenotazione.objects.filter(paziente=paziente)
+    prenotazioni_prestazioni = PrenotazionePrestazione.objects.filter(paziente=paziente)
+
+    # ordina tabella
+    prenotazioni = sorted(
+        list(prenotazioni_visite) + list(prenotazioni_prestazioni),
+        key=lambda x: (x.data, getattr(x, 'ora', None))
+    )
 
     return render(request, 'users/paziente.html', {
         'paziente': paziente,
