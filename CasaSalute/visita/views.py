@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.core.mail import send_mail
 from .models import Visita, PrenotazioneVisita
 from users.models import Segreteria
-from .utils import get_slots
 from datetime import timedelta, datetime
 
 from .forms import VisitaForm
@@ -57,14 +56,3 @@ def pagina_segreteria(request):
     segreteria = get_object_or_404(Segreteria, user=request.user)
     # aggiungi eventuali dati da passare al template
     return render(request, 'segreteria.html', {'segreteria': segreteria})
-
-def scegli_orario(request):
-    data = request.GET.get('data')  # oppure request.POST.get('data')
-    if data:
-        data = datetime.strptime(data, "%Y-%m-%d").date()
-        slot_duration = timedelta(minutes=30)
-        prenotazioni = PrenotazioneVisita.objects.filter(data=data)
-        slots_disponibili = get_slots(data, slot_duration, prenotazioni)
-    else:
-        slots_disponibili = []
-    return render(request, 'scegli_orario.html', {'slots_disponibili': slots_disponibili})
