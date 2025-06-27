@@ -22,10 +22,6 @@ class PrenotazioneVisita(models.Model):
     tipo = models.CharField(max_length=20, choices=TIPO)
     regime = models.CharField(max_length=20, choices=REGIME)
 
-    def clean(self):
-        if self.ora < time(8, 0) or self.ora > time(18, 0):
-            raise ValidationError("Le prenotazioni devono essere tra le 08:00 e le 18:00")
-
     def __str__(self):
         return f"Prenotazione di {self.paziente} con {self.medico} il {self.data} alle {self.ora}"
 
