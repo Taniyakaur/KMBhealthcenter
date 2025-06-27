@@ -6,26 +6,7 @@
 {% block content %}
 <div class="white_container">
     <h2 style="text-align: left;">Benvenuto/a, {{ request.user.username }}</h2>
-    <p>Spazio per la gestione delle attività infermieristiche</p>
-
-    <!-- Form per aggiornare dati infermiere -->
-    <h3 class="treatment_taital">Modifica i tuoi dati</h3>
-    <form action="{% url 'modifica_infermiere' %}" method="POST" class="form-control">
-        {% csrf_token %}
-        <label for="cognome" class="form-label">Cognome:</label>
-        <input type="text" name="cognome" value="{{ infermiere.cognome }}" required class="form-control">
-
-        <label for="nome" class="form-label">Nome:</label>
-        <input type="text" name="nome" value="{{ infermiere.nome }}" required class="form-control">
-
-        <label for="codice_fiscale" class="form-label">Codice Fiscale:</label>
-        <input type="text" name="codice_fiscale" value="{{ infermiere.codice_fiscale }}" required class="form-control">
-
-        <label for="giorni_servizio" class="form-label">Giorni di Servizio:</label>
-        <input type="text" name="giorni_servizio" value="{{ infermiere.giorni_servizio }}" placeholder="Es. Lunedì, Mercoledì, Venerdì" class="form-control">
-
-        <input type="submit" value="Aggiorna" class="btn btn-primary" style="margin-top: 20px;">
-    </form>
+    <p>Spazio per la gestione delle attività infermieristiche.</p>
 
     <!-- Lista delle prestazioni effettuate -->
     <h3 class="treatment_taital">Prestazioni Effettuate</h3>
@@ -36,28 +17,32 @@
                 <th>Paziente</th>
                 <th>Tipo</th>
                 <th>Esito</th>
+                <th>Azioni</th>
             </tr>
         </thead>
         <tbody>
             {% if prestazioni %}
                 {% for prestazione in prestazioni %}
                 <tr>
-                    <td>{{ prestazione.data }}</td>
+                    <td>{{ prestazione.data|date:"d/m/Y H:i" }}</td>
                     <td>{{ prestazione.paziente.nome }} {{ prestazione.paziente.cognome }}</td>
-                    <td>{{ prestazione.tipo }}</td>
-                    <td>{{ prestazione.esito }}</td>
+                    <td>{{ prestazione.get_tipo_display }}</td>
+                    <td>{% if prestazione.esito %}{{ prestazione.esito|linebreaks }}{% else %}-{% endif %}</td>
+                    <td>
+                        {% if not prestazione.esito %}
+                            <a href="{% url 'inserisci_esito_prestazione' prestazione.id %}" class="btn btn-primary btn-sm">Inserisci Esito</a>
+                        {% else %}
+                            <span class="text-success">Esito registrato</span>
+                        {% endif %}
+                    </td>
                 </tr>
                 {% endfor %}
             {% else %}
                 <tr>
-                    <td colspan="4" style="text-align:center;">Nessuna prestazione registrata.</td>
+                    <td colspan="5" style="text-align:center;">Nessuna prestazione registrata.</td>
                 </tr>
             {% endif %}
         </tbody>
     </table>
 </div>
 {% endblock %}
-
-
-
-

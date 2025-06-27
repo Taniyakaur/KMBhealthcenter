@@ -14,7 +14,8 @@ from django.http import HttpResponse
 from prestazione.models import PrenotazionePrestazione
 from .forms import PrestazioneInfermieristicaForm
 from prestazione.models import Prestazione
-
+from django import forms
+from django.http import Http404
 
 # Funzione per invio email centralizzata
 def invia_email_conferma_prestazione(utente_email, contesto):
@@ -89,19 +90,8 @@ def pagina_medico(request):
     pazienti = Paziente.objects.filter(medico_curante=medico)
     return render(request, 'users/medico.html', {'medico': medico, 'pazienti': pazienti})
 
-# MODIFICA DATI MEDICO
-@login_required
-def modifica_medico(request):
-    medico = get_object_or_404(Medico, user=request.user)
-    if request.method == "POST":
-        form = ModificaMedicoForm(request.POST, instance=medico)
-        if form.is_valid():
-            form.save()
-            return redirect('pagina_medico')
-    else:
-        form = ModificaMedicoForm(instance=medico)
-    return render(request, 'users/modifica_medico.html', {'form': form})
 
+# PAGINA INFERMIERE
 @login_required
 def pagina_infermiere(request):
     infermiere = get_object_or_404(Infermiere, user=request.user)
@@ -113,20 +103,6 @@ def pagina_infermiere(request):
         'infermiere': infermiere,
         'prestazioni': prestazioni
     })
-
-# MODIFICA DATI INFERMIERE
-@login_required
-def modifica_infermiere(request):
-    infermiere = get_object_or_404(Infermiere, user=request.user)
-    if request.method == "POST":
-        form = ModificaInfermiereForm(request.POST, instance=infermiere)
-        if form.is_valid():
-            form.save()
-            return redirect('pagina_infermiere')
-    else:
-        form = ModificaInfermiereForm(instance=infermiere)
-    return render(request, 'users/modifica_infermiere.html', {'form': form})
-
 
 # PAGINA PAZIENTE
 @login_required
@@ -365,3 +341,31 @@ def richiedi_prestazione(request):
         "form": form,
         "paziente": paziente,
     })
+
+# INSERISCI ESITO PRESTAZIONE INFERMIERISTICA
+@login_required
+def inserisci_esito_prestazione(request, prestazione_id):
+    infermiere = get_object_or_404(Infermiere, user=request.user)
+    prestazione = get_object_or_404(Prestazione, id=prestazione_id)
+
+    if prestazione.infermiere != infermiere:
+        raise Http404("Non sei autorizzato a modificare questa prestazione.")
+
+    class EsitoForm(forms.ModelForm):
+        class Meta:
+            model = Prestazione
+            fields = ['esito', 'note']
+            widgets = {
+                'esito': forms.Textarea(attrs={'rows': 4}),
+                'note': forms.Textarea(attrs={'rows': 3}),
+            }
+
+    if request.method == "POST":
+        form = EsitoForm(request.POST, instance=prestazione)
+        if form.is_valid():
+            form.save()
+            return redirect('pagina_infermiere')
+    else:
+        form = EsitoForm(instance=prestazione)
+
+    return render(request, 'users/inserisci_esito.html', {'form': form, 'prestazione': prestazione})
