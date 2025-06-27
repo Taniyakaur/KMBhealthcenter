@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
 from pathlib import Path
 import os
 
@@ -137,15 +136,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'fede.magrograssi@gmail.com'
-<<<<<<< HEAD
 EMAIL_HOST_PASSWORD = 'owuk nmkr axrq tioh'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 #DEFAULT_FROM_EMAIL = 'Casa della Salute <tuoindirizzo@gmail.com>'
-
-=======
-EMAIL_HOST_PASSWORD = 'apyj hobd cqec vbrq'
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER #'Casa della Salute <tuoindirizzo@gmail.com>'
->>>>>>> d77e2a73e89c5db75936bf54a3d73967a7cf8b58
