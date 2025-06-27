@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
-from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.conf import settings
 from .models import Medico, Infermiere, Paziente, Segreteria
@@ -19,6 +18,14 @@ from django.http import Http404
 from prestazione.forms import PrestazioneInfermieristicaForm
 from prestazione.forms import EsitoPrestazioneForm
 
+from django.core.mail import send_mail
+from django.core.mail import EmailMessage
+from CasaSalute.settings import EMAIL_HOST_USER, EMAIL_HOST_PASSWORD
+
+import os
+import certifi
+os.environ['SSL_CERT_FILE'] = certifi.where()
+print ("SSL_CERT_FILE where:",os.environ['SSL_CERT_FILE'])
 
 # Funzione per invio email centralizzata
 def invia_email_conferma_prestazione(utente_email, contesto):
@@ -149,16 +156,23 @@ def prenota_visita(request):
             prenotazione = form.save(commit=False)
             prenotazione.paziente = get_object_or_404(Paziente, user=request.user)
             prenotazione.save()
-            # Invio email conferma
-            contesto = {
-                'nome': prenotazione.paziente.nome,
-                'tipo': 'prenotazionevisita',
-                'data': prenotazione.data,
-                'ora': prenotazione.ora,
-            }
+
             try:
-                pass
-                # invia_email_conferma_prestazione(prenotazione.paziente.user.email, contesto)
+                print("DEBUG: Preparazione invio email di conferma")
+                subject = "Conferma prenotazione visita"
+                message = (
+                    f"Buongiorno {prenotazione.paziente.nome} {prenotazione.paziente.cognome},\n\n"
+                    "La visita da Lei prenotata è stata confermata con successo.\n"
+                    "La ringraziamo per aver scelto Casa della Salute.\n\n"
+                    "Cordiali saluti,\n"
+                    "Casa della Salute"
+                )
+                email = prenotazione.paziente.email
+                print(f"DEBUG: Email destinatario: {email}")
+                print(f"DEBUG: Email mittente: {EMAIL_HOST_USER}")
+                recipient_list = [email]
+                send_mail(subject, message, EMAIL_HOST_USER, recipient_list, fail_silently=False )
+                print("DEBUG: Email inviata con successo")
             except Exception as e:
                 print(f"Email non inviata: {e}")
             return redirect('pagina_paziente')
