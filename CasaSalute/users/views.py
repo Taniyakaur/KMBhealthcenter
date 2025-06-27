@@ -16,6 +16,9 @@ from .forms import PrestazioneInfermieristicaForm
 from prestazione.models import Prestazione
 from django import forms
 from django.http import Http404
+from prestazione.forms import PrestazioneInfermieristicaForm
+from prestazione.forms import EsitoPrestazioneForm
+
 
 # Funzione per invio email centralizzata
 def invia_email_conferma_prestazione(utente_email, contesto):
@@ -321,7 +324,7 @@ def dettaglio_paziente(request, paziente_id):
 @login_required
 def richiedi_prestazione(request):
     paziente = get_object_or_404(Paziente, user=request.user)
-    infermiere_disponibile = Infermiere.objects.first()  # Oppure logica di turni/servizi
+    infermiere_disponibile = Infermiere.objects.first()  # Semplice logica di disponibilità
 
     if not infermiere_disponibile:
         return HttpResponse("Nessun infermiere disponibile al momento.", status=503)
@@ -337,12 +340,16 @@ def richiedi_prestazione(request):
     else:
         form = PrestazioneInfermieristicaForm()
 
+    # Storico prestazioni per mostrarle sotto il form (già nel template)
+    prestazioni = Prestazione.objects.filter(paziente=paziente)
+
     return render(request, "users/prestazioni.html", {
         "form": form,
-        "paziente": paziente,
+        "prestazioni": prestazioni,
     })
 
 # INSERISCI ESITO PRESTAZIONE INFERMIERISTICA
+
 @login_required
 def inserisci_esito_prestazione(request, prestazione_id):
     infermiere = get_object_or_404(Infermiere, user=request.user)
@@ -351,21 +358,15 @@ def inserisci_esito_prestazione(request, prestazione_id):
     if prestazione.infermiere != infermiere:
         raise Http404("Non sei autorizzato a modificare questa prestazione.")
 
-    class EsitoForm(forms.ModelForm):
-        class Meta:
-            model = Prestazione
-            fields = ['esito', 'note']
-            widgets = {
-                'esito': forms.Textarea(attrs={'rows': 4}),
-                'note': forms.Textarea(attrs={'rows': 3}),
-            }
-
     if request.method == "POST":
-        form = EsitoForm(request.POST, instance=prestazione)
+        form = EsitoPrestazioneForm(request.POST, instance=prestazione)
         if form.is_valid():
             form.save()
             return redirect('pagina_infermiere')
     else:
-        form = EsitoForm(instance=prestazione)
+        form = EsitoPrestazioneForm(instance=prestazione)
 
-    return render(request, 'users/inserisci_esito.html', {'form': form, 'prestazione': prestazione})
+    return render(request, 'users/inserisci_esito.html', {
+        'form': form,
+        'prestazione': prestazione
+    })
