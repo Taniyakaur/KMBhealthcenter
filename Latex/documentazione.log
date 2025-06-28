@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.1.2)  28 JUN 2025 15:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.1.2)  28 JUN 2025 15:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -352,12 +352,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [4 <./diagrammi_uml/use_case_paziente.png (PNG copy)>]
-<diagrammi_uml/use_case_medico.png, id=33, 323.2075pt x 399.4925pt>
-File: diagrammi_uml/use_case_medico.png Graphic file (type png)
-<use diagrammi_uml/use_case_medico.png>
-Package pdftex.def Info: diagrammi_uml/use_case_medico.png  used on input line 123.
-(pdftex.def)             Requested size: 318.66948pt x 393.9017pt.
-
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -367,10 +361,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [5 <./diagrammi_uml/paziente.png (PNG copy)>]
-<diagrammi_uml/medico.png, id=39, 215.80624pt x 306.14375pt>
+<diagrammi_uml/use_case_medico.png, id=37, 323.2075pt x 399.4925pt>
+File: diagrammi_uml/use_case_medico.png Graphic file (type png)
+<use diagrammi_uml/use_case_medico.png>
+Package pdftex.def Info: diagrammi_uml/use_case_medico.png  used on input line 124.
+(pdftex.def)             Requested size: 318.66948pt x 393.9017pt.
+<diagrammi_uml/medico.png, id=38, 215.80624pt x 306.14375pt>
 File: diagrammi_uml/medico.png Graphic file (type png)
 <use diagrammi_uml/medico.png>
-Package pdftex.def Info: diagrammi_uml/medico.png  used on input line 125.
+Package pdftex.def Info: diagrammi_uml/medico.png  used on input line 126.
 (pdftex.def)             Requested size: 318.66948pt x 452.114pt.
 
 
@@ -382,12 +381,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [6 <./diagrammi_uml/use_case_medico.png (PNG copy)>]
-<diagrammi_uml/use_case_infermiere.png, id=44, 384.43625pt x 339.2675pt>
-File: diagrammi_uml/use_case_infermiere.png Graphic file (type png)
-<use diagrammi_uml/use_case_infermiere.png>
-Package pdftex.def Info: diagrammi_uml/use_case_infermiere.png  used on input line 135.
-(pdftex.def)             Requested size: 318.66948pt x 281.2451pt.
-
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -397,10 +390,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [7 <./diagrammi_uml/medico.png (PNG copy)>]
-<diagrammi_uml/infermiere.png, id=51, 264.99pt x 275.0275pt>
+<diagrammi_uml/use_case_infermiere.png, id=49, 384.43625pt x 339.2675pt>
+File: diagrammi_uml/use_case_infermiere.png Graphic file (type png)
+<use diagrammi_uml/use_case_infermiere.png>
+Package pdftex.def Info: diagrammi_uml/use_case_infermiere.png  used on input line 136.
+(pdftex.def)             Requested size: 318.66948pt x 281.2451pt.
+<diagrammi_uml/infermiere.png, id=50, 264.99pt x 275.0275pt>
 File: diagrammi_uml/infermiere.png Graphic file (type png)
 <use diagrammi_uml/infermiere.png>
-Package pdftex.def Info: diagrammi_uml/infermiere.png  used on input line 137.
+Package pdftex.def Info: diagrammi_uml/infermiere.png  used on input line 138.
 (pdftex.def)             Requested size: 318.66948pt x 330.76575pt.
 
 
@@ -411,16 +409,25 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[8 <./diagrammi_uml/use_case_infermiere.png (PNG copy)> <./diagrammi_uml/infermiere.png (PNG copy)>]
-<diagrammi_uml/use_case_segreteria.png, id=57, 381.425pt x 716.6775pt>
+[8 <./diagrammi_uml/use_case_infermiere.png (PNG copy)>]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[9 <./diagrammi_uml/infermiere.png (PNG copy)>]
+<diagrammi_uml/use_case_segreteria.png, id=60, 381.425pt x 716.6775pt>
 File: diagrammi_uml/use_case_segreteria.png Graphic file (type png)
 <use diagrammi_uml/use_case_segreteria.png>
-Package pdftex.def Info: diagrammi_uml/use_case_segreteria.png  used on input line 151.
-(pdftex.def)             Requested size: 318.66948pt x 598.78995pt.
-<diagrammi_uml/segreteria.png, id=58, 261.97874pt x 427.5975pt>
+Package pdftex.def Info: diagrammi_uml/use_case_segreteria.png  used on input line 152.
+(pdftex.def)             Requested size: 261.82162pt x 491.9491pt.
+<diagrammi_uml/segreteria.png, id=61, 261.97874pt x 427.5975pt>
 File: diagrammi_uml/segreteria.png Graphic file (type png)
 <use diagrammi_uml/segreteria.png>
-Package pdftex.def Info: diagrammi_uml/segreteria.png  used on input line 153.
+Package pdftex.def Info: diagrammi_uml/segreteria.png  used on input line 154.
 (pdftex.def)             Requested size: 318.66948pt x 520.14143pt.
 
 
@@ -431,7 +438,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[9 <./diagrammi_uml/use_case_segreteria.png (PNG copy)>]
+[10 <./diagrammi_uml/use_case_segreteria.png (PNG copy)>]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -440,11 +447,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[10 <./diagrammi_uml/segreteria.png (PNG copy)>]
-<diagrammi_uml/diagramma_attivita_paziente.png, id=67, 468.75125pt x 818.05624pt>
+[11 <./diagrammi_uml/segreteria.png (PNG copy)>]
+<diagrammi_uml/diagramma_attivita_paziente.png, id=71, 468.75125pt x 818.05624pt>
 File: diagrammi_uml/diagramma_attivita_paziente.png Graphic file (type png)
 <use diagrammi_uml/diagramma_attivita_paziente.png>
-Package pdftex.def Info: diagrammi_uml/diagramma_attivita_paziente.png  used on input line 170.
+Package pdftex.def Info: diagrammi_uml/diagramma_attivita_paziente.png  used on input line 171.
 (pdftex.def)             Requested size: 318.66948pt x 556.13358pt.
 
 
@@ -455,12 +462,21 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[11]
-<diagrammi_uml/diagramma_attivita_medico.png, id=74, 224.84pt x 453.695pt>
+[12]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[13 <./diagrammi_uml/diagramma_attivita_paziente.png (PNG copy)>]
+<diagrammi_uml/diagramma_attivita_medico.png, id=83, 224.84pt x 453.695pt>
 File: diagrammi_uml/diagramma_attivita_medico.png Graphic file (type png)
 <use diagrammi_uml/diagramma_attivita_medico.png>
-Package pdftex.def Info: diagrammi_uml/diagramma_attivita_medico.png  used on input line 176.
-(pdftex.def)             Requested size: 318.66948pt x 643.10222pt.
+Package pdftex.def Info: diagrammi_uml/diagramma_attivita_medico.png  used on input line 177.
+(pdftex.def)             Requested size: 243.79791pt x 491.94939pt.
 
 
 
@@ -470,20 +486,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[12 <./diagrammi_uml/diagramma_attivita_paziente.png (PNG copy)>]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[13 <./diagrammi_uml/diagramma_attivita_medico.png (PNG copy)>]
-<diagrammi_uml/diagramma_attivita_infermiere.png, id=85, 231.86626pt x 342.27875pt>
+[14 <./diagrammi_uml/diagramma_attivita_medico.png (PNG copy)>]
+<diagrammi_uml/diagramma_attivita_infermiere.png, id=89, 231.86626pt x 342.27875pt>
 File: diagrammi_uml/diagramma_attivita_infermiere.png Graphic file (type png)
 <use diagrammi_uml/diagramma_attivita_infermiere.png>
-Package pdftex.def Info: diagrammi_uml/diagramma_attivita_infermiere.png  used on input line 183.
+Package pdftex.def Info: diagrammi_uml/diagramma_attivita_infermiere.png  used on input line 184.
 (pdftex.def)             Requested size: 318.66948pt x 470.45975pt.
 
 
@@ -494,22 +501,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[14 <./diagrammi_uml/diagramma_attivita_infermiere.png (PNG copy)>]
-<diagrammi_uml/diagramma_attivita_segreteria.png, id=92, 347.2975pt x 1086.0575pt>
+[15 <./diagrammi_uml/diagramma_attivita_infermiere.png (PNG copy)>]
+<diagrammi_uml/diagramma_attivita_segreteria.png, id=95, 347.2975pt x 1086.0575pt>
 File: diagrammi_uml/diagramma_attivita_segreteria.png Graphic file (type png)
 <use diagrammi_uml/diagramma_attivita_segreteria.png>
-Package pdftex.def Info: diagrammi_uml/diagramma_attivita_segreteria.png  used on input line 192.
-(pdftex.def)             Requested size: 224.74442pt x 702.81349pt.
+Package pdftex.def Info: diagrammi_uml/diagramma_attivita_segreteria.png  used on input line 193.
+(pdftex.def)             Requested size: 179.79553pt x 562.2508pt.
 
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[15]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -529,11 +527,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [17]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 259.
+(Font)              <12> on input line 260.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 259.
+(Font)              <8> on input line 260.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 259.
+(Font)              <6> on input line 260.
 
 
 
@@ -545,52 +543,52 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [18]
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:279: LaTeX Error: Environment lstlisting undefined.
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:280: LaTeX Error: Environment lstlisting undefined.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.279 \begin{lstlisting}
+l.280 \begin{lstlisting}
                         
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:281: LaTeX Error: \begin{document} ended by \end{lstlisting}.
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:282: LaTeX Error: \begin{document} ended by \end{lstlisting}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.281 \end{lstlisting}
+l.282 \end{lstlisting}
                       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:286: LaTeX Error: Environment lstlisting undefined.
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:287: LaTeX Error: Environment lstlisting undefined.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.286 \begin{lstlisting}
+l.287 \begin{lstlisting}
                         
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:288: LaTeX Error: \begin{document} ended by \end{lstlisting}.
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:289: LaTeX Error: \begin{document} ended by \end{lstlisting}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.288 \end{lstlisting}
+l.289 \end{lstlisting}
                       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -615,33 +613,24 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [20]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[21]
-<diagrammi_uml/ER.png, id=143, 2914.89pt x 2252.415pt>
+<diagrammi_uml/ER.png, id=138, 2914.89pt x 2252.415pt>
 File: diagrammi_uml/ER.png Graphic file (type png)
 <use diagrammi_uml/ER.png>
-Package pdftex.def Info: diagrammi_uml/ER.png  used on input line 351.
+Package pdftex.def Info: diagrammi_uml/ER.png  used on input line 349.
 (pdftex.def)             Requested size: 409.71692pt x 316.57324pt.
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:362: Missing $ inserted.
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:360: Missing $ inserted.
 <inserted text> 
                 $
-l.362     \item \textbf{Prenotazione_visita}
+l.360     \item \textbf{Prenotazione_visita}
                                              (\underline{id}, data, ora, tip...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:362: Extra }, or forgotten $.
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:360: Extra }, or forgotten $.
 <recently read> \egroup 
                         
-l.362     \item \textbf{Prenotazione_visita}
+l.360     \item \textbf{Prenotazione_visita}
                                              (\underline{id}, data, ora, tip...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -650,37 +639,37 @@ the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:363: LaTeX Error: Command \item invalid in math mode.
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:361: LaTeX Error: Command \item invalid in math mode.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.363     \item
+l.361     \item
                 \textbf{Prenotazione_prestazione} (\underline{id}, data, ora...
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:363: Missing $ inserted.
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:361: Missing $ inserted.
 <inserted text> 
                 $
-l.363     \item \textbf
+l.361     \item \textbf
                        {Prenotazione_prestazione} (\underline{id}, data, ora...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:363: Missing $ inserted.
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:361: Missing $ inserted.
 <inserted text> 
                 $
-l.363     \item \textbf{Prenotazione_prestazione}
+l.361     \item \textbf{Prenotazione_prestazione}
                                                   (\underline{id}, data, ora...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:363: Extra }, or forgotten $.
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:361: Extra }, or forgotten $.
 <recently read> \egroup 
                         
-l.363     \item \textbf{Prenotazione_prestazione}
+l.361     \item \textbf{Prenotazione_prestazione}
                                                   (\underline{id}, data, ora...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -689,29 +678,29 @@ the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:364: LaTeX Error: Command \item invalid in math mode.
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:362: LaTeX Error: Command \item invalid in math mode.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.364     \item
+l.362     \item
                 \textbf{Visita} (\underline{id}, esito, idPrenotazione, medi...
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:364: Missing $ inserted.
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:362: Missing $ inserted.
 <inserted text> 
                 $
-l.364     \item \textbf
+l.362     \item \textbf
                        {Visita} (\underline{id}, esito, idPrenotazione, medi...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:368: Missing } inserted.
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:366: Missing } inserted.
 <inserted text> 
                 }
-l.368 \end{itemize}
+l.366 \end{itemize}
                    
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -719,10 +708,10 @@ With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:368: Missing } inserted.
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:366: Missing } inserted.
 <inserted text> 
                 }
-l.368 \end{itemize}
+l.366 \end{itemize}
                    
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -739,19 +728,19 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[22 <./diagrammi_uml/ER.png>]
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:380: Missing $ inserted.
+[21 <./diagrammi_uml/ER.png>]
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:378: Missing $ inserted.
 <inserted text> 
                 $
-l.380 ...ghtarrow$ \texttt{Prenotazione_visita.id}
+l.378 ...ghtarrow$ \texttt{Prenotazione_visita.id}
                                                   
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:380: Extra }, or forgotten $.
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:378: Extra }, or forgotten $.
 <recently read> \egroup 
                         
-l.380 ...ghtarrow$ \texttt{Prenotazione_visita.id}
+l.378 ...ghtarrow$ \texttt{Prenotazione_visita.id}
                                                   
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -760,29 +749,29 @@ the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:381: LaTeX Error: Command \item invalid in math mode.
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:379: LaTeX Error: Command \item invalid in math mode.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.381     \item
+l.379     \item
                 \texttt{Visita.medico} $\rightarrow$ \texttt{Medico.username}
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:381: Missing $ inserted.
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:379: Missing $ inserted.
 <inserted text> 
                 $
-l.381     \item \texttt
+l.379     \item \texttt
                        {Visita.medico} $\rightarrow$ \texttt{Medico.username}
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:390: Missing } inserted.
+c:/Users/fmagr/Documents/GitHub/Project/Latex/documentazione.tex:388: Missing } inserted.
 <inserted text> 
                 }
-l.390 \end{itemize}
+l.388 \end{itemize}
                    
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -791,6 +780,15 @@ really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
 
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[22]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -800,19 +798,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [23]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[24]
-<diagrammi_uml/schemaER.png, id=163, 752.8125pt x 1008.76875pt>
+<diagrammi_uml/schemaER.png, id=158, 752.8125pt x 1008.76875pt>
 File: diagrammi_uml/schemaER.png Graphic file (type png)
 <use diagrammi_uml/schemaER.png>
-Package pdftex.def Info: diagrammi_uml/schemaER.png  used on input line 416.
+Package pdftex.def Info: diagrammi_uml/schemaER.png  used on input line 415.
 (pdftex.def)             Requested size: 455.24411pt x 610.03761pt.
 
 
@@ -823,7 +812,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[25 <./diagrammi_uml/schemaER.png (PNG copy)>]
+[24 <./diagrammi_uml/schemaER.png (PNG copy)>]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -832,7 +821,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[26] (documentazione.aux)
+[25] (documentazione.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 1
 L3 programming layer <2024-12-09>
@@ -845,20 +834,20 @@ Package rerunfilecheck Warning: File `documentazione.out' has changed.
 
 Package rerunfilecheck Info: Checksums for `documentazione.out':
 (rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  421A68483E9A7C3DEB0990F02575979E;6043.
+(rerunfilecheck)             After:  409933F1527A444F85AD648E85058137;5965.
  ) 
 Here is how much of TeX's memory you used:
- 10642 strings out of 473574
- 171319 string characters out of 5726154
- 583770 words of memory out of 5000000
+ 10640 strings out of 473574
+ 171298 string characters out of 5726154
+ 582770 words of memory out of 5000000
  33656 multiletter control sequences out of 15000+600000
  564704 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 69i,12n,79p,600b,514s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 69i,11n,79p,600b,452s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\fmagr\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on documentazione.pdf (26 pages, 935251 bytes).
+Output written on documentazione.pdf (25 pages, 934484 bytes).
 PDF statistics:
- 227 PDF objects out of 1000 (max. 8388607)
- 65 named destinations out of 1000 (max. 500000)
+ 222 PDF objects out of 1000 (max. 8388607)
+ 63 named destinations out of 1000 (max. 500000)
  71 words of extra memory for PDF output out of 10000 (max. 10000000)
 
