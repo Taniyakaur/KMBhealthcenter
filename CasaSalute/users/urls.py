@@ -25,7 +25,7 @@ urlpatterns = [
     # Paziente
     path('paziente/', pagina_paziente, name='pagina_paziente'),
     path('paziente/prenota/', prenota_visita, name='prenota_visita'),
-    path('paziente/prestazioni/', richiedi_prestazione, name='richiedi_prestazione'),
+    path('paziente/prenota_prestazione/', richiedi_prestazione, name='richiedi_prestazione'),
 
 
     # Segreteria

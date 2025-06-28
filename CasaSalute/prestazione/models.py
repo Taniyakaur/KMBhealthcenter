@@ -7,6 +7,7 @@ class TipoPrestazione(models.TextChoices):
     PRELIEVO = 'prelievo', _('Prelievo')
     MEDICAZIONE = 'medicazione', _('Medicazione')
 
+#MODELLO PRENOTAZIONE PRESTAZIONE
 class PrenotazionePrestazione(models.Model):
     id = models.BigAutoField(primary_key=True)
     paziente = models.ForeignKey('users.Paziente', on_delete=models.CASCADE)
@@ -20,6 +21,7 @@ class PrenotazionePrestazione(models.Model):
         verbose_name_plural = "prenotazioni prestazioni"
         ordering = ['data', 'orario']
 
+#MODELLO PRESTAZIONE
 class Prestazione(models.Model):
     id = models.BigAutoField(primary_key=True)  
     tipo = models.CharField(max_length=20, choices=TipoPrestazione.choices)

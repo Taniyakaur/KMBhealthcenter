@@ -143,10 +143,14 @@ def pagina_paziente(request):
     # Prenotazioni del paziente
     prenotazioni = Prenotazione.objects.filter(paziente=paziente)
 
+    # Prestazioni infermieristiche del paziente
+    prestazioni = Prestazione.objects.filter(paziente=paziente)
+
     return render(request, 'users/paziente.html', {
         'paziente': paziente,
         'visite': visite,
-        'prenotazioni': prenotazioni
+        'prenotazioni': prenotazioni,
+        'prestazioni': prestazioni
     })
 
 
@@ -354,7 +358,7 @@ def richiedi_prestazione(request):
     # Storico prestazioni per mostrarle sotto il form (già nel template)
     prestazioni = Prestazione.objects.filter(paziente=paziente)
 
-    return render(request, "users/prestazioni.html", {
+    return render(request, "users/prenota_prestazione.html", {
         "form": form,
         "prestazioni": prestazioni,
     })

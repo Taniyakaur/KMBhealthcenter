@@ -70,7 +70,8 @@
     <table class="table table-striped table-bordered custom_table_style">
         <thead>
             <tr>
-                <th>Data</th>
+                <th>Paziente</th>
+                <th>Data e ora</th>
                 <th>Tipo</th>
                 <th>Infermiere</th>
                 <th>Esito</th>
@@ -80,6 +81,7 @@
         <tbody>
             {% for prestazione in prestazioni %}
             <tr>
+                <td>{{ prestazione.paziente }}</td>
                 <td>{{ prestazione.data }}</td>
                 <td>{{ prestazione.tipo }}</td>
                 <td>{{ prestazione.infermiere.nome }} {{ prestazione.infermiere.cognome }}</td>
@@ -102,7 +104,6 @@
                 <th>Data</th>
                 <th>Ora</th>
                 <th>Tipo</th>
-                <th>Operatore</th>
                 <th>Stato</th>
             </tr>
         </thead>
@@ -112,15 +113,6 @@
                 <td>{{ prenotazione.data }}</td>
                 <td>{{ prenotazione.ora }}</td>
                 <td>{{ prenotazione.tipo }}</td>
-                <td>
-                    {% if prenotazione|default_if_none:""|add:""|slice:":20" == "PrenotazioneVisita" %}
-                        {{ prenotazione.medico.nome }} {{ prenotazione.medico.cognome }}
-                    {% elif prenotazione|default_if_none:""|add:""|slice:":22" == "PrenotazionePrestazione" %}
-                        {{ prenotazione.infermiere.nome }} {{ prenotazione.infermiere.cognome }}
-                    {% else %}
-                        -
-                    {% endif %}
-                </td>
                 <td>{{ prenotazione.stato }}</td>
             </tr>
             {% empty %}
