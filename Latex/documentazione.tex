@@ -70,7 +70,7 @@ dove operano più medici di base, supportati da infermieri per medicazioni e pre
  e un ufficio di segreteria comune. La struttura ospita:
 
 \begin{itemize}
-    \item 3 ambulatori per visite per adulti, 2 ambulatori per prelievi e medicazioni ad adulti,
+    \item 3 ambulatori per visite per adulti, 2 ambulatori per prelievi e medicazioni,
     \item 1 ambulatorio pediatrico,
 \end{itemize}
 
@@ -78,16 +78,15 @@ dove operano più medici di base, supportati da infermieri per medicazioni e pre
 
 Il sistema permette di:
 \begin{itemize}
-    \item Registrare e gestire i dati di medici, infermieri e pazienti.
+    \item Alla segreteria di registrare a e gestire i dati di medici, infermieri e pazienti.
     \item Gestire le prenotazioni per visite, inviando mail di conferma.
     \item Mantenere una storia delle visite e delle prestazioni effettuate.
 \end{itemize}
 
 \subsection{Autenticazione e accesso}
 
-Il sistema permette l'autenticazione ai pazienti tramite le credenziali fornite 
-dalla segreteria. Il personale medico e infermieristico, invece, può accedere 
-tramite le proprie credenziali personali, sempre nella sezione login.
+Il sistema permette l'autenticazione, nella sezione login, a tutti gli utenti tramite le credenziali fornite 
+dalla segreteria. 
 
 \newpage
 
@@ -103,6 +102,8 @@ tramite due diagrammi, le principali funzionalità accessibili e le interazioni 
 Il paziente può accedere alla propria area personale tramite autenticazione. 
 Una volta autenticato, ha la possibilità di visualizzare la propria dashboard, consultare i dati personali, 
 le visite programmate e gli esiti delle visite già effettuate. 
+La segreteria può modificare i dati del paziente, come ad esempio l'indirizzo email.
+Inoltre, quando prenota una visita, riceve una notifica via email con i dettagli dell'appuntamento.
 
 Il primo diagramma rappresenta in maniera sintetica i casi d’uso del paziente all’interno del sistema,
  evidenziando le funzioni principali. Il secondo schema mostra più nel dettaglio le interazioni sequenziali tra il paziente e il sistema.
@@ -114,8 +115,7 @@ Il primo diagramma rappresenta in maniera sintetica i casi d’uso del paziente 
 \subsection{Personale medico}
 Il personale medico, dopo aver effettuato l'autenticazione, può consultare la propria area personale per visualizzare l’elenco 
 delle visite in programma e accedere ai dati clinici dei pazienti.
-Ha inoltre la possibilità di inserire l’esito delle visite effettuate, operazione che comporta anche l’invio automatico di
- una notifica al paziente interessato. Il medico può infine modificare i propri dati personali.
+La segreteria inserisce l’esito delle visite effettuate e può modificare i dati del medico.
 
 Nel primo diagramma sono riassunti i principali casi d’uso del medico. 
 Il secondo schema mostra nel dettaglio l’interazione tra il medico e il sistema per ciascuna funzionalità.
@@ -127,7 +127,7 @@ Il secondo schema mostra nel dettaglio l’interazione tra il medico e il sistem
 \subsection{Infermiere}
 L’infermiere può accedere alla propria area riservata tramite autenticazione. Una volta entrato nel sistema, 
 ha la possibilità di visualizzare la dashboard personale, i propri dati anagrafici e l’elenco delle prestazioni effettuate. 
-Inoltre, può modificare i propri dati.
+La segreteria può modificare i dati dell'infermiere e inserire gli esiti delle prestazioni.
 
 Il primo diagramma mostra una panoramica dei casi d’uso principali relativi alla figura dell’infermiere,
 mentre il secondo fornisce una rappresentazione dettagliata delle interazioni con il sistema.
@@ -137,11 +137,13 @@ mentre il secondo fornisce una rappresentazione dettagliata delle interazioni co
 \includegraphics[width=0.7\textwidth]{diagrammi_uml/infermiere.png}
 
 \subsection{Segreteria}
-La segreteria ha accesso a numerose funzionalità gestionali. Dopo l'autenticazione, può visualizzare la dashboard che fornisce
- una panoramica delle attività da svolgere. Può consultare l'elenco del personale e dei pazienti registrati, 
- visualizzare le visite da completare, e aggiungere nuovi operatori sanitari e pazienti. 
- È responsabile dell’inserimento degli esiti delle visite, dell’invio delle relative notifiche ai pazienti, 
- nonché della generazione dei resoconti annuali delle attività.
+
+La segreteria ha accesso a numerose funzionalità gestionali. Dopo l'autenticazione, nella pagina admin 
+può visualizzare la dashboard che fornisce
+ una panoramica degli utenti. Può consultare l'elenco del personale e dei pazienti registrati, 
+ visualizzare le visite da completare, e aggiungere nuovi utenti. 
+ È responsabile dell’inserimento degli esiti delle visite e delle prestazioni. Può anche inserire le assenze pianificate dei medici.
+Inoltre può anche associare il turno dell'infermiere. 
 
 Il primo diagramma riepiloga le principali funzioni disponibili per la segreteria, 
 mentre il secondo approfondisce le specifiche interazioni tra l’utente e il sistema.
@@ -169,25 +171,22 @@ oppure può essere interrotta o annullata in qualsiasi momento.
 
 \subsection{Personale medico}
 Il diagramma delle attività del medico mostra il flusso operativo seguito da questa figura professionale. 
-Dopo l'autenticazione, il medico può visualizzare l’elenco delle visite programmate e i dati clinici dei propri pazienti. 
-Può quindi inserire l’esito di una visita appena effettuata, azione che porta automaticamente anche all’invio di una notifica al paziente. 
-L’intero processo è rappresentato in modo sequenziale e chiarisce come si sviluppa la gestione delle visite da parte del personale medico.
+Dopo l'autenticazione, il medico può visualizzare l’elenco delle visite programmate e i dati clinici dei propri pazienti.  
 
 \includegraphics[width=0.7\textwidth]{diagrammi_uml/diagramma_attivita_medico.png}
 
 \subsection{Infermiere}
 Il diagramma delle attività relativo all’infermiere mostra le principali operazioni disponibili dopo l’autenticazione. 
 L’utente può accedere alla dashboard per consultare i propri dati anagrafici e l’elenco delle prestazioni precedentemente eseguite. 
-Il flusso si concentra sulla consultazione e sulla possibilità di modificare le informazioni personali, 
-mantenendo il diagramma semplice e focalizzato sulle attività specifiche di questa figura professionale.
+Il flusso si concentra sulla consultazione, mantenendo il diagramma semplice e focalizzato sulle attività specifiche di questa figura professionale.
 
 \includegraphics[width=0.7\textwidth]{diagrammi_uml/diagramma_attivita_infermiere.png}
 
 \subsection{Segreteria}
 Il diagramma delle attività della segreteria descrive l'intero processo operativo, a partire dall’autenticazione dell’utente. 
 Una volta effettuato l’accesso, la segreteria può visualizzare la dashboard con una panoramica generale. 
-Da qui è possibile consultare gli elenchi di pazienti e personale sanitario, aggiungere nuovi utenti al sistema, inserire gli esiti delle visite e generare report annuali.
-Inoltre, la segreteria può gestire la programmazione e la modifica delle visite. 
+Da qui è possibile consultare gli elenchi di pazienti e personale sanitario, aggiungere nuovi utenti al sistema, inserire gli esiti delle visite.
+Inoltre, la segreteria può gestire la programmazione e la modifica delle visite o delle prestazioni.
 Il diagramma evidenzia chiaramente l’ampiezza delle funzioni amministrative assegnate a questa figura.
 
 \includegraphics[width=0.7\textwidth, height=\textheight, keepaspectratio]{diagrammi_uml/diagramma_attivita_segreteria.png}
@@ -200,20 +199,10 @@ Il diagramma evidenzia chiaramente l’ampiezza delle funzioni amministrative as
 
 \subsection{Note sul processo di sviluppo}
 Il processo di sviluppo ha seguito un approccio agile e incrementale. 
-Si assume che solo i pazienti adulti possano essere registrati dal personale di segreteria, 
-mentre i pazienti pediatrici sono inseriti con i dati dei pazienti maggiorenni associati.
-
-I pazienti che non sono maggiorenni non possono avere pazienti
- pediatrici a loro carico.
-Quando un paziente pediatrico compie 14 anni, e diventa un ex paziente
- pediatrico.
-
-Il pediatra può visualizzare gli appuntamenti degli ex pazienti pediatrici e aggiornare l’esito delle visite.
+Si assume che i pazienti possano essere registrati dal personale di segreteria.
 
 \subsection{Note sul paziente maggiorenne}
-Un paziente maggiorenne deve obbligatoriamente essere associato a un 
-medico per poter essere registrato a sistema. 
-Questa scelta è legata alla natura prototipale del progetto. 
+Il paziente deve essere associato a un medico.
 Il paziente maggiorenne potrà avere un paziente pediatrico a suo carico.
 
 \section{Modelli architetturali e progettazione ad alto livello}
@@ -258,8 +247,7 @@ Oltre ai moduli standard di Django e Python, abbiamo utilizzato alcune librerie 
 \begin{itemize}
     \item \textbf{Django}: il framework principale, utilizzato per costruire l’intera architettura web.
     \item \textbf{python-dotenv}: per la gestione sicura delle variabili d’ambiente.
-    \item \textbf{crispy-forms}: per migliorare la resa grafica e la personalizzazione dei form HTML.
-    \item \textbf{pytest-django}: per scrivere e gestire i test automatici in modo semplice ed efficace.
+    \item \textbf{datetime-range}: per la gestione di intervalli di date/ore.
 \end{itemize}
 
 \subsubsection{Versioning del progetto}
@@ -274,15 +262,16 @@ Questo approccio ha garantito una storia chiara delle modifiche e ha facilitato 
 
 % ------------------------- INSTALLAZIONE -------------------------
 \section{Configurazione del sistema}
-\subsection{Requisiti di sistema}
 
 \subsection{Migrazione del database}
 Applicare le migrazioni iniziali:
 
-\begin{lstlisting}
-python manage.py makemigrations
-python manage.py migrate
-\end{lstlisting}
+\begin{itemize}
+    \item \textbf{ython manage.py makemigrations}: per creare le migrazioni necessarie in base ai modelli definiti.
+    \item \textbf{python manage.py migrate}: per applicare le migrazioni al database, creando le tabelle necessarie.
+    
+\end{itemize}
+
 
 \subsection*{Creazione di un superutente (Segreteria)}
 Per accedere al pannello di amministrazione:
@@ -292,7 +281,7 @@ python manage.py createsuperuser
 \end{lstlisting}
 
 \subsection{Avvio del server di sviluppo}
-Eseguire il server:
+Per avviare il server:
 
 \begin{lstlisting}
 python manage.py runserver
@@ -301,23 +290,13 @@ python manage.py runserver
 Il sistema sarà accessibile all'indirizzo \texttt{http://127.0.0.1:8000}
 \subsection{Accesso al sistema}
 Per accedere al sistema, utilizzare le credenziali fornite dalla segreteria per i pazienti, o quelle create per il personale medico e infermieristico.
+Bisogna selezionare il ruolo corretto (paziente, medico, infermiere o segreteria) durante il login.
+
 \newpage
 % ------------------------- TEST -------------------------
 \section{Test e validazione}
 
-\subsection{Unit test}
-Abbiamo eseguito test di tipo unitario su diverse componenti del sistema, in particolare sui modelli e sulle view. 
-Per questo abbiamo utilizzato il framework di test integrato in Django, basato su \texttt{unittest}, e in alcuni casi \texttt{pytest-django} per una maggiore flessibilità.
-
-Gli unit test sono stati scritti all'interno dei file \texttt{tests.py} presenti in ciascuna app Django.
-
-Esempi di test effettuati:
-\begin{itemize}
-    \item Validazione dei form (es. campi obbligatori, formati email, password, ecc.).
-    \item Verifica della corretta creazione e salvataggio dei modelli nel database.
-    \item Controllo che determinate view richiedano l’autenticazione.
-    \item Verifica della logica di assegnazione del medico e delle prenotazioni.
-\end{itemize}
+\subsection{Test}
 
 \subsection{Test manuali degli sviluppatori}
 Abbiamo svolto test manuali sistematici simulando le azioni tipiche degli utenti:
@@ -326,12 +305,8 @@ Abbiamo svolto test manuali sistematici simulando le azioni tipiche degli utenti
     \item Registrazione nuovi utenti e modifica dei dati anagrafici.
     \item Prenotazione e cancellazione di prestazioni.
     \item Inserimento di esiti e verifica della notifica al paziente.
-    \item Gestione di situazioni particolari (es. doppia prenotazione nello stesso orario).
 \end{itemize}
 
-\subsection{Copertura del codice e strumenti}
-Per misurare la copertura dei test automatizzati abbiamo utilizzato \texttt{coverage.py}, uno strumento che mostra quali righe di codice sono state eseguite durante i test. 
-Questo ci ha permesso di identificare porzioni di codice non ancora testate.
 \newpage
 % ------------------------- BASE DI DATI -------------------------
 \section{Struttura della base di dati}
@@ -350,8 +325,7 @@ Il modello è organizzato secondo una gerarchia centrata sull’entità \textbf{
     \item \textbf{Medico}: entità specializzata che può essere soggetta a \textit{sostituzioni} o a \textit{assenze pianificate}, 
     ed è associata a uno o più \textit{pazienti} tramite una \textit{convenzione}.
     
-    \item \textbf{Paziente}: possiede attributi come \texttt{data di nascita}, \texttt{luogo di nascita}, \texttt{email}, \texttt{referente adulto}
-     e \texttt{email del referente}. Può effettuare una o più \textit{prenotazioni}.
+    \item \textbf{Paziente}: possiede attributi come \texttt{data di nascita}, \texttt{luogo di nascita}, \texttt{email}, \texttt{referente adulto}. Può effettuare una o più \textit{prenotazioni}.
     
     \item \textbf{Infermiere}: è associato alle \textit{prestazioni} che subisce il paziente, e ha come attributo \texttt{giorni di servizio}.
     
@@ -360,9 +334,9 @@ Il modello è organizzato secondo una gerarchia centrata sull’entità \textbf{
     \item \textbf{Prenotazione}: contiene le informazioni relative a \texttt{id}, \texttt{data}, \texttt{ora}, \texttt{tipo}, 
     e può essere collegata a una \textit{visita} o a una \textit{prestazione}.
     
-    \item \textbf{Visita}: comprende gli attributi \texttt{id}, \texttt{esito}, ed è tenuta in un \textit{ambulatorio} da un \textit{medico}.
+    \item \textbf{Visita}: comprende gli attributi \texttt{id}, \texttt{esito},\texttt{paziente}, \texttt{prenotazione}, \texttt{ambulatorio}, \texttt{esito} ed è tenuta in un \textit{ambulatorio} da un \textit{medico}.
     
-    \item \textbf{Prestazione}: registra l’attività sanitaria eseguita, con attributi \texttt{id}, \texttt{data}, \texttt{esito}, 
+    \item \textbf{Prestazione}: registra l’attività sanitaria eseguita, con attributi \texttt{id}, \texttt{data}, \texttt{esito}, \texttt{infermiere}, \texttt{ambulatrio}, \texttt{prenotazione}, \texttt{paziente} e opzionalmente
     \texttt{note}.
     
     \item \textbf{Ambulatorio}: rappresenta la struttura fisica in cui avviene una prestazione o una visita. 
@@ -378,14 +352,15 @@ Lo schema E-R è il seguente:
 \end{center}
 
 \section{Modello Relazionale}
-
+Gli id vengono creati automaticamente dal database.
 \begin{itemize}
     \item \textbf{Utente} (\underline{username}, nome, cognome, codiceFiscale)
     \item \textbf{Paziente} (\underline{username}, dataNascita, luogoNascita, email, referenteAdulto*, emailReferente*, medicoConvenzionato)
     \item \textbf{Medico} (\underline{username}, specialità, assenzePianificate)
     \item \textbf{Infermiere} (\underline{username}, giorniServizio)
     \item \textbf{Segreteria} (\underline{username}, ruolo)
-    \item \textbf{Prenotazione} (\underline{id}, data, ora, tipo, richiedente)
+    \item \textbf{Prenotazione_visita} (\underline{id}, data, ora, tipo, richiedente)
+    \item \textbf{Prenotazione_prestazione} (\underline{id}, data, ora, tipo, richiedente)
     \item \textbf{Visita} (\underline{id}, esito, idPrenotazione, medico, paziente, ambulatorio)
     \item \textbf{Prestazione} (\underline{id}, data, esito, note, idPrenotazione, infermiere, paziente, ambulatorio)
     \item \textbf{Ambulatorio} (\underline{id}, tipo)
@@ -402,7 +377,7 @@ Lo schema E-R è il seguente:
     \item \texttt{Paziente.referenteAdulto} $\rightarrow$ \texttt{Paziente.username}
     \item \texttt{Paziente.emailReferente} $\rightarrow$ \texttt{Paziente.email}
     \item \texttt{Prenotazione.richiedente} $\rightarrow$ \texttt{Paziente.username}
-    \item \texttt{Visita.idPrenotazione} $\rightarrow$ \texttt{Prenotazione.id}
+    \item \texttt{Visita.idPrenotazione} $\rightarrow$ \texttt{Prenotazione_visita.id}
     \item \texttt{Visita.medico} $\rightarrow$ \texttt{Medico.username}
     \item \texttt{Visita.paziente} $\rightarrow$ \texttt{Paziente.username}
     \item \texttt{Visita.ambulatorio} $\rightarrow$ \texttt{Ambulatorio.id}
@@ -435,40 +410,12 @@ Le cardinalità indicano il numero minimo e massimo di occorrenze di una entità
     \item \textbf{Sostituzione:} Un medico può sostituirne più altri e può essere sostituito da più colleghi: relazione \textbf{molti-a-molti (N:M)}.
 \end{itemize}
 
-\section{Tabella Riassuntiva delle Entità}
-
-\renewcommand{\arraystretch}{1.3}
-\begin{longtable}
-\caption{Tabella riassuntiva delle entità del modello E-R} \label{tab:entita} \\ 
-\hline
-\textbf{Entità} & \textbf{Attributi principali} & \textbf{Chiave primaria} \\
-\hline
-Utente & CF, username, nome, cognome, password & CF \\
-\hline
-Paziente & CF, username, nome, cognome, email, telefono, dataDiNascita, luogoDiNascita, responsabile*, emailResponsabile*, medicoConvenzionato & CF \\
-\hline
-Medico & CF, username, nome, cognome, specializzazione, reparto, assenzePianificate & CF \\
-\hline
-Infermiere & CF, username, nome, cognome, giorniDiServizio & CF \\
-\hline
-Segreteria & CF, username, nome, cognome & CF \\
-\hline
-Prenotazione & IDPrenotazione, data, ora, richiedente, regimeVisita*, tipo & IDPrenotazione \\
-\hline
-Visita & IDVisita, IDPrenotazione, data, ora, tipo, regimeVisita, urgenza, esito, medico, paziente, ambulatorio & IDVisita \\
-\hline
-Prestazione & IDPrestazione, IDPrenotazione, data, ora, tipoPrestazione, fase, infermiere, paziente, ambulatorio, note & IDPrestazione \\
-\hline
-Ambulatorio & IDAmbulatorio, tipo & IDAmbulatorio \\
-\hline
-Sostituzione & medicoSostituto, medicoSostituito & medicoSostituto, medicoSostituito \\
-\hline
-\end{longtable}
 
 \newpage
 Lo schema implementato della Basi di Dati, completo è il seguente:\\
 \includegraphics[width=1.0\textwidth]{diagrammi_uml/schemaER.png}
 
+\newpage
 \subsection{Gerarchia}
 
 La gerarchia principale del modello riguarda l’entità \texttt{Utente}, da cui derivano \texttt{Medico}, \texttt{Paziente}, \texttt{Infermieri} e \texttt{Segreteria}.
