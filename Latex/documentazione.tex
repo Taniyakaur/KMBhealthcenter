@@ -112,6 +112,7 @@ Il primo diagramma rappresenta in maniera sintetica i casi d’uso del paziente 
 
 \includegraphics[width=0.7\textwidth]{diagrammi_uml/paziente.png}
 
+\newpage
 \subsection{Personale medico}
 Il personale medico, dopo aver effettuato l'autenticazione, può consultare la propria area personale per visualizzare l’elenco 
 delle visite in programma e accedere ai dati clinici dei pazienti.
@@ -123,7 +124,7 @@ Il secondo schema mostra nel dettaglio l’interazione tra il medico e il sistem
 \includegraphics[width=0.7\textwidth]{diagrammi_uml/use_case_medico.png}
 
 \includegraphics[width=0.7\textwidth]{diagrammi_uml/medico.png}
-
+\newpage
 \subsection{Infermiere}
 L’infermiere può accedere alla propria area riservata tramite autenticazione. Una volta entrato nel sistema, 
 ha la possibilità di visualizzare la dashboard personale, i propri dati anagrafici e l’elenco delle prestazioni effettuate. 
@@ -135,7 +136,7 @@ mentre il secondo fornisce una rappresentazione dettagliata delle interazioni co
 \includegraphics[width=0.7\textwidth]{diagrammi_uml/use_case_infermiere.png}
 
 \includegraphics[width=0.7\textwidth]{diagrammi_uml/infermiere.png}
-
+\newpage
 \subsection{Segreteria}
 
 La segreteria ha accesso a numerose funzionalità gestionali. Dopo l'autenticazione, nella pagina admin 
@@ -168,20 +169,20 @@ consultare l’esito delle visite effettuate, o visualizzare lo storico delle pr
 oppure può essere interrotta o annullata in qualsiasi momento.
 
 \includegraphics[width=0.7\textwidth]{diagrammi_uml/diagramma_attivita_paziente.png}
-
+\newpage
 \subsection{Personale medico}
 Il diagramma delle attività del medico mostra il flusso operativo seguito da questa figura professionale. 
 Dopo l'autenticazione, il medico può visualizzare l’elenco delle visite programmate e i dati clinici dei propri pazienti.  
 
 \includegraphics[width=0.7\textwidth]{diagrammi_uml/diagramma_attivita_medico.png}
-
+\newpage
 \subsection{Infermiere}
 Il diagramma delle attività relativo all’infermiere mostra le principali operazioni disponibili dopo l’autenticazione. 
 L’utente può accedere alla dashboard per consultare i propri dati anagrafici e l’elenco delle prestazioni precedentemente eseguite. 
 Il flusso si concentra sulla consultazione, mantenendo il diagramma semplice e focalizzato sulle attività specifiche di questa figura professionale.
 
 \includegraphics[width=0.7\textwidth]{diagrammi_uml/diagramma_attivita_infermiere.png}
-
+\newpage
 \subsection{Segreteria}
 Il diagramma delle attività della segreteria descrive l'intero processo operativo, a partire dall’autenticazione dell’utente. 
 Una volta effettuato l’accesso, la segreteria può visualizzare la dashboard con una panoramica generale. 
@@ -227,7 +228,7 @@ Questo approccio ci ha permesso di organizzare il codice in modo modulare e faci
 
 Nel nostro progetto, abbiamo creato diversi modelli per rappresentare utenti, medici, pazienti, prenotazioni e prestazioni. 
 Ogni funzionalità è stata sviluppata come view associata a uno specifico URL, e i dati sono stati presentati attraverso template responsivi.
-
+\newpage
 \subsection{Design pattern utilizzati}
 
 Durante lo sviluppo abbiamo fatto uso di alcuni design pattern che Django supporta nativamente o che si adattano bene alla sua struttura:
@@ -388,6 +389,7 @@ Gli id vengono creati automaticamente dal database.
     \item \texttt{Sostituzione.medicoSostituto} $\rightarrow$ \texttt{Medico.username}
     \item \texttt{Sostituzione.medicoSostituito} $\rightarrow$ \texttt{Medico.username}
 \end{itemize}
+\newpage
 \section{Cardinalità delle Relazioni}
 
 Le cardinalità indicano il numero minimo e massimo di occorrenze di una entità che possono partecipare ad una relazione. Sono fondamentali per definire i vincoli logici tra i dati nel modello E-R. Di seguito una sintesi delle cardinalità più rilevanti nel nostro schema:
