@@ -193,6 +193,13 @@ button {
 
 
 /* --- header --- */
+.fullscreen-image {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    border-radius: 0;
+    display: block;
+}
 
 .header_section {
     width: 100%;

@@ -15,19 +15,11 @@
         <li><strong>Data di nascita:</strong> {{ paziente.data_nascita }}</li>
         <li><strong>Luogo di nascita:</strong> {{ paziente.luogo_nascita }}</li>
         <li><strong>Email:</strong> {{ paziente.email }}</li>
-        {% if paziente.eta < 14 %}
-            <li><strong>Referente adulto:</strong> {{ paziente.referente_adulto.nome }} {{ paziente.referente_adulto.cognome }} ({{ paziente.referente_adulto.email }})</li>
+        {% if paziente.is_minor %}
+            <li><strong>Referente adulto:</strong> {{ paziente.referente_adulto }}</li>
         {% endif %}
     </ul>
 
-    {% if pazienti_associati %}
-        <h3 class="treatment_taital">Pazienti pediatrici sotto la tua responsabilità</h3>
-        <ul>
-            {% for minore in pazienti_associati %}
-                <li>{{ minore.nome }} {{ minore.cognome }} - Codice Sanitario: {{ minore.codice_sanitario }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
 
     <!-- Storico visite -->
     <h3 class="treatment_taital">Storico Visite Mediche</h3>
