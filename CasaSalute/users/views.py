@@ -18,6 +18,7 @@ from django import forms
 from django.http import Http404
 from prestazione.forms import PrestazioneInfermieristicaForm
 from prestazione.forms import EsitoPrestazioneForm
+from prestazione.models import PrenotazionePrestazione
 
 # Funzione per inviare email di conferma prestazione
 def invia_email_conferma_prestazione(utente_email, contesto):
@@ -133,6 +134,7 @@ def pagina_infermiere(request):
     })
 
 # PAGINA PAZIENTE
+
 @login_required
 def pagina_paziente(request):
     paziente = get_object_or_404(Paziente, user=request.user)
@@ -141,10 +143,31 @@ def pagina_paziente(request):
     visite = Visita.objects.filter(prenotazione__paziente=paziente)
 
     # Prenotazioni del paziente
-    prenotazioni = Prenotazione.objects.filter(paziente=paziente)
+    prenotazioni_visite = Prenotazione.objects.filter(paziente=paziente)
+    prenotazioni_prestazioni = PrenotazionePrestazione.objects.filter(paziente=paziente)
 
-    # Prestazioni infermieristiche del paziente
+    # Prestazioni effettuate
     prestazioni = Prestazione.objects.filter(paziente=paziente)
+
+    # Unifica le prenotazioni in un’unica lista con attributi coerenti
+    prenotazioni = []
+
+    for p in prenotazioni_visite:
+        prenotazioni.append({
+            "data": p.data,
+            "ora": p.ora,
+            "tipo": f"Visita - {p.medico.nome} {p.medico.cognome}",
+            "stato": "Prenotata"
+        })
+
+    for p in prenotazioni_prestazioni:
+        prenotazioni.append({
+            "data": p.data,
+            "ora": p.orario,
+            "tipo": f"Prestazione - {p.get_tipo_display() or '-'}",
+            "stato": "Prenotata"
+        })
+
 
     return render(request, 'users/paziente.html', {
         'paziente': paziente,
@@ -152,6 +175,7 @@ def pagina_paziente(request):
         'prenotazioni': prenotazioni,
         'prestazioni': prestazioni
     })
+
 
 
 # PAGINA SEGRETERIA
