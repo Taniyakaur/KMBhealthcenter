@@ -6,10 +6,12 @@
 {% block content %}
     <body>
 
-        <!-- Immagine principale -->
-        <body>
-            <img src="{% static 'homepage/immagine/foto_casacura.jpg' %}" alt="Casa di cura" style="border-radius: 10px;">
+        <body style="margin: 0;">
+            <img src="{% static 'homepage/immagine/foto_casacura.jpg' %}" 
+            alt="Casa di cura" 
+            class="fullscreen-image">
         </body>
+
 
         <!-- Sezione About -->
         <div class="about_section layout_padding" align="center" style="background-color: #098547; color: white;">
@@ -34,9 +36,8 @@
                     <div class="row">
                         <h1 class="treatment_taital">Orari di apertura</h1>
                         <div class="col-lg-4 col-sm-6">
-                            <h2 class="care_text">Lunedì, martedì e giovedì: 8:00 – 13:00 | 15:00 – 18:00</h2>
-                            <h2 class="care_text">Mercoledì e venerdì: 8:00 – 13:00</h2>
-                            <p class="treatment_text">Solo su appuntamento</p>
+                            <h2 class="care_text">Aperto h24, con possibilita' di visite ad ogni ora</h2>
+                            <p class="treatment_text">Solo su prenotazione</p>
                             <div class="separator" ></div>
                             
                         </div>
