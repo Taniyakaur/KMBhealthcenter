@@ -46,7 +46,7 @@
                 <tr>
                     <td>{{ visita.prenotazione.data }}</td>
                     <td>{{ visita.prenotazione.ora }}</td>
-                    <td>{{ visita.prenotazione.medico.nome }} {{ visita.prenotazione.medico.cognome }}</td>
+                    <td>{{ visita.prenotazione.medico.user.username }}</td>
                     <td>{{ visita.prenotazione.tipo }}</td>
                     <td>
                         {% if visita.esito %}
@@ -83,7 +83,7 @@
                     <td>{{ prestazione.paziente }}</td>
                     <td>{{ prestazione.data }}</td>
                     <td>{{ prestazione.tipo }}</td>
-                    <td>{{ prestazione.infermiere.nome }} {{ prestazione.infermiere.cognome }}</td>
+                    <td>{{ prestazione.infermiere.user.username }}</td>
                     <td>{{ prestazione.esito }}</td>
                     <td>{{ prestazione.note }}</td>
                 </tr>

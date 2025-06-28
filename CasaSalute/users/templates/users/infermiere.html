@@ -29,10 +29,10 @@
                     <td>{{ prestazione.get_tipo_display }}</td>
                     <td>{% if prestazione.esito %}{{ prestazione.esito|linebreaks }}{% else %}-{% endif %}</td>
                     <td>
-                        {% if not prestazione.esito %}
-                            <a href="{% url 'inserisci_esito_prestazione' prestazione.id %}" class="btn btn-primary btn-sm">Inserisci Esito</a>
+                        {% if prestazione.esito %}
+                            <td>Esito registrato</td>
                         {% else %}
-                            <span class="text-success">Esito registrato</span>
+                            <td>-</td>
                         {% endif %}
                     </td>
                 </tr>
