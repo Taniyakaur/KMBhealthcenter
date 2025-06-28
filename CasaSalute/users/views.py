@@ -111,12 +111,17 @@ def pagina_medico(request):
     # Aggiunto: tutte le visite che hanno una prenotazione per questo medico
     visite = Visita.objects.filter(prenotazione__medico=medico)
 
+    # Ottieni i medici sostituibili
+    medici_sostituibili = medico.medici_sostituibili.all()
+
     return render(request, 'users/medico.html', {
         'medico': medico,
         'pazienti': pazienti,
-        'visite': visite
+        'visite': visite,
+        'medici_sostituibili': medici_sostituibili
     })
 
+#PAGINA INFERMIERE
 @login_required
 def pagina_infermiere(request):
     try:

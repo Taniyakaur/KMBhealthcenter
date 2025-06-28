@@ -47,7 +47,7 @@
     {% if medici_sostituibili %}
         <ul style="text-align:left">
             {% for sostituto in medici_sostituibili %}
-                <li>Dr./Dr.ssa {{ sostituto.nome }} {{ sostituto.cognome }}</li>
+                <li>Dr./Dr.ssa {{ medici_sostituibili.user.medico.username }}</li>
             {% endfor %}
         </ul>
     {% else %}
@@ -62,7 +62,6 @@
                 <th>Nome</th>
                 <th>Cognome</th>
                 <th>Codice Sanitario</th>
-                <th>Azioni</th>
             </tr>
         </thead>
         <tbody>
@@ -71,14 +70,6 @@
                     <td>{{ paziente.nome }}</td>
                     <td>{{ paziente.cognome }}</td>
                     <td>{{ paziente.codice_sanitario }}</td>
-                    <td>
-                        {% if paziente.id %}
-                            <!--<td>{{paziente.id}}</td>-->
-                            <a href="{% url 'dettaglio_paziente' paziente.id %}">Vedi dettagli</a>
-                        {% else %}
-                            -
-                        {% endif %}
-                    </td>
                 </tr>
             {% empty %}
                 <tr>
