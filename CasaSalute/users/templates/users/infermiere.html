@@ -8,16 +8,24 @@
     <h2 style="text-align: left;">Benvenuto/a, {{ request.user.username }}</h2>
     <p>Spazio per la gestione delle attività infermieristiche.</p>
 
+     <!-- Informazioni personali -->
+    <h3 class="treatment_taital">Le tue informazioni</h3>
+    <ul style="text-align:left">
+        <li><strong>Codice Fiscale:</strong> {{ infermiere.codice_fiscale }}</li>
+        <li><strong>Cognome:</strong> {{ infermiere.cognome }}</li>
+        <li><strong>Nome:</strong> {{ infermiere.nome }}</li>
+    </ul>
+    
     <!-- Lista delle prestazioni effettuate -->
     <h3 class="treatment_taital">Prestazioni Effettuate</h3>
     <table class="table table-striped table-bordered custom_table_style">
         <thead>
             <tr>
-                <th>Data</th>
+                <th>Data e Ora</th>
                 <th>Paziente</th>
                 <th>Tipo</th>
                 <th>Esito</th>
-                <th>Azioni</th>
+                <th>Note</th>
             </tr>
         </thead>
         <tbody>
@@ -27,14 +35,8 @@
                     <td>{{ prestazione.data|date:"d/m/Y H:i" }}</td>
                     <td>{{ prestazione.paziente.nome }} {{ prestazione.paziente.cognome }}</td>
                     <td>{{ prestazione.get_tipo_display }}</td>
-                    <td>{% if prestazione.esito %}{{ prestazione.esito|linebreaks }}{% else %}-{% endif %}</td>
-                    <td>
-                        {% if prestazione.esito %}
-                            <td>Esito registrato</td>
-                        {% else %}
-                            <td>-</td>
-                        {% endif %}
-                    </td>
+                    <td>{% if prestazione.esito %}{{ prestazione.esito }}{% else %}-{% endif %}</td>
+                    <td>{% if prestazione.note %}{{ prestazione.note }}{% else %}-{% endif %}</td>
                 </tr>
                 {% endfor %}
             {% else %}

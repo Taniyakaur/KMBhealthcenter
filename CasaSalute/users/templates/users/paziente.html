@@ -11,9 +11,10 @@
     <!-- Informazioni personali -->
     <h3 class="treatment_taital">Le tue informazioni</h3>
     <ul style="text-align:left">
-        <li><strong>Codice Sanitario:</strong> {{ paziente.codice_sanitario }}</li>
+        <li><strong>Codice Fiscale:</strong> {{ paziente.codice_fiscale }}</li>
         <li><strong>Data di nascita:</strong> {{ paziente.data_nascita }}</li>
         <li><strong>Luogo di nascita:</strong> {{ paziente.luogo_nascita }}</li>
+        <li><strong>Medico curante:</strong> {{ paziente.medico_curante }}</li>
         <li><strong>Email:</strong> {{ paziente.email }}</li>
         {% if paziente.is_minor %}
             <li><strong>Referente adulto:</strong> {{ paziente.referente_adulto }}</li>

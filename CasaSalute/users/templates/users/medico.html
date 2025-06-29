@@ -12,7 +12,7 @@
         <li><strong>Cognome:</strong> {{ medico.cognome }}</li>
         <li><strong>Nome:</strong> {{ medico.nome }}</li>
         <li><strong>Codice Fiscale:</strong> {{ medico.codice_fiscale }}</li>
-        <li><strong>Specialità:</strong> {{ medico.specialita|default:"Non specificata" }}</li>
+        <li><strong>Specializzazione:</strong> {{ medico.specializzazione|default:"Non specificata" }}</li>
     </ul>
 
     <!--tabella assenze-->
@@ -42,18 +42,6 @@
         </tbody>
     </table>
 
-    <!--medici sostituibili-->
-    <h3 class="treatment_taital">Medici che puoi sostituire</h3>
-    {% if medici_sostituibili %}
-        <ul style="text-align:left">
-            {% for sostituto in medici_sostituibili %}
-                <li>Dr./Dr.ssa {{ medici_sostituibili.user.medico.username }}</li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>Nessun medico da sostituire attualmente assegnato.</p>
-    {% endif %}
-
     <!--pazienti convenzionati-->
     <h3 class="treatment_taital">I tuoi pazienti convenzionati</h3>
     <table class="table table-striped table-bordered custom_table_style">
@@ -80,41 +68,42 @@
     </table>
 
    <!--tabella visite-->
-<h3 class="treatment_taital">Visite Programmate</h3>
-<table class="table table-striped table-bordered custom_table_style">
-    <thead>
-        <tr>
-            <th>Data</th>
-            <th>Ora</th>
-            <th>Paziente</th>
-            <th>Motivo</th>
-            <th>Esito</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% if visite %}
-            {% for visita in visite %}
-                <tr>
-                    <td>{{ visita.prenotazione.data }}</td>
-                    <td>{{ visita.prenotazione.ora }}</td>
-                    <td>{{ visita.paziente.nome }} {{ visita.paziente.cognome }}</td>
-                    <td>{{ visita.prenotazione.tipo }}</td>
-                    <td>
-                        {% if visita.esito %}
-                            {{ visita.esito }}
-                        {% else %}
-                            <span class="text-muted">Esito non ancora disponibile</span>
-                        {% endif %}
-                    </td>
-                </tr>
-            {% endfor %}
-        {% else %}
+    <h3 class="treatment_taital">Visite Programmate</h3>
+    <table class="table table-striped table-bordered custom_table_style">
+        <thead>
             <tr>
-                <td colspan="5" style="text-align:center;">Nessuna visita prenotata.</td>
+                <th>Data</th>
+                <th>Ora</th>
+                <th>Paziente</th>
+                <th>Motivo</th>
+                <th>Esito</th>
             </tr>
-        {% endif %}
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            {% if visite %}
+                {% for visita in visite %}
+                    <tr>
+                        <td>{{ visita.prenotazione.data }}</td>
+                        <td>{{ visita.prenotazione.ora }}</td>
+                        <td>{{ visita.paziente.nome }} {{ visita.paziente.cognome }}</td>
+                        <td>{{ visita.prenotazione.tipo }}</td>
+                        <td>
+                            {% if visita.esito %}
+                                {{ visita.esito }}
+                            {% else %}
+                                <span class="text-muted">Esito non ancora disponibile</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="5" style="text-align:center;">Nessuna visita prenotata.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
 
 
 
