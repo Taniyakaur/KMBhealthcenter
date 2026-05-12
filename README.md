@@ -9,7 +9,7 @@ A web-based management system for a health centre (Casa della Salute), handling 
 - Kaur Taniya: Backend, Database
 - Magrograssi Federico, Frontend, Documentation
 
-**Repository:** https://github.com/Taniyakaur/Project
+**Repository:** https://github.com/Taniyakaur/KMBhealthcenter
 
 ---
 
