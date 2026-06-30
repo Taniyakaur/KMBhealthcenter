@@ -1,0 +1,4 @@
+{
+  "public": "medwin",
+  "buildCommand": "echo 'Static site'"
+}
