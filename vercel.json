@@ -1,4 +1,4 @@
 {
-  "public": "medwin",
-  "buildCommand": "echo 'Static site'"
+  "buildCommand": "echo 'Static site'",
+  "outputDirectory": "medwin"
 }
