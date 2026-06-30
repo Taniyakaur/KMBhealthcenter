@@ -1,4 +1,9 @@
 {
-  "buildCommand": "echo 'Static site'",
-  "outputDirectory": "medwin"
+  "rewrites": [
+    {
+      "source": "/:path*",
+      "destination": "/index.html"
+    }
+  ],
+  "cleanUrls": true
 }
