@@ -11,6 +11,8 @@ A web-based management system for a health centre (Casa della Salute), handling 
 
 **Repository:** https://github.com/Taniyakaur/KMBhealthcenter
 
+**Live demo (Render):** https://kmbhealthcenter1.onrender.com/homepage/ (login at [/users/login/](https://kmbhealthcenter1.onrender.com/users/login/) with the [demo accounts](#demo-accounts)). Hosted on Render's free plan: the first load after a period of inactivity can take up to a minute, and data entered on the live site is reset on each redeploy.
+
 ---
 
 ## Overview
